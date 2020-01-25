@@ -1,0 +1,61 @@
+<script src="dada.js"></script>
+<link rel="stylesheet" href="dada.css">
+
+<head>
+<title>DADA - Archive</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+</head>
+
+<body class="wooden">
+
+<div class="folder">
+<div id="notes"></div>
+<div class="written">
+
+<!-- Upon solving each puzzle successfully, the CONTENT section will be grabbed. The CONTENT contains the children of that puzzle and the information that is earned for solving it. -->
+
+<!-- The children of the letter puzzle are the Louise Norton Puzzle, the Elsa Puzzle, and the Mina Loy Puzzle. At least functionally as of 2/15/19 which might be changed later who knows! -->
+<div id="content1" class="content">
+	<a href="lnpuzzle.html" target="_blank"><div id="louise"></div></a>
+	<a href="elsapuzzle.html" target="_blank"><div id="elsa"></div></a>
+	<a href="https://rails-tutorial-anthoy.c9users.io/" target="_blank"><div id="mina"></div></a>
+</div>
+</div>
+
+<div id="content2" class="content">
+<img src="sticky-louise.png" style="position:absolute; width:10%; left:28%; top:15%">
+</div>
+
+<div id="content3" class="content">
+<img src="sticky-elsa.png" style="position:absolute; width:10%; left:28%; top:65%;">
+</div>
+
+<div id="content4" class="content">
+<img src="sticky-mina.png" style="position:absolute; width:10%; left:20%; top:98%;">
+</div>
+
+<div id="pen" onclick="showDiv()"></div>
+<div id="letters">
+	<div id="white"><img src="theLetter.png" onclick="showRed()"></div>
+	<div id="red-letter">
+		<div class="cover-screen" onclick="hideRed()"></div>
+		<div id="red">
+	</div>
+</div>
+</div>
+
+<div id="helper"><h1>Use your pen to write notes!</h1></div>
+
+<div id="pass-entry">
+<div class="cover-screen"  onclick="hideDiv()"></div>
+<div class="password">
+	<h1>Enter a code to unlock a puzzle</h1>
+	<form name="login" style="margin: 5px 0px 0px 0px;">
+		<input type="text" name="pass" size="17" onkeydown="if(event.keyCode==13) return false;" style="width: 20%; height:5%"><br>
+		<input type="button" value="Submit" style="width: 20%; height: 5%; margin: 4px auto 4px auto;" onclick="javascript:showContent(this.form)">
+	</form>
+	<p>click outside to escape window</p>
+</div>
+</div>
+
+</body>

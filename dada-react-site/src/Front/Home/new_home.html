@@ -1,0 +1,102 @@
+<script src="dada.js"></script>
+<link rel="stylesheet" href="dada.css">
+
+<head>
+<title>DADA - Archive</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+</head>
+
+<body class="wooden">
+
+<div class="folder">
+<div id="notes"></div>
+<div class="written">
+
+
+<!-- Upon solving each puzzle successfully, the CONTENT section containing its children will be grabbed. -->
+
+<!-- Each one of these contains the "children" mission/s (links to puzzles) that unlock upon completion of a parent puzzle. -->
+
+<div style="margin-top:-25%; margin-left:-10%">
+	<a target="_blank" href="letter.html">The Letter</a>
+</div>
+
+<!-- Content 1 = RRose puzzle unlocked -->
+<div style="margin-top:0%; margin-left:-10%" id="content1" class="content">
+	<a target="_blank" href="rrose.html">Rrose</a>
+</div>
+
+<!-- Content 2 = LN puzzle unlocked -->
+<div style="margin-top:0%; margin-left:-10%" id="content2" class="content">
+		<a target="_blank" href="lnpuzzle.html">The Friends</a>
+</div>
+
+<!-- Content 3 = Demuth Letter puzzle unlocked -->
+<div style="margin-top:0%; margin-left:-10%" id="content3" class="content">
+		<a target="_blank" href="demuthletter.html">The Other Letter</a>
+</div>
+
+<!-- Content 4 = Phonebook puzzle unlocked -->
+<div style="margin-top:0%; margin-left:-10%" id="content4" class="content">
+	<a target="_blank" href="phonebook.html">A Better Letter</a>
+</div>
+
+<!-- Content 5 = SIA Catalog unlocked -->
+<div style="margin-top:0%; margin-left:-10%" id="content5" class="content">
+	<a target="_blank" href="siacatalog.html">The Exhibit Catalog</a>
+</div>
+
+<!-- Content 6 = Elsa Picture puzzle unlocked -->
+<div style="margin-top:0%; margin-left:-10%" id="content6" class="content">
+	<a target="_blank" href="elsapuzzle.html">The Baroness of Cutlery</a>
+</div>
+
+<!-- Content 7 = God Part 1 puzzle unlocked -->
+<div style="margin-top:0%; margin-left:-10%" id="content7" class="content">
+	<a target="_blank" href="godone.html">God</a>
+</div>
+
+<!-- Content 8 = God Part 2 puzzle unlocked -->
+<div style="margin-top:0%; margin-left:-10%" id="content8" class="content">
+	<a target="_blank" href="godtwo.html">A Sacred Text</a>
+</div>
+
+</div>
+
+
+<!-- Information Rewards go here!! -->
+
+
+<div class="informationrewards" style="width:500px; margin-top:-13.5%; margin-left:47%;">
+
+<p style="padding-top:5%;">Secrets</p>
+
+<div style="padding:1px; margin-top:3%;" id="infocontent2" class="infocontent">
+	<a target="_blank" href="rrosepicture.html">
+		<img style="width:20%;" src="rrosethumbnail.png">
+	</a>
+</div>
+
+</div>
+
+<div id="pen" onclick="showDiv()"></div>
+
+
+<div id="pass-entry">
+<div class="cover-screen"  onclick="hideDiv()"></div>
+<div class="password">
+	<h1>Report your findings</h1>
+	<form name="login" style="margin: 5px 0px 0px 0px;">
+		<input type="text" name="pass" size="17" onkeydown="if(event.keyCode==13) return false;" style="width: 20%; height:5%"><br>
+		<input type="button" value="Submit" style="width: 20%; height: 5%; margin: 4px auto 4px auto;" onclick="javascript:showContent(this.form)">
+	</form>
+	<p>click outside to escape window</p>
+</div>
+</div>
+
+<!-- Don't touch this, removing it breaks the folder system for whatever reason! I had already spent 2 hours trying to figure out how to fix it before I realized it wasn't worth it and moved on. -->
+<div id="letters">
+</div>
+
+</body>

@@ -1,0 +1,375 @@
+@font-face {
+font-family: "Adler";
+src: url("../Fonts/adler.ttf");
+}
+
+@font-face {
+font-family: "Damn Arc";
+src: url("../Fonts/damnarc.ttf");
+}
+
+@font-face {
+font-family: "Bradley";
+src: url("../Fonts/bradley_hand.ttf");
+}
+
+body {
+	background:#b5b5b5;
+}
+
+/*Helps images be more responisive*/
+img{
+	
+	margin: auto;
+	max-width: 100%;
+	height: auto;
+}
+
+.popup-content {
+	position: relative; 
+	background: transparent; 
+	width: 50%; 
+	margin: auto; 
+	border: none; 
+	padding: 5px; 
+}
+
+h1 {
+	font-family:"Adler";
+	color:white;
+	font-size:1.5em;
+}
+
+#helper {
+	width:50%;
+	height:50%;
+	position:absolute;
+	left:15%;
+	-webkit-transform: rotate(1deg);
+	-moz-transform: rotate(1deg);
+	-o-transform: rotate(1deg);
+}
+
+#helper h1 {
+	color:black;
+	font-family:"Bradley";
+	font-size:1.5em;
+}
+
+/*Folder Elements Start*/
+
+.folder {
+	width:80%;
+	height:auto;
+	position: relative;
+	padding-top:2%;
+	padding-left:5%;
+}
+
+.notes {
+	position:absolute;
+	top:10%;
+	left:10%;
+	width:30vw;
+	height:90vh;
+	overflow:hidden;
+}
+
+.pen {
+	position:absolute;
+	top:10%;
+	left:10%;
+	width:auto;
+	height:50vh;
+	z-index:0;
+}
+
+/* Can probably make this better but at this point it's working and I will not tempt god */
+.pen:hover {
+	background-image:url("../folder_elements/pen/pen.png");
+	-webkit-transform: rotate(5deg);
+	-moz-transform: rotate(5deg);
+	-o-transform: rotate(5deg);
+}
+
+.written {
+	height:70vh;
+	padding-left:12%;
+	font-family:"Damn Arc";
+	font-size:2.5vw;
+	-webkit-transform: rotate(1.2deg);
+	-moz-transform: rotate(1.2deg);
+	-o-transform: rotate(1.2deg);
+	line-height:1.85vw;
+}
+
+/*Folder Elements End*/
+
+head {
+	background:#000;
+}
+
+#black {
+	width:100vw;
+	height:100vh;
+	background:#000;
+	position:fixed;
+	top:0;
+	left:0;
+}
+
+.menu-bar {
+	width:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:0;
+}
+
+.page {
+	padding-top: 15%;
+	box-sizing: content-box;
+}
+
+.logo {
+	width:auto;
+	height:75%;
+	display:block;
+    position: absolute;
+    top: 5%; bottom:10%; left: 0; right:0;
+    margin: auto;
+}
+
+.arrow {	
+	width:auto;
+	height:1.5%;
+	display:block;
+    position: absolute;
+    bottom:10%; left: 0; right:0;
+    margin: auto;
+}
+
+.arrow hover {
+	height:20%;
+	width:auto;
+}
+
+.header {
+	width:25%;
+	height:auto;
+	position:absolute;
+	top:2%; left:2%;
+	margin:auto;
+	z-index:1;
+}
+
+ul {
+    list-style-type: none;
+    margin: 10 0 0 0;
+    padding: 9vh 0;
+    overflow: hidden;
+    font-family:Adler;
+    font-size:1vw;
+	z-index:1;
+}
+
+li {
+    float: right;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 1vh 2vw;
+    text-decoration: none;
+}
+
+li a:hover {
+    color:#b5b5b5;
+}
+
+li img {
+	width:15vw;
+	z-index:2;
+	position:relative;
+	padding-top:5%;
+	padding-right:23%;
+}
+
+.password {
+	text-align: center; 
+	margin: 0 auto; 
+	color: #000; 
+	font: 20px Adler;
+	position:relative;
+	z-index:3;
+	vertical-align: middle;
+	top:40%;
+}
+
+.password p {
+	font-size:.75em;
+	color:white;
+}
+
+.content {
+	display:none;
+}
+
+.infocontent {
+	display:none;
+}
+
+#letters {
+	display:block;
+	text-align:center;
+	height:100vh;
+	overflow-y:hidden;
+	overflow-x:hidden;
+}
+
+/* #red {
+	background-image:url("letterred.jpg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	position:relative;
+	left:35%;
+	top:0;
+	height:100vh;
+	z-index:3;
+} */
+
+#red img {
+	display:inline-block;
+	text-align:center;
+	height:100vh;
+}
+
+#white {
+	display:block;
+	text-align:center;
+	z-index:0;
+	height:100vh;
+}
+
+#white img {
+	display:inline-block;
+	position:relative;
+	z-index:0;
+	width:28vw;
+}
+
+.informationrewards {
+	position:absolute;
+	width:18vw;
+	height:70vh;
+	padding-top:9.5%;
+	font-family:"Damn Arc";
+	font-size:2.5vw;
+	line-height:1.85vw;
+}
+
+a {
+	color:#000;
+	text-decoration:none;
+}
+
+a:hover {
+	cursor:pointer;
+	color:#888888;
+}
+
+#louise {
+	background-image:url("../Puzzles/louise_norton_puzzle/louise_norton_overlays/louise.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	position:absolute;
+	width:25vw;
+	height:25vw;
+	top:4vw;
+	left:12vw;
+	z-index:1;
+}
+
+#elsa {
+	background-image:url("../Puzzles/elsa_puzzle/elsa_puzzle_elements/elsa.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	position:absolute;
+	width:20vw;
+	height:20vw;
+	top:20vw;
+	left:20vw;
+	z-index:1;
+}
+
+#mina {
+	background-image:url("../Puzzles/mina_loy_puzzle/mina_loy.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	position:absolute;
+	width:25vw;
+	height:10vw;
+	top:40vw;
+	left:10vw;
+	z-index:1;
+}
+
+#pass-entry {
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.5);
+	position:fixed;
+	left:0;
+	top:0;
+	display:none;
+	z-index:1;
+}
+
+.cover-screen {
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.5);
+	position:fixed;
+	left:0;
+	top:0;
+	z-index:2;
+}
+
+
+#red-letter {
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.5);
+	position:fixed;
+	left:0;
+	top:0;
+	display:none;
+	z-index:1;
+}
+
+/* #ogrrose {
+	background-image:url("loeiloriginal.jpg");
+	background-repeat:no-repeat;
+	background-size:contain;
+	position:fixed;
+	width:20vw;
+	height:20vw;
+	top:20vw;
+	left:20vw;
+	z-index:1;
+
+} */
+
+/* #newrrose {
+	background-image:url("loeiledited.png");
+	background-repeat:no-repeat;
+	background-size:contain;
+	position:fixed;
+	width:20vw;
+	height:20vw;
+	top:20vw;
+	left:20vw;
+	z-index:1;
+} */
