@@ -6,6 +6,7 @@ import Front from './Front/front';
 import About from './About/about';
 import Archive from './Archive/archive';
 import Clues from './Front/Home/clues';
+import Demuth from './Puzzles/demuth_letter_puzzle/demuth_letter';
 
 
 
@@ -20,6 +21,7 @@ class App extends Component {
             <Route exact path='/about' component={About} />
             <Route exact path='/archive' component={Archive} />
             <Route exact path='/clues' component={Clues} />
+            <Route exact path='/demuth_letter' component={Demuth} />
           </Switch>
         </div>
       </Router>
