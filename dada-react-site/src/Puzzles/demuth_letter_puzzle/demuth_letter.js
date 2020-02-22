@@ -60,137 +60,234 @@ import Row from 'react-bootstrap/Row'
 import Image from 'react-bootstrap/Image'
 import Draggable from 'react-draggable';
 import Position from '../../Passwords/PositionObserver.js'
+import { withContentRect } from 'react-measure'
+import Measure from 'react-measure'
+
+
+class Pos {
+    constructor(xPos, yPos) {
+        this.x = xPos;
+        this.y = yPos;
+    }
+}
+
+function generatePositions() {
+    let array = [];
+    let value = -100;
+    for (let i = 0; i < 15; i++) {
+        value = value + 100;
+        array[i] = value;
+    }
+
+    return array;
+}
+
+function getXPos(id, dict) {
+    var value = dict[id];
+    
+    return value.x;
+}
+
+function getYPos(id, dict) {
+    var value = null;
+
+    for (var key in dict) {
+        if (key == id) {
+            value = dict[key];
+        }
+    }
+
+    return value.y;
+}
 
 class Demuth extends Component {
 
     constructor(props) {
         super(props);
+
+        this.genStartPos = generatePositions();
         
         this.state = {
-            deltaPosition: {
-                x: 0, y: 0
-            },
-            positions: this.generatePositions()
+            curPos: this.updatePositions(),
+            constPos: this.generateHash()
         };
     }
-    
 
-    handleDrag = (e, ui) => {
-        const { x, y } = this.state.deltaPosition;
-        this.setState({
-            deltaPosition: {
-                x: x + ui.deltaX,
-                y: y + ui.deltaY,
-            }
-        });
-    };
-        
-    generatePositions() {
-        let array = [];
-        let value = -100;
-        for (let i = 0; i < 15; i++)
-        {
-            value = value + 100;
-            array[i] = value;
-        }
+    generateHash() {
+        var hash = { };
 
-        return array;
-        }
+        hash["DL_2"] = new Pos(this.genStartPos[0], 0);
+        hash["DL_1"] = new Pos(this.genStartPos[1], 0);
+        hash["DL_14"] = new Pos(this.genStartPos[2] - 20, 0);
+        hash["DL_3"] = new Pos(this.genStartPos[3], 0);
+        hash["DL_20"] = new Pos(this.genStartPos[4] - 20, 0);
+        hash["DL_15"] = new Pos(this.genStartPos[5] - 20, 0);
+        hash["DL_10"] = new Pos(this.genStartPos[6], 0);
+        hash["DL_9"] = new Pos(this.genStartPos[7] - 10, 0);
+        hash["DL_21"] = new Pos(this.genStartPos[8], 0);
+        hash["DL_8"] = new Pos(this.genStartPos[9], 0);
+        hash["DL_19"] = new Pos(this.genStartPos[10], 0);
+        hash["DL_13"] = new Pos(this.genStartPos[11], 0);
+        hash["DL_7"] = new Pos(this.genStartPos[12], 0);
+        hash["DL_4"] = new Pos(this.genStartPos[13], 0);
+
+        hash["DL_5"] = new Pos(this.genStartPos[0], 70);
+        hash["DL_11"] = new Pos(this.genStartPos[1], 70);
+        hash["DL_17"] = new Pos(this.genStartPos[2] + 20, 70);
+        hash["DL_22"] = new Pos(this.genStartPos[3] + 10, 70);
+        hash["DL_16"] = new Pos(this.genStartPos[5], 70);
+        hash["DL_6"] = new Pos(this.genStartPos[6], 70);
+        hash["DL_12"] = new Pos(this.genStartPos[7], 70);
+        hash["DL_28"] = new Pos(this.genStartPos[8], 70);
+        hash["DL_24"] = new Pos(this.genStartPos[9], 70);
+        hash["DL_25"] = new Pos(this.genStartPos[10], 70);
+        hash["DL_26"] = new Pos(this.genStartPos[11], 70);
+        hash["DL_47"] = new Pos(this.genStartPos[12], 70);
+        hash["DL_27"] = new Pos(this.genStartPos[13], 70);
+
+        hash["DL_29"] = new Pos(this.genStartPos[0], 140);
+        hash["DL_30"] = new Pos(this.genStartPos[1], 140);
+        hash["DL_46"] = new Pos(this.genStartPos[2], 140);
+        hash["DL_45"] = new Pos(this.genStartPos[3], 140);
+        hash["DL_44"] = new Pos(this.genStartPos[5], 140);
+        hash["DL_43"] = new Pos(this.genStartPos[5], 140);
+        hash["DL_31"] = new Pos(this.genStartPos[6], 140);
+        hash["DL_33"] = new Pos(this.genStartPos[7], 140);
+        hash["DL_32"] = new Pos(this.genStartPos[8], 140);
+        hash["DL_42"] = new Pos(this.genStartPos[9], 140);
+        hash["DL_18"] = new Pos(this.genStartPos[10], 140);
+
+        hash["DL_41"] = new Pos(this.genStartPos[0], 210);
+        hash["DL_34"] = new Pos(this.genStartPos[1], 210);
+        hash["DL_38"] = new Pos(this.genStartPos[7] - 20, 210);
+        hash["DL_36"] = new Pos(this.genStartPos[3], 210);
+        hash["DL_39"] = new Pos(this.genStartPos[4], 210);
+        hash["DL_40"] = new Pos(this.genStartPos[5], 210);
+        hash["DL_35"] = new Pos(this.genStartPos[6], 210);
+        hash["DL_37"] = new Pos(this.genStartPos[2], 210);
+        hash["DL_23"] = new Pos(this.genStartPos[8], 210);
+
+        return hash;
+    }
     
+    updatePositions() {
+        console.log(this)
+    }
+
     render() {
-        const { deltaPosition } = this.state;
+        
         return (
             <Container fluid='true' style={{ backgroundImage: `url(${Background}`, height: 'auto' }}>
                 
                 {/* First Row */}
                 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[0], y: 0 }}>
-                    <Position name="test">
-                        {id => <div id={id} className="box">
+                <Draggable onDrag={this.updatePositions} defaultPosition={{
+                    x: getXPos("DL_2", this.state.curPos),
+                    y: getYPos("DL_2", this.state.curPos)
+                }}>
+                        <div className="box">
                             <Image src={DL_2} />
-                        </div>}
-                    </Position>   
+                        </div>
                 </Draggable>
                    
                 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[1], y: 0}}>
-                    <Position name="test2">
-                        {id => <div id={id} className="box">
+                <Draggable onDrag={this.handleDrag} defaultPosition={{
+                    x: getXPos("DL_1", this.state.curPos),
+                    y: getYPos("DL_1", this.state.curPos)
+                }}>
+                       <div className="box">
                             <Image src={DL_1} />
-                        </div>}
-                    </Position>  
-                    {/* <div className="box">
-                            <Image src={DL_1} />
-                        </div> */}
-                    </Draggable>
+                        </div>
+                </Draggable>
                 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[2] - 20, y: 0}}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{
+                    x: getXPos("DL_14", this.state.curPos),
+                    y: getYPos("DL_14", this.state.curPos)
+                }}>
                         <div className="box">
                             <Image src={DL_14} />
                         </div>
                     </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[3], y: 0}}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{
+                    x: getXPos("DL_3", this.state.curPos),
+                    y: getYPos("DL_3", this.state.curPos)
+                }}>
                     <div className="box">
                         <Image src={DL_3} />
                     </div>
                 </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[4] - 20, y: 0}}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{
+                    x: getXPos("DL_20", this.state.curPos),
+                    y: getYPos("DL_20", this.state.curPos)
+                }}>
                     <div className="box">
                         <Image src={DL_20} />
                     </div>
                 </Draggable>
                 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[5] - 20, y: 0}}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{
+                    x: getXPos("DL_15", this.state.curPos),
+                    y: getYPos("DL_15", this.state.curPos)
+                }}>
                     <div className="box">
                         <Image src={DL_15} style={{ width: '106px', height: '20px' }} />
                     </div>
                 </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[6], y: 0 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{
+                    x: getXPos("DL_10", this.state.curPos),
+                    y: getYPos("DL_10", this.state.curPos)
+                }}>
                     <div className="box">
                         <Image src={DL_10} />
                     </div>
                 </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[7] - 10, y: 0 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{
+                    x: getXPos("DL_9", this.state.curPos),
+                    y: getYPos("DL_9", this.state.curPos)
+                }}>
                     <div className="box">
                         <Image src={DL_9} />
                     </div>
                 </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[8], y: 0}}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{
+                    x: getXPos("DL_21", this.state.curPos),
+                    y: getYPos("DL_21", this.state.curPos)
+                }}>
                     <div className="box">
                         <Image src={DL_21} />
                     </div>
                 </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[9], y: 0}}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[9], y: 0}}>
                     <div className="box">
                         <Image src={DL_8} />
                     </div>
                 </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[10], y: 0}}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[10], y: 0}}>
                     <div className="box">
                         <Image src={DL_19} />
                     </div>
                 </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[11], y: 0}}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[11], y: 0}}>
                     <div className="box">
                         <Image src={DL_13} />
                     </div>
                 </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[12], y: 0}}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[12], y: 0}}>
                     <div className="box">
                         <Image src={DL_7} />
                     </div>
                 </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[13], y: 0}}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[13], y: 0}}>
                     <div className="box">
                         <Image src={DL_4} />
                     </div>
@@ -198,79 +295,79 @@ class Demuth extends Component {
 
                 {/* Second Row */}
                 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[0], y: 70 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[0], y: 70 }}>
                     <div className="box">
                         <Image src={DL_5} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.positions[1], y: 70}}>
+                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.genStartPos[1], y: 70}}>
                     <div className="box">
                         <Image src={DL_11} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.positions[2] + 20, y: 70}}>
+                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.genStartPos[2] + 20, y: 70}}>
                     <div className="box">
                         <Image src={DL_17} />
                     </div>
                 </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[3] + 10, y: 70 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[3] + 10, y: 70 }}>
                     <div className="box">
                         <Image src={DL_22} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.positions[5], y: 70}}>
+                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.genStartPos[5], y: 70}}>
                     <div className="box">
                         <Image src={DL_16} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.positions[6], y: 70}}>
+                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.genStartPos[6], y: 70}}>
                     <div className="box">
                         <Image src={DL_6} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.positions[7], y: 70}}>
+                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.genStartPos[7], y: 70}}>
                     <div className="box">
                         <Image src={DL_12} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[8], y: 70 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[8], y: 70 }}>
                     <div className="box">
                         <Image src={DL_28} />
                     </div>
                 </Draggable>
                
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[9], y: 70 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[9], y: 70 }}>
                     <div className="box">
                         <Image src={DL_24} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.positions[10], y: 70}}>
+                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.genStartPos[10], y: 70}}>
                     <div className="box">
                         <Image src={DL_25} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.positions[11], y: 70}}>
+                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.genStartPos[11], y: 70}}>
                     <div className="box">
                         <Image src={DL_26} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.positions[12], y: 70}}>
+                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.genStartPos[12], y: 70}}>
                     <div className="box">
                         <Image src={DL_47} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.positions[13], y: 70}}>
+                <Draggable onDrag={this.handleDrag}  defaultPosition={{ x: this.state.genStartPos[13], y: 70}}>
                     <div className="box">
                         <Image src={DL_27} /> 
                     </div>
@@ -279,68 +376,68 @@ class Demuth extends Component {
             
                 {/* Third Row */}
                 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[0], y: 140 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[0], y: 140 }}>
                     <div className="box">
                         <Image src={DL_29} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[1], y: 140 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[1], y: 140 }}>
                     <div className="box">
                         <Image src={DL_30} /> 
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[2], y: 140 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[2], y: 140 }}>
                     <div className="box">
                         <Image src={DL_46} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[3], y: 140 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[3], y: 140 }}>
                     <div className="box">
                         
                         <Image src={DL_45} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[4], y: 140 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[4], y: 140 }}>
                     <div className="box">
                         <Image src={DL_44} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[5], y: 140 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[5], y: 140 }}>
                     <div className="box">
                         <Image src={DL_43} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[6], y: 140 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[6], y: 140 }}>
                     <div className="box">
                         <Image src={DL_31} /> 
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[7], y: 140 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[7], y: 140 }}>
                     <div className="box">
                         <Image src={DL_33} />
                     </div>
                 </Draggable>
                 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[8], y: 140 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[8], y: 140 }}>
                     <div className="box">
                         <Image src={DL_32} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[9], y: 140 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[9], y: 140 }}>
                     <div className="box">
                         <Image src={DL_42} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[10], y: 140 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[10], y: 140 }}>
                     <div className="box">
                         <Image src={DL_18} />
                     </div>
@@ -349,55 +446,55 @@ class Demuth extends Component {
             
                 {/* Fourth Row */}
                 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[0], y: 210 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[0], y: 210 }}>
                     <div className="box">
                         <Image src={DL_41} />
                     </div>
                 </Draggable>
                 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[1], y: 210 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[1], y: 210 }}>
                     <div className="box">
                         <Image src={DL_34} /> 
                     </div>
                 </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[7] - 20, y: 210 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[7] - 20, y: 210 }}>
                     <div className="box">
                         <Image src={DL_38} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[3], y: 210 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[3], y: 210 }}>
                     <div className="box">
                         <Image src={DL_36} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[4], y: 210 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[4], y: 210 }}>
                     <div className="box">
                         <Image src={DL_39} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[5], y: 210 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[5], y: 210 }}>
                     <div className="box">
                         <Image src={DL_40} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[6], y: 210 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[6], y: 210 }}>
                     <div className="box">
                         <Image src={DL_35} />
                     </div>
                 </Draggable>
             
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[2], y: 210 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[2], y: 210 }}>
                         <div className="box">
                             <Image src={DL_37} />
                         </div>
                     </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[8], y: 210 }}>
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[8], y: 210 }}>
                     <div className="box">
                         <Image src={DL_23} />
                     </div>

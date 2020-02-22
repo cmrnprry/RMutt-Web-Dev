@@ -17,34 +17,41 @@ class Position extends Component {
 
     constructor(props) {
         super(props);
-    }
+        this.id = props.name;
 
-    getBound() {
-        const component = document.getElementById(this.id);
-        if (!component) {
-            return {};
-        }
-        const rect = component.getBoundingClientRect();
-        return {
-            left: rect.left,
-            top: rect.top + window.scrollY,
-            width: rect.width || rect.right - rect.left,
-            height: rect.height || rect.bottom - rect.top
+        this.state = {
+            deltaPosition: {
+                x: 0, y: 0
+            },
         };
     }
 
-    getPosition() {
-        const component = document.getElementById(this.id);
-        component.measure((width, height, px, py, fx, fy) => {
-            const location = {
-                fx: fx,
-                fy: fy,
-                px: px,
-                py: py,
-                width: width,
-                height: height
+    handleDrag = (e, ui) => {
+        const { x, y } = this.state.deltaPosition;
+        this.setState({
+            deltaPosition: {
+                x: x + ui.deltaX,
+                y: y + ui.deltaY,
             }
-            console.log(location)
+        });
+    };
+
+//      <Draggable onDrag={this.handleDrag} {...dragHandlers}>
+//     <div className="box">
+//         <div>I track my deltas</div>
+//         <div>x: {deltaPosition.x.toFixed(0)}, y: {deltaPosition.y.toFixed(0)}</div>
+//     </div>
+// </Draggable>
+
+
+
+    getPosition() {
+        const { x, y } = this.state.deltaPosition;
+        this.setState({
+            deltaPosition: {
+                x: x,
+                y: y,
+            }
         });
     }
 
@@ -60,8 +67,8 @@ class Position extends Component {
 
 
     render() {
-        const bound = this.getPosition();
-        console.log(bound);
+        const deltaPosition = this.getPosition;
+        console.log(deltaPosition);
 
         return (
             this.props.children(this.id)
