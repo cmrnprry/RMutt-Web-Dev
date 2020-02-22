@@ -59,7 +59,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Image from 'react-bootstrap/Image'
 import Draggable from 'react-draggable';
-
+import Position from '../../Passwords/PositionObserver.js'
 
 class Demuth extends Component {
 
@@ -103,16 +103,25 @@ class Demuth extends Component {
             <Container fluid='true' style={{ backgroundImage: `url(${Background}`, height: 'auto' }}>
                 
                 {/* First Row */}
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[0], y: 0}}>
-                        <div className="box">
+                
+                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[0], y: 0 }}>
+                    <Position name="test">
+                        {id => <div id={id} className="box">
                             <Image src={DL_2} />
-                        </div>
-                        </Draggable>
-                        
+                        </div>}
+                    </Position>   
+                </Draggable>
+                   
+                
                 <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[1], y: 0}}>
-                        <div className="box">
+                    <Position name="test2">
+                        {id => <div id={id} className="box">
                             <Image src={DL_1} />
-                        </div>
+                        </div>}
+                    </Position>  
+                    {/* <div className="box">
+                            <Image src={DL_1} />
+                        </div> */}
                     </Draggable>
                 
                 <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.positions[2] - 20, y: 0}}>
