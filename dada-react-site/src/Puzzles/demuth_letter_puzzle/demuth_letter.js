@@ -82,24 +82,6 @@ function generatePositions() {
     return array;
 }
 
-function getXPos(id, dict) {
-    var value = dict[id];
-    
-    return value.x;
-}
-
-function getYPos(id, dict) {
-    var value = null;
-
-    for (var key in dict) {
-        if (key == id) {
-            value = dict[key];
-        }
-    }
-
-    return value.y;
-}
-
 class Demuth extends Component {
 
     constructor(props) {
@@ -181,7 +163,7 @@ class Demuth extends Component {
                 
                 {/* First Row */}
                 
-                <Draggable onDrag={this.updatePositions} defaultPosition={{
+                <Draggable onDrag={this.handleDrag} defaultPosition={{
                     x: getXPos("DL_2", this.state.curPos),
                     y: getYPos("DL_2", this.state.curPos)
                 }}>
