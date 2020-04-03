@@ -25,9 +25,45 @@ code {
       cursor: ew-resize;
     }
 
-    .box {
-      border: 1px solid #999;
-      border-radius: 3px;
-      margin: 10px;
-      position: absolute;
-    }
+
+.drop-target {
+  border: 5px solid #999;
+}
+
+.demuth-box {
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  position: absolute;
+} 
+
+.drop-active {
+  border: 5px solid #999;
+}
+
+.draggable.can-drop {
+  border: 5px solid orange;
+}
+
+.draggable 
+{
+  touch-action: none;
+  user-select: none;
+}
+
+.dropzone 
+{
+  background-color: rgba(255, 0, 255, 0.183);
+  margin: 10px auto 30px;
+  padding: 10px;
+  position: absolute;
+}
+
+.box 
+{
+  border: 1px solid #999;
+  border-radius: 3px;
+  margin: 10px;
+  position: absolute;
+}
+

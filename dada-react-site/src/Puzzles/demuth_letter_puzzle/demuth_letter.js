@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import interact from 'interactjs'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Stylesheets/dada.css';
 import '../../Stylesheets/index.css';
@@ -71,6 +72,7 @@ class Pos {
     }
 }
 
+
 function generatePositions() {
     let array = [];
     let value = -100;
@@ -82,15 +84,88 @@ function generatePositions() {
     return array;
 }
 
+const position = { x: 0, y: 0 }
+
+interact('.draggable').draggable({
+    listeners: {
+        
+        start(event) {
+            console.log(event.type, event.target)
+        },
+        move: dragMoveListener,
+
+        end(event) {
+            var textEl = event.target.querySelector('p')
+
+            textEl && (textEl.textContent =
+                'Pos: ' + event.x0 + ', ' + event.y0)
+            //console.log("Pos: " + event.pageX + ", " + event.y0)
+        }
+    }
+})
+
+interact('.dropzone').dropzone({
+    accept: '.draggable',
+    overlap: 0.50,
+
+    ondropactivate: function (event) {
+        // add active dropzone feedback
+        event.target.classList.add('drop-active')
+        console.log(event.relatedTarget.classList)
+    },
+    ondragenter: function (event) {
+        var draggableElement = event.relatedTarget
+        var dropzoneElement = event.target
+
+        // feedback the possibility of a drop
+        dropzoneElement.classList.add('drop-target')
+        draggableElement.classList.add('can-drop')
+        console.log(event.relatedTarget.classList)
+    },
+    ondragleave: function (event) {
+        // remove the drop feedback style
+        event.target.classList.remove('drop-target')
+        event.relatedTarget.classList.remove('can-drop')
+        console.log(event.relatedTarget.classList)
+    },
+    ondrop: function (event) {
+        console.log(event.relatedTarget.classList)
+    },
+    ondropdeactivate: function (event) {
+        // remove active dropzone feedback
+        event.target.classList.remove('drop-active')
+        event.target.classList.remove('drop-target')
+        console.log(event.relatedTarget.classList)
+    }
+
+})
+
+function dragMoveListener(event) {
+    var target = event.target
+    // keep the dragged position in the data-x/data-y attributes
+    var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+    var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+    // translate the element
+    target.style.webkitTransform =
+        target.style.transform =
+        'translate(' + x + 'px, ' + y + 'px)'
+
+    // update the posiion attributes
+    target.setAttribute('data-x', x)
+    target.setAttribute('data-y', y)
+}
+
 class Demuth extends Component {
 
     constructor(props) {
         super(props);
 
-
-
         this.state = {
-            curPos: this.updatePositions(),
+            deltaPosition: {
+                x: 0, y: 0
+            },
+            
            // constPos: this.generateHash(),
             genStartPos: generatePositions()
         };
@@ -153,9 +228,15 @@ class Demuth extends Component {
         return hash;
     }
 
-    updatePositions() {
-        console.log(this)
-    }
+    handleDrag = (e, ui) => {
+        const { x, y } = this.state.deltaPosition;
+        this.setState({
+            deltaPosition: {
+                x: x + ui.deltaX,
+                y: y + ui.deltaY,
+            }
+        });
+    };
 
     render() {
 
@@ -164,22 +245,192 @@ class Demuth extends Component {
 
                 {/* First Row */}
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{
+                <div className="demuth-box" style={{
+                    left: '250px', top: '412px'
+                }}></div>
+
+                <div className="draggable box"> <Image src={DL_2} /> </div>
+                <div className="draggable box"> <Image src={DL_2} /> </div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '12px', width: '70px',
+                    left: '720px', top: '445px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '15px',
+                    width: '35px',
+                    left: '579px',
+                    top: '473px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '10px', width: '35px',
+                    left: '517px', top: '472px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '5px',
+                    width: '37px',
+                    left: '452px',
+                    top: '447px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '0px',
+                    width: '22px',
+                    left: '469px',
+                    top: '471px',
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+
+                {/* <Draggable onDrag={this.handleDrag} defaultPosition={{
                     x: this.state.genStartPos[0],
                     y: 0
                 }}>
                     <div className="box">
                         <Image src={DL_2} />
                     </div>
-                </Draggable>
+                </Draggable> */}
 
-
-                <Draggable onDrag={this.handleDrag} defaultPosition={{
-                    x: this.state.genStartPos[1],
-                    y: 0
-                }}>
-                    <div className="box">
+                <Draggable onDrag={this.handleDrag}>
+                    <div>
                         <Image src={DL_1} />
+                        <div>x: {this.state.deltaPosition.x.toFixed(0)},
+                        y: {this.state.deltaPosition.y.toFixed(0)}</div>
                     </div>
                 </Draggable>
 
