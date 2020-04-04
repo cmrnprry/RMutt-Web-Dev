@@ -243,14 +243,7 @@ class Demuth extends Component {
         return (
             <Container fluid='true' style={{ backgroundImage: `url(${Background}`, height: 'auto' }}>
 
-                {/* First Row */}
-
-                <div className="demuth-box" style={{
-                    left: '250px', top: '412px'
-                }}></div>
-
-                <div className="draggable box"> <Image src={DL_2} /> </div>
-                <div className="draggable box"> <Image src={DL_2} /> </div>
+               {/* dropzones */}
 
                 <div className="dropzone" style={{
                     height: '30px', width: '65px',
@@ -297,6 +290,7 @@ class Demuth extends Component {
                     height: '30px', width: '65px',
                     left: '509px', top: '429px'
                 }}></div>
+                
                 <div className="dropzone" style={{
                     height: '30px', width: '65px',
                     left: '240px', top: '390px'
@@ -306,15 +300,7 @@ class Demuth extends Component {
                     height: '30px', width: '65px',
                     left: '509px', top: '429px'
                 }}></div>
-                                <div className="dropzone" style={{
-                    height: '30px', width: '65px',
-                    left: '240px', top: '390px'
-                }}></div>
-
-                <div className="dropzone" style={{
-                    height: '30px', width: '65px',
-                    left: '509px', top: '429px'
-                }}></div>
+                                
                 <div className="dropzone" style={{
                     height: '30px', width: '65px',
                     left: '240px', top: '390px'
@@ -324,6 +310,7 @@ class Demuth extends Component {
                     height: '30px', width: '65px',
                     left: '509px', top: '429px'
                 }}></div>
+                
                 <div className="dropzone" style={{
                     height: '30px', width: '65px',
                     left: '240px', top: '390px'
@@ -333,44 +320,8 @@ class Demuth extends Component {
                     height: '30px', width: '65px',
                     left: '509px', top: '429px'
                 }}></div>
-
+                
                 <div className="dropzone" style={{
-                    height: '30px', width: '65px',
-                    left: '240px', top: '390px'
-                }}></div>
-
-                <div className="dropzone" style={{
-                    height: '30px', width: '65px',
-                    left: '509px', top: '429px'
-                }}></div>
-                                <div className="dropzone" style={{
-                    height: '30px', width: '65px',
-                    left: '240px', top: '390px'
-                }}></div>
-
-                <div className="dropzone" style={{
-                    height: '30px', width: '65px',
-                    left: '509px', top: '429px'
-                }}></div>
-                <div className="dropzone" style={{
-                    height: '30px', width: '65px',
-                    left: '240px', top: '390px'
-                }}></div>
-
-                <div className="dropzone" style={{
-                    height: '30px', width: '65px',
-                    left: '509px', top: '429px'
-                }}></div>
-                                <div className="dropzone" style={{
-                    height: '30px', width: '65px',
-                    left: '240px', top: '390px'
-                }}></div>
-
-                <div className="dropzone" style={{
-                    height: '30px', width: '65px',
-                    left: '509px', top: '429px'
-                }}></div>
-                                <div className="dropzone" style={{
                     height: '30px', width: '65px',
                     left: '240px', top: '390px'
                 }}></div>
@@ -398,6 +349,52 @@ class Demuth extends Component {
                     height: '30px', width: '65px',
                     left: '509px', top: '429px'
                 }}></div>
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
+                                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '240px', top: '390px'
+                }}></div>
+
+                <div className="dropzone" style={{
+                    height: '30px', width: '65px',
+                    left: '509px', top: '429px'
+                }}></div>
                                 <div className="dropzone" style={{
                     height: '30px', width: '65px',
                     left: '240px', top: '390px'
@@ -417,265 +414,166 @@ class Demuth extends Component {
                     left: '509px', top: '429px'
                 }}></div>
 
-                {/* <Draggable onDrag={this.handleDrag} defaultPosition={{
-                    x: this.state.genStartPos[0],
-                    y: 0
-                }}>
-                    <div className="box">
-                        <Image src={DL_2} />
-                    </div>
-                </Draggable> */}
+                {/* First Row */}
 
-                <Draggable onDrag={this.handleDrag}>
-                    <div>
-                        <Image src={DL_1} />
-                        <div>x: {this.state.deltaPosition.x.toFixed(0)},
-                        y: {this.state.deltaPosition.y.toFixed(0)}</div>
-                    </div>
-                </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{
-                    x: this.state.genStartPos[2],
-                    y: 0
-                }}>
-                    <div className="box">
-                        <Image src={DL_14} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(1.5px, 52px)' }}>
+                    <Image src={DL_2} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{
-                    x: this.state.genStartPos[3],
-                    y: 0
-                }}>
-                    <div className="box">
-                        <Image src={DL_3} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(96px, 52px)' }}>
+                    <Image src={DL_1} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{
-                    x: this.state.genStartPos[4],
-                    y: 0
-                }}>
-                    <div className="box">
-                        <Image src={DL_20} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(160px, 52px)' }}>
+                    <Image src={DL_14} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{
-                    x: this.state.genStartPos[5],
-                    y: 0
-                }}>
-                    <div className="box">
-                        <Image src={DL_15} style={{ width: '106px', height: '20px' }} />
-                    </div>
-                </Draggable>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{
-                    x: this.state.genStartPos[6],
-                    y: 0
-                }}>
-                    <div className="box">
-                        <Image src={DL_10} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(275px, 52px)' }}>
+                    <Image src={DL_3} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{
-                    x: this.state.genStartPos[7],
-                    y: 0
-                }}>
-                    <div className="box">
-                        <Image src={DL_9} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(315px, 52px)' }}>
+                    <Image src={DL_20} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{
-                    x: this.state.genStartPos[8],
-                    y: 0
-                }}>
-                    <div className="box">
-                        <Image src={DL_21} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ width: '106px', height: '20px', transform: 'translate(415px, 52px)' }}>
+                    <Image src={DL_15} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[9], y: 0 }}>
-                    <div className="box">
-                        <Image src={DL_8} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(530px, 52px)' }}>
+                    <Image src={DL_10} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[10], y: 0 }}>
-                    <div className="box">
-                        <Image src={DL_19} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(575px, 52px)' }}>
+                    <Image src={DL_9} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[11], y: 0 }}>
-                    <div className="box">
-                        <Image src={DL_13} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(680px, 52px)' }}>
+                    <Image src={DL_21} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[12], y: 0 }}>
-                    <div className="box">
-                        <Image src={DL_7} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(770px, 52px)' }}>
+                    <Image src={DL_8} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[13], y: 0 }}>
-                    <div className="box">
-                        <Image src={DL_4} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(810px, 52px)' }}>
+                    <Image src={DL_19} />
+                </div>
+
+                <div className="draggable box" style={{ transform: 'translate(860px, 52px)' }}>
+                    <Image src={DL_13} />
+                </div>
+
+                <div className="draggable box" style={{ transform: 'translate(930px, 52px)' }}>
+                    <Image src={DL_7} />
+                </div>
+
+                <div className="draggable box" style={{ transform: 'translate(985px, 52px)' }}>
+                    <Image src={DL_4} />
+                </div>
 
                 {/* Second Row */}
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[0], y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_5} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(1.5px, 104px)' }}>
+                    <Image src={DL_5} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[1], y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_11} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(100px, 104px)' }}>
+                    <Image src={DL_11} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[2] + 20, y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_17} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(220px, 104px)' }}>
+                    <Image src={DL_17} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[3] + 10, y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_22} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(260px, 104px)' }}>
+                    <Image src={DL_22} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[5], y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_16} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(425px, 104px)' }}>
+                    <Image src={DL_16} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[6], y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_6} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(525px, 104px)' }}>
+                    <Image src={DL_6} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[7], y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_12} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(625px, 104px)' }}>
+                    <Image src={DL_12} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[8], y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_28} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(675px, 104px)' }}>
+                    <Image src={DL_28} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[9], y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_24} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(750px, 104px)' }}>
+                    <Image src={DL_24} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[10], y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_25} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(785px, 104px)' }}>
+                    <Image src={DL_25} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[11], y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_26} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(860px, 104px)' }}>
+                    <Image src={DL_26} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[12], y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_47} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(905px, 104px)' }}>
+                    <Image src={DL_47} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[13], y: 70 }}>
-                    <div className="box">
-                        <Image src={DL_27} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(960px, 104px)' }}>
+                    <Image src={DL_27} />
+                </div>
 
 
                 {/* Third Row */}
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[0], y: 140 }}>
-                    <div className="box">
-                        <Image src={DL_29} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(1.5px, 156px)' }}>
+                    <Image src={DL_29} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[1], y: 140 }}>
-                    <div className="box">
-                        <Image src={DL_30} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(100px, 156px)' }}>
+                    <Image src={DL_30} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[2], y: 140 }}>
-                    <div className="box">
-                        <Image src={DL_46} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(170px, 156px)' }}>
+                    <Image src={DL_46} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[3], y: 140 }}>
-                    <div className="box">
+                <div className="draggable box" style={{ transform: 'translate(225px, 156px)' }}>
+                    <Image src={DL_45} />
+                </div>
 
-                        <Image src={DL_45} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(255px, 156px)' }}>
+                    <Image src={DL_44} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[4], y: 140 }}>
-                    <div className="box">
-                        <Image src={DL_44} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(350px, 156px)' }}>
+                    <Image src={DL_43} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[5], y: 140 }}>
-                    <div className="box">
-                        <Image src={DL_43} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(410px, 156px)' }}>
+                    <Image src={DL_31} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[6], y: 140 }}>
-                    <div className="box">
-                        <Image src={DL_31} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(490px, 156px)' }}>
+                    <Image src={DL_33} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[7], y: 140 }}>
-                    <div className="box">
-                        <Image src={DL_33} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(540px, 156px)' }}>
+                    <Image src={DL_32} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[8], y: 140 }}>
-                    <div className="box">
-                        <Image src={DL_32} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(610px, 156px)' }}>
+                    <Image src={DL_42} />
+                </div>
 
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[9], y: 140 }}>
-                    <div className="box">
-                        <Image src={DL_42} />
-                    </div>
-                </Draggable>
-
-                <Draggable onDrag={this.handleDrag} defaultPosition={{ x: this.state.genStartPos[10], y: 140 }}>
-                    <div className="box">
-                        <Image src={DL_18} />
-                    </div>
-                </Draggable>
+                <div className="draggable box" style={{ transform: 'translate(680px, 156px)' }}>
+                    <Image src={DL_18} />
+                </div>
 
 
                 {/* Fourth Row */}
