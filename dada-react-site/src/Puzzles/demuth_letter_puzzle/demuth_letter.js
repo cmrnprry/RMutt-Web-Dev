@@ -33,11 +33,14 @@ import DL_33 from './demuth_letter_overlays/of.png'
 import DL_42 from './demuth_letter_overlays/the.png'
 import DL_18 from './demuth_letter_overlays/exhibition.png'
 import DL_39 from './demuth_letter_overlays/super.png'
+import DL_48 from './demuth_letter_overlays/independents.png'
 import DL_37 from './demuth_letter_overlays/salon.png'
 import DL_43 from './demuth_letter_overlays/the2.png'
 import DL_32 from './demuth_letter_overlays/next.png'
 import DL_30 from './demuth_letter_overlays/move.png'
 import DL_46 from './demuth_letter_overlays/you.png'
+import DL_47 from './demuth_letter_overlays/you2.png'
+import DL_15 from './demuth_letter_overlays/do_anything.png'
 import DL_41 from './demuth_letter_overlays/that.png'
 import DL_12 from './demuth_letter_overlays/day.png'
 import DL_5 from './demuth_letter_overlays/article.png'
@@ -51,8 +54,8 @@ import DL_11 from './demuth_letter_overlays/columbus.png'
 import DL_35 from './demuth_letter_overlays/rich.png'
 import DL_31 from './demuth_letter_overlays/mutt.png'
 import DL_38 from './demuth_letter_overlays/schuvler.png'
-import DL_15 from './demuth_letter_overlays/do_anything.png'
-import DL_47 from './demuth_letter_overlays/you2.png'
+
+
 
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
@@ -197,7 +200,7 @@ class Demuth extends Component {
                     <div className="dropzone" style={{
                         height:' 0px',
                         width: '30px',
-                        left: '464px',
+                        left: '467px',
                         top: '371px',
                     }} />
 
@@ -723,6 +726,10 @@ class Demuth extends Component {
                     <div className="draggable box">
                         <Image src={DL_23} />
                     </div>
+
+                    <div className="draggable box">
+                        <Image src={DL_48} />
+                    </div>
                 
                 </div>
 
@@ -730,6 +737,8 @@ class Demuth extends Component {
 
                 {/* Base Letter */}
                 <Image src={DL_under} style={{ marginTop: '3%', paddingLeft: '100px', paddingTop: '36px', paddingBottom: '150px' }} />
+
+                    
 
             </Container>
 

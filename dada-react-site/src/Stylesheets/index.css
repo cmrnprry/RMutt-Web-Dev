@@ -53,8 +53,8 @@ code {
 
 .dropzone 
 {
-  /* background-color: black; */
-   border: 3px solid #999;
+  background-color: black;
+  border: 3px solid #999;
   margin: 10px auto 30px;
   padding: 10px;
   position: absolute;
@@ -66,6 +66,6 @@ code {
   border: 1px solid #000;
   display: inline-block;
   font-family:"BlackCasper";
-  
 }
+
 
