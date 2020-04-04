@@ -83,7 +83,6 @@ interact('.draggable').draggable({
 
             textEl && (textEl.textContent =
                 'Pos: ' + event.x0 + ', ' + event.y0)
-            //console.log("Pos: " + event.pageX + ", " + event.y0)
         }
     }
 })
@@ -98,7 +97,6 @@ interact('.dropzone').dropzone({
     ondropactivate: function (event) {
         // add active dropzone feedback
         event.target.classList.add('drop-active')
-
     },
     ondragenter: function (event) {
         var draggableElement = event.relatedTarget
@@ -115,7 +113,9 @@ interact('.dropzone').dropzone({
         event.relatedTarget.classList.remove('can-drop')
     },
     ondrop: function (event) {
-
+        console.log(event.relatedTarget.textContent)
+        console.log(event.target.className)
+        
     },
     ondropdeactivate: function (event) {
         // remove active dropzone feedback
@@ -146,9 +146,38 @@ class Demuth extends Component {
 
     constructor(props) {
         super(props);
+
+        this.state =
+        {
+            correctArray: this.getCorrect,
+        }
     }
 
+    getCorrect()
+    {
+        let array = [];
 
+        array[0] = "henry"; array[16] = "central"; array[32] = "you";    
+        array[1] = "1917"; array[17] = "it was not exhibited"; array[33] = "you";       
+        array[2] = "bre"; array[18] = "independents"; array[34] = "anything";         
+        array[3] = "avanue"; array[19] = "co"; array[35] = "that";        
+        array[4] = "8th"; array[20] = "ittee"; array[36] = "day";         
+        array[5] = "ew"; array[21] = "j"; array[37] = "article";        
+        array[6] = "ork"; array[22] = "y"; array[38] = "would";      
+        array[7] = "ity"; array[23] = "of"; array[39] = "apprciate"; 
+        array[8] = "dear"; array[24] = "the"; array[40] = "it";
+        array[9] = "ce"; array[25] = "exhibition"; array[41] = "demuth";
+        array[10] = "s"; array[26] = "super"; array[42] = "marcel";
+        array[11] = "lput"; array[27] = "independents"; array[43] = "duchamp";
+        array[12] = "a"; array[28] = "would"; array[44] = "columbus";
+        array[13] = "fou"; array[29] = "salon"; array[45] = "rich";
+        array[14] = "tain"; array[30] = "the"; array[46] = "mutt";
+        array[15] = "grand"; array[31] = "move"; array[47] = "schuvler";
+
+
+        return array;
+
+    }
 
     render() {
 
@@ -157,17 +186,16 @@ class Demuth extends Component {
 
                 {/* dropzones */}
                 <div>
-
                     {/* line one */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 0" style={{
                         height:'19px',
                         width: '66px',
                         left: '239px',
                         top: '293px',
-                    }}/>
+                    }} />
 
                     {/* line two */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 1" style={{
                         height:'10px',
                         width:'52px',
                         left: '525px',
@@ -175,21 +203,21 @@ class Demuth extends Component {
                     }} />
 
                     {/* line three */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 2" style={{
                         height: '19px',
                         width: '39px',
                         left: '452px',
                         top: '342px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 3" style={{
                         height: '19px',
                         width: '80px',
                         left: '715px',
                         top: '340px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 4" style={{
                         height: '19px',
                         width: '43px',
                         left: '841px',
@@ -197,21 +225,21 @@ class Demuth extends Component {
                     }} />
 
                     {/* line four */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 5" style={{
                         height:' 0px',
                         width: '30px',
                         left: '467px',
                         top: '371px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 6" style={{
                         height: ' 0px',
                         width:'40px',
                         left: '516px',
                         top: '371px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 7" style={{
                         height: ' 0px',
                         width: '37px',
                         left: '578px',
@@ -219,7 +247,7 @@ class Demuth extends Component {
                     }} />
                 
                     {/* line five */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 8" style={{
                         height: '19px',
                         width: '52px',
                         left: '242px',
@@ -227,42 +255,42 @@ class Demuth extends Component {
                     }} />
 
                     {/* line six */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 9" style={{
                         height:'19px',
                         width:'29px',
                         left: '329px',
                         top: '440px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 10" style={{
                         height: '19px',
                         width: '10px',
                         left: '398px',
                         top: '440px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 11" style={{
                         height:'19px',
                         width:'50px',
                         left: '445px',
                         top: '440px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 12" style={{
                         height: '19px',
                         width: '10px',
                         left: '641px',
                         top: '440px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 13" style={{
                         height: '19px',
                         width: '40px',
                         left: '670px',
                         top: '440px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 14" style={{
                         height: '10px',
                         width: '50px',
                         left: '725px',
@@ -270,7 +298,7 @@ class Demuth extends Component {
                     }} />
 
                     {/* line seven */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 15" style={{
                         height: '19px',
                         width: '70px',
                         left: '940px',
@@ -278,7 +306,7 @@ class Demuth extends Component {
                     }} />
 
                     {/* line eight */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 16" style={{
                         height: '19px',
                         width: '95px',
                         left: '202px',
@@ -286,7 +314,7 @@ class Demuth extends Component {
                     }} />
 
                     {/* line nine */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 17" style={{
                         height: '19px',
                         width: '255px',
                         left: '268px',
@@ -294,21 +322,21 @@ class Demuth extends Component {
                     }} />
 
                     {/* line ten */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 18" style={{
                         height: '10px',
                         width: '155px',
                         left: '330px',
                         top: '545px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 19" style={{
                         height: '10px',
                         width: '27px',
                         left: '826px',
                         top: '540px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 20" style={{
                         height: '10px',
                         width: '60px',
                         left: '880px',
@@ -316,35 +344,35 @@ class Demuth extends Component {
                     }} />
 
                     {/* line eleven */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 21" style={{
                         height: '10px',
                         width: '10px',
                         left: '200px',
                         top: '565px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 22" style={{
                         height: '10px',
                         width: '10px',
                         left: '243px',
                         top: '567px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 23" style={{
                         height: '10px',
                         width: '27px',
                         left: '660px',
                         top: '564px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 24" style={{
                         height: '10px',
                         width: '41px',
                         left: '697px',
                         top: '564px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 25" style={{
                         height: '10px',
                         width: '129px',
                         left: '748px',
@@ -352,28 +380,28 @@ class Demuth extends Component {
                     }} />
 
                     {/* line twelve */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 26" style={{
                         height: '10px',
                         width: '37px',
                         left: '575px',
                         top: '590px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 27" style={{
                         height: '10px',
                         width: '62px',
                         left: '625px',
                         top: '595px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 28" style={{
                         height: '10px',
                         width: '152px',
                         left: '700px',
                         top: '593px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 29" style={{
                         height: '10px',
                         width: '66px',
                         left: '913px',
@@ -381,21 +409,21 @@ class Demuth extends Component {
                     }} />
 
                     {/* line thirteen */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 30" style={{
                         height: '10px',
                         width: '43px',
                         left: '400px',
                         top: '617px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 31" style={{
                         height: '10px',
                         width: '58px',
                         left: '450px',
                         top: '617px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 32" style={{
                         height: '10px',
                         width: '50px',
                         left: '515px',
@@ -403,28 +431,28 @@ class Demuth extends Component {
                     }} />
 
                     {/* line fourteen */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 33" style={{
                         height: '10px',
                         width: '40px',
                         left: '315px',
                         top: '645px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 34" style={{
                         height: '10px',
                         width: '40px',
                         left: '440px',
                         top: '645px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 35" style={{
                         height: '10px',
                         width: '110px',
                         left: '562px',
                         top: '643px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 36" style={{
                         height: '10px',
                         width: '54px',
                         left: '738px',
@@ -432,35 +460,35 @@ class Demuth extends Component {
                     }} />
 
                     {/* line fourteen */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 37" style={{
                         height: '13px',
                         width: '40px',
                         left: '254px',
                         top: '670px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 38" style={{
                         height: '10px',
                         width: '92px',
                         left: '302px',
                         top: '673px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 39" style={{
                         height: '10px',
                         width: '68px',
                         left: '450px',
                         top: '671px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 40" style={{
                         height: '10px',
                         width: '124px',
                         left: '529px',
                         top: '671px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 41" style={{
                         height: '10px',
                         width: '28px',
                         left: '662px',
@@ -468,7 +496,7 @@ class Demuth extends Component {
                     }} />
 
                     {/* line fifteen */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 42" style={{
                         height: '24px',
                         width: '77px',
                         left: '563px',
@@ -476,7 +504,7 @@ class Demuth extends Component {
                     }} />
 
                     {/* line sixteen */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 43" style={{
                         height: '24px',
                         width: '75px',
                         left: '850px',
@@ -484,35 +512,35 @@ class Demuth extends Component {
                     }} />
 
                     {/* line seventeen */}
-                    <div className="dropzone" style={{
+                    <div className="dropzone 44" style={{
                         height: '24px',
                         width: '105px',
                         left: '786px',
                         top: '815px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 45" style={{
                         height: '24px',
                         width: '57px',
                         left: '645px',
                         top: '817px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 46" style={{
                         height: '10px',
                         width: '56px',
                         left: '550px',
                         top: '816px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 47" style={{
                         height: '24px',
                         width: '104px',
                         left: '388px',
                         top: '815px',
                     }} />
 
-                    <div className="dropzone" style={{
+                    <div className="dropzone 48" style={{
                         height: '24px',
                         width: '94px',
                         left: '210px',
@@ -521,214 +549,256 @@ class Demuth extends Component {
                         
                 </div>
 
-                
-
                 {/* dragables */}
-
-                <div></div>
-
                 <div>
                 {/* First Row */}
 
-                    <div className="draggable box">
-                        <Image src={DL_2} />
+                    <div className="draggable box" style={{ fontSize:'14px'}}>
+                        {/* <Image src={DL_2} /> */}
+                        1917
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_1} />
+                        {/* <Image src={DL_1} /> */}
+                        8th
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_14} />
-                    </div>
-
-
-                    <div className="draggable box">
-                        <Image src={DL_3} />
+                        {/* <Image src={DL_14} /> */}
+                        Demuth
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_20} />
-                    </div>
-
-                    <div className="draggable box" style={{ width: '106px', height: '20px'}}>
-                        <Image src={DL_15} />
+                        {/* <Image src={DL_3} /> */}
+                        A
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_10} />
+                        {/* <Image src={DL_20} /> */}
+                        grand
+                    </div>
+
+                    <div className="draggable box" style={{ fontSize: '17px' }}>
+                        {/* <Image src={DL_15} /> */}
+                        do anything
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_9} />
+                        {/* <Image src={DL_10} /> */}
+                        co
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_21} />
+                        {/* <Image src={DL_9} /> */}
+                        central
+                    </div>
+
+                    <div className="draggable box" style={{ fontSize: '14px' }}>
+                        {/* <Image src={DL_21} /> */}
+                        henry
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_8} />
+                        {/* <Image src={DL_8} /> */}
+                        ce
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_19} />
+                        {/* <Image src={DL_19} /> */}
+                        fou
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_13} />
+                        {/* <Image src={DL_13} /> */}
+                        dear
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_7} />
+                        {/* <Image src={DL_7} /> */}
+                        bre
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_4} />
+                        {/* <Image src={DL_4} /> */}
+                        appreciate
                     </div>
 
                     {/* Second Row */}
 
                     <div className="draggable box">
-                        <Image src={DL_5} />
+                        {/* <Image src={DL_5} /> */}
+                        article
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_11} />
+                        {/* <Image src={DL_11} /> */}
+                        columbus
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_17} />
+                        {/* <Image src={DL_17} /> */}
+                        ew
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_22} />
+                        {/* <Image src={DL_22} /> */}
+                        independents
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_16} />
+                        {/* <Image src={DL_16} /> */}
+                        duchamp
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_6} />
+                        {/* <Image src={DL_6} /> */}
+                        avenue
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_12} />
+                        {/* <Image src={DL_12} /> */}
+                        day
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_28} />
+                        {/* <Image src={DL_28} /> */}
+                        lptu
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_24} />
+                        {/* <Image src={DL_24} /> */}
+                        it
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_25} />
+                        {/* <Image src={DL_25} /> */}
+                        ittee
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_26} />
+                        {/* <Image src={DL_26} /> */}
+                        ity
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_47} />
+                        {/* <Image src={DL_47} /> */}
+                        you
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_27} />
+                        {/* <Image src={DL_27} /> */}
+                        j
                     </div>
 
 
                     {/* Third Row */}
 
                     <div className="draggable box">
-                        <Image src={DL_29} />
+                        {/* <Image src={DL_29} /> */}
+                        Marcel
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_30} />
+                        {/* <Image src={DL_30} /> */}
+                        move
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_46} />
+                        {/* <Image src={DL_46} /> */}
+                        you
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_45} />
+                        {/* <Image src={DL_45} /> */}
+                        y
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_44} />
+                        {/* <Image src={DL_44} /> */}
+                        would
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_43} />
+                        {/* <Image src={DL_43} /> */}
+                        the
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_31} />
+                        {/* <Image src={DL_31} /> */}
+                        mutt
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_33} />
+                        {/* <Image src={DL_33} /> */}
+                        of
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_32} />
+                        {/* <Image src={DL_32} /> */}
+                        next
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_42} />
+                        {/* <Image src={DL_42} /> */}
+                        the
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_18} />
+                        {/* <Image src={DL_18} /> */}
+                        exhibition
                     </div>
 
 
                     {/* Fourth Row */}
 
                     <div className="draggable box">
-                        <Image src={DL_41} />
+                        {/* <Image src={DL_41} /> */}
+                        that
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_34} />
+                        {/* <Image src={DL_34} /> */}
+                        ork
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_38} />
+                        {/* <Image src={DL_38} /> */}
+                        schuvler
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_36} />
+                        {/* <Image src={DL_36} /> */}
+                        s
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_39} />
+                        {/* <Image src={DL_39} /> */}
+                        super
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_40} />
+                        {/* <Image src={DL_40} /> */}
+                        tain
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_35} />
+                        {/* <Image src={DL_35} /> */}
+                        rich
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_37} />
+                        {/* <Image src={DL_37} /> */}
+                        salon
+                    </div>
+
+                    <div className="draggable box" style={{fontSize: '20px'}}>
+                        {/* <Image src={DL_23} /> */}
+                        it was not exhibited
                     </div>
 
                     <div className="draggable box">
-                        <Image src={DL_23} />
-                    </div>
-
-                    <div className="draggable box">
-                        <Image src={DL_48} />
+                        {/* <Image src={DL_48} /> */}
+                        independents
                     </div>
                 
                 </div>
@@ -736,7 +806,7 @@ class Demuth extends Component {
                 <div></div>
 
                 {/* Base Letter */}
-                <Image src={DL_under} style={{ marginTop: '3%', paddingLeft: '100px', paddingTop: '36px', paddingBottom: '150px' }} />
+                <Image src={DL_under} style={{ marginTop: '3%', paddingLeft: '100px', paddingTop: '29px', paddingBottom: '150px' }} />
 
                     
 
