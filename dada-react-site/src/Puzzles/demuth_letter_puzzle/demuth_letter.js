@@ -1,74 +1,71 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import interact from 'interactjs'
+import Container from 'react-bootstrap/Container'
+import Image from 'react-bootstrap/Image'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Stylesheets/dada.css';
 import '../../Stylesheets/index.css';
 import Background from '../../folder_elements/wooden.png'
 import DL_under from './demuth_letter_under.png'
-import DL_21 from './demuth_letter_overlays/henry.png'
-import DL_2 from './demuth_letter_overlays/1917.png'
-import DL_7 from './demuth_letter_overlays/bro.png'
-import DL_6 from './demuth_letter_overlays/avenue.png'
-import DL_1 from './demuth_letter_overlays/8th.png'
-import DL_17 from './demuth_letter_overlays/ew.png'
-import DL_34 from './demuth_letter_overlays/ork.png'
-import DL_26 from './demuth_letter_overlays/ity.png'
-import DL_13 from './demuth_letter_overlays/dear.png'
-import DL_8 from './demuth_letter_overlays/ce.png'
-import DL_36 from './demuth_letter_overlays/s.png'
-import DL_28 from './demuth_letter_overlays/lptu.png'
-import DL_3 from './demuth_letter_overlays/a.png'
-import DL_19 from './demuth_letter_overlays/fou.png'
-import DL_40 from './demuth_letter_overlays/tain.png'
-import DL_20 from './demuth_letter_overlays/grand.png'
-import DL_9 from './demuth_letter_overlays/central.png'
-import DL_23 from './demuth_letter_overlays/it_was_not_exhibited.png'
-import DL_22 from './demuth_letter_overlays/independents.png'
-import DL_10 from './demuth_letter_overlays/co.png'
-import DL_25 from './demuth_letter_overlays/itteo.png'
-import DL_27 from './demuth_letter_overlays/J.png'
-import DL_45 from './demuth_letter_overlays/y.png'
-import DL_33 from './demuth_letter_overlays/of.png'
-import DL_42 from './demuth_letter_overlays/the.png'
-import DL_18 from './demuth_letter_overlays/exhibition.png'
-import DL_39 from './demuth_letter_overlays/super.png'
-import DL_48 from './demuth_letter_overlays/independents.png'
-import DL_37 from './demuth_letter_overlays/salon.png'
-import DL_43 from './demuth_letter_overlays/the2.png'
-import DL_32 from './demuth_letter_overlays/next.png'
-import DL_30 from './demuth_letter_overlays/move.png'
-import DL_46 from './demuth_letter_overlays/you.png'
-import DL_47 from './demuth_letter_overlays/you2.png'
-import DL_15 from './demuth_letter_overlays/do_anything.png'
-import DL_41 from './demuth_letter_overlays/that.png'
-import DL_12 from './demuth_letter_overlays/day.png'
-import DL_5 from './demuth_letter_overlays/article.png'
-import DL_44 from './demuth_letter_overlays/would.png'
-import DL_4 from './demuth_letter_overlays/appreciate.png'
-import DL_24 from './demuth_letter_overlays/it.png'
-import DL_14 from './demuth_letter_overlays/demuth.png'
-import DL_29 from './demuth_letter_overlays/marcel.png'
-import DL_16 from './demuth_letter_overlays/duchamp.png'
-import DL_11 from './demuth_letter_overlays/columbus.png'
-import DL_35 from './demuth_letter_overlays/rich.png'
-import DL_31 from './demuth_letter_overlays/mutt.png'
-import DL_38 from './demuth_letter_overlays/schuvler.png'
 
 
 
-import Container from 'react-bootstrap/Container'
-import Card from 'react-bootstrap/Card'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
-import Image from 'react-bootstrap/Image'
-import Draggable from 'react-draggable';
-import Position from '../../Passwords/PositionObserver.js'
-import { withContentRect } from 'react-measure'
-import Measure from 'react-measure'
+const correctList = getCorrect();
+var currList = intializeArray();
 
+currList.forEach(element => {
+    console.log(element);
+});
 
-const position = { x: 0, y: 0 }
+//starting order of list
+function intializeArray() {
+    let array = [];
+
+    array[0] = "1917"; array[16] = "ew"; array[32] = "of";
+    array[1] = "8th"; array[17] = "independents"; array[33] = "next";
+    array[2] = "demuth"; array[18] = "duchamp"; array[34] = "the";
+    array[3] = "a"; array[19] = "avenue"; array[35] = "exhibition";
+    array[4] = "grand"; array[20] = "day"; array[36] = "that";
+    array[5] = "do anything"; array[21] = "it"; array[37] = "ork";
+    array[6] = "co"; array[22] = "ittee"; array[38] = "schuvler";
+    array[7] = "central"; array[23] = "you"; array[39] = "s";
+    array[8] = "henry"; array[24] = "j"; array[40] = "super";
+    array[9] = "ce"; array[25] = "marcel"; array[41] = "tain";
+    array[10] = "fou"; array[26] = "move"; array[42] = "rich";
+    array[11] = "dear"; array[27] = "you"; array[43] = "saalon";
+    array[12] = "bre"; array[28] = "y"; array[44] = "it was not exhibited";
+    array[13] = "appreciate"; array[29] = "would"; array[45] = "independents";
+    array[14] = "article"; array[30] = "the"; array[46] = "ity";
+    array[15] = "columbus"; array[31] = "mutt"; array[47] = "lptu";
+
+    return array;
+
+}
+
+//correct list of vars
+function getCorrect() {
+    let array = [];
+
+    array[0] = "henry"; array[16] = "central"; array[32] = "you";
+    array[1] = "1917"; array[17] = "it was not exhibited"; array[33] = "you";
+    array[2] = "bre"; array[18] = "independents"; array[34] = "anything";
+    array[3] = "avanue"; array[19] = "co"; array[35] = "that";
+    array[4] = "8th"; array[20] = "ittee"; array[36] = "day";
+    array[5] = "ew"; array[21] = "j"; array[37] = "article";
+    array[6] = "ork"; array[22] = "y"; array[38] = "would";
+    array[7] = "ity"; array[23] = "of"; array[39] = "apprciate";
+    array[8] = "dear"; array[24] = "the"; array[40] = "it";
+    array[9] = "ce"; array[25] = "exhibition"; array[41] = "demuth";
+    array[10] = "s"; array[26] = "super"; array[42] = "marcel";
+    array[11] = "lput"; array[27] = "independents"; array[43] = "duchamp";
+    array[12] = "a"; array[28] = "would"; array[44] = "columbus";
+    array[13] = "fou"; array[29] = "salon"; array[45] = "rich";
+    array[14] = "tain"; array[30] = "the"; array[46] = "mutt";
+    array[15] = "grand"; array[31] = "move"; array[47] = "schuvler";
+
+    return array;
+
+}
 
 interact('.draggable').draggable({
     listeners: {
@@ -113,8 +110,7 @@ interact('.dropzone').dropzone({
         event.relatedTarget.classList.remove('can-drop')
     },
     ondrop: function (event) {
-        console.log(event.relatedTarget.textContent)
-        console.log(event.target.className)
+        pushInList(event.relatedTarget.textContent, event.target.classList[1])
         
     },
     ondropdeactivate: function (event) {
@@ -125,6 +121,47 @@ interact('.dropzone').dropzone({
     }
 
 })
+
+// text is the object being placed on the letter, and postion is the place in the list
+function pushInList(text, position) {
+    var currTextPos = currList.indexOf(text);
+    var temp = "";
+
+    if (currTextPos != position) {
+        temp = currList[position];
+        currList[position] = text;
+        currList[currTextPos] = temp;
+    }
+
+    currList.forEach(element => {
+        console.log(element);
+    });
+
+    if (checkList())
+    {
+        puzzleSolved();
+    }
+}
+
+function puzzleSolved()
+{
+    alert("Puzzle Solved!!!!!!");
+}
+
+function checkList()
+{
+    var allCorrect = true;
+
+    for (let i = 0; i < correctList.length; i++) {
+        if (currList[i] != correctList[i])
+        {
+            allCorrect = false;
+     
+       }
+    }
+
+    return allCorrect;
+}
 
 function dragMoveListener(event) {
     var target = event.target
@@ -142,41 +179,12 @@ function dragMoveListener(event) {
     target.setAttribute('data-y', y)
 }
 
+
+
 class Demuth extends Component {
 
     constructor(props) {
         super(props);
-
-        this.state =
-        {
-            correctArray: this.getCorrect,
-        }
-    }
-
-    getCorrect()
-    {
-        let array = [];
-
-        array[0] = "henry"; array[16] = "central"; array[32] = "you";    
-        array[1] = "1917"; array[17] = "it was not exhibited"; array[33] = "you";       
-        array[2] = "bre"; array[18] = "independents"; array[34] = "anything";         
-        array[3] = "avanue"; array[19] = "co"; array[35] = "that";        
-        array[4] = "8th"; array[20] = "ittee"; array[36] = "day";         
-        array[5] = "ew"; array[21] = "j"; array[37] = "article";        
-        array[6] = "ork"; array[22] = "y"; array[38] = "would";      
-        array[7] = "ity"; array[23] = "of"; array[39] = "apprciate"; 
-        array[8] = "dear"; array[24] = "the"; array[40] = "it";
-        array[9] = "ce"; array[25] = "exhibition"; array[41] = "demuth";
-        array[10] = "s"; array[26] = "super"; array[42] = "marcel";
-        array[11] = "lput"; array[27] = "independents"; array[43] = "duchamp";
-        array[12] = "a"; array[28] = "would"; array[44] = "columbus";
-        array[13] = "fou"; array[29] = "salon"; array[45] = "rich";
-        array[14] = "tain"; array[30] = "the"; array[46] = "mutt";
-        array[15] = "grand"; array[31] = "move"; array[47] = "schuvler";
-
-
-        return array;
-
     }
 
     render() {
