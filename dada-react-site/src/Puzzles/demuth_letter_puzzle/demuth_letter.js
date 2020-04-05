@@ -122,7 +122,7 @@ interact('.dropzone').dropzone({
 
 })
 
-// text is the object being placed on the letter, and postion is the place in the list
+// text is the object being placed on 2the letter, and postion is the place in the list
 function pushInList(text, position) {
     var currTextPos = currList.indexOf(text);
     var temp = "";
@@ -145,7 +145,7 @@ function pushInList(text, position) {
 
 function puzzleSolved()
 {
-    alert("Puzzle Solved!!!!!!");
+    alert("TODO: add Kieran words");
 }
 
 function checkList()
