@@ -8,8 +8,7 @@ import About from '../Navigation/about.png'
 import Menu from '../Navigation/menu_bar.png'
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
-//import DADA from '../Passwords/dada'
-
+import { Helmet} from "react-helmet";
 
 
 class Archive extends Component {
@@ -60,6 +59,12 @@ class Archive extends Component {
 
         return (
             <Container fluid="true">
+
+                
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Dada - Archive</title>
+                </Helmet>
                 <Image className="menu-bar" src={Menu} />
                 <Link to="front">
                     <Image className="header" src={Logo} />

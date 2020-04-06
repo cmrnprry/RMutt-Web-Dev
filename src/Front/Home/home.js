@@ -5,8 +5,7 @@ import '../../Stylesheets/dada.css';
 import Logo from '../../Logos/logo_sqr.png'
 import Arrow from '../../Navigation/arrow.png'
 import Image from 'react-bootstrap/Image'
-
-
+import { Helmet } from "react-helmet";
 
 
 class Home extends Component {
@@ -15,6 +14,11 @@ class Home extends Component {
 
         return (
             <div id="black">
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>DADA</title>
+                </Helmet>
+
                 <Image className="logo" src={Logo} />
                 <Link to="front">
                     <Image className="arrow" src={Arrow} />

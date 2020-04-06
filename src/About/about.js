@@ -9,7 +9,7 @@ import Menu from '../Navigation/menu_bar.png'
 import AboutUs from './about.jpg'
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
-
+import { Helmet} from "react-helmet";
 
 
 class About extends Component {
@@ -18,6 +18,12 @@ class About extends Component {
 
         return (
             <Container fluid="true">
+
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Dada - About</title>
+                </Helmet>
+
                 <Image className="menu-bar" src={Menu} />
                 <Link to="front">
                     <Image className="header" src={Logo} />

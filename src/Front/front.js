@@ -9,7 +9,7 @@ import Menu from '../Navigation/menu_bar.png'
 import FrontImg from './front.jpg'
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
-
+import { Helmet } from "react-helmet";
 
 
 
@@ -19,6 +19,11 @@ class Front extends Component {
 
         return (
             <Container fluid="true">
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Dada - Home</title>
+                </Helmet>
+
                 <Image className="menu-bar" src={Menu} />
                 <Link to="front">
                     <Image className="header" src={Logo} />
