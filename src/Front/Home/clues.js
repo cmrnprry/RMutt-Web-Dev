@@ -18,23 +18,23 @@ class Clues extends Component {
 
        return (
             
-           <Container fluid='true' style={{ backgroundImage: `url(${Background}`, height: 'auto', position: 'relative' }}>
+           <Container fluid='true'
+               style={{ backgroundImage: `url(${Background}`, height: 'auto', position: 'relative' }}>
                
                <Helmet>
                    <meta charSet="utf-8" />
                    <title>Dada - Home</title>
                </Helmet>
+
                <div className="folder">
                    <Image src={Folder} /> 
                     <div className="written">
                         <Link to="letter">The Letter</Link>
                     </div> 
-                </div>
-                
+                </div>                
                 
                 <Popup style={{ background: 'transparent', border: 'none' }}
-                            trigger={<Image src={Pen}
-                            className="pen" />} modal >
+                    trigger={<Image src={Pen} className="pen" />} modal >
                    {close => (
                        <div className="password">
                            Report your findings

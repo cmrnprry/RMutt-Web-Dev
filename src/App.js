@@ -8,7 +8,7 @@ import Archive from './Archive/archive';
 import Clues from './Front/Home/clues';
 import Demuth from './Puzzles/demuth_letter_puzzle/demuth_letter';
 import AR_Letter from './Puzzles/ar_letter_puzzle/ar_letter';
-
+import Cacodylate from './Puzzles/r_rose_puzzle/r_rose_part_1/cacodylate'
 
 
 class App extends Component {
@@ -24,6 +24,7 @@ class App extends Component {
               <Route exact path='/clues' component={Clues} />
               <Route exact path='/letter' component={AR_Letter} />
               <Route exact path='/demuth_letter' component={Demuth} />
+              <Route exact path='/cacodylate' component={Cacodylate} />
             </Switch>
           </div>
         </Router>
