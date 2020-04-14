@@ -7,6 +7,7 @@ import '../../Stylesheets/dada.css';
 import '../../Stylesheets/index.css';
 import Background from '../../folder_elements/wooden.png'
 import DL_under from './demuth_letter_under.png'
+import { Helmet } from "react-helmet";
 
 
 
@@ -191,6 +192,10 @@ class Demuth extends Component {
 
         return (
             <Container fluid='true' style={{ backgroundImage: `url(${Background}`, height: 'auto' }}>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>The other letter</title>
+                </Helmet>
 
                 {/* dropzones */}
                 <div>

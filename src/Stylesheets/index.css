@@ -17,7 +17,7 @@ code {
     monospace;
 }
 
-    .react-draggable, .cursor {
+.react-draggable, .cursor {
       cursor: move;
     }
     .no-cursor {
