@@ -44,8 +44,19 @@
 .draggable-2 {
     touch-action: none;
     user-select: none;
-  
     width: 40%;
     font-size: 1.2em;
     border-radius: 4px;
+}
+
+#louise {
+	background-image:url("../Puzzles/tissue_paper/tissue_paper_overlays/louise.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	position:absolute;
+	width:25vw;
+	height:25vw;
+	top:4vw;
+	left:12vw;
+	z-index:1;
 }

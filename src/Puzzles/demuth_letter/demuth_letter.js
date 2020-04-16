@@ -14,10 +14,6 @@ import { Helmet } from "react-helmet";
 const correctList = getCorrect();
 var currList = intializeArray();
 
-currList.forEach(element => {
-    console.log(element);
-});
-
 //starting order of list
 function intializeArray() {
     let array = [];
@@ -128,15 +124,11 @@ function pushInList(text, position) {
     var currTextPos = currList.indexOf(text);
     var temp = "";
 
-    if (currTextPos != position) {
+    if (currTextPos !== position) {
         temp = currList[position];
         currList[position] = text;
         currList[currTextPos] = temp;
     }
-
-    currList.forEach(element => {
-        console.log(element);
-    });
 
     if (checkList())
     {
@@ -154,7 +146,7 @@ function checkList()
     var allCorrect = true;
 
     for (let i = 0; i < correctList.length; i++) {
-        if (currList[i] != correctList[i])
+        if (currList[i] !== correctList[i])
         {
             allCorrect = false;
      
@@ -183,11 +175,6 @@ function dragMoveListener(event) {
 
 
 class Demuth extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
 
         return (

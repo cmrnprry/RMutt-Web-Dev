@@ -7,9 +7,9 @@ import Helmet from 'react-helmet'
 import Popup from "reactjs-popup";
 
 import Background from '../../folder_elements/wooden.png'
-import Reward from './cacodylic_images/r_rose_reward.png'
-import Edited from './cacodylic_images/r_rose_edited.png'
-import Original from './cacodylic_images/r_rose_original.jpg'
+import Reward from './rrose_images/r_rose_reward.png'
+import Edited from './rrose_images/r_rose_edited.png'
+import Original from './rrose_images/r_rose_original.jpg'
 
 class Cacodylate extends Component {
     constructor() {

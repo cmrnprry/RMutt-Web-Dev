@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../Stylesheets/dada.css';
-import Background from '../../folder_elements/wooden.png'
-import Folder from '../../folder_elements/folder_note.png'
-import Pen from '../../folder_elements/pen/pen_bak.png'
+import '../../../Stylesheets/dada.css';
+import Background from '../../../folder_elements/wooden.png'
+import Folder from '../../../folder_elements/folder_note.png'
+import Pen from '../../../folder_elements/pen/pen_bak.png'
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container';
 import Popup from "reactjs-popup";

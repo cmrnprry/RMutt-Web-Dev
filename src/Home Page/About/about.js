@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Stylesheets/dada.css';
-import Logo from '../Logos/logo_rect.png'
-import Archive from '../Navigation/archive.png'
-import AboutImg from '../Navigation/about.png'
-import Menu from '../Navigation/menu_bar.png'
+import '../../Stylesheets/dada.css';
+import Logo from '../../Logos/logo_rect.png'
+import Archive from '../../Navigation/archive.png'
+import AboutImg from '../../Navigation/about.png'
+import Menu from '../../Navigation/menu_bar.png'
 import AboutUs from './about.jpg'
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
