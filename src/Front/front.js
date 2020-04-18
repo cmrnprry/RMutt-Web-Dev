@@ -1,5 +1,7 @@
+//React Imports
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+<<<<<<< Updated upstream:src/Front/front.js
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Stylesheets/dada.css';
 import Logo from '../Logos/logo_rect.png'
@@ -7,6 +9,17 @@ import Archive from '../Navigation/archive.png'
 import About from '../Navigation/about.png'
 import Menu from '../Navigation/menu_bar.png'
 import FrontImg from './front.jpg'
+=======
+
+//Image Imports
+import Logo from '../../Logos/logo_rect.png'
+import Archive from '../../Navigation/archive.png'
+import About from '../../Navigation/about.png'
+import Menu from '../../Navigation/menu_bar.png'
+import FrontImg from './front.jpg'
+
+//Web Imports
+>>>>>>> Stashed changes:src/Home Page/Front/front.js
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import { Helmet } from "react-helmet";

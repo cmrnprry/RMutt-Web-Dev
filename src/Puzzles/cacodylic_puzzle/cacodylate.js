@@ -1,15 +1,17 @@
+//React Imports
 import React, { Component } from 'react';
-import Container from 'react-bootstrap/Container'
-import Image from 'react-bootstrap/Image'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../Stylesheets/cacodylate.css';
-import Helmet from 'react-helmet'
-import Popup from "reactjs-popup";
 
+//Image Imports
 import Background from '../../folder_elements/wooden.png'
 import Reward from './cacodylic_images/r_rose_reward.png'
 import Edited from './cacodylic_images/r_rose_edited.png'
 import Original from './cacodylic_images/r_rose_original.jpg'
+
+//Web Imports
+import Container from 'react-bootstrap/Container'
+import Image from 'react-bootstrap/Image'
+import Helmet from 'react-helmet'
+import Popup from "reactjs-popup";
 
 class Cacodylate extends Component {
     constructor() {
@@ -24,17 +26,19 @@ class Cacodylate extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    //A funcion meant to hide the puzzle and show the reward when called
     hidePuzzleComponent()
     {
         this.setState({ hidePuzzle: true });
         this.setState({ showReward: true });
-
     }
 
+    //Handles the change event
     handleChange(event) {
         this.setState({ value: event.target.value });
     }
 
+    //Handles the submit event
     handleSubmit(event) {
 
         event.preventDefault();
@@ -49,26 +53,12 @@ class Cacodylate extends Component {
         }
     }
 
-    login = () => {
-
-        var password = 'alias marcel duchamp';
-
-
-        if (this.document.getElementbyId("password").value === password) {
-            console.log('Click happened');
-            // this.context.router.history.push("/home");
-        }
-        else {
-            window.alert("Incorrect password.");
-        }
-        console.log('Click happened');
-    }
-
 
     render() {
         const { hidePuzzle, showReward } = this.state;
         return (
-            <Container fluid='true' style={{ backgroundImage: `url(${Background}`, backgroundSize: 'auto', height: '100%', position: 'relative'}}>
+            <Container fluid='true' style={{ backgroundImage: `url(${Background}`, backgroundSize: 'auto', height: '100%', position: 'relative' }}>
+                
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Two Cacodylic Eyes</title>
@@ -76,6 +66,7 @@ class Cacodylate extends Component {
 
                 <div className="click-box" onClick={() => this.hidePuzzleComponent()} />
 
+                {/* container for the images. If the 'hidePuzzle' bool is set to true, the two images are hidden. If the showReward is set to true, it shows the reward image */}
                 <div>
                     {!hidePuzzle && <Image src={Original} className="original-rose" />}
 

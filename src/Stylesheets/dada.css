@@ -13,8 +13,24 @@ font-family: "Bradley";
 src: url("../Fonts/bradley_hand.ttf");
 }
 
+@font-face {
+font-family: "BlackCasper";
+src: url("../Fonts/BlackCasper.ttf");
+}
+
 body {
 	background:#b5b5b5;
+	margin: 0;
+  	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
 /*Helps images be more responisive*/

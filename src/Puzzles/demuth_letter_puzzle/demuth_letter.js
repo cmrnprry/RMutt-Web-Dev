@@ -1,12 +1,14 @@
+//React Imports
 import React, { Component } from 'react';
+
+//Image Imports
+import Background from '../../folder_elements/wooden.png'
+import DL_under from './demuth_letter_under.png'
+
+//Web Imports
 import interact from 'interactjs'
 import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../Stylesheets/dada.css';
-import '../../Stylesheets/index.css';
-import Background from '../../folder_elements/wooden.png'
-import DL_under from './demuth_letter_under.png'
 import { Helmet } from "react-helmet";
 
 
@@ -14,11 +16,16 @@ import { Helmet } from "react-helmet";
 const correctList = getCorrect();
 var currList = intializeArray();
 
+<<<<<<< Updated upstream:src/Puzzles/demuth_letter_puzzle/demuth_letter.js
 currList.forEach(element => {
     console.log(element);
 });
 
 //starting order of list
+=======
+//Function that initalizes the array. 
+//Moving any of the draggables positions requires you to adjust this 
+>>>>>>> Stashed changes:src/Puzzles/demuth_letter/demuth_letter.js
 function intializeArray() {
     let array = [];
 
@@ -43,7 +50,7 @@ function intializeArray() {
 
 }
 
-//correct list of vars
+//Function that creates an array woth the correct order of words
 function getCorrect() {
     let array = [];
 
@@ -68,6 +75,7 @@ function getCorrect() {
 
 }
 
+//Draggable function
 interact('.draggable').draggable({
     listeners: {
         
@@ -85,6 +93,7 @@ interact('.draggable').draggable({
     }
 })
 
+//Dropzone function
 interact('.dropzone').dropzone({
     accept: '.draggable',
     overlap: 0.50,
@@ -123,7 +132,7 @@ interact('.dropzone').dropzone({
 
 })
 
-// text is the object being placed on 2the letter, and postion is the place in the list
+//Function that swaps the position of two objects and checks to see if the current list is correct
 function pushInList(text, position) {
     var currTextPos = currList.indexOf(text);
     var temp = "";
@@ -144,11 +153,13 @@ function pushInList(text, position) {
     }
 }
 
+//Function that displays text if the array is correct
 function puzzleSolved()
 {
     alert("TODO: add Kieran words");
 }
 
+//Function that checks to see if the currect list is in the correct order
 function checkList()
 {
     var allCorrect = true;
@@ -157,13 +168,14 @@ function checkList()
         if (currList[i] != correctList[i])
         {
             allCorrect = false;
-     
+            break;
        }
     }
 
     return allCorrect;
 }
 
+//Function that handles how draggable objects act when you drag them
 function dragMoveListener(event) {
     var target = event.target
     // keep the dragged position in the data-x/data-y attributes
@@ -197,7 +209,7 @@ class Demuth extends Component {
                     <title>The other letter</title>
                 </Helmet>
 
-                {/* dropzones */}
+                {/* Dropzones Container */}
                 <div>
                     {/* line one */}
                     <div className="dropzone 0" style={{
@@ -562,7 +574,7 @@ class Demuth extends Component {
                         
                 </div>
 
-                {/* dragables */}
+                {/* Dragables Containe */}
                 <div>
                 {/* First Row */}
 

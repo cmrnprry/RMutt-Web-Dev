@@ -1,13 +1,23 @@
+//React Imports
 import React, { Component } from 'react';
+<<<<<<< Updated upstream:src/Puzzles/ar_letter_puzzle/ar_letter.js
 import interact from 'interactjs'
 import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Stylesheets/dada.css';
 import '../../Stylesheets/index.css';
+=======
+
+//Image Imports
+>>>>>>> Stashed changes:src/Puzzles/the_letter/the_letter.js
 import Background from '../../folder_elements/wooden.png'
 import letter from './ar_letter_elements/ar_letter.jpg'
 import letter_red from './ar_letter_elements/ar_letter_red.jpg'
+
+//Web Imports
+import Container from 'react-bootstrap/Container'
+import Image from 'react-bootstrap/Image'
 import Helmet from 'react-helmet'
 import Popup from "reactjs-popup";
 

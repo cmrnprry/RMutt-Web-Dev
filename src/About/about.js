@@ -1,12 +1,24 @@
+//React Imports
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+<<<<<<< Updated upstream:src/About/about.js
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../Stylesheets/dada.css';
 import Logo from '../Logos/logo_rect.png'
 import Archive from '../Navigation/archive.png'
 import AboutImg from '../Navigation/about.png'
 import Menu from '../Navigation/menu_bar.png'
+=======
+
+//Image Imports
+import Logo from '../../Logos/logo_rect.png'
+import Archive from '../../Navigation/archive.png'
+import AboutImg from '../../Navigation/about.png'
+import Menu from '../../Navigation/menu_bar.png'
+>>>>>>> Stashed changes:src/Home Page/About/about.js
 import AboutUs from './about.jpg'
+
+//Web Imports
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import { Helmet} from "react-helmet";

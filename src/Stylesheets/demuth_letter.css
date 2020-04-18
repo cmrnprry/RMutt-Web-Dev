@@ -1,0 +1,57 @@
+.react-draggable, .cursor {
+      cursor: move;
+    }
+    .no-cursor {
+      cursor: auto;
+    }
+    .cursor-y {
+      cursor: ns-resize;
+    }
+    .cursor-x {
+      cursor: ew-resize;
+    }
+
+
+.drop-target 
+{
+  border: 3px solid #999;
+}
+
+.drop-active 
+{
+  border: 3px solid #999;
+}
+
+.draggable.can-drop {
+  border: 3px solid lightblue;
+}
+
+.draggable 
+{
+  touch-action: none;
+  user-select: none;
+}
+
+.dropzone 
+{
+  background-color: black;
+  border: 3px solid #999;
+  margin: 10px auto 30px;
+  padding: 10px;
+  position: absolute;
+}
+
+.box 
+{
+  margin: 0.5rem;
+  border: 1px solid #000;
+  display: inline-block;
+  font-family:"BlackCasper";
+  color:black;
+  background: white;
+  font-size:1.5em;
+  letter-spacing: 3px;
+}
+
+
+
