@@ -1,0 +1,62 @@
+.drop-target-2 
+{
+  background-color: rgba(153, 153, 153, 0.224);
+  border: 3px solid #999;
+}
+
+.drop-active-2 
+{
+  background-color: rgba(153, 153, 153, 0.224);
+    border: 3px solid #999;
+}
+
+.draggable-2.can-drop-2 {
+  background-color: rgba(173, 216, 230, 0.224);
+    border: 3px solid lightblue;
+}
+/* 
+.draggable-2 
+{
+  touch-action: none;
+  user-select: none;
+} */
+
+.dropzone-2 
+{
+  background-color: rgba(0, 0, 0, 0.367);
+  margin: 10px auto 30px;
+  padding: 10px;
+  position: absolute;
+}
+
+.box 
+{
+  margin: 0.5rem;
+  border: 1px solid #000;
+  display: inline-block;
+  font-family:"BlackCasper";
+  color:black;
+  background: white;
+  font-size:1.5em;
+  letter-spacing: 3px;
+}
+
+.draggable-2 {
+    touch-action: none;
+    user-select: none;
+    width: 40%;
+    font-size: 1.2em;
+    border-radius: 4px;
+}
+
+#louise {
+	background-image:url("../Puzzles/tissue_paper/tissue_paper_overlays/louise.png");
+	background-repeat: no-repeat;
+	background-size: contain;
+	position:absolute;
+	width:25vw;
+	height:25vw;
+	top:4vw;
+	left:12vw;
+	z-index:1;
+}
