@@ -1,6 +1,5 @@
 //React Imports
 import React, { Component } from 'react';
-import interact from 'interactjs'
 
 //Image Imports
 import Background from '../../folder_elements/wooden.png'
@@ -28,15 +27,15 @@ class AR_Letter extends Component {
                 </Helmet>
 
                 <Popup style={{ background: 'transparent', border: 'none' }}
-                trigger={<Image src={letter} className='ar-letter'/>} modal >
+                    trigger={<Image src={letter} className='ar-letter' />} modal >
                     {close => (
                         <div style={{ backgroundImage: `url(${Background}`, border: 'none' }}>
                             <p className='text'>Click outside to escape window</p>
-                            <Image src={letter_red} className="red-letter"/>
+                            <Image src={letter_red} className="red-letter" />
                         </div>
                     )}
                 </Popup>
-                
+
             </Container>
         );
     }

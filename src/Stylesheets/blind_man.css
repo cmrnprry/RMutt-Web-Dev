@@ -1,39 +1,32 @@
 .resize
 {
-  display:inline-block;
-	width:530px;
-	margin-top: 4em;
-	margin-left: 8em;
-	margin-right: 2em;
-}
-
-.drop-target 
-{
-  border: 3px solid #999;
-}
-
-.drop-active 
-{
-  border: 3px solid #999;
-}
-
-.dropzone 
-{
-  background-color: black;
-  border: 3px solid #999;
-  margin: 10px auto 30px;
-  padding: 10px;
+  width:530px;
+  height: 700px;
   position: absolute;
 }
 
-.box 
+.drop-target-blind
 {
-  margin: 0.5rem;
-  border: 1px solid #000;
+  border: 3px solid lightseagreen;
+}
+
+.drop-active-blind
+{
+  border: 3px solid #999;
+}
+
+.drop-notactive-blind
+{
+  border: 3px solid black;
+}
+
+.dropzone-blind
+{
+  /* background-color: black; */
+  width:550px;
+  height: 720px;
+	margin-top: 4em;
+	margin-left: 8em;
+  margin-right: 2em;
   display: inline-block;
-  font-family:"BlackCasper";
-  color:black;
-  background: white;
-  font-size:1.5em;
-  letter-spacing: 3px;
 }

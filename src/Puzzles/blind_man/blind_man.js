@@ -20,15 +20,22 @@ import Page14 from "./blind_man_images/14.jpg"
 import Page15 from "./blind_man_images/15.jpg"
 import Back from "./blind_man_images/back.jpg"
 
-
-
 //Web Imports
-import interact from 'interactjs'
 import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
-import { Helmet } from "react-helmet";
+import Helmet from "react-helmet";
+import interact from 'interactjs'
 
+//current and swap to positions 
+var currPos, swapToPos;
 
+//Moving any of the draggables positions requires you to adjust this 
+var currList = ["1", "4", "15", "6", "8", "13", "11", "10", "3", "2", "0", "14", "9", "5", "7", "12"];
+const correctList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
+
+//The X and Y Postions of the images
+var topPositions = setIntialX();
+var leftPositions = ["153px", "863px"];
 
 //Draggable function
 interact('.draggable').draggable({
@@ -40,75 +47,121 @@ interact('.draggable').draggable({
         })
     ],
     listeners: {
-
-        start(event) {
-            console.log(event.type, event.target)
-        },
         move: dragMoveListener,
-
-        end(event) {
-            var textEl = event.target.querySelector('p')
-
-            textEl && (textEl.textContent =
-                'Pos: ' + event.x0 + ', ' + event.y0)
-        }
     }
 })
 
 //Dropzone function
-interact('.dropzone').dropzone({
+interact('.dropzone-blind').dropzone({
     accept: '.draggable',
-    overlap: 0.50,
+    overlap: 0.75,
 
     // var draggableElement = event.relatedTarget
     // var dropzoneElement = event.target
 
     ondropactivate: function (event) {
         // add active dropzone feedback
-        event.target.classList.add('drop-active')
+        event.target.classList.add('drop-active-blind')
+        event.target.classList.remove('drop-notactive-blind')
     },
     ondragenter: function (event) {
         var draggableElement = event.relatedTarget
         var dropzoneElement = event.target
 
         // feedback the possibility of a drop
-        dropzoneElement.classList.add('drop-target')
+        event.target.classList.remove('drop-active-blind')
+        dropzoneElement.classList.add('drop-target-blind')
         draggableElement.classList.add('can-drop')
 
     },
     ondragleave: function (event) {
         // remove the drop feedback style
-        event.target.classList.remove('drop-target')
+        currPos = event.target.classList[0];
+        event.target.classList.add('drop-active-blind')
+        event.target.classList.remove('drop-target-blind')
         event.relatedTarget.classList.remove('can-drop')
     },
     ondrop: function (event) {
-        // pushInList(event.relatedTarget.textContent, event.target.classList[1])
-
+        swapToPos = event.target.classList[0];
+        swapPositions(currPos, swapToPos)
+        pushInList(event.relatedTarget.classList[0], event.target.classList[0])
     },
     ondropdeactivate: function (event) {
         // remove active dropzone feedback
-        event.target.classList.remove('drop-active')
-        event.target.classList.remove('drop-target')
+        event.target.classList.remove('drop-active-blind')
+        event.target.classList.remove('drop-target-blind')
         event.relatedTarget.classList.remove('can-drop')
+        event.target.classList.add('drop-notactive-blind')
     }
 
 })
 
+//Sets the intial x of the images
+function setIntialX() {
+    var array = [];
+    var val = 73;
+    for (var i = 0; i < 16; i++) {
+        array[i] = val + "px";
+        array[i + 1] = val + "px";
+
+        // console.log("array at " + i + ": " + val);
+        // console.log("array at " + (i + 1) + ": " + val);
+
+        val += 790;
+        i++;
+    }
+
+    return array;
+}
+
+//Function that swaps the position of two objects
+function swapPositions(curr, other) {
+    var currPosTop = topPositions[curr], otherObjTop = topPositions[other];
+    var currPosLeft = leftPositions[curr % 2], otherObjLeft = leftPositions[other % 2];
+    var otherDiv = document.getElementsByName(other)[0], currDiv = document.getElementsByName(curr)[0];
+    var currName = String(curr), otherName = String(other);
+
+    if (other !== curr) {
+        console.log("swapping");
+        //Swap the top Positions
+        topPositions[other] = currPosTop;
+        topPositions[curr] = otherObjTop;
+        //Swap the left Positions
+        leftPositions[other] = currPosLeft;
+        leftPositions[curr] = otherObjLeft;
+
+
+        //Set the top positions
+        otherDiv.style.top = topPositions[other];
+        currDiv.style.top = topPositions[curr];
+        //Swap the left positions
+        otherDiv.style.left = leftPositions[other];
+        currDiv.style.left = leftPositions[curr];
+
+
+        //reset names and transform
+        otherDiv.style.transform = "none";
+        currDiv.style.transform = "none";
+        currDiv.setAttribute("name", otherName);
+        otherDiv.setAttribute("name", currName);
+    }
+}
+
 //Function that swaps the position of two objects and checks to see if the current list is correct
-// function pushInList(text, position) {
-//     var currTextPos = currList.indexOf(text);
-//     var temp = "";
+function pushInList(curr, position) {
+    var currPos = currList.indexOf(curr);
+    var temp = "";
 
-//     if (currTextPos !== position) {
-//         temp = currList[position];
-//         currList[position] = text;
-//         currList[currTextPos] = temp;
-//     }
+    if (currPos !== position) {
+        temp = currList[position];
+        currList[position] = curr;
+        currList[currPos] = temp;
+    }
 
-//     if (checkList()) {
-//         puzzleSolved();
-//     }
-// }
+    if (checkList()) {
+        puzzleSolved();
+    }
+}
 
 //Function that displays text if the array is correct
 function puzzleSolved() {
@@ -116,18 +169,18 @@ function puzzleSolved() {
 }
 
 //Function that checks to see if the currect list is in the correct order
-// function checkList() {
-//     var allCorrect = true;
+function checkList() {
+    var allCorrect = true;
 
-//     for (let i = 0; i < correctList.length; i++) {
-//         if (currList[i] !== correctList[i]) {
-//             allCorrect = false;
-//             break;
-//         }
-//     }
+    for (let i = 0; i < correctList.length; i++) {
+        if (currList[i] !== correctList[i]) {
+            allCorrect = false;
+            break;
+        }
+    }
 
-//     return allCorrect;
-// }
+    return allCorrect;
+}
 
 //Function that handles how draggable objects act when you drag them
 function dragMoveListener(event) {
@@ -156,40 +209,123 @@ class Blind_Man extends Component {
                     <title>Such vision!</title>
                 </Helmet>
 
-                <div className="dropzone 0" />
-                <div className="dropzone 1" />
-                <div className="dropzone 2" />
-                <div className="dropzone 3" />
-                <div className="dropzone 4" />
-                <div className="dropzone 5" />
-                <div className="dropzone 6" />
-                <div className="dropzone 7" />
-                <div className="dropzone 8" />
-                <div className="dropzone 9" />
-                <div className="dropzone 10" />
-                <div className="dropzone 11" />
-                <div className="dropzone 12" />
-                <div className="dropzone 13" />
-                <div className="dropzone 14" />
-                <div className="dropzone 15" />
+                {/* Draggables */}
+                <Image src={Page2} name="0" className="1 resize draggable"
+                    style={{
+                        top: topPositions[0],
+                        left: leftPositions[0]
+                    }}
+                />
+                <Image src={Page5} name="1" className="4 resize draggable"
+                    style={{
+                        top: topPositions[1],
+                        left: leftPositions[1]
+                    }}
+                />
+                <Image src={Back} name="2" className="15 resize draggable"
+                    style={{
+                        top: topPositions[2],
+                        left: leftPositions[0]
+                    }}
+                />
+                <Image src={Page7} name="3" className="6 resize draggable"
+                    style={{
+                        top: topPositions[3],
+                        left: leftPositions[1]
+                    }}
+                />
+                <Image src={Page9} name="4" className="8 resize draggable"
+                    style={{
+                        top: topPositions[4],
+                        left: leftPositions[0]
+                    }}
+                />
+                <Image src={Page14} name="5" className="13 resize draggable"
+                    style={{
+                        top: topPositions[5],
+                        left: leftPositions[1]
+                    }}
+                />
+                <Image src={Page12} name="6" className="11 resize draggable"
+                    style={{
+                        top: topPositions[6],
+                        left: leftPositions[0]
+                    }}
+                />
+                <Image src={Page11} name="7" className="10 resize draggable"
+                    style={{
+                        top: topPositions[7],
+                        left: leftPositions[1]
+                    }}
+                />
+                <Image src={Page4} name="8" className="3 resize draggable"
+                    style={{
+                        top: topPositions[8],
+                        left: leftPositions[0]
+                    }}
+                />
+                <Image src={Page3} name="9" className="2 resize draggable"
+                    style={{
+                        top: topPositions[9],
+                        left: leftPositions[1]
+                    }}
+                />
+                <Image src={Cover} name="10" className="0 resize draggable"
+                    style={{
+                        top: topPositions[10],
+                        left: leftPositions[0]
+                    }}
+                />
+                <Image src={Page15} name="11" className="14 resize draggable"
+                    style={{
+                        top: topPositions[11],
+                        left: leftPositions[1]
+                    }}
+                />
+                <Image src={Page10} name="12" className="9 resize draggable"
+                    style={{
+                        top: topPositions[12],
+                        left: leftPositions[0]
+                    }}
+                />
+                <Image src={Page6} name="13" className="5 resize draggable"
+                    style={{
+                        top: topPositions[13],
+                        left: leftPositions[1]
+                    }}
+                />
+                <Image src={Page8} name="14" className="7 resize draggable"
+                    style={{
+                        top: topPositions[14],
+                        left: leftPositions[0]
+                    }}
+                />
+                <Image src={Page13} name="15" className="12 resize draggable"
+                    style={{
+                        top: topPositions[15],
+                        left: leftPositions[1]
+                    }}
+                />
 
-                <Image src={Cover} className="resize draggable" />
-                <Image src={Page2} className="resize draggable" />
-                <Image src={Page3} className="resize draggable" />
-                <Image src={Page4} className="resize draggable" />
-                <Image src={Page5} className="resize draggable" />
-                <Image src={Page6} className="resize draggable" />
-                <Image src={Page7} className="resize draggable" />
-                <Image src={Page8} className="resize draggable" />
-                <Image src={Page9} className="resize draggable" />
-                <Image src={Page10} className="resize draggable" />
-                <Image src={Page11} className="resize draggable" />
-                <Image src={Page12} className="resize draggable" />
-                <Image src={Page13} className="resize draggable" />
-                <Image src={Page14} className="resize draggable" />
-                <Image src={Page15} className="resize draggable" />
-                <Image src={Back} className="resize draggable" />
-
+                {/* Drop Zones */}
+                <div>
+                    <div className="0 drop-notactive-blind dropzone-blind" />
+                    <div className="1 drop-notactive-blind dropzone-blind" />
+                    <div className="2 drop-notactive-blind dropzone-blind" />
+                    <div className="3 drop-notactive-blind dropzone-blind" />
+                    <div className="4 drop-notactive-blind dropzone-blind" />
+                    <div className="5 drop-notactive-blind dropzone-blind" />
+                    <div className="6 drop-notactive-blind dropzone-blind" />
+                    <div className="7 drop-notactive-blind dropzone-blind" />
+                    <div className="8 drop-notactive-blind dropzone-blind" />
+                    <div className="9 drop-notactive-blind dropzone-blind" />
+                    <div className="10 drop-notactive-blind dropzone-blind" />
+                    <div className="11 drop-notactive-blind dropzone-blind" />
+                    <div className="12 drop-notactive-blind dropzone-blind" />
+                    <div className="13 drop-notactive-blind dropzone-blind" />
+                    <div className="14 drop-notactive-blind dropzone-blind" />
+                    <div className="15 drop-notactive-blind dropzone-blind" />
+                </div>
 
             </Container>
 
@@ -197,4 +333,4 @@ class Blind_Man extends Component {
     }
 }
 
-export default Blind_Man;
+export default Blind_Man; 

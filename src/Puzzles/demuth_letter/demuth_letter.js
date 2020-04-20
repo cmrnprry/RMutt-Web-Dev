@@ -39,7 +39,6 @@ function intializeArray() {
     array[15] = "columbus"; array[31] = "mutt"; array[47] = "lptu";
 
     return array;
-
 }
 
 //Function that creates an array woth the correct order of words
@@ -70,7 +69,7 @@ function getCorrect() {
 //Draggable function
 interact('.draggable').draggable({
     listeners: {
-        
+
         start(event) {
             console.log(event.type, event.target)
         },
@@ -113,7 +112,7 @@ interact('.dropzone').dropzone({
     },
     ondrop: function (event) {
         pushInList(event.relatedTarget.textContent, event.target.classList[1])
-        
+
     },
     ondropdeactivate: function (event) {
         // remove active dropzone feedback
@@ -135,29 +134,25 @@ function pushInList(text, position) {
         currList[currTextPos] = temp;
     }
 
-    if (checkList())
-    {
+    if (checkList()) {
         puzzleSolved();
     }
 }
 
 //Function that displays text if the array is correct
-function puzzleSolved()
-{
+function puzzleSolved() {
     alert("TODO: add Kieran words");
 }
 
 //Function that checks to see if the currect list is in the correct order
-function checkList()
-{
+function checkList() {
     var allCorrect = true;
 
     for (let i = 0; i < correctList.length; i++) {
-        if (currList[i] !== correctList[i])
-        {
+        if (currList[i] !== correctList[i]) {
             allCorrect = false;
             break;
-       }
+        }
     }
 
     return allCorrect;
@@ -196,7 +191,7 @@ class Demuth extends Component {
                 <div>
                     {/* line one */}
                     <div className="dropzone 0" style={{
-                        height:'19px',
+                        height: '19px',
                         width: '66px',
                         left: '239px',
                         top: '293px',
@@ -204,8 +199,8 @@ class Demuth extends Component {
 
                     {/* line two */}
                     <div className="dropzone 1" style={{
-                        height:'10px',
-                        width:'52px',
+                        height: '10px',
+                        width: '52px',
                         left: '525px',
                         top: '316px',
                     }} />
@@ -234,7 +229,7 @@ class Demuth extends Component {
 
                     {/* line four */}
                     <div className="dropzone 5" style={{
-                        height:' 0px',
+                        height: ' 0px',
                         width: '30px',
                         left: '467px',
                         top: '371px',
@@ -242,7 +237,7 @@ class Demuth extends Component {
 
                     <div className="dropzone 6" style={{
                         height: ' 0px',
-                        width:'40px',
+                        width: '40px',
                         left: '516px',
                         top: '371px',
                     }} />
@@ -253,7 +248,7 @@ class Demuth extends Component {
                         left: '578px',
                         top: '370px',
                     }} />
-                
+
                     {/* line five */}
                     <div className="dropzone 8" style={{
                         height: '19px',
@@ -264,8 +259,8 @@ class Demuth extends Component {
 
                     {/* line six */}
                     <div className="dropzone 9" style={{
-                        height:'19px',
-                        width:'29px',
+                        height: '19px',
+                        width: '29px',
                         left: '329px',
                         top: '440px',
                     }} />
@@ -278,8 +273,8 @@ class Demuth extends Component {
                     }} />
 
                     <div className="dropzone 11" style={{
-                        height:'19px',
-                        width:'50px',
+                        height: '19px',
+                        width: '50px',
                         left: '445px',
                         top: '440px',
                     }} />
@@ -554,14 +549,14 @@ class Demuth extends Component {
                         left: '210px',
                         top: '820px',
                     }} />
-                        
+
                 </div>
 
                 {/* Dragables Containe */}
                 <div>
-                {/* First Row */}
+                    {/* First Row */}
 
-                    <div className="draggable box" style={{ fontSize:'14px'}}>
+                    <div className="draggable box" style={{ fontSize: '14px' }}>
                         {/* <Image src={DL_2} /> */}
                         1917
                     </div>
@@ -799,7 +794,7 @@ class Demuth extends Component {
                         salon
                     </div>
 
-                    <div className="draggable box" style={{fontSize: '20px'}}>
+                    <div className="draggable box" style={{ fontSize: '20px' }}>
                         {/* <Image src={DL_23} /> */}
                         it was not exhibited
                     </div>
@@ -808,7 +803,7 @@ class Demuth extends Component {
                         {/* <Image src={DL_48} /> */}
                         independents
                     </div>
-                
+
                 </div>
 
                 <div></div>
@@ -816,7 +811,7 @@ class Demuth extends Component {
                 {/* Base Letter */}
                 <Image src={DL_under} style={{ marginTop: '3%', paddingLeft: '100px', paddingTop: '29px', paddingBottom: '150px' }} />
 
-                    
+
 
             </Container>
 
