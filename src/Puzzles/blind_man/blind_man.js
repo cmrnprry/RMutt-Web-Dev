@@ -27,7 +27,7 @@ import Helmet from "react-helmet";
 import interact from 'interactjs'
 
 //current and swap to positions 
-var currPos, swapToPos;
+var currPos = 0, swapToPos = 0;
 
 //Moving any of the draggables positions requires you to adjust this 
 var currList = ["1", "4", "15", "6", "8", "13", "11", "10", "3", "2", "0", "14", "9", "5", "7", "12"];
@@ -75,8 +75,8 @@ interact('.dropzone-blind').dropzone({
 
     },
     ondragleave: function (event) {
-        // remove the drop feedback style
         currPos = event.target.classList[0];
+        // remove the drop feedback style
         event.target.classList.add('drop-active-blind')
         event.target.classList.remove('drop-target-blind')
         event.relatedTarget.classList.remove('can-drop')
@@ -104,8 +104,8 @@ function setIntialX() {
         array[i] = val + "px";
         array[i + 1] = val + "px";
 
-        // console.log("array at " + i + ": " + val);
-        // console.log("array at " + (i + 1) + ": " + val);
+        console.log("array at " + i + ": " + val + "px");
+        console.log("array at " + (i + 1) + ": " + val + "px");
 
         val += 790;
         i++;
@@ -116,19 +116,25 @@ function setIntialX() {
 
 //Function that swaps the position of two objects
 function swapPositions(curr, other) {
-    var currPosTop = topPositions[curr], otherObjTop = topPositions[other];
-    var currPosLeft = leftPositions[curr % 2], otherObjLeft = leftPositions[other % 2];
+    var currPosTop = topPositions[curr], otherPosTop = topPositions[other];
+    var currPosLeft = leftPositions[curr % 2], otherPosLeft = leftPositions[other % 2];
     var otherDiv = document.getElementsByName(other)[0], currDiv = document.getElementsByName(curr)[0];
     var currName = String(curr), otherName = String(other);
 
     if (other !== curr) {
+        console.log("top pos curr: " + topPositions[curr]);
+        console.log("top pos other: " + topPositions[other]);
+        console.log("left pos curr: " + leftPositions[curr]);
+        console.log("left pos other: " + leftPositions[other]);
+
         console.log("swapping");
+
         //Swap the top Positions
         topPositions[other] = currPosTop;
-        topPositions[curr] = otherObjTop;
+        topPositions[curr] = otherPosTop;
         //Swap the left Positions
         leftPositions[other] = currPosLeft;
-        leftPositions[curr] = otherObjLeft;
+        leftPositions[curr] = otherPosLeft;
 
 
         //Set the top positions
@@ -137,6 +143,11 @@ function swapPositions(curr, other) {
         //Swap the left positions
         otherDiv.style.left = leftPositions[other];
         currDiv.style.left = leftPositions[curr];
+
+        console.log("top pos curr: " + topPositions[curr]);
+        console.log("top pos other: " + topPositions[other]);
+        console.log("left pos curr: " + leftPositions[curr]);
+        console.log("left pos other: " + leftPositions[other]);
 
 
         //reset names and transform
