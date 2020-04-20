@@ -4,17 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 //CSS Imports
 import 'bootstrap/dist/css/bootstrap.min.css';
-<<<<<<< Updated upstream
-import Index from './Front/Home/home';
-import Front from './Front/front';
-import About from './About/about';
-import Archive from './Archive/archive';
-import Clues from './Front/Home/clues';
-import Demuth from './Puzzles/demuth_letter_puzzle/demuth_letter';
-import AR_Letter from './Puzzles/ar_letter_puzzle/ar_letter';
-import Cacodylate from './Puzzles/cacodylic_puzzle/cacodylate'
-import LN_Puzzle from './Puzzles/louise_norton_puzzle/louise_norton_puzzle'
-=======
 import './Stylesheets/dada.css';
 import './Stylesheets/demuth_letter.css';
 import './Stylesheets/tissue_paper.css';
@@ -34,7 +23,6 @@ import The_Letter from './Puzzles/the_letter/the_letter';
 import Cacodylate_Eye from './Puzzles/cacodylic_eye/cacodylate_eye'
 import Tissue_Paper from './Puzzles/tissue_paper/tissue_paper'
 import Blind_Man from './Puzzles/blind_man/blind_man'
->>>>>>> Stashed changes
 
 
 class App extends Component {

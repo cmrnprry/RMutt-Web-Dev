@@ -156,6 +156,23 @@ class Blind_Man extends Component {
                     <title>Such vision!</title>
                 </Helmet>
 
+                <div className="dropzone 0" />
+                <div className="dropzone 1" />
+                <div className="dropzone 2" />
+                <div className="dropzone 3" />
+                <div className="dropzone 4" />
+                <div className="dropzone 5" />
+                <div className="dropzone 6" />
+                <div className="dropzone 7" />
+                <div className="dropzone 8" />
+                <div className="dropzone 9" />
+                <div className="dropzone 10" />
+                <div className="dropzone 11" />
+                <div className="dropzone 12" />
+                <div className="dropzone 13" />
+                <div className="dropzone 14" />
+                <div className="dropzone 15" />
+
                 <Image src={Cover} className="resize draggable" />
                 <Image src={Page2} className="resize draggable" />
                 <Image src={Page3} className="resize draggable" />
