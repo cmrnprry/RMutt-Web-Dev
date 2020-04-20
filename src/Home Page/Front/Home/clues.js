@@ -1,13 +1,6 @@
 //React Imports
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-<<<<<<< Updated upstream:src/Front/Home/clues.js
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../../Stylesheets/dada.css';
-import Background from '../../folder_elements/wooden.png'
-import Folder from '../../folder_elements/folder_note.png'
-import Pen from '../../folder_elements/pen/pen_bak.png'
-=======
 
 //Image Imports
 import Background from '../../../folder_elements/wooden.png'
@@ -15,7 +8,6 @@ import Folder from '../../../folder_elements/folder_note.png'
 import Pen from '../../../folder_elements/pen/pen_bak.png'
 
 //Web Imports
->>>>>>> Stashed changes:src/Home Page/Front/Home/clues.js
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container';
 import Popup from "reactjs-popup";

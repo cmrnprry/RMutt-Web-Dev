@@ -16,16 +16,8 @@ import { Helmet } from "react-helmet";
 const correctList = getCorrect();
 var currList = intializeArray();
 
-<<<<<<< Updated upstream:src/Puzzles/demuth_letter_puzzle/demuth_letter.js
-currList.forEach(element => {
-    console.log(element);
-});
-
-//starting order of list
-=======
 //Function that initalizes the array. 
 //Moving any of the draggables positions requires you to adjust this 
->>>>>>> Stashed changes:src/Puzzles/demuth_letter/demuth_letter.js
 function intializeArray() {
     let array = [];
 
@@ -137,15 +129,11 @@ function pushInList(text, position) {
     var currTextPos = currList.indexOf(text);
     var temp = "";
 
-    if (currTextPos != position) {
+    if (currTextPos !== position) {
         temp = currList[position];
         currList[position] = text;
         currList[currTextPos] = temp;
     }
-
-    currList.forEach(element => {
-        console.log(element);
-    });
 
     if (checkList())
     {
@@ -165,7 +153,7 @@ function checkList()
     var allCorrect = true;
 
     for (let i = 0; i < correctList.length; i++) {
-        if (currList[i] != correctList[i])
+        if (currList[i] !== correctList[i])
         {
             allCorrect = false;
             break;
@@ -195,11 +183,6 @@ function dragMoveListener(event) {
 
 
 class Demuth extends Component {
-
-    constructor(props) {
-        super(props);
-    }
-
     render() {
 
         return (

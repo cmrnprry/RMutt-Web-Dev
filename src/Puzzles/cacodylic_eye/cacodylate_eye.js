@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 
 //Image Imports
 import Background from '../../folder_elements/wooden.png'
-import Reward from './cacodylic_images/r_rose_reward.png'
-import Edited from './cacodylic_images/r_rose_edited.png'
-import Original from './cacodylic_images/r_rose_original.jpg'
+import Reward from './rrose_images/r_rose_reward.png'
+import Edited from './rrose_images/r_rose_edited.png'
+import Original from './rrose_images/r_rose_original.jpg'
 
 //Web Imports
 import Container from 'react-bootstrap/Container'

@@ -1,5 +1,7 @@
 //REact Imports
 import React, { Component } from 'react';
+import interact from 'interactjs'
+import { Helmet } from "react-helmet";
 
 //Image Imports
 import Background from '../../folder_elements/wooden.png'
@@ -11,10 +13,8 @@ import Image3 from './tissue_paper_overlays/3.PNG'
 import Image4 from './tissue_paper_overlays/4.png'
 
 //Web Imports
-import interact from 'interactjs'
 import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
-import { Helmet } from "react-helmet";
 
 
 //Bools to check if any of the images are in the correct place

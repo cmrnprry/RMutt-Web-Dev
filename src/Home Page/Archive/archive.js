@@ -1,14 +1,6 @@
 //React Imports
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-<<<<<<< Updated upstream:src/Archive/archive.js
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../Stylesheets/dada.css';
-import Logo from '../Logos/logo_rect.png'
-import ArchiveImg from '../Navigation/archive.png'
-import About from '../Navigation/about.png'
-import Menu from '../Navigation/menu_bar.png'
-=======
 
 //Image Imports
 import Logo from '../../Logos/logo_rect.png'
@@ -17,7 +9,6 @@ import About from '../../Navigation/about.png'
 import Menu from '../../Navigation/menu_bar.png'
 
 //Web Imports
->>>>>>> Stashed changes:src/Home Page/Archive/archive.js
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import { Helmet} from "react-helmet";

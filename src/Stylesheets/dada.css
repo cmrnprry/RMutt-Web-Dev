@@ -283,18 +283,6 @@ a:hover {
 	color:#888888;
 }
 
-#louise {
-	background-image:url("../Puzzles/louise_norton_puzzle/louise_norton_overlays/louise.png");
-	background-repeat: no-repeat;
-	background-size: contain;
-	position:absolute;
-	width:25vw;
-	height:25vw;
-	top:4vw;
-	left:12vw;
-	z-index:1;
-}
-
 #elsa {
 	background-image:url("../Puzzles/elsa_puzzle/elsa_puzzle_elements/elsa.png");
 	background-repeat: no-repeat;

@@ -29,19 +29,21 @@ class App extends Component {
   render() {
     return (
         <Router>
-          <div>
-            <Switch>
-              <Route exact path='/' component={Index} />
-              <Route exact path='/front' component={Front} />
-              <Route exact path='/about' component={About} />
-              <Route exact path='/archive' component={Archive} />
-              <Route exact path='/clues' component={Clues} />
-              <Route exact path='/letter' component={AR_Letter} />
-              <Route exact path='/demuth_letter' component={Demuth} />
-            <Route exact path='/cacodylate' component={Cacodylate} />
-            <Route exact path='/louise_norton' component={LN_Puzzle} />
-            </Switch>
-          </div>
+          <Switch>
+            {/* Home Page  */}
+            <Route exact path='/' component={Index} />
+            <Route exact path='/front' component={Front} />
+            <Route exact path='/about' component={About} />
+            <Route exact path='/archive' component={Archive} />
+            <Route exact path='/clues' component={Clues} />
+            
+            {/* Puzzles */}
+            <Route exact path='/the-letter' component={The_Letter} />
+            <Route exact path='/demuth-letter' component={Demuth_Letter} />
+            <Route exact path='/cacodylate-eye' component={Cacodylate_Eye} />
+            <Route exact path='/tissue-paper' component={Tissue_Paper} />
+            <Route exact path='/blind-man' component={Blind_Man} />
+          </Switch>
         </Router>
     );
   }
