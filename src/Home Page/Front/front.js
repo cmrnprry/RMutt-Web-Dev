@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom';
 import Logo from '../../Logos/logo_rect.png'
 import Archive from '../../Navigation/archive.png'
 import About from '../../Navigation/about.png'
+import Pamphlet from '../../Navigation/flyer.png'
+import flyer from './D.A.D.A._Flyer.pdf'
 import Menu from '../../Navigation/menu_bar.png'
 import FrontImg from './front.jpg'
+
 
 //Web Imports
 import Image from 'react-bootstrap/Image'
@@ -36,16 +39,21 @@ class Front extends Component {
                     <li>
                         <Link to="archive">
                             <Image className="page" src={Archive} />
-                         </Link>
+                        </Link>
                     </li>
                     <li>
                         <Link to="about">
                             <Image className="page" src={About} />
                         </Link>
                     </li>
+                    <li>
+                        <a href={flyer} target="_blank" rel="noopener noreferrer">
+                            <Image className="page" src={Pamphlet} />
+                        </a>
+                    </li>
                 </ul>
-                
-                <Image src={FrontImg} style={{width:'100%', height:'auto'}} />
+
+                <Image src={FrontImg} style={{ width: '100%', height: 'auto' }} />
             </Container>
 
         );

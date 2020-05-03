@@ -31,7 +31,7 @@ class Clues extends Component {
 
                <div className="folder">
                    <Image src={Folder} /> 
-                    <div className="written">
+                    <div className="written" style={{ paddingTop: '55px' }}>
                         <Link to="the-letter">The Letter</Link>
                     </div> 
                 </div>                

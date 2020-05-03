@@ -7,11 +7,13 @@ import Logo from '../../Logos/logo_rect.png'
 import ArchiveImg from '../../Navigation/archive.png'
 import About from '../../Navigation/about.png'
 import Menu from '../../Navigation/menu_bar.png'
+import Pamphlet from '../../Navigation/flyer.png'
+import flyer from '../Front/D.A.D.A._Flyer.pdf'
 
 //Web Imports
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
-import { Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 
 class Archive extends Component {
@@ -29,7 +31,7 @@ class Archive extends Component {
     }
 
     handleSubmit(event) {
-        
+
         event.preventDefault();
 
         var password1 = 'whoisrmutt';
@@ -39,7 +41,7 @@ class Archive extends Component {
             this.props.history.push('/clues')
         }
         else {
-           alert("Incorrect password.");
+            alert("Incorrect password.");
         }
     }
 
@@ -50,7 +52,7 @@ class Archive extends Component {
 
         if (this.document.getElementbyId("password").value === password1 || this.document.login.pass.value === password2) {
             console.log('Click happened');
-           // this.context.router.history.push("/home");
+            // this.context.router.history.push("/home");
         }
         else {
             window.alert("Incorrect password.");
@@ -63,7 +65,7 @@ class Archive extends Component {
         return (
             <Container fluid="true">
 
-                
+
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Dada - Archive</title>
@@ -84,9 +86,14 @@ class Archive extends Component {
                             <Image className="page" src={About} />
                         </Link>
                     </li>
+                    <li>
+                        <a href={flyer} target="_blank" rel="noopener noreferrer">
+                            <Image className="page" src={Pamphlet} />
+                        </a>
+                    </li>
                 </ul>
 
-            {/* ----------------------------------------------------------------------------- */}
+                {/* ----------------------------------------------------------------------------- */}
 
                 <div className="password">
                     This page contains confidential information.<br />
@@ -96,7 +103,7 @@ class Archive extends Component {
                         <input type="text" size="17" value={this.state.value} onChange={this.handleChange} style={{ width: '40%', height: '10%' }} /><br />
                         <input type="submit" value="Submit" style={{ width: '40%', height: '10%', margin: '4px auto 4px auto' }} />
                     </form>
-		        </div>
+                </div>
             </Container>
 
         );

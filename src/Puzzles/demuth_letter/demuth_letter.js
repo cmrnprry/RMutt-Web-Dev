@@ -125,14 +125,17 @@ interact('.dropzone').dropzone({
 
 //Function that swaps the position of two objects and checks to see if the current list is correct
 function pushInList(text, position) {
-    var currTextPos = currList.indexOf(text);
-    var temp = "";
+    // var currTextPos = currList.indexOf(text);
+    // var temp = "";
 
-    if (currTextPos !== position) {
-        temp = currList[position];
-        currList[position] = text;
-        currList[currTextPos] = temp;
-    }
+    //this works whil we are not swaping the objects and are just dropping them one at a time
+    currList.splice(position, 1, text);
+
+    // if (currTextPos !== position) {
+    //     temp = currList[position];
+    //     currList[position] = text;
+    //     currList[currTextPos] = temp;
+    // }
 
     if (checkList()) {
         puzzleSolved();

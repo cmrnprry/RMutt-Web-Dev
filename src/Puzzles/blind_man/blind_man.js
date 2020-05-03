@@ -83,7 +83,7 @@ interact('.dropzone-blind').dropzone({
     },
     ondrop: function (event) {
         swapToPos = event.target.classList[0];
-        swapPositions(currPos, swapToPos)
+        // swapPositions(currPos, swapToPos)
         pushInList(event.relatedTarget.classList[0], event.target.classList[0])
     },
     ondropdeactivate: function (event) {
@@ -159,15 +159,22 @@ function swapPositions(curr, other) {
 }
 
 //Function that swaps the position of two objects and checks to see if the current list is correct
-function pushInList(curr, position) {
-    var currPos = currList.indexOf(curr);
-    var temp = "";
+function pushInList(draggable, dropzone) {
+    // var currPos = currList.indexOf(draggable);
+    // var temp = "";
 
-    if (currPos !== position) {
-        temp = currList[position];
-        currList[position] = curr;
-        currList[currPos] = temp;
-    }
+    // console.log("curr Position: " + currPos);
+    // console.log("dropzone Position: " + dropzone);
+    // console.log("array Position: " + draggable);
+
+    //this works whil we are not swaping the objects and are just dropping them one at a time
+    currList.splice(dropzone, 1, draggable);
+
+    // if (currPos !== dropzone) {
+    //     temp = currList[dropzone];
+    //     currList[dropzone] = draggable;
+    //     currList[currPos] = temp;
+    // }
 
     if (checkList()) {
         puzzleSolved();
@@ -183,12 +190,19 @@ function puzzleSolved() {
 function checkList() {
     var allCorrect = true;
 
-    for (let i = 0; i < correctList.length; i++) {
-        if (currList[i] !== correctList[i]) {
-            allCorrect = false;
-            break;
+    if (correctList.length === currList.length) {
+        // for (let i = 0; i < currList.length; i++) {
+        //     console.log("curr at index " + i + ": " + currList[i]);
+        //     allCorrect = false;
+        // }
+        for (let i = 0; i < correctList.length; i++) {
+            if (currList[i] !== correctList[i]) {
+                allCorrect = false;
+                break;
+            }
         }
     }
+
 
     return allCorrect;
 }
