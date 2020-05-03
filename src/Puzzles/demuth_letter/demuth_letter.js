@@ -45,6 +45,24 @@ function intializeArray() {
 function getCorrect() {
     let array = [];
 
+    // array[0] = "1917"; array[16] = "ew"; array[32] = "of";
+    // array[1] = "8th"; array[17] = "independents"; array[33] = "next";
+    // array[2] = "demuth"; array[18] = "duchamp"; array[34] = "the";
+    // array[3] = "a"; array[19] = "avenue"; array[35] = "exhibition";
+    // array[4] = "grand"; array[20] = "day"; array[36] = "that";
+    // array[5] = "do anything"; array[21] = "it"; array[37] = "ork";
+    // array[6] = "co"; array[22] = "ittee"; array[38] = "schuvler";
+    // array[7] = "central"; array[23] = "you"; array[39] = "s";
+    // array[8] = "henry"; array[24] = "j"; array[40] = "super";
+    // array[9] = "ce"; array[25] = "marcel"; array[41] = "tain";
+    // array[10] = "fou"; array[26] = "move"; array[42] = "rich";
+    // array[11] = "dear"; array[27] = "you"; array[43] = "saalon";
+    // array[12] = "bre"; array[28] = "y"; array[44] = "it was not exhibited";
+    // array[13] = "appreciate"; array[29] = "would"; array[45] = "independents";
+    // array[14] = "article"; array[30] = "the"; array[46] = "ity";
+    // array[15] = "columbus"; array[31] = "mutt"; array[47] = "lptu";
+
+
     array[0] = "henry"; array[16] = "central"; array[32] = "you";
     array[1] = "1917"; array[17] = "it was not exhibited"; array[33] = "you";
     array[2] = "bre"; array[18] = "independents"; array[34] = "anything";
@@ -151,12 +169,15 @@ function puzzleSolved() {
 function checkList() {
     var allCorrect = true;
 
-    for (let i = 0; i < correctList.length; i++) {
-        if (currList[i] !== correctList[i]) {
-            allCorrect = false;
-            break;
+    if (correctList.length === currList.length) {
+        for (let i = 0; i < correctList.length; i++) {
+            if (currList[i] !== correctList[i]) {
+                allCorrect = false;
+                break;
+            }
         }
     }
+
 
     return allCorrect;
 }
@@ -191,630 +212,769 @@ class Demuth extends Component {
                 </Helmet>
 
                 {/* Dropzones Container */}
-                <div>
-                    {/* line one */}
-                    <div className="dropzone 0" style={{
-                        height: '19px',
-                        width: '66px',
-                        left: '239px',
-                        top: '293px',
-                    }} />
 
-                    {/* line two */}
-                    <div className="dropzone 1" style={{
-                        height: '10px',
-                        width: '52px',
-                        left: '525px',
-                        top: '316px',
-                    }} />
 
-                    {/* line three */}
-                    <div className="dropzone 2" style={{
-                        height: '19px',
-                        width: '39px',
-                        left: '452px',
-                        top: '342px',
-                    }} />
-
-                    <div className="dropzone 3" style={{
-                        height: '19px',
-                        width: '80px',
-                        left: '715px',
-                        top: '340px',
-                    }} />
-
-                    <div className="dropzone 4" style={{
-                        height: '19px',
-                        width: '43px',
-                        left: '841px',
-                        top: '340px',
-                    }} />
-
-                    {/* line four */}
-                    <div className="dropzone 5" style={{
-                        height: ' 0px',
-                        width: '30px',
-                        left: '467px',
-                        top: '371px',
-                    }} />
-
-                    <div className="dropzone 6" style={{
-                        height: ' 0px',
-                        width: '40px',
-                        left: '516px',
-                        top: '371px',
-                    }} />
-
-                    <div className="dropzone 7" style={{
-                        height: ' 0px',
-                        width: '37px',
-                        left: '578px',
-                        top: '370px',
-                    }} />
-
-                    {/* line five */}
-                    <div className="dropzone 8" style={{
-                        height: '19px',
-                        width: '52px',
-                        left: '242px',
-                        top: '415px',
-                    }} />
-
-                    {/* line six */}
-                    <div className="dropzone 9" style={{
-                        height: '19px',
-                        width: '29px',
-                        left: '329px',
-                        top: '440px',
-                    }} />
-
-                    <div className="dropzone 10" style={{
-                        height: '19px',
-                        width: '10px',
-                        left: '398px',
-                        top: '440px',
-                    }} />
-
-                    <div className="dropzone 11" style={{
-                        height: '19px',
-                        width: '50px',
-                        left: '445px',
-                        top: '440px',
-                    }} />
-
-                    <div className="dropzone 12" style={{
-                        height: '19px',
-                        width: '10px',
-                        left: '641px',
-                        top: '440px',
-                    }} />
-
-                    <div className="dropzone 13" style={{
-                        height: '19px',
-                        width: '40px',
-                        left: '670px',
-                        top: '440px',
-                    }} />
-
-                    <div className="dropzone 14" style={{
-                        height: '10px',
-                        width: '50px',
-                        left: '725px',
-                        top: '441px',
-                    }} />
-
-                    {/* line seven */}
-                    <div className="dropzone 15" style={{
-                        height: '19px',
-                        width: '70px',
-                        left: '940px',
-                        top: '464px',
-                    }} />
-
-                    {/* line eight */}
-                    <div className="dropzone 16" style={{
-                        height: '19px',
-                        width: '95px',
-                        left: '202px',
-                        top: '489px',
-                    }} />
-
-                    {/* line nine */}
-                    <div className="dropzone 17" style={{
-                        height: '19px',
-                        width: '255px',
-                        left: '268px',
-                        top: '518px',
-                    }} />
-
-                    {/* line ten */}
-                    <div className="dropzone 18" style={{
-                        height: '10px',
-                        width: '155px',
-                        left: '330px',
-                        top: '545px',
-                    }} />
-
-                    <div className="dropzone 19" style={{
-                        height: '10px',
-                        width: '27px',
-                        left: '826px',
-                        top: '540px',
-                    }} />
-
-                    <div className="dropzone 20" style={{
-                        height: '10px',
-                        width: '60px',
-                        left: '880px',
-                        top: '546px',
-                    }} />
-
-                    {/* line eleven */}
-                    <div className="dropzone 21" style={{
-                        height: '10px',
-                        width: '10px',
-                        left: '200px',
-                        top: '565px',
-                    }} />
-
-                    <div className="dropzone 22" style={{
-                        height: '10px',
-                        width: '10px',
-                        left: '243px',
-                        top: '567px',
-                    }} />
-
-                    <div className="dropzone 23" style={{
-                        height: '10px',
-                        width: '27px',
-                        left: '660px',
-                        top: '564px',
-                    }} />
-
-                    <div className="dropzone 24" style={{
-                        height: '10px',
-                        width: '41px',
-                        left: '697px',
-                        top: '564px',
-                    }} />
-
-                    <div className="dropzone 25" style={{
-                        height: '10px',
-                        width: '129px',
-                        left: '748px',
-                        top: '564px',
-                    }} />
-
-                    {/* line twelve */}
-                    <div className="dropzone 26" style={{
-                        height: '10px',
-                        width: '37px',
-                        left: '575px',
-                        top: '590px',
-                    }} />
-
-                    <div className="dropzone 27" style={{
-                        height: '10px',
-                        width: '62px',
-                        left: '625px',
-                        top: '595px',
-                    }} />
-
-                    <div className="dropzone 28" style={{
-                        height: '10px',
-                        width: '152px',
-                        left: '700px',
-                        top: '593px',
-                    }} />
-
-                    <div className="dropzone 29" style={{
-                        height: '10px',
-                        width: '66px',
-                        left: '913px',
-                        top: '588px',
-                    }} />
-
-                    {/* line thirteen */}
-                    <div className="dropzone 30" style={{
-                        height: '10px',
-                        width: '43px',
-                        left: '400px',
-                        top: '617px',
-                    }} />
-
-                    <div className="dropzone 31" style={{
-                        height: '10px',
-                        width: '58px',
-                        left: '450px',
-                        top: '617px',
-                    }} />
-
-                    <div className="dropzone 32" style={{
-                        height: '10px',
-                        width: '50px',
-                        left: '515px',
-                        top: '617px',
-                    }} />
-
-                    {/* line fourteen */}
-                    <div className="dropzone 33" style={{
-                        height: '10px',
-                        width: '40px',
-                        left: '315px',
-                        top: '645px',
-                    }} />
-
-                    <div className="dropzone 34" style={{
-                        height: '10px',
-                        width: '40px',
-                        left: '440px',
-                        top: '645px',
-                    }} />
-
-                    <div className="dropzone 35" style={{
-                        height: '10px',
-                        width: '110px',
-                        left: '562px',
-                        top: '643px',
-                    }} />
-
-                    <div className="dropzone 36" style={{
-                        height: '10px',
-                        width: '54px',
-                        left: '738px',
-                        top: '640px',
-                    }} />
-
-                    {/* line fourteen */}
-                    <div className="dropzone 37" style={{
-                        height: '13px',
-                        width: '40px',
-                        left: '254px',
-                        top: '670px',
-                    }} />
-
-                    <div className="dropzone 38" style={{
-                        height: '10px',
-                        width: '92px',
-                        left: '302px',
-                        top: '673px',
-                    }} />
-
-                    <div className="dropzone 39" style={{
-                        height: '10px',
-                        width: '68px',
-                        left: '450px',
-                        top: '671px',
-                    }} />
-
-                    <div className="dropzone 40" style={{
-                        height: '10px',
-                        width: '124px',
-                        left: '529px',
-                        top: '671px',
-                    }} />
-
-                    <div className="dropzone 41" style={{
-                        height: '10px',
-                        width: '28px',
-                        left: '662px',
-                        top: '665px',
-                    }} />
-
-                    {/* line fifteen */}
-                    <div className="dropzone 42" style={{
-                        height: '24px',
-                        width: '77px',
-                        left: '563px',
-                        top: '738px',
-                    }} />
-
-                    {/* line sixteen */}
-                    <div className="dropzone 43" style={{
-                        height: '24px',
-                        width: '75px',
-                        left: '850px',
-                        top: '790px',
-                    }} />
-
-                    {/* line seventeen */}
-                    <div className="dropzone 44" style={{
-                        height: '24px',
-                        width: '105px',
-                        left: '786px',
-                        top: '815px',
-                    }} />
-
-                    <div className="dropzone 45" style={{
-                        height: '24px',
-                        width: '57px',
-                        left: '645px',
-                        top: '817px',
-                    }} />
-
-                    <div className="dropzone 46" style={{
-                        height: '10px',
-                        width: '56px',
-                        left: '550px',
-                        top: '816px',
-                    }} />
-
-                    <div className="dropzone 47" style={{
-                        height: '24px',
-                        width: '104px',
-                        left: '388px',
-                        top: '815px',
-                    }} />
-
-                    <div className="dropzone 48" style={{
-                        height: '24px',
-                        width: '94px',
-                        left: '210px',
-                        top: '820px',
-                    }} />
-
-                </div>
-
-                {/* Dragables Containe */}
+                {/* Dragables Container */}
                 <div>
                     {/* First Row */}
 
-                    <div className="draggable box" style={{ fontSize: '14px' }}>
+                    <div className="draggable box" style={{
+                        fontSize: '15px',
+                        left: '0px',
+                        top: '0px'
+                    }}>
                         {/* <Image src={DL_2} /> */}
                         1917
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '60px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_1} /> */}
                         8th
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '105px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_14} /> */}
                         Demuth
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '200px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_3} /> */}
                         A
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '230px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_20} /> */}
                         grand
                     </div>
 
-                    <div className="draggable box" style={{ fontSize: '17px' }}>
+                    <div className="draggable box" style={{
+                        fontSize: '17px',
+                        left: '310px',
+                        top: '0px'
+                    }}>
                         {/* <Image src={DL_15} /> */}
                         do anything
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '435px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_10} /> */}
                         co
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '475px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_9} /> */}
                         central
                     </div>
 
-                    <div className="draggable box" style={{ fontSize: '14px' }}>
+                    <div className="draggable box" style={{
+                        fontSize: '20px',
+                        left: '570px',
+                        top: '0px'
+                    }}>
                         {/* <Image src={DL_21} /> */}
                         henry
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '650px',
+                        top: '0px'
+                    }}>
                         {/* <Image src={DL_8} /> */}
                         ce
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '690px',
+                        top: '0px'
+                    }}>
                         {/* <Image src={DL_19} /> */}
                         fou
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '750px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_13} /> */}
                         dear
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '820px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_7} /> */}
                         bre
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '870px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_4} /> */}
                         appreciate
                     </div>
 
                     {/* Second Row */}
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '1000px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_5} /> */}
                         article
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '1100px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_11} /> */}
                         columbus
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '1220px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_17} /> */}
                         ew
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '1260px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_22} /> */}
                         independents
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '1425px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_16} /> */}
                         duchamp
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '1530px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_6} /> */}
                         avenue
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '1620px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_12} /> */}
                         day
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '1670px',
+                        top: '0px',
+                    }}>
                         {/* <Image src={DL_28} /> */}
                         lptu
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '0px',
+                        top: '60px',
+                    }}>
                         {/* <Image src={DL_24} /> */}
                         it
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '30px',
+                        top: '60px',
+                    }}>
                         {/* <Image src={DL_25} /> */}
                         ittee
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '100px',
+                        top: '60px',
+                    }}>
                         {/* <Image src={DL_26} /> */}
                         ity
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '150px',
+                        top: '60px',
+                    }}>
                         {/* <Image src={DL_47} /> */}
                         you
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '210px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_27} /> */}
                         j
                     </div>
 
-
-                    {/* Third Row */}
-
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '240px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_29} /> */}
                         Marcel
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '340px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_30} /> */}
                         move
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '410px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_46} /> */}
                         you
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '470px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_45} /> */}
                         y
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '500px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_44} /> */}
                         would
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '585px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_43} /> */}
                         the
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '630px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_31} /> */}
                         mutt
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '695px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_33} /> */}
                         of
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '730px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_32} /> */}
                         next
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '790px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_42} /> */}
                         the
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '830px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_18} /> */}
                         exhibition
                     </div>
 
-
-                    {/* Fourth Row */}
-
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '950px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_41} /> */}
                         that
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '1000px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_34} /> */}
                         ork
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '1060px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_38} /> */}
                         schuvler
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '1180px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_36} /> */}
                         s
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '1200px',
+                        top: '60px'
+                    }}>
                         {/* <Image src={DL_39} /> */}
                         super
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '0px',
+                        top: '120px',
+                    }}>
                         {/* <Image src={DL_40} /> */}
                         tain
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '50px',
+                        top: '120px'
+                    }}>
                         {/* <Image src={DL_35} /> */}
                         rich
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '110px',
+                        top: '120px'
+                    }}>
                         {/* <Image src={DL_37} /> */}
                         salon
                     </div>
 
-                    <div className="draggable box" style={{ fontSize: '20px' }}>
+                    <div className="draggable box" style={{
+                        fontSize: '20px',
+                        left: '180px',
+                        top: '120px'
+                    }}>
                         {/* <Image src={DL_23} /> */}
                         it was not exhibited
                     </div>
 
-                    <div className="draggable box">
+                    <div className="draggable box" style={{
+                        left: '410px',
+                        top: '120px'
+                    }}>
                         {/* <Image src={DL_48} /> */}
                         independents
                     </div>
 
+                    {/* Base Letter */}
+                    <div className="demuth-container">
+                        <div className="demuth-letter">
+                            <Image src={DL_under} />
+                            {/* line one */}
+                            <div className="dropzone 0" style={{
+                                height: '30px',
+                                width: '75px',
+                                left: '122px',
+                                top: '69px',
+                            }} />
+
+                            {/* line two */}
+                            <div className="dropzone 1" style={{
+                                height: '30px',
+                                width: '56px',
+                                left: '410px',
+                                top: '86px',
+                            }} />
+
+                            {/* line three */}
+                            <div className="dropzone 2" style={{
+                                height: '26px',
+                                width: '43px',
+                                left: '333px',
+                                top: '115px',
+                            }} />
+
+                            <div className="dropzone 3" style={{
+                                height: '27px',
+                                width: '88px',
+                                left: '596px',
+                                top: '115px',
+                            }} />
+
+                            <div className="dropzone 4" style={{
+                                height: '27px',
+                                width: '70px',
+                                left: '719px',
+                                top: '115px',
+                            }} />
+
+                            {/* line four */}
+                            <div className="dropzone 5" style={{
+                                height: '27px',
+                                width: '32px',
+                                left: '352px',
+                                top: '140px',
+                            }} />
+
+                            <div className="dropzone 6" style={{
+                                height: '27px',
+                                width: '45px',
+                                left: '400px',
+                                top: '140px',
+                            }} />
+
+                            <div className="dropzone 7" style={{
+                                height: '27px',
+                                width: '45px',
+                                left: '463px',
+                                top: '140px',
+                            }} />
+
+                            {/* line five */}
+                            <div className="dropzone 8" style={{
+                                height: '27px',
+                                width: '70px',
+                                left: '120px',
+                                top: '189px',
+                            }} />
+
+                            {/* line six */}
+                            <div className="dropzone 9" style={{
+                                height: '19px',
+                                width: '29px',
+                                left: '329px',
+                                top: '440px',
+                            }} />
+
+                            <div className="dropzone 10" style={{
+                                height: '19px',
+                                width: '10px',
+                                left: '398px',
+                                top: '440px',
+                            }} />
+
+                            <div className="dropzone 11" style={{
+                                height: '19px',
+                                width: '50px',
+                                left: '445px',
+                                top: '440px',
+                            }} />
+
+                            <div className="dropzone 12" style={{
+                                height: '19px',
+                                width: '10px',
+                                left: '641px',
+                                top: '440px',
+                            }} />
+
+                            <div className="dropzone 13" style={{
+                                height: '19px',
+                                width: '40px',
+                                left: '670px',
+                                top: '440px',
+                            }} />
+
+                            <div className="dropzone 14" style={{
+                                height: '10px',
+                                width: '50px',
+                                left: '725px',
+                                top: '441px',
+                            }} />
+
+                            {/* line seven */}
+                            <div className="dropzone 15" style={{
+                                height: '19px',
+                                width: '70px',
+                                left: '940px',
+                                top: '464px',
+                            }} />
+
+                            {/* line eight */}
+                            <div className="dropzone 16" style={{
+                                height: '19px',
+                                width: '95px',
+                                left: '202px',
+                                top: '489px',
+                            }} />
+
+                            {/* line nine */}
+                            <div className="dropzone 17" style={{
+                                height: '19px',
+                                width: '255px',
+                                left: '268px',
+                                top: '518px',
+                            }} />
+
+                            {/* line ten */}
+                            <div className="dropzone 18" style={{
+                                height: '10px',
+                                width: '155px',
+                                left: '330px',
+                                top: '545px',
+                            }} />
+
+                            <div className="dropzone 19" style={{
+                                height: '10px',
+                                width: '27px',
+                                left: '826px',
+                                top: '540px',
+                            }} />
+
+                            <div className="dropzone 20" style={{
+                                height: '10px',
+                                width: '60px',
+                                left: '880px',
+                                top: '546px',
+                            }} />
+
+                            {/* line eleven */}
+                            <div className="dropzone 21" style={{
+                                height: '10px',
+                                width: '10px',
+                                left: '20000px',
+                                top: '565px',
+                            }} />
+
+                            <div className="dropzone 22" style={{
+                                height: '10px',
+                                width: '10px',
+                                left: '243px',
+                                top: '567px',
+                            }} />
+
+                            <div className="dropzone 23" style={{
+                                height: '10px',
+                                width: '27px',
+                                left: '660px',
+                                top: '564px',
+                            }} />
+
+                            <div className="dropzone 24" style={{
+                                height: '10px',
+                                width: '41px',
+                                left: '697px',
+                                top: '564px',
+                            }} />
+
+                            <div className="dropzone 25" style={{
+                                height: '10px',
+                                width: '129px',
+                                left: '748px',
+                                top: '564px',
+                            }} />
+
+                            {/* line twelve */}
+                            <div className="dropzone 26" style={{
+                                height: '10px',
+                                width: '37px',
+                                left: '575px',
+                                top: '590px',
+                            }} />
+
+                            <div className="dropzone 27" style={{
+                                height: '10px',
+                                width: '62px',
+                                left: '625px',
+                                top: '595px',
+                            }} />
+
+                            <div className="dropzone 28" style={{
+                                height: '10px',
+                                width: '152px',
+                                left: '700px',
+                                top: '593px',
+                            }} />
+
+                            <div className="dropzone 29" style={{
+                                height: '10px',
+                                width: '66px',
+                                left: '913px',
+                                top: '588px',
+                            }} />
+
+                            {/* line thirteen */}
+                            <div className="dropzone 30" style={{
+                                height: '10px',
+                                width: '43px',
+                                left: '400px',
+                                top: '617px',
+                            }} />
+
+                            <div className="dropzone 31" style={{
+                                height: '10px',
+                                width: '58px',
+                                left: '450px',
+                                top: '617px',
+                            }} />
+
+                            <div className="dropzone 32" style={{
+                                height: '10px',
+                                width: '50px',
+                                left: '515px',
+                                top: '617px',
+                            }} />
+
+                            {/* line fourteen */}
+                            <div className="dropzone 33" style={{
+                                height: '10px',
+                                width: '40px',
+                                left: '315px',
+                                top: '645px',
+                            }} />
+
+                            <div className="dropzone 34" style={{
+                                height: '10px',
+                                width: '40px',
+                                left: '440px',
+                                top: '645px',
+                            }} />
+
+                            <div className="dropzone 35" style={{
+                                height: '10px',
+                                width: '110px',
+                                left: '562px',
+                                top: '643px',
+                            }} />
+
+                            <div className="dropzone 36" style={{
+                                height: '10px',
+                                width: '54px',
+                                left: '738px',
+                                top: '640px',
+                            }} />
+
+                            {/* line fourteen */}
+                            <div className="dropzone 37" style={{
+                                height: '13px',
+                                width: '40px',
+                                left: '254px',
+                                top: '670px',
+                            }} />
+
+                            <div className="dropzone 38" style={{
+                                height: '10px',
+                                width: '92px',
+                                left: '302px',
+                                top: '673px',
+                            }} />
+
+                            <div className="dropzone 39" style={{
+                                height: '10px',
+                                width: '68px',
+                                left: '450px',
+                                top: '671px',
+                            }} />
+
+                            <div className="dropzone 40" style={{
+                                height: '10px',
+                                width: '124px',
+                                left: '529px',
+                                top: '671px',
+                            }} />
+
+                            <div className="dropzone 41" style={{
+                                height: '10px',
+                                width: '28px',
+                                left: '662px',
+                                top: '665px',
+                            }} />
+
+                            {/* line fifteen */}
+                            <div className="dropzone 42" style={{
+                                height: '24px',
+                                width: '77px',
+                                left: '563px',
+                                top: '738px',
+                            }} />
+
+                            {/* line sixteen */}
+                            <div className="dropzone 43" style={{
+                                height: '24px',
+                                width: '75px',
+                                left: '850px',
+                                top: '790px',
+                            }} />
+
+                            {/* line seventeen */}
+                            <div className="dropzone 44" style={{
+                                height: '24px',
+                                width: '105px',
+                                left: '786px',
+                                top: '815px',
+                            }} />
+
+                            <div className="dropzone 45" style={{
+                                height: '24px',
+                                width: '57px',
+                                left: '645px',
+                                top: '817px',
+                            }} />
+
+                            <div className="dropzone 46" style={{
+                                height: '10px',
+                                width: '56px',
+                                left: '550px',
+                                top: '816px',
+                            }} />
+
+                            <div className="dropzone 47" style={{
+                                height: '24px',
+                                width: '104px',
+                                left: '388px',
+                                top: '815px',
+                            }} />
+
+                            <div className="dropzone 48" style={{
+                                height: '24px',
+                                width: '94px',
+                                left: '210px',
+                                top: '820px',
+                            }} />
+                        </div>
+                    </div>
                 </div>
-
-                <div></div>
-
-                {/* Base Letter */}
-                <Image src={DL_under} style={{ marginTop: '3%', paddingLeft: '100px', paddingTop: '29px', paddingBottom: '150px' }} />
-
-
 
             </Container>
 
