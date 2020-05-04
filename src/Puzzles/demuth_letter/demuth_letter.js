@@ -219,7 +219,6 @@ class Demuth extends Component {
                     {/* First Row */}
 
                     <div className="draggable box" style={{
-                        fontSize: '15px',
                         left: '0px',
                         top: '0px'
                     }}>
@@ -228,7 +227,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '60px',
+                        left: '75px',
                         top: '0px',
                     }}>
                         {/* <Image src={DL_1} /> */}
@@ -236,7 +235,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '105px',
+                        left: '115px',
                         top: '0px',
                     }}>
                         {/* <Image src={DL_14} /> */}
@@ -244,7 +243,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '200px',
+                        left: '205px',
                         top: '0px',
                     }}>
                         {/* <Image src={DL_3} /> */}
@@ -252,7 +251,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '230px',
+                        left: '235px',
                         top: '0px',
                     }}>
                         {/* <Image src={DL_20} /> */}
@@ -260,8 +259,8 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        fontSize: '17px',
-                        left: '310px',
+                        // fontSize: '17px',
+                        left: '315px',
                         top: '0px'
                     }}>
                         {/* <Image src={DL_15} /> */}
@@ -269,7 +268,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '435px',
+                        left: '475px',
                         top: '0px',
                     }}>
                         {/* <Image src={DL_10} /> */}
@@ -277,7 +276,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '475px',
+                        left: '505px',
                         top: '0px',
                     }}>
                         {/* <Image src={DL_9} /> */}
@@ -285,8 +284,8 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        fontSize: '20px',
-                        left: '570px',
+                        // fontSize: '20px',
+                        left: '600px',
                         top: '0px'
                     }}>
                         {/* <Image src={DL_21} /> */}
@@ -294,7 +293,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '650px',
+                        left: '685px',
                         top: '0px'
                     }}>
                         {/* <Image src={DL_8} /> */}
@@ -302,7 +301,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '690px',
+                        left: '715px',
                         top: '0px'
                     }}>
                         {/* <Image src={DL_19} /> */}
@@ -310,7 +309,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '750px',
+                        left: '760px',
                         top: '0px',
                     }}>
                         {/* <Image src={DL_13} /> */}
@@ -368,39 +367,39 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '1425px',
-                        top: '0px',
+                        left: '0px',
+                        top: '60px',
                     }}>
                         {/* <Image src={DL_16} /> */}
                         duchamp
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '1530px',
-                        top: '0px',
+                        left: '105px',
+                        top: '60px',
                     }}>
                         {/* <Image src={DL_6} /> */}
                         avenue
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '1620px',
-                        top: '0px',
+                        left: '190px',
+                        top: '60px',
                     }}>
                         {/* <Image src={DL_12} /> */}
                         day
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '1670px',
-                        top: '0px',
+                        left: '240px',
+                        top: '60px',
                     }}>
                         {/* <Image src={DL_28} /> */}
                         lptu
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '0px',
+                        left: '300px',
                         top: '60px',
                     }}>
                         {/* <Image src={DL_24} /> */}
@@ -408,7 +407,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '30px',
+                        left: '325px',
                         top: '60px',
                     }}>
                         {/* <Image src={DL_25} /> */}
@@ -416,7 +415,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '100px',
+                        left: '385px',
                         top: '60px',
                     }}>
                         {/* <Image src={DL_26} /> */}
@@ -424,7 +423,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '150px',
+                        left: '430px',
                         top: '60px',
                     }}>
                         {/* <Image src={DL_47} /> */}
@@ -432,7 +431,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '210px',
+                        left: '485px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_27} /> */}
@@ -440,7 +439,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '240px',
+                        left: '505px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_29} /> */}
@@ -448,7 +447,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '340px',
+                        left: '595px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_30} /> */}
@@ -456,7 +455,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '410px',
+                        left: '660px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_46} /> */}
@@ -464,7 +463,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '470px',
+                        left: '715px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_45} /> */}
@@ -472,7 +471,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '500px',
+                        left: '740px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_44} /> */}
@@ -480,7 +479,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '585px',
+                        left: '820px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_43} /> */}
@@ -488,7 +487,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '630px',
+                        left: '860px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_31} /> */}
@@ -496,7 +495,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '695px',
+                        left: '920px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_33} /> */}
@@ -504,7 +503,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '730px',
+                        left: '950px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_32} /> */}
@@ -512,7 +511,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '790px',
+                        left: '1005px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_42} /> */}
@@ -520,7 +519,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '830px',
+                        left: '1005px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_18} /> */}
@@ -528,7 +527,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '950px',
+                        left: '1125px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_41} /> */}
@@ -536,7 +535,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '1000px',
+                        left: '1170px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_34} /> */}
@@ -544,7 +543,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '1060px',
+                        left: '1222px',
                         top: '60px'
                     }}>
                         {/* <Image src={DL_38} /> */}
@@ -552,23 +551,23 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '1180px',
-                        top: '60px'
+                        left: '0px',
+                        top: '120px'
                     }}>
                         {/* <Image src={DL_36} /> */}
                         s
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '1200px',
-                        top: '60px'
+                        left: '20px',
+                        top: '120px'
                     }}>
                         {/* <Image src={DL_39} /> */}
                         super
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '0px',
+                        left: '100px',
                         top: '120px',
                     }}>
                         {/* <Image src={DL_40} /> */}
@@ -576,7 +575,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '50px',
+                        left: '150px',
                         top: '120px'
                     }}>
                         {/* <Image src={DL_35} /> */}
@@ -584,7 +583,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '110px',
+                        left: '210px',
                         top: '120px'
                     }}>
                         {/* <Image src={DL_37} /> */}
@@ -593,7 +592,7 @@ class Demuth extends Component {
 
                     <div className="draggable box" style={{
                         fontSize: '20px',
-                        left: '180px',
+                        left: '280px',
                         top: '120px'
                     }}>
                         {/* <Image src={DL_23} /> */}
@@ -601,7 +600,7 @@ class Demuth extends Component {
                     </div>
 
                     <div className="draggable box" style={{
-                        left: '410px',
+                        left: '510px',
                         top: '120px'
                     }}>
                         {/* <Image src={DL_48} /> */}
@@ -975,6 +974,8 @@ class Demuth extends Component {
                         </div>
                     </div>
                 </div>
+
+                <div className="addspace" />
 
             </Container>
 
