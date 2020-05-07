@@ -1,5 +1,7 @@
 //React Imports
 import React, { Component } from 'react';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
 
 //Image Imports
 import Background from '../../folder_elements/wooden.png'
@@ -15,6 +17,20 @@ import Popup from "reactjs-popup";
 
 
 class AR_Letter extends Component {
+    static propTypes = {
+        cookies: instanceOf(Cookies).isRequired
+    };
+
+    // eslint-disable-next-line
+    constructor(props) {
+        super(props);
+    }
+
+    setChildren() {
+        const { cookies } = this.props;
+
+        cookies.set('TheLetterChildren', "show");
+    }
 
     render() {
 
@@ -27,7 +43,7 @@ class AR_Letter extends Component {
                 </Helmet>
 
                 <Popup style={{ background: 'transparent', border: 'none' }}
-                    trigger={<Image src={letter} className='ar-letter' />} modal >
+                    trigger={<Image src={letter} className='ar-letter' onClick={this.setChildren()} />} modal >
                     {close => (
                         <div style={{ backgroundImage: `url(${Background}`, border: 'none' }}>
                             <p className='text'>Click outside to escape window</p>
@@ -41,4 +57,4 @@ class AR_Letter extends Component {
     }
 }
 
-export default AR_Letter;
+export default withCookies(AR_Letter);

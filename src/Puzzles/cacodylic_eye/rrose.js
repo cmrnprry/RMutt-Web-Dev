@@ -25,12 +25,10 @@ class Cacodylate extends Component {
         const { cookies } = this.props;
 
         this.state = {
-            hidePuzzle: false,
-            showReward: false,
             value: '',
         };
-
-        cookies.set('hidePuzzle', false);
+        
+        cookies.remove('hidePuzzle', false);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }

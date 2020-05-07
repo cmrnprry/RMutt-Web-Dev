@@ -27,7 +27,7 @@ import Helmet from "react-helmet";
 import interact from 'interactjs'
 
 //current and swap to positions 
-var currPos = 0, swapToPos = 0;
+//var currPos = 0, swapToPos = 0;
 
 //Moving any of the draggables positions requires you to adjust this 
 var currList = ["1", "4", "15", "6", "8", "13", "11", "10", "3", "2", "0", "14", "9", "5", "7", "12"];
@@ -75,14 +75,14 @@ interact('.dropzone-blind').dropzone({
 
     },
     ondragleave: function (event) {
-        currPos = event.target.classList[0];
+        //currPos = event.target.classList[0];
         // remove the drop feedback style
         event.target.classList.add('drop-active-blind')
         event.target.classList.remove('drop-target-blind')
         event.relatedTarget.classList.remove('can-drop')
     },
     ondrop: function (event) {
-        swapToPos = event.target.classList[0];
+        //swapToPos = event.target.classList[0];
         // swapPositions(currPos, swapToPos)
         pushInList(event.relatedTarget.classList[0], event.target.classList[0])
     },
@@ -104,9 +104,6 @@ function setIntialX() {
         array[i] = val + "px";
         array[i + 1] = val + "px";
 
-        console.log("array at " + i + ": " + val + "px");
-        console.log("array at " + (i + 1) + ": " + val + "px");
-
         val += 790;
         i++;
     }
@@ -114,7 +111,9 @@ function setIntialX() {
     return array;
 }
 
+
 //Function that swaps the position of two objects
+// eslint-disable-next-line
 function swapPositions(curr, other) {
     var currPosTop = topPositions[curr], otherPosTop = topPositions[other];
     var currPosLeft = leftPositions[curr % 2], otherPosLeft = leftPositions[other % 2];

@@ -1,6 +1,8 @@
 //React Imports
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
 
 //Image Imports
 import Logo from '../../Logos/logo_rect.png'
@@ -18,6 +20,28 @@ import { Helmet } from "react-helmet";
 
 
 class About extends Component {
+    static propTypes = {
+        cookies: instanceOf(Cookies).isRequired
+    };
+
+    // eslint-disable-next-line
+    constructor(props) {
+        super(props);
+    }
+
+    checkCookie() {
+        const { cookies } = this.props;
+        var val = cookies.get('login');
+
+        console.log(val);
+
+        if (val === 'whoisrmutt' || val === 'nonsense') {
+            this.props.history.push('/clues');
+        }
+        else {
+            this.props.history.push('/archive');
+        }
+    }
 
     render() {
 
@@ -36,9 +60,7 @@ class About extends Component {
 
                 <ul>
                     <li>
-                        <Link to="archive">
-                            <Image className="page" src={Archive} />
-                        </Link>
+                        <Image className="page" src={Archive} onClick={() => this.checkCookie()} />
                     </li>
                     <li>
                         <Link to="about">
@@ -59,4 +81,4 @@ class About extends Component {
     }
 }
 
-export default About;
+export default withCookies(About);

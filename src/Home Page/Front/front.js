@@ -1,6 +1,8 @@
 //React Imports
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
 
 //Image Imports
 import Logo from '../../Logos/logo_rect.png'
@@ -17,9 +19,29 @@ import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import { Helmet } from "react-helmet";
 
-
-
 class Front extends Component {
+    static propTypes = {
+        cookies: instanceOf(Cookies).isRequired
+    };
+
+    // eslint-disable-next-line
+    constructor(props) {
+        super(props);
+    }
+
+    checkCookie() {
+        const { cookies } = this.props;
+        var val = cookies.get('login');
+
+        console.log(val);
+
+        if (val === 'whoisrmutt' || val === 'nonsense') {
+            this.props.history.push('/clues');
+        }
+        else {
+            this.props.history.push('/archive');
+        }
+    }
 
     render() {
 
@@ -37,9 +59,7 @@ class Front extends Component {
 
                 <ul>
                     <li>
-                        <Link to="archive">
-                            <Image className="page" src={Archive} />
-                        </Link>
+                        <Image className="page" src={Archive} onClick={() => this.checkCookie()} />
                     </li>
                     <li>
                         <Link to="about">
@@ -60,4 +80,4 @@ class Front extends Component {
     }
 }
 
-export default Front;
+export default withCookies(Front);
