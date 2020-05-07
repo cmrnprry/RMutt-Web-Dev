@@ -10,6 +10,7 @@ import './Stylesheets/demuth_letter.css';
 import './Stylesheets/tissue_paper.css';
 import './Stylesheets/cacodylate_eye.css';
 import './Stylesheets/blind_man.css';
+import './Stylesheets/mott_catalog.css';
 
 //Home Page
 import Index from './Home Page/Front/Home/home';
@@ -25,6 +26,7 @@ import Cacodylate_Eye from './Puzzles/cacodylic_eye/cacodylate_eye'
 import Rrose from './Puzzles/cacodylic_eye/rrose'
 import Tissue_Paper from './Puzzles/tissue_paper/tissue_paper'
 import Blind_Man from './Puzzles/blind_man/blind_man'
+import Mott_Catalog from './Puzzles/mott_catalog/mott_catalog'
 
 
 class App extends Component {
@@ -47,6 +49,7 @@ class App extends Component {
             <Route exact path='/rrose' component={Rrose} />
             <Route exact path='/tissue-paper' component={Tissue_Paper} />
             <Route exact path='/blind-man' component={Blind_Man} />
+            <Route exact path='/mott-catalog' component={Mott_Catalog} />
           </Switch>
         </Router>
       </CookiesProvider>
