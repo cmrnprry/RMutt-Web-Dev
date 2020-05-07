@@ -112,6 +112,15 @@ h1 {
 	line-height:1.85vw;
 }
 
+.written-2
+{
+	top: 45px;
+    left: 840px;
+	position:absolute;
+	font-family:"Damn Arc";
+	font-size:2.5vw;
+}
+
 /*Folder Elements End*/
 
 head {

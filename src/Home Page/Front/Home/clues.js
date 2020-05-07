@@ -8,6 +8,7 @@ import { instanceOf } from 'prop-types';
 import Background from '../../../folder_elements/wooden.png'
 import Folder from '../../../folder_elements/folder_note.png'
 import Pen from '../../../folder_elements/pen/pen_bak.png'
+import RrosePhoto from '../../../Puzzles/cacodylic_eye/rrose_images/r_rose_thumbnail.png'
 
 //Web Imports
 import Image from 'react-bootstrap/Image'
@@ -41,6 +42,8 @@ class Clues extends Component {
 
                 <div className="folder">
                     <Image src={Folder} />
+
+                    {/* Links to puzzles */}
                     <div className="written" style={{ paddingTop: '55px' }}>
                         <Link to="the-letter">The Letter</Link> <br />
                         {cookies.get('TheLetterChildren') && <Link to="sia-catalogue">SIA Catlogue</Link>} <br />
@@ -67,6 +70,12 @@ class Clues extends Component {
                         {cookies.get('BlindManChildren') && <Link to="background-image">Background Image</Link>} <br />
 
                         {cookies.get('MottCatalogChildren') && <Link to="corkboard">Corkboard</Link>} <br />
+                    </div>
+
+                    {/* Artifacts */}
+                    <div>
+                        <div className="written-2">Secrets</div>
+                        {cookies.get('RroseArtifact') && <Image className="artifact-rose" src={RrosePhoto} />}
                     </div>
                 </div>
 

@@ -37,6 +37,14 @@ img
     margin-bottom: 3em;
 }
 
+.artifact-rose
+{
+	position: absolute;
+	left: 850px;
+    top: 115px;
+    max-width: 10%;
+}
+
 .click-box 
 {
   	position: absolute;
