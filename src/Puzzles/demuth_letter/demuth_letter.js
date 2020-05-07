@@ -211,9 +211,6 @@ class Demuth extends Component {
                     <title>The other letter</title>
                 </Helmet>
 
-                {/* Dropzones Container */}
-
-
                 {/* Dragables Container */}
                 <div>
                     {/* First Row */}

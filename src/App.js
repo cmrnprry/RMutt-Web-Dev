@@ -23,28 +23,30 @@ import The_Letter from './Puzzles/the_letter/the_letter';
 import Cacodylate_Eye from './Puzzles/cacodylic_eye/cacodylate_eye'
 import Tissue_Paper from './Puzzles/tissue_paper/tissue_paper'
 import Blind_Man from './Puzzles/blind_man/blind_man'
+import Mott_Catalog from './Puzzles/mott_catalog/mott_catalog'
 
 
 class App extends Component {
   render() {
     return (
-        <Router>
-          <Switch>
-            {/* Home Page  */}
-            <Route exact path='/' component={Index} />
-            <Route exact path='/front' component={Front} />
-            <Route exact path='/about' component={About} />
-            <Route exact path='/archive' component={Archive} />
-            <Route exact path='/clues' component={Clues} />
-            
-            {/* Puzzles */}
-            <Route exact path='/the-letter' component={The_Letter} />
-            <Route exact path='/demuth-letter' component={Demuth_Letter} />
-            <Route exact path='/cacodylate-eye' component={Cacodylate_Eye} />
-            <Route exact path='/tissue-paper' component={Tissue_Paper} />
-            <Route exact path='/blind-man' component={Blind_Man} />
-          </Switch>
-        </Router>
+      <Router>
+        <Switch>
+          {/* Home Page  */}
+          <Route exact path='/' component={Index} />
+          <Route exact path='/front' component={Front} />
+          <Route exact path='/about' component={About} />
+          <Route exact path='/archive' component={Archive} />
+          <Route exact path='/clues' component={Clues} />
+
+          {/* Puzzles */}
+          <Route exact path='/the-letter' component={The_Letter} />
+          <Route exact path='/demuth-letter' component={Demuth_Letter} />
+          <Route exact path='/cacodylate-eye' component={Cacodylate_Eye} />
+          <Route exact path='/tissue-paper' component={Tissue_Paper} />
+          <Route exact path='/blind-man' component={Blind_Man} />
+          <Route exact path='/mott-catalog' component={Mott_Catalog} />
+        </Switch>
+      </Router>
     );
   }
 }
