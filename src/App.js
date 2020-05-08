@@ -32,7 +32,7 @@ import Mott_Catalog from './Puzzles/mott_catalog/mott_catalog'
 class App extends Component {
   render() {
     return (
-      <CookiesProvider>
+      // <CookiesProvider>
         <Router>
           <Switch>
             {/* Home Page  */}
@@ -52,7 +52,7 @@ class App extends Component {
             <Route exact path='/mott-catalog' component={Mott_Catalog} />
           </Switch>
         </Router>
-      </CookiesProvider>
+      //</CookiesProvider> 
     );
   }
 }
