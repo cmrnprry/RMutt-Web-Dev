@@ -13,7 +13,7 @@ import './Stylesheets/blind_man.css';
 import './Stylesheets/mott_catalog.css';
 
 //Home Page
-import Index from './Home Page/Front/Home/home';
+import Home from './Home Page/Front/Home/home';
 import Front from './Home Page/Front/front';
 import About from './Home Page/About/about';
 import Archive from './Home Page/Archive/archive';
@@ -36,7 +36,7 @@ class App extends Component {
         <Router>
           <Switch>
             {/* Home Page  */}
-            <Route exact path='/' component={Index} />
+            <Route exact path='/' component={Home} />
             <Route exact path='/front' component={Front} />
             <Route exact path='/about' component={About} />
             <Route exact path='/archive' component={Archive} />
