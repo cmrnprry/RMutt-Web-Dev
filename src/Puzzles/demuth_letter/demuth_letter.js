@@ -980,4 +980,4 @@ class Demuth extends Component {
     }
 }
 
-export default withCookies(Demuth);
+export default Demuth;
