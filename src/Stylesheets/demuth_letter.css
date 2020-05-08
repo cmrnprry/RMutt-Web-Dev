@@ -1,0 +1,77 @@
+.react-draggable, .cursor {
+      cursor: move;
+    }
+    .no-cursor {
+      cursor: auto;
+    }
+    .cursor-y {
+      cursor: ns-resize;
+    }
+    .cursor-x {
+      cursor: ew-resize;
+    }
+
+
+.drop-target 
+{
+  border: 3px solid #999;
+}
+
+.drop-active 
+{
+  border: 3px solid #999;
+}
+
+.draggable.can-drop {
+  border: 3px solid lightblue;
+}
+
+.draggable 
+{
+  touch-action: none;
+  user-select: none;
+  z-index: 2;
+}
+
+.dropzone 
+{
+  background-color: black;
+  border: 3px solid #999;
+  /* margin: 10px auto 30px; */
+  /* padding: 10px; */
+  position: absolute;
+}
+
+.box 
+{
+  margin: 0.5rem;
+  border: 1px solid #000;
+  display: inline-block;
+  font-family:"BlackCasper";
+  color:black;
+  background: white;
+  font-size: 2em;
+  letter-spacing: 3px;
+  position: absolute;
+}
+
+.demuth-container{
+  position: relative;
+  /* border: 1px solid #000; */
+}
+
+.demuth-letter
+{
+  /* border: 1px solid rgb(255, 0, 0); */
+  position: relative;
+  left: 50px;
+  top: 200px;
+  z-index: 0
+}
+
+.addspace{
+  height: 1050px;
+  width: 2050px;
+}
+
+

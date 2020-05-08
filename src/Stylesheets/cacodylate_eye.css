@@ -1,0 +1,64 @@
+/* body
+{
+    background-image: url("../folder_elements/wooden.png");
+} */
+
+img
+{
+	margin: auto;
+	max-width: 100%;
+	height: auto;
+}
+
+.original-rose
+{
+	display:inline-block;
+	padding: 10px;
+	width:530px;
+	margin-top: 4em;
+	margin-left: 10em;
+	margin-right: 2em;
+}
+
+.edited-rose
+{
+	display:inline-block;
+	padding: 10px;
+	width:530px;
+	margin-top: 4em;
+}
+
+.reward-rose
+{
+	display:inline-block;
+	padding: 10px;
+	width: 540px;
+    margin-left: 30em;
+    margin-bottom: 3em;
+}
+
+.artifact-rose
+{
+	position: absolute;
+	left: 850px;
+    top: 115px;
+    max-width: 10%;
+}
+
+.click-box 
+{
+  	position: absolute;
+  	height: 50px;
+  	width: 80px;
+	left: 910px;
+    top: 278px;
+}
+
+.click-box2 
+{
+  position: absolute;
+  height: 65px;
+  width: 155px;
+  left: 870px;
+  top: 605px;
+}
