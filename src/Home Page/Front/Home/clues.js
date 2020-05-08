@@ -65,15 +65,9 @@ class Clues extends Component {
 
                         {cookies.get('GodChildren') && <Link to="godII">God II</Link>} <br />
 
-<<<<<<< HEAD
                         {/* {cookies.get('BlindManChildren') && <Link to="o-marcel">O Marcel</Link>} <br /> */}
                         {cookies.get('BlindManChildren') && <Link to="tissue-paper">Tissue Paper</Link>} <br />
                         {/* {cookies.get('BlindManChildren') && <Link to="background-image">Background Image</Link>} <br /> */}
-=======
-                        {cookies.get('BlindManChildren') && <Link to="o-marcel">O Marcel</Link>} <br />
-                        {cookies.get('BlindManChildren') && <Link to="o-marcel">O Marcel</Link>} <br />
-                        {cookies.get('BlindManChildren') && <Link to="background-image">Background Image</Link>} <br />
->>>>>>> parent of 38ab8c0... we have all the cookies needed so far B)
 
                         {cookies.get('MottCatalogChildren') && <Link to="corkboard">Corkboard</Link>} <br />
                     </div>
