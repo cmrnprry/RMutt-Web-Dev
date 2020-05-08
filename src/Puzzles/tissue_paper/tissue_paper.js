@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import interact from 'interactjs'
 import { Helmet } from "react-helmet";
-import { withCookies, Cookies } from 'react-cookie';
-import { instanceOf } from 'prop-types';
 
 //Image Imports
 import Background from '../../folder_elements/wooden.png'
@@ -20,19 +18,19 @@ import Image from 'react-bootstrap/Image'
 
 
 //Bools to check if any of the images are in the correct place
-var img1InPlace = false, img2InPlace = false, img3InPlace = false, img4InPlace = false, allinPlace = false;
+var img1InPlace = false, img2InPlace = false, img3InPlace = false, img4InPlace = false;
 //track the position of an object
 var x = 0, y = 0;
 
 interact('.draggable-2').draggable({
-    modifiers: [
-        interact.modifiers.snap({
-            targets: [
-                interact.createSnapGrid({ x: 5, y: 5 })
-            ],
-            range: Infinity,
-
-        }),
+        modifiers: [
+            interact.modifiers.snap({
+                targets: [
+                    interact.createSnapGrid({ x: 5, y: 5 })
+                ],
+                range: Infinity,
+                
+            }),
         interact.modifiers.restrict({
             restriction: 'parent',
             elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
@@ -41,7 +39,8 @@ interact('.draggable-2').draggable({
     ],
     listeners: {
         move: dragMoveListener,
-        end(event) {
+        end(event)
+        {
             checkPosition(event.target.classList[1], x, y);
         }
     },
@@ -68,8 +67,10 @@ function dragMoveListener(event) {
     console.log(event.target.classList[1] + " at y: " + y);
 }
 
-function checkPosition(obj, dx, dy) {
-    switch (obj) {
+function checkPosition(obj, dx, dy)
+{
+    switch (obj)
+    {
         case "1":
             checkImage1(dx, dy);
             break;
@@ -86,15 +87,17 @@ function checkPosition(obj, dx, dy) {
             console.log("Something has gone terribly wrong.")
     }
 
-    if (img1InPlace && img2InPlace && img3InPlace && img4InPlace && !allinPlace) {
+    if (img1InPlace && img2InPlace && img3InPlace && img4InPlace)
+    {
         alert("All objects are in the correct places!");
-        allinPlace = true;
+        img1InPlace = false;
     }
 }
 
-
-function checkImage1(dx, dy) {
-    if ((dx >= 136 && dx <= 179) && (dy <= -602 && dy >= -671)) {
+function checkImage1(dx, dy)
+{
+    if ((dx >= 136 && dx <= 179) && (dy <= -602 && dy >= -671))
+    {
         img1InPlace = true;
     }
     else {
@@ -103,17 +106,22 @@ function checkImage1(dx, dy) {
 
 }
 
-function checkImage2(dx, dy) {
-    if ((dx >= -455 && dx <= -412) && (dy <= -621 && dy >= -667)) {
+function checkImage2(dx, dy)
+{
+    if ((dx >= -455 && dx <= -412) && (dy <= -621 && dy >= -667))
+    {
         img2InPlace = true;
     }
-    else {
+    else
+    {
         img2InPlace = false;
     }
 }
 
-function checkImage3(dx, dy) {
-    if ((dx >= -786 && dx <= -729) && (dy >= -721 && dy <= -646)) {
+function checkImage3(dx, dy)
+{
+    if ((dx >= -786 && dx <= -729) && (dy >= -721 && dy <= -646))
+    {
         img3InPlace = true;
     }
     else {
@@ -121,7 +129,8 @@ function checkImage3(dx, dy) {
     }
 }
 
-function checkImage4(dx, dy) {
+function checkImage4(dx, dy)
+{
     if ((dx >= 243 && dx <= 271) && (dy >= -955 && dy <= -918)) {
         img4InPlace = true;
     }
@@ -131,26 +140,9 @@ function checkImage4(dx, dy) {
 }
 
 class LN_Puzzle extends Component {
-    static propTypes = {
-        cookies: instanceOf(Cookies).isRequired
-    };
-
-    // eslint-disable-next-line
-    constructor(props) {
-        super(props);
-    }
-
-    //Tells the cookies to be set
-    setChildren() {
-        const { cookies } = this.props;
-
-        console.log("allinplace: " + allinPlace);
-        if (allinPlace) {
-            cookies.set('TissuePaperChildren');
-        }
-    }
 
     render() {
+
         return (
             <Container fluid='true' style={{ backgroundImage: `url(${Background}`, height: 'auto' }}>
                 <Helmet>
@@ -159,19 +151,19 @@ class LN_Puzzle extends Component {
                 </Helmet>
 
                 <div>
-                    <Image src={Under} style={{ width: '50vw', marginTop: '5em' }} />
+                    <Image src={Under} style={{ width: '50vw', marginTop: '5em'}} />
                     <Image src={Insrtuctions} style={{ width: '30vw', padding: '20px', textAlign: 'center' }} />
-
+                               
                     {/* Draggables */}
-                    <Image className="draggable-2 1" src={Image1} style={{ width: '30vw' }} onMouseUp={() => this.setChildren()}/>
-                    <Image className="draggable-2 2" src={Image2} style={{ width: '26vw' }} onMouseUp={() => this.setChildren()}/>
-                    <Image className="draggable-2 3" src={Image3} style={{ width: '37vw' }} onMouseUp={() => this.setChildren()}/>
-                    <Image className="draggable-2 4" src={Image4} style={{ width: '30vw' }} onMouseUp={() => this.setChildren()}/>
-                </div>
+                    <Image className="draggable-2 1" src={Image1} style={{ width: '30vw' }} />
+                    <Image className="draggable-2 2" src={Image2} style={{ width: '26vw' }} />
+                    <Image className="draggable-2 3" src={Image3} style={{ width: '37vw' }} />
+                    <Image className="draggable-2 4" src={Image4} style={{ width: '30vw' }} />
+               </div>
             </Container>
 
         );
     }
 }
 
-export default withCookies(LN_Puzzle);
+export default LN_Puzzle;

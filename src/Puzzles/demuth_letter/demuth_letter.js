@@ -1,8 +1,5 @@
 //React Imports
 import React, { Component } from 'react';
-import { withCookies, Cookies } from 'react-cookie';
-import { instanceOf } from 'prop-types';
-
 
 //Image Imports
 import Background from '../../folder_elements/wooden.png'
@@ -18,7 +15,6 @@ import { Helmet } from "react-helmet";
 
 const correctList = getCorrect();
 var currList = intializeArray();
-var puzzleSolved = false;
 
 //Function that initalizes the array. 
 //Moving any of the draggables positions requires you to adjust this 
@@ -159,14 +155,13 @@ function pushInList(text, position) {
     //     currList[currTextPos] = temp;
     // }
 
-    if (checkList()) { 
-        puzzleSolved = true;
-        showEndText();
+    if (checkList()) {
+        puzzleSolved();
     }
 }
 
 //Function that displays text if the array is correct
-function showEndText() {
+function puzzleSolved() {
     alert("TODO: add Kieran words");
 }
 
@@ -207,26 +202,8 @@ function dragMoveListener(event) {
 
 
 class Demuth extends Component {
-    static propTypes = {
-        cookies: instanceOf(Cookies).isRequired
-    };
-
-    // eslint-disable-next-line
-    constructor(props) {
-        super(props);
-    }
-
-    //Tells the cookies to be set
-    setChildren() {
-        const { cookies } = this.props;
-
-        console.log("puzzleSolved: " + puzzleSolved);
-        if (puzzleSolved) {
-            cookies.set('DemuthLetterChildren');
-        }
-    }
-
     render() {
+
         return (
             <Container fluid='true' style={{ backgroundImage: `url(${Background}`, height: 'auto' }}>
                 <Helmet>
@@ -238,7 +215,7 @@ class Demuth extends Component {
                 <div>
                     {/* First Row */}
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '0px',
                         top: '0px'
                     }}>
@@ -246,7 +223,7 @@ class Demuth extends Component {
                         1917
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '75px',
                         top: '0px',
                     }}>
@@ -254,7 +231,7 @@ class Demuth extends Component {
                         8th
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '115px',
                         top: '0px',
                     }}>
@@ -262,7 +239,7 @@ class Demuth extends Component {
                         Demuth
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '205px',
                         top: '0px',
                     }}>
@@ -270,7 +247,7 @@ class Demuth extends Component {
                         A
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '235px',
                         top: '0px',
                     }}>
@@ -278,7 +255,7 @@ class Demuth extends Component {
                         grand
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         // fontSize: '17px',
                         left: '315px',
                         top: '0px'
@@ -287,7 +264,7 @@ class Demuth extends Component {
                         do anything
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '475px',
                         top: '0px',
                     }}>
@@ -295,7 +272,7 @@ class Demuth extends Component {
                         co
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '505px',
                         top: '0px',
                     }}>
@@ -303,7 +280,7 @@ class Demuth extends Component {
                         central
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         // fontSize: '20px',
                         left: '600px',
                         top: '0px'
@@ -312,7 +289,7 @@ class Demuth extends Component {
                         henry
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '685px',
                         top: '0px'
                     }}>
@@ -320,7 +297,7 @@ class Demuth extends Component {
                         ce
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '715px',
                         top: '0px'
                     }}>
@@ -328,7 +305,7 @@ class Demuth extends Component {
                         fou
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '760px',
                         top: '0px',
                     }}>
@@ -336,7 +313,7 @@ class Demuth extends Component {
                         dear
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '820px',
                         top: '0px',
                     }}>
@@ -344,7 +321,7 @@ class Demuth extends Component {
                         bre
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '870px',
                         top: '0px',
                     }}>
@@ -354,7 +331,7 @@ class Demuth extends Component {
 
                     {/* Second Row */}
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '1000px',
                         top: '0px',
                     }}>
@@ -362,7 +339,7 @@ class Demuth extends Component {
                         article
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '1100px',
                         top: '0px',
                     }}>
@@ -370,7 +347,7 @@ class Demuth extends Component {
                         columbus
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '1220px',
                         top: '0px',
                     }}>
@@ -378,7 +355,7 @@ class Demuth extends Component {
                         ew
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '1260px',
                         top: '0px',
                     }}>
@@ -386,7 +363,7 @@ class Demuth extends Component {
                         independents
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '0px',
                         top: '60px',
                     }}>
@@ -394,7 +371,7 @@ class Demuth extends Component {
                         duchamp
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '105px',
                         top: '60px',
                     }}>
@@ -402,7 +379,7 @@ class Demuth extends Component {
                         avenue
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '190px',
                         top: '60px',
                     }}>
@@ -410,7 +387,7 @@ class Demuth extends Component {
                         day
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '240px',
                         top: '60px',
                     }}>
@@ -418,7 +395,7 @@ class Demuth extends Component {
                         lptu
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '300px',
                         top: '60px',
                     }}>
@@ -426,7 +403,7 @@ class Demuth extends Component {
                         it
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '325px',
                         top: '60px',
                     }}>
@@ -434,7 +411,7 @@ class Demuth extends Component {
                         ittee
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '385px',
                         top: '60px',
                     }}>
@@ -442,7 +419,7 @@ class Demuth extends Component {
                         ity
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '430px',
                         top: '60px',
                     }}>
@@ -450,7 +427,7 @@ class Demuth extends Component {
                         you
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '485px',
                         top: '60px'
                     }}>
@@ -458,7 +435,7 @@ class Demuth extends Component {
                         j
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '505px',
                         top: '60px'
                     }}>
@@ -466,7 +443,7 @@ class Demuth extends Component {
                         Marcel
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '595px',
                         top: '60px'
                     }}>
@@ -474,7 +451,7 @@ class Demuth extends Component {
                         move
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '660px',
                         top: '60px'
                     }}>
@@ -482,7 +459,7 @@ class Demuth extends Component {
                         you
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '715px',
                         top: '60px'
                     }}>
@@ -490,7 +467,7 @@ class Demuth extends Component {
                         y
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '740px',
                         top: '60px'
                     }}>
@@ -498,7 +475,7 @@ class Demuth extends Component {
                         would
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '820px',
                         top: '60px'
                     }}>
@@ -506,7 +483,7 @@ class Demuth extends Component {
                         the
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '860px',
                         top: '60px'
                     }}>
@@ -514,7 +491,7 @@ class Demuth extends Component {
                         mutt
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '920px',
                         top: '60px'
                     }}>
@@ -522,7 +499,7 @@ class Demuth extends Component {
                         of
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '950px',
                         top: '60px'
                     }}>
@@ -530,7 +507,7 @@ class Demuth extends Component {
                         next
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '1005px',
                         top: '60px'
                     }}>
@@ -538,7 +515,7 @@ class Demuth extends Component {
                         the
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '1005px',
                         top: '60px'
                     }}>
@@ -546,7 +523,7 @@ class Demuth extends Component {
                         exhibition
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '1125px',
                         top: '60px'
                     }}>
@@ -554,7 +531,7 @@ class Demuth extends Component {
                         that
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '1170px',
                         top: '60px'
                     }}>
@@ -562,7 +539,7 @@ class Demuth extends Component {
                         ork
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '1222px',
                         top: '60px'
                     }}>
@@ -570,7 +547,7 @@ class Demuth extends Component {
                         schuvler
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '0px',
                         top: '120px'
                     }}>
@@ -578,7 +555,7 @@ class Demuth extends Component {
                         s
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '20px',
                         top: '120px'
                     }}>
@@ -586,7 +563,7 @@ class Demuth extends Component {
                         super
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '100px',
                         top: '120px',
                     }}>
@@ -594,7 +571,7 @@ class Demuth extends Component {
                         tain
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '150px',
                         top: '120px'
                     }}>
@@ -602,7 +579,7 @@ class Demuth extends Component {
                         rich
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '210px',
                         top: '120px'
                     }}>
@@ -610,7 +587,7 @@ class Demuth extends Component {
                         salon
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         fontSize: '20px',
                         left: '280px',
                         top: '120px'
@@ -619,7 +596,7 @@ class Demuth extends Component {
                         it was not exhibited
                     </div>
 
-                    <div onMouseUp={() => this.setChildren()} className="draggable box" style={{
+                    <div className="draggable box" style={{
                         left: '510px',
                         top: '120px'
                     }}>
