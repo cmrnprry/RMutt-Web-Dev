@@ -15,7 +15,7 @@ import Image from 'react-bootstrap/Image'
 import Helmet from 'react-helmet'
 import Popup from "reactjs-popup";
 
-class Cacodylate extends Component {
+class Rrose extends Component {
     static propTypes = {
         cookies: instanceOf(Cookies).isRequired
     };
@@ -112,4 +112,4 @@ class Cacodylate extends Component {
     }
 }
 
-export default withCookies(Cacodylate);
+export default withCookies(Rrose);
