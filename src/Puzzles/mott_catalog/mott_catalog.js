@@ -174,7 +174,7 @@ class Mott extends Component {
             <Container fluid='true' style={{ backgroundImage: `url(${Background}`, height: 'auto' }}>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>One of these things is not.</title>
+                    <title>Mott Catalog</title>
                 </Helmet>
 
                 {/* dropzones */}
