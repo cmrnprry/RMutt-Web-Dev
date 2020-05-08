@@ -67,7 +67,7 @@ class Clues extends Component {
 
                         {/* {cookies.get('BlindManChildren') && <Link to="o-marcel">O Marcel</Link>} <br /> */}
                         {cookies.get('BlindManChildren') && <Link to="tissue-paper">Tissue Paper</Link>} <br />
-                        {cookies.get('BlindManChildren') && <Link to="background-image">Background Image</Link>} <br />
+                        {/* {cookies.get('BlindManChildren') && <Link to="background-image">Background Image</Link>} <br /> */}
 
                         {/* {cookies.get('MottCatalogChildren') && <Link to="corkboard">Corkboard</Link>} <br /> */}
                     </div>
