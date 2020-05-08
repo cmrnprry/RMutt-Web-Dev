@@ -51,7 +51,7 @@ class App extends Component {
             <Route exact path='/mott-catalog' component={Mott_Catalog} />
           </Switch>
         </Router>
-      </CookiesProvider> 
+      </CookiesProvider>
     );
   }
 }
