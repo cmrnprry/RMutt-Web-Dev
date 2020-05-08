@@ -46,18 +46,18 @@ class Clues extends Component {
                     {/* Links to puzzles */}
                     <div className="written" style={{ paddingTop: '55px' }}>
                         <Link to="the-letter">The Letter</Link> <br />
-                        {cookies.get('TheLetterChildren') && <Link to="sia-catalogue">SIA Catlogue</Link>} <br />
+                        {/* {cookies.get('TheLetterChildren') && <Link to="sia-catalogue">SIA Catlogue</Link>} <br /> */}
                         {cookies.get('TheLetterChildren') && <Link to="cacodylate-eye">Cacodylic Eye</Link>} <br />
                         
                         {cookies.get('TheCacodylicEyeChildren') && <Link to="rrose">Rrose</Link>} <br />
                         
                         {cookies.get('RroseChildren') && <Link to="blind-man">The Blind Man</Link>} <br />
-                        {cookies.get('RroseChildren') && <Link to="elsa-photo">Elsa Photo</Link>} <br />
+                        {/* {cookies.get('RroseChildren') && <Link to="elsa-photo">Elsa Photo</Link>} <br /> */}
                         
                         {cookies.get('TissuePaperChildren') && <Link to="demuth-letter">Demuth Letter</Link>} <br />
-                        {cookies.get('TissuePaperChildren') && <Link to="verese">Verese</Link>} <br />
+                        {/* {cookies.get('TissuePaperChildren') && <Link to="verese">Verese</Link>} <br /> */}
 
-                        {cookies.get('DemuthLetterChildren') && <Link to="phone-number">Phone Number</Link>} <br />
+                        {/* {cookies.get('DemuthLetterChildren') && <Link to="phone-number">Phone Number</Link>} <br /> */}
 
                         {cookies.get('SIACatalogChildren') && <Link to="mott-catalog">Mott Catalog</Link>} <br />
 
@@ -65,11 +65,11 @@ class Clues extends Component {
 
                         {cookies.get('GodChildren') && <Link to="godII">God II</Link>} <br />
 
-                        {cookies.get('BlindManChildren') && <Link to="o-marcel">O Marcel</Link>} <br />
-                        {cookies.get('BlindManChildren') && <Link to="o-marcel">O Marcel</Link>} <br />
-                        {cookies.get('BlindManChildren') && <Link to="background-image">Background Image</Link>} <br />
+                        {/* {cookies.get('BlindManChildren') && <Link to="o-marcel">O Marcel</Link>} <br /> */}
+                        {cookies.get('BlindManChildren') && <Link to="tissue-paper">Tissue Paper</Link>} <br />
+                        {/* {cookies.get('BlindManChildren') && <Link to="background-image">Background Image</Link>} <br /> */}
 
-                        {cookies.get('MottCatalogChildren') && <Link to="corkboard">Corkboard</Link>} <br />
+                        {/* {cookies.get('MottCatalogChildren') && <Link to="corkboard">Corkboard</Link>} <br /> */}
                     </div>
 
                     {/* Artifacts */}

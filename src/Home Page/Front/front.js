@@ -33,8 +33,6 @@ class Front extends Component {
         const { cookies } = this.props;
         var val = cookies.get('login');
 
-        console.log(val);
-
         if (val === 'whoisrmutt' || val === 'nonsense') {
             this.props.history.push('/clues');
         }

@@ -56,8 +56,9 @@ class Cacodylate extends Component {
         var password = 'alias marcel duchamp';
 
         if (this.state.value.toLowerCase() === password) {
-            cookies.set('TheCacodylicEyeChildren')
-            cookies.set('RroseChildren')
+            cookies.set('TheCacodylicEyeChildren');
+            cookies.set('RroseChildren');
+            cookies.set('RroseArtifact');
             this.props.history.push('/clues')
         }
         else {

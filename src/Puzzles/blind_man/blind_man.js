@@ -1,5 +1,7 @@
 //React Imports
 import React, { Component } from 'react';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
 
 //Image Imports
 import Background from '../../folder_elements/wooden.png'
@@ -32,6 +34,7 @@ import interact from 'interactjs'
 //Moving any of the draggables positions requires you to adjust this 
 var currList = ["1", "4", "15", "6", "8", "13", "11", "10", "3", "2", "0", "14", "9", "5", "7", "12"];
 const correctList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
+var puzzleSolved = false;
 
 //The X and Y Postions of the images
 var topPositions = setIntialX();
@@ -176,12 +179,13 @@ function pushInList(draggable, dropzone) {
     // }
 
     if (checkList()) {
-        puzzleSolved();
+        puzzleSolved = true;
+        showEndText();
     }
 }
 
 //Function that displays text if the array is correct
-function puzzleSolved() {
+function showEndText() {
     alert("TODO: add Kieran words");
 }
 
@@ -224,8 +228,25 @@ function dragMoveListener(event) {
 }
 
 class Blind_Man extends Component {
-    render() {
+    static propTypes = {
+        cookies: instanceOf(Cookies).isRequired
+    };
 
+    // eslint-disable-next-line
+    constructor(props) {
+        super(props);
+    }
+
+    //Tells the cookies to be set
+    setChildren() {
+        const { cookies } = this.props;
+
+        console.log("puzzleSolved: " + puzzleSolved);
+        if (puzzleSolved) {
+            cookies.set('BlindManChildren');
+        }
+    }
+    render() {
         return (
             <Container fluid='true' style={{ backgroundImage: `url(${Background}`, height: 'auto' }}>
                 <Helmet>
@@ -234,49 +255,49 @@ class Blind_Man extends Component {
                 </Helmet>
 
                 {/* Draggables */}
-                <Image src={Page2} name="0" className="1 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page2} name="0" className="1 resize draggable"
                     style={{
                         top: topPositions[0],
                         left: leftPositions[0]
                     }}
                 />
-                <Image src={Page5} name="1" className="4 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page5} name="1" className="4 resize draggable"
                     style={{
                         top: topPositions[1],
                         left: leftPositions[1]
                     }}
                 />
-                <Image src={Back} name="2" className="15 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Back} name="2" className="15 resize draggable"
                     style={{
                         top: topPositions[2],
                         left: leftPositions[0]
                     }}
                 />
-                <Image src={Page7} name="3" className="6 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page7} name="3" className="6 resize draggable"
                     style={{
                         top: topPositions[3],
                         left: leftPositions[1]
                     }}
                 />
-                <Image src={Page9} name="4" className="8 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page9} name="4" className="8 resize draggable"
                     style={{
                         top: topPositions[4],
                         left: leftPositions[0]
                     }}
                 />
-                <Image src={Page14} name="5" className="13 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page14} name="5" className="13 resize draggable"
                     style={{
                         top: topPositions[5],
                         left: leftPositions[1]
                     }}
                 />
-                <Image src={Page12} name="6" className="11 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page12} name="6" className="11 resize draggable"
                     style={{
                         top: topPositions[6],
                         left: leftPositions[0]
                     }}
                 />
-                <Image src={Page11} name="7" className="10 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page11} name="7" className="10 resize draggable"
                     style={{
                         top: topPositions[7],
                         left: leftPositions[1]
@@ -288,43 +309,43 @@ class Blind_Man extends Component {
                         left: leftPositions[0]
                     }}
                 />
-                <Image src={Page3} name="9" className="2 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page3} name="9" className="2 resize draggable"
                     style={{
                         top: topPositions[9],
                         left: leftPositions[1]
                     }}
                 />
-                <Image src={Cover} name="10" className="0 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Cover} name="10" className="0 resize draggable"
                     style={{
                         top: topPositions[10],
                         left: leftPositions[0]
                     }}
                 />
-                <Image src={Page15} name="11" className="14 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page15} name="11" className="14 resize draggable"
                     style={{
                         top: topPositions[11],
                         left: leftPositions[1]
                     }}
                 />
-                <Image src={Page10} name="12" className="9 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page10} name="12" className="9 resize draggable"
                     style={{
                         top: topPositions[12],
                         left: leftPositions[0]
                     }}
                 />
-                <Image src={Page6} name="13" className="5 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page6} name="13" className="5 resize draggable"
                     style={{
                         top: topPositions[13],
                         left: leftPositions[1]
                     }}
                 />
-                <Image src={Page8} name="14" className="7 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page8} name="14" className="7 resize draggable"
                     style={{
                         top: topPositions[14],
                         left: leftPositions[0]
                     }}
                 />
-                <Image src={Page13} name="15" className="12 resize draggable"
+                <Image onMouseUp={() => this.setChildren()} src={Page13} name="15" className="12 resize draggable"
                     style={{
                         top: topPositions[15],
                         left: leftPositions[1]
@@ -357,4 +378,4 @@ class Blind_Man extends Component {
     }
 }
 
-export default Blind_Man; 
+export default withCookies(Blind_Man); 
