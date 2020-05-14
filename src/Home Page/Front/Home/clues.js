@@ -48,18 +48,20 @@ class Clues extends Component {
                         <Link to="the-letter">The Letter</Link> <br />
                         {/* {cookies.get('TheLetterChildren') && <Link to="sia-catalogue">SIA Catlogue</Link>} <br /> */}
                         {cookies.get('TheLetterChildren') && <Link to="cacodylate-eye">Cacodylic Eye</Link>} <br />
-                        
+
                         {cookies.get('TheCacodylicEyeChildren') && <Link to="rrose">Rrose</Link>} <br />
-                        
+
                         {cookies.get('RroseChildren') && <Link to="blind-man">The Blind Man</Link>} <br />
                         {/* {cookies.get('RroseChildren') && <Link to="elsa-photo">Elsa Photo</Link>} <br /> */}
-                        
+
                         {cookies.get('TissuePaperChildren') && <Link to="demuth-letter">Demuth Letter</Link>} <br />
                         {/* {cookies.get('TissuePaperChildren') && <Link to="verese">Verese</Link>} <br /> */}
 
                         {/* {cookies.get('DemuthLetterChildren') && <Link to="phone-number">Phone Number</Link>} <br /> */}
 
-                        {cookies.get('SIACatalogChildren') && <Link to="mott-catalog">Mott Catalog</Link>} <br />
+                        {/* {cookies.get('SIACatalogChildren') && <Link to="mott-catalog">Mott Catalog</Link>} <br /> */}
+                        {cookies.get('TissuePaperChildren') && <Link to="mott-catalog">Mott Catalog</Link>} <br />
+
 
                         {cookies.get('ElasPhotoChildren') && <Link to="god">God</Link>} <br />
 
