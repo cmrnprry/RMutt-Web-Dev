@@ -11,6 +11,7 @@ import './Stylesheets/demuth_letter.css';
 import './Stylesheets/tissue_paper.css';
 import './Stylesheets/cacodylate_eye.css';
 import './Stylesheets/blind_man.css';
+import './Stylesheets/mott_catalog.css';
 
 //Home Page
 import Home from './Home Page/Front/Home/home';

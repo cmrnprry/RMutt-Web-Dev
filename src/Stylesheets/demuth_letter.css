@@ -60,18 +60,8 @@
   border: 1px solid rgb(0, 0, 0);
 }
 
-.demuth-letter
-{
-  border: 1px solid rgb(255, 0, 0);
-  position: relative;
-  left: 50px;
-  top: 200px;
-  z-index: 0
-}
-
 .demuth-letter::after
 {
-
 	content: url("../Puzzles/demuth_letter/demuth_letter_under.png");
 }
 
@@ -80,7 +70,10 @@
 	position: relative;
   border: 5px solid rgb(0, 174, 255);
 	width:1306px;
-	height: 1305px;
+  height: 1305px;
+  left: 50px;
+  top: 200px;
+  z-index: 0;
 }
 
 .addspace{

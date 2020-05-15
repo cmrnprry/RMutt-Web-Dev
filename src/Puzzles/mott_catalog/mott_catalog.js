@@ -1,11 +1,9 @@
 //React Imports
 import React, { Component } from 'react';
+import { withCookies, Cookies } from 'react-cookie';
+import { instanceOf } from 'prop-types';
 
 //Image Imports
-import Background from '../../folder_elements/wooden.png'
-import DL1_under from './pages/mott_catalog_page1.png'
-import DL2_under from './pages/mott_catalog_page2.png'
-import DL3_under from './pages/mott_catalog_page3.png'
 import toilet1 from './toilet/toilet1.png'
 import toilet2 from './toilet/toilet2.png'
 import toilet3 from './toilet/toilet3.png'
@@ -17,6 +15,8 @@ import toilet7 from './toilet/toilet7.png'
 //Web Imports
 import interact from 'interactjs'
 import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import { Helmet } from "react-helmet";
 
@@ -168,133 +168,148 @@ function dragMoveListener(event) {
 
 
 class Mott extends Component {
+    static propTypes = {
+        cookies: instanceOf(Cookies).isRequired
+    };
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+
+        this.resizeWindow = this.resizeWindow.bind(this);
+    }
+
+    //Sets the listener
+    componentDidMount() {
+        window.addEventListener("resize", this.resizeWindow);
+    }
+
+    //So the program always has the correct width and height of window
+    resizeWindow() {
+        console.log("here")
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
     render() {
 
         return (
-            <Container fluid='true' style={{ backgroundImage: `url(${Background}`, height: 'auto' }}>
+            <Container fluid='true' className="wooden-background" style={{ overflowX: 'hidden', minHeight: this.state.height, minWidth: this.state.width }}>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>Mott Catalog</title>
+                    <title>One of these things is not</title>
                 </Helmet>
+                <div style={{ position: 'relative' }} >
+                    {/* dragables */}
+                    <div className="0 draggable toliet-pos" style={{
+                        left: '0px'
+                    }} >
+                        {/* <Image src={DL_2} /> */}
+                        < Image src={toilet1} style={{ maxWidth: '100%', width: '200px' }} />
+                    </div>
 
-                {/* dropzones */}
-                <div>
-                    {/* line one */}
-                    <div className="dropzone 0" style={{
-                        height: '310px',
-                        width: '250px',
-                        left: '435px',
-                        top: '1675px',
-                    }} />
+                    <div className="1 draggable toliet-pos" style={{
+                        left: '220px'
+                    }} >
+                        {/* <Image src={DL_1} /> */}
+                        < Image src={toilet2} style={{ maxWidth: '100%' }} />
+                    </div >
 
-                    {/* line two */}
-                    <div className="dropzone 1" style={{
-                        height: '236px',
-                        width: '257px',
-                        left: '398px',
-                        top: '270px',
-                    }} />
+                    <div className="2 draggable toliet-pos" style={{
+                        left: '445px'
+                    }} >
+                        {/* <Image src={DL_14} /> */}
+                        < Image src={toilet3} style={{ maxWidth: '100%' }} />
+                    </div >
+                    <div className="3 draggable toliet-pos" style={{
+                        left: '645px'
+                    }} >
+                        {/* <Image src={DL_2} /> */}
+                        < Image src={toilet4} style={{ maxWidth: '100%' }} />
+                    </div >
 
-                    {/* line three */}
-                    <div className="dropzone 2" style={{
-                        height: '315px',
-                        width: '288px',
-                        left: '78px',
-                        top: '605px',
-                    }} />
+                    <div className="4 draggable toliet-pos" style={{
+                        left: '845px'
+                    }} >
+                        {/* <Image src={DL_1} /> */}
+                        < Image src={toilet5} style={{ maxWidth: '100%' }} />
+                    </div >
 
-                    <div className="dropzone 3" style={{
-                        height: '237px',
-                        width: '273px',
-                        left: '78px',
-                        top: '270px',
-                    }} />
+                    <div className="5 draggable toliet-pos" style={{
+                        left: '1045px'
+                    }} >
+                        {/* <Image src={DL_14} /> */}
+                        < Image src={toilet6} style={{ maxWidth: '100%' }} />
+                    </div >
+                    <div className="6 draggable toliet-pos" style={{
+                        left: '1245px'
+                    }} >
+                        {/* <Image src={DL_14} /> */}
+                        < Image src={toilet7} style={{ maxWidth: '100%' }} />
+                    </div >
 
-                    <div className="dropzone 4" style={{
-                        height: '300px',
-                        width: '265px',
-                        left: '801px',
-                        top: '585px',
-                    }} />
+                    <Row>
+                        <div className="page-one">
+                            {/* line one */}
+                            <div className="dropzone 0" style={{
+                                height: '221px',
+                                width: '242px',
+                                left: '25px',
+                                top: '85px',
+                            }} />
 
-                    {/* line four */}
-                    <div className="dropzone 5" style={{
-                        height: ' 300px',
-                        width: '254px',
-                        left: '1113px',
-                        top: '585px',
-                    }} />
+                            {/* line two */}
+                            <div className="dropzone 1" style={{
+                                height: '221px',
+                                width: '242px',
+                                left: '312px',
+                                top: '85px',
+                            }} />
 
+                            {/* line three */}
+                            <div className="dropzone 2" style={{
+                                height: '291px',
+                                width: '255px',
+                                left: '25px',
+                                top: '400px',
+                            }} />
+                        </div>
 
+                        <div className="page-two">
+                            <div className="dropzone 3" style={{
+                                height: '274px',
+                                width: '238px',
+                                left: '44px',
+                                top: '379px',
+                            }} />
+
+                            <div className="dropzone 4" style={{
+                                height: '274px',
+                                width: '238px',
+                                left: '325px',
+                                top: '379px',
+                            }} />
+                        </div>
+
+                    </Row>
+
+                    <Row>
+                        <div className="page-three">
+                            <div className="dropzone 5" style={{
+                                height: '290px',
+                                width: '233px',
+                                left: '346px',
+                                top: '428px',
+                            }} />
+                        </div>
+                    </Row>
                 </div>
-
-                {/* dragables */}
-                <div className="0 draggable toliet-pos" style={{
-                    left: '0px',
-                    top: '0px'
-                }} >
-                    {/* <Image src={DL_2} /> */}
-                    < Image src={toilet1} style={{ maxWidth: '100%', width: '200px' }} />
-                </div>
-
-                <div className="1 draggable toliet-pos" style={{
-                    left: '220px',
-                    top: '0px'
-                }} >
-                    {/* <Image src={DL_1} /> */}
-                    < Image src={toilet2} style={{ maxWidth: '100%' }} />
-                </div >
-
-                <div className="2 draggable toliet-pos" style={{
-                    left: '445px',
-                    top: '0px'
-                }} >
-                    {/* <Image src={DL_14} /> */}
-                    < Image src={toilet3} style={{ maxWidth: '100%' }} />
-                </div >
-                <div className="3 draggable toliet-pos" style={{
-                    left: '645px',
-                    top: '0px'
-                }} >
-                    {/* <Image src={DL_2} /> */}
-                    < Image src={toilet4} style={{ maxWidth: '100%' }} />
-                </div >
-
-                <div className="4 draggable toliet-pos" style={{
-                    left: '845px',
-                    top: '0px'
-                }} >
-                    {/* <Image src={DL_1} /> */}
-                    < Image src={toilet5} style={{ maxWidth: '100%' }} />
-                </div >
-
-                <div className="5 draggable toliet-pos" style={{
-                    left: '1045px',
-                    top: '0px'
-                }} >
-                    {/* <Image src={DL_14} /> */}
-                    < Image src={toilet6} style={{ maxWidth: '100%' }} />
-                </div >
-                <div className="6 draggable toliet-pos" style={{
-                    left: '1245px',
-                    top: '0px'
-                }} >
-                    {/* <Image src={DL_14} /> */}
-                    < Image src={toilet7} style={{ maxWidth: '100%' }} />
-                </div >
-
-
-                <div></div>
-
-                {/* Base Letter */}
-                <Image src={DL1_under} style={{ width: '700px', maxWidth: '100%', marginTop: '10%', paddingLeft: '50px', paddingTop: '30px', paddingBottom: '150px' }} />
-                <Image src={DL2_under} style={{ width: '700px', maxWidth: '100%', marginTop: '10%', paddingLeft: '50px', paddingTop: '30px', paddingBottom: '150px' }} />
-                <Image src={DL3_under} style={{ width: '700px', maxWidth: '100%', paddingLeft: '50px', paddingTop: '10px', paddingBottom: '150px' }} />
-
             </Container >
 
         );
     }
 }
 
-export default Mott;
+export default withCookies(Mott);

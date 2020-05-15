@@ -5,23 +5,56 @@
   position: absolute;
 }
 
-.demuth-container{
-  position: relative;
-  /* border: 1px solid #000; */
-}
-
-.demuth-letter
-{
-  /* border: 1px solid rgb(255, 0, 0); */
-  position: relative;
-  left: 50px;
-  top: 200px;
-  z-index: 0
-}
-
 .addspace{
   height: 1050px;
   width: 2050px;
 }
 
+.page-one::after
+{
+	content: url("../Puzzles/mott_catalog/pages/mott_catalog_page1.png");
+}
+
+.page-one
+{
+	position: relative;
+  border: 5px solid rgb(0, 174, 255);
+  width: 617px;
+  height: 831px;
+  left: 50px;
+  top: 350px;
+  display: block;
+}
+
+.page-two::after
+{
+	content: url("../Puzzles/mott_catalog/pages/mott_catalog_page2.png");
+}
+
+.page-two
+{
+	position: relative;
+  border: 5px solid rgb(0, 4, 255);
+  width: 618px;
+  height: 827px;
+  left: 150px;
+  top: 350px;
+  display: block;
+}
+
+.page-three::after
+{
+	content: url("../Puzzles/mott_catalog/pages/mott_catalog_page3.png");
+}
+
+.page-three
+{
+	position: relative;
+  border: 5px solid rgb(174, 0, 255);
+  width: 617px;
+  height: 838px;
+  left: 50px;
+  top: 450px;
+  display: block;
+}
 
