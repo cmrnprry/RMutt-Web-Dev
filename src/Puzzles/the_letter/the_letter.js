@@ -24,12 +24,16 @@ class AR_Letter extends Component {
     // eslint-disable-next-line
     constructor(props) {
         super(props);
+
+        this.setChildren = this.setChildren.bind(this);
     }
 
     setChildren() {
         const { cookies } = this.props;
 
         cookies.set('TheLetterChildren', "show");
+        this.props.history.push('/clues');
+
     }
 
     render() {
@@ -43,13 +47,15 @@ class AR_Letter extends Component {
                 </Helmet>
 
                 <Popup style={{ background: 'transparent', border: 'none' }}
-                    trigger={<Image src={letter} className='ar-letter' onClick={this.setChildren()} />} modal >
-                    {close => (
-                        <div style={{ backgroundImage: `url(${Background}`, border: 'none' }}>
-                            <p className='text'>Click outside to escape window</p>
-                            <Image src={letter_red} className="red-letter" />
-                        </div>
-                    )}
+                    trigger={<Image src={letter} className='ar-letter' />}
+                    modal
+                    closeOnDocumentClick
+                    onClose={this.setChildren}
+                >
+                    <div style={{ backgroundImage: `url(${Background}`, border: 'none' }}>
+                        <p className='text'>Click outside to escape window</p>
+                        <Image src={letter_red} className="red-letter" />
+                    </div>
                 </Popup>
 
             </Container>

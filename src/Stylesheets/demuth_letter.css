@@ -69,6 +69,20 @@
   z-index: 0
 }
 
+.demuth-letter::after
+{
+
+	content: url("../Puzzles/demuth_letter/demuth_letter_under.png");
+}
+
+.demuth-letter
+{
+	position: relative;
+  border: 5px solid rgb(0, 174, 255);
+	width:1306px;
+	height: 1305px;
+}
+
 .addspace{
   height: 1050px;
   width: 2050px;
