@@ -5,14 +5,12 @@ import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
 //Image Imports
-import Folder from '../../../folder_elements/folder_note.png'
 import Pen from '../../../folder_elements/pen/pen_bak.png'
 import RrosePhoto from '../../../Puzzles/cacodylic_eye/rrose_images/r_rose_thumbnail.png'
 
 //Web Imports
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container';
-import Popup from "reactjs-popup";
 import { Helmet } from "react-helmet";
 
 

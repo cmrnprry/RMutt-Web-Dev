@@ -3,15 +3,9 @@ import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
-
-//Image Imports
-import Background from '../../folder_elements/wooden.png'
-import DL_under from './demuth_letter_under.png'
-
 //Web Imports
 import interact from 'interactjs'
 import Container from 'react-bootstrap/Container'
-import Image from 'react-bootstrap/Image'
 import { Helmet } from "react-helmet";
 
 
@@ -1010,8 +1004,6 @@ class Demuth extends Component {
                         }} />
                     </div>
                 </div>
-
-                <div className="addspace" />
 
             </Container>
 

@@ -4,7 +4,6 @@ import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
 //Image Imports
-import Background from '../../folder_elements/wooden.png'
 import Cover from "./blind_man_images/cover.jpg"
 import Page2 from "./blind_man_images/2.jpg"
 import Page3 from "./blind_man_images/3.jpg"
@@ -38,7 +37,11 @@ var puzzleSolved = false;
 
 //The X and Y Postions of the images
 var topPositions = setIntialX();
-var leftPositions = ["153px", "863px"];
+var leftPositions = ["138px", "848px"];
+
+var topPositionsDrop = setIntialXDrop();
+var leftPositionsDrop = ["128px", "838px"];
+
 
 //Draggable function
 interact('.draggable').draggable({
@@ -114,6 +117,20 @@ function setIntialX() {
     return array;
 }
 
+//Sets the intial x of the images
+function setIntialXDrop() {
+    var array = [];
+    var val = 64;
+    for (var i = 0; i < 16; i++) {
+        array[i] = val + "px";
+        array[i + 1] = val + "px";
+
+        val += 790;
+        i++;
+    }
+
+    return array;
+}
 
 //Function that swaps the position of two objects
 // eslint-disable-next-line
@@ -235,6 +252,24 @@ class Blind_Man extends Component {
     // eslint-disable-next-line
     constructor(props) {
         super(props);
+        this.state = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+
+        this.resizeWindow = this.resizeWindow.bind(this);
+
+    }
+
+    //Sets the listener
+    componentDidMount() {
+        window.addEventListener("resize", this.resizeWindow);
+    }
+
+    //So the program always has the correct width and height of window
+    resizeWindow() {
+        console.log("here")
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
     //Tells the cookies to be set
@@ -244,134 +279,184 @@ class Blind_Man extends Component {
         console.log("puzzleSolved: " + puzzleSolved);
         if (puzzleSolved) {
             cookies.set('BlindManChildren');
+            this.props.history.push('/clues');
         }
     }
     render() {
         return (
-            <Container fluid='true' style={{ backgroundImage: `url(${Background}`, height: 'auto' }}>
+            <Container fluid='true' className="wooden-background" style={{ overflowX: 'hidden', minHeight: this.state.height, minWidth: this.state.width }}>
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Such vision!</title>
                 </Helmet>
 
-                {/* Draggables */}
-                <Image onMouseUp={() => this.setChildren()} src={Page2} name="0" className="1 resize draggable"
-                    style={{
-                        top: topPositions[0],
-                        left: leftPositions[0]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Page5} name="1" className="4 resize draggable"
-                    style={{
-                        top: topPositions[1],
-                        left: leftPositions[1]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Back} name="2" className="15 resize draggable"
-                    style={{
-                        top: topPositions[2],
-                        left: leftPositions[0]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Page7} name="3" className="6 resize draggable"
-                    style={{
-                        top: topPositions[3],
-                        left: leftPositions[1]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Page9} name="4" className="8 resize draggable"
-                    style={{
-                        top: topPositions[4],
-                        left: leftPositions[0]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Page14} name="5" className="13 resize draggable"
-                    style={{
-                        top: topPositions[5],
-                        left: leftPositions[1]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Page12} name="6" className="11 resize draggable"
-                    style={{
-                        top: topPositions[6],
-                        left: leftPositions[0]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Page11} name="7" className="10 resize draggable"
-                    style={{
-                        top: topPositions[7],
-                        left: leftPositions[1]
-                    }}
-                />
-                <Image src={Page4} name="8" className="3 resize draggable"
-                    style={{
-                        top: topPositions[8],
-                        left: leftPositions[0]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Page3} name="9" className="2 resize draggable"
-                    style={{
-                        top: topPositions[9],
-                        left: leftPositions[1]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Cover} name="10" className="0 resize draggable"
-                    style={{
-                        top: topPositions[10],
-                        left: leftPositions[0]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Page15} name="11" className="14 resize draggable"
-                    style={{
-                        top: topPositions[11],
-                        left: leftPositions[1]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Page10} name="12" className="9 resize draggable"
-                    style={{
-                        top: topPositions[12],
-                        left: leftPositions[0]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Page6} name="13" className="5 resize draggable"
-                    style={{
-                        top: topPositions[13],
-                        left: leftPositions[1]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Page8} name="14" className="7 resize draggable"
-                    style={{
-                        top: topPositions[14],
-                        left: leftPositions[0]
-                    }}
-                />
-                <Image onMouseUp={() => this.setChildren()} src={Page13} name="15" className="12 resize draggable"
-                    style={{
-                        top: topPositions[15],
-                        left: leftPositions[1]
-                    }}
-                />
+                <div className="blind-man" >
+                    {/* Draggables */}
+                    <Image onMouseUp={() => this.setChildren()} src={Page2} name="0" className="1 resize draggable"
+                        style={{
+                            top: topPositions[0],
+                            left: leftPositions[0]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Page5} name="1" className="4 resize draggable"
+                        style={{
+                            top: topPositions[1],
+                            left: leftPositions[1]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Back} name="2" className="15 resize draggable"
+                        style={{
+                            top: topPositions[2],
+                            left: leftPositions[0]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Page7} name="3" className="6 resize draggable"
+                        style={{
+                            top: topPositions[3],
+                            left: leftPositions[1]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Page9} name="4" className="8 resize draggable"
+                        style={{
+                            top: topPositions[4],
+                            left: leftPositions[0]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Page14} name="5" className="13 resize draggable"
+                        style={{
+                            top: topPositions[5],
+                            left: leftPositions[1]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Page12} name="6" className="11 resize draggable"
+                        style={{
+                            top: topPositions[6],
+                            left: leftPositions[0]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Page11} name="7" className="10 resize draggable"
+                        style={{
+                            top: topPositions[7],
+                            left: leftPositions[1]
+                        }}
+                    />
+                    <Image src={Page4} name="8" className="3 resize draggable"
+                        style={{
+                            top: topPositions[8],
+                            left: leftPositions[0]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Page3} name="9" className="2 resize draggable"
+                        style={{
+                            top: topPositions[9],
+                            left: leftPositions[1]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Cover} name="10" className="0 resize draggable"
+                        style={{
+                            top: topPositions[10],
+                            left: leftPositions[0]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Page15} name="11" className="14 resize draggable"
+                        style={{
+                            top: topPositions[11],
+                            left: leftPositions[1]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Page10} name="12" className="9 resize draggable"
+                        style={{
+                            top: topPositions[12],
+                            left: leftPositions[0]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Page6} name="13" className="5 resize draggable"
+                        style={{
+                            top: topPositions[13],
+                            left: leftPositions[1]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Page8} name="14" className="7 resize draggable"
+                        style={{
+                            top: topPositions[14],
+                            left: leftPositions[0]
+                        }}
+                    />
+                    <Image onMouseUp={() => this.setChildren()} src={Page13} name="15" className="12 resize draggable"
+                        style={{
+                            top: topPositions[15],
+                            left: leftPositions[1]
+                        }}
+                    />
 
-                {/* Drop Zones */}
-                <div>
-                    <div className="0 drop-notactive-blind dropzone-blind" />
-                    <div className="1 drop-notactive-blind dropzone-blind" />
-                    <div className="2 drop-notactive-blind dropzone-blind" />
-                    <div className="3 drop-notactive-blind dropzone-blind" />
-                    <div className="4 drop-notactive-blind dropzone-blind" />
-                    <div className="5 drop-notactive-blind dropzone-blind" />
-                    <div className="6 drop-notactive-blind dropzone-blind" />
-                    <div className="7 drop-notactive-blind dropzone-blind" />
-                    <div className="8 drop-notactive-blind dropzone-blind" />
-                    <div className="9 drop-notactive-blind dropzone-blind" />
-                    <div className="10 drop-notactive-blind dropzone-blind" />
-                    <div className="11 drop-notactive-blind dropzone-blind" />
-                    <div className="12 drop-notactive-blind dropzone-blind" />
-                    <div className="13 drop-notactive-blind dropzone-blind" />
-                    <div className="14 drop-notactive-blind dropzone-blind" />
-                    <div className="15 drop-notactive-blind dropzone-blind" />
+                    {/* Drop Zones */}
+                    <div>
+                        <div className="0 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[0],
+                            left: leftPositionsDrop[0]
+                        }} />
+                        <div className="1 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[1],
+                            left: leftPositionsDrop[1]
+                        }} />
+                        <div className="2 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[2],
+                            left: leftPositionsDrop[0]
+                        }} />
+                        <div className="3 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[3],
+                            left: leftPositionsDrop[1]
+                        }} />
+                        <div className="4 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[4],
+                            left: leftPositionsDrop[0]
+                        }} />
+                        <div className="5 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[5],
+                            left: leftPositionsDrop[1]
+                        }} />
+                        <div className="6 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[6],
+                            left: leftPositionsDrop[0]
+                        }} />
+                        <div className="7 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[7],
+                            left: leftPositionsDrop[1]
+                        }} />
+                        <div className="8 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[8],
+                            left: leftPositionsDrop[0]
+                        }} />
+                        <div className="9 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[9],
+                            left: leftPositionsDrop[1]
+                        }} />
+                        <div className="10 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[10],
+                            left: leftPositionsDrop[0]
+                        }} />
+                        <div className="11 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[11],
+                            left: leftPositionsDrop[1]
+                        }} />
+                        <div className="12 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[12],
+                            left: leftPositionsDrop[0]
+                        }} />
+                        <div className="13 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[13],
+                            left: leftPositionsDrop[1]
+                        }} />
+                        <div className="14 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[14],
+                            left: leftPositionsDrop[0]
+                        }} />
+                        <div className="15 drop-notactive-blind dropzone-blind" style={{
+                            top: topPositionsDrop[15],
+                            left: leftPositionsDrop[1]
+                        }} />
+                    </div>
                 </div>
-
             </Container>
 
         );
