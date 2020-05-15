@@ -3,38 +3,45 @@
     background-image: url("../folder_elements/wooden.png");
 } */
 
-img
+.edited-rose::after
 {
-	margin: auto;
-	max-width: 100%;
-	height: auto;
-}
 
-.original-rose
-{
-	display:inline-block;
-	padding: 10px;
-	width:530px;
-	margin-top: 4em;
-	margin-left: 10em;
-	margin-right: 2em;
+	content: url("../Puzzles/cacodylic_eye/rrose_images/r_rose_edited.png");
 }
 
 .edited-rose
 {
-	display:inline-block;
-	padding: 10px;
-	width:530px;
-	margin-top: 4em;
+	position: relative;
+  	/* border: 5px solid rgb(0, 174, 255); */
+	width:452px;
+	height: 573px;
+}
+
+.original-rose::after
+{
+	content: url("../Puzzles/cacodylic_eye/rrose_images/r_rose_original.jpg");
+}
+
+.original-rose
+{
+	float: right;
+}
+
+.reward-rose::after
+{
+	content: url("../Puzzles/cacodylic_eye/rrose_images/r_rose_reward.png");
 }
 
 .reward-rose
 {
-	display:inline-block;
-	padding: 10px;
-	width: 540px;
-    margin-left: 30em;
-    margin-bottom: 3em;
+	position: relative;
+	/* border: 5px solid rgb(0, 174, 255); */
+	width: 555px;
+	height: 696px;
+	
+	display: block;
+  	margin-left: auto;
+	margin-right: auto;
 }
 
 .artifact-rose
@@ -45,20 +52,22 @@ img
     max-width: 10%;
 }
 
-.click-box 
+.click-box-eye 
 {
   	position: absolute;
-  	height: 50px;
-  	width: 80px;
-	left: 910px;
-    top: 278px;
+	height: 42px;
+    width: 59px;
+    left: 146px;
+    top: 174px;
+	/* border: 2px solid black; */
 }
 
-.click-box2 
+.click-box-rrose
 {
-  position: absolute;
-  height: 65px;
-  width: 155px;
-  left: 870px;
-  top: 605px;
+  	position: absolute;
+	height: 61px;
+    width: 160px;
+    left: 387px;
+    top: 626px;
+	/* border: 2px solid black; */
 }

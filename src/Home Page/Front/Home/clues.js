@@ -5,7 +5,6 @@ import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
 //Image Imports
-import Background from '../../../folder_elements/wooden.png'
 import Folder from '../../../folder_elements/folder_note.png'
 import Pen from '../../../folder_elements/pen/pen_bak.png'
 import RrosePhoto from '../../../Puzzles/cacodylic_eye/rrose_images/r_rose_thumbnail.png'
@@ -26,6 +25,22 @@ class Clues extends Component {
     // eslint-disable-next-line
     constructor(props) {
         super(props);
+        this.state = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+
+        this.resizeWindow = this.resizeWindow.bind(this);
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize", this.resizeWindow);
+    }
+
+    //So the program always has the correct width and height of window
+    resizeWindow() {
+        console.log("here")
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
     render() {
@@ -33,7 +48,7 @@ class Clues extends Component {
         return (
 
             <Container fluid='true'
-                style={{ backgroundImage: `url(${Background}`, height: 'auto', position: 'relative' }}>
+                className="wooden-background" style={{ minHeight: this.state.height, minWidth: this.state.width }}>
 
                 <Helmet>
                     <meta charSet="utf-8" />

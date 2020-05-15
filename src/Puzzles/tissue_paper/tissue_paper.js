@@ -100,16 +100,19 @@ function checkImage1(dx, dy) {
     else {
         img1InPlace = false;
     }
+    console.log("Image 1: " + img1InPlace);
 
 }
 
 function checkImage2(dx, dy) {
-    if ((dx >= -455 && dx <= -412) && (dy <= -621 && dy >= -667)) {
+    if ((dx >= -455 && dx <= -408) && (dy <= -621 && dy >= -667)) {
         img2InPlace = true;
     }
     else {
         img2InPlace = false;
     }
+
+    console.log("Image 2: " + img2InPlace);
 }
 
 function checkImage3(dx, dy) {
@@ -119,6 +122,9 @@ function checkImage3(dx, dy) {
     else {
         img3InPlace = false;
     }
+
+    console.log("Image 3: " + img3InPlace);
+
 }
 
 function checkImage4(dx, dy) {
@@ -128,6 +134,9 @@ function checkImage4(dx, dy) {
     else {
         img4InPlace = false;
     }
+
+    console.log("Image 4: " + img4InPlace);
+
 }
 
 class LN_Puzzle extends Component {

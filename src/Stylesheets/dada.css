@@ -41,6 +41,12 @@ img{
 	height: auto;
 }
 
+.wooden-background
+{
+	background: url('../folder_elements/wooden.png') no-repeat center fixed;     
+    background-size: cover;
+}
+
 .popup-content {
 	position: relative; 
 	background: transparent; 

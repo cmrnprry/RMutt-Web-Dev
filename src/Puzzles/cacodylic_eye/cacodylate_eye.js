@@ -3,17 +3,12 @@ import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
-//Image Imports
-import Background from '../../folder_elements/wooden.png'
-import Reward from './rrose_images/r_rose_reward.png'
-import Edited from './rrose_images/r_rose_edited.png'
-import Original from './rrose_images/r_rose_original.jpg'
-
 //Web Imports
 import Container from 'react-bootstrap/Container'
-import Image from 'react-bootstrap/Image'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Helmet from 'react-helmet'
-import Popup from "reactjs-popup";
+
 
 class Cacodylate extends Component {
     static propTypes = {
@@ -22,92 +17,69 @@ class Cacodylate extends Component {
 
     constructor(props) {
         super(props);
-        const { cookies } = this.props;
 
         this.state = {
-            hidePuzzle: false,
-            showReward: false,
-            value: '',
+            width: window.innerWidth,
+            height: window.innerHeight
         };
 
-        cookies.set('hidePuzzle', false);
-        this.handleChange = this.handleChange.bind(this);
+        this.resizeWindow = this.resizeWindow.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    //A funcion meant to hide the puzzle and show the reward when called
-    hidePuzzleComponent() {
-        const { cookies } = this.props;
-        cookies.remove('hidePuzzle', false);
-        cookies.set('showReward', true);
+    componentDidMount() {
+        window.addEventListener("resize", this.resizeWindow);
     }
 
-    //Handles the change event
-    handleChange(event) {
-        this.setState({ value: event.target.value });
+    //So the program always has the correct width and height of window
+    resizeWindow() {
+        console.log()
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
     //Handles the submit event
     handleSubmit(event) {
         const { cookies } = this.props;
 
-        event.preventDefault();
+        cookies.set('TheCacodylicEyeChildren');
 
-        var password = 'alias marcel duchamp';
-
-        if (this.state.value.toLowerCase() === password) {
-            cookies.set('TheCacodylicEyeChildren');
-            cookies.set('RroseChildren');
-            cookies.set('RroseArtifact');
-            this.props.history.push('/clues')
-        }
-        else {
-            alert("Incorrect password.");
-        }
+        //TODO: Put Keiren words here
+        this.props.history.push('/clues')
     }
 
 
     render() {
-        const { cookies } = this.props;
         return (
-            <Container fluid='true' style={{ backgroundImage: `url(${Background}`, backgroundSize: 'auto', height: '100%', position: 'relative' }}>
+            <Container fluid='true' className="wooden-background" style={{ minHeight: this.state.height, minWidth: this.state.width }}>
+                {/* <Image src={Background} style={{ position: 'relative', minWidth: this.state.width, minHeight: this.state.height}}/> */}
 
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Two Cacodylic Eyes</title>
                 </Helmet>
 
-                <div className="click-box" onClick={() => this.hidePuzzleComponent()} />
+                {/* container for the images. */}
+                {/* <div className="cacodylate-container">
+                    <Image src={Original} className="original-rose" />
+                    {/* <Image src={Edited} className="edited-rose" /> *
 
-                {/* container for the images. If the 'hidePuzzle' bool is set to true, the two images are hidden. If the showReward is set to true, it shows the reward image */}
-                <div>
-                    {cookies.get('hidePuzzle') && <Image src={Original} className="original-rose" />}
+                    {/* clickable box 
+                    <div className="click-box" onClick={() => this.handleSubmit()} />
+                </div> */}
 
-                    {cookies.get('hidePuzzle') && <Image src={Edited} className="edited-rose" />}
+                <Row style={{ marginRight: '0px', marginLeft: '0px', paddingTop: ((this.state.height / 2) - 300) }}>
+                    <Col>
+                        <div className="original-rose" />
+                    </Col>
 
-                    {cookies.get('showReward', true) && <Image src={Reward} className="reward-rose" />}
-                </div>
-
-
-                <Popup style={{ background: 'transparent', border: 'none' }}
-                    trigger={
-                        <div>
-                            {cookies.get('showReward') && <div className="click-box2" />}
+                    <Col>
+                        <div className="edited-rose">
+                            <div className="click-box-eye" onClick={() => this.handleSubmit()} />
                         </div>
-                    } modal >
-                    {close => (
-                        <div className="password">
-                            Report your findings
-                            <br />
-                            <form name="login" style={{ margin: '5px 0px 0px 0px' }} onSubmit={this.handleSubmit}>
-                                <input type="text" size="17" value={this.state.value} onChange={this.handleChange} style={{ width: '40%', height: '10%' }} /><br />
-                                <input type="submit" value="Submit" style={{ width: '40%', height: '10%', margin: '4px auto 4px auto' }} />
-                            </form>
+                    </Col>
 
-                           click outside to escape window
-                        </div>
-                    )}
-                </Popup>
+                </Row>
+
 
             </Container>
         );
