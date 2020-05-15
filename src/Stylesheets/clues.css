@@ -1,0 +1,55 @@
+.pen {
+	position: absolute;
+	top: 0px;
+	left: 60px;
+	width: auto;
+	height: 50vh;
+	z-index: 1;
+}
+
+/* Can probably make this better but at this point it's working and I will not tempt god */
+.pen:hover {
+	background-image:url("../folder_elements/pen/pen.png");
+	-webkit-transform: rotate(5deg);
+	-moz-transform: rotate(5deg);
+	-o-transform: rotate(5deg);
+}
+
+.folder::after
+{
+	content: url("../folder_elements/folder_note.png");
+}
+
+.folder {
+	position: relative;
+    /* border: 5px solid rgb(0, 174, 255); */
+    top: 35px;
+    left: 70px;
+    width: 1009px;
+    height: 714px;
+}
+
+.clue-spacing
+{
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+.written {
+    top: 45px;
+    left: 145px;
+	position:absolute;
+	font-family:"Damn Arc";
+	font-size:2.5vw;
+	line-height:1.50vw;
+}
+
+.written-2
+{
+    top: 17px;
+    left: 682px;
+	position:absolute;
+	font-family:"Damn Arc";
+	font-size:2.5vw;
+}
+
+/*Folder Elements End*/

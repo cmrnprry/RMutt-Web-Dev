@@ -78,57 +78,6 @@ h1 {
 	font-size:1.5em;
 }
 
-/*Folder Elements Start*/
-
-.folder {
-	width:80%;
-	height:auto;
-	position: relative;
-	padding-top:2%;
-	padding-left:5%;
-}
-
-.pen {
-	position:absolute;
-	top:10%;
-	left:10%;
-	width:auto;
-	height:50vh;
-	z-index:0;
-}
-
-/* Can probably make this better but at this point it's working and I will not tempt god */
-.pen:hover {
-	background-image:url("../folder_elements/pen/pen.png");
-	-webkit-transform: rotate(5deg);
-	-moz-transform: rotate(5deg);
-	-o-transform: rotate(5deg);
-}
-
-.written {
-	top: 102px;
-    left: 63px;
-	position:absolute;
-	padding-left:12%;
-	font-family:"Damn Arc";
-	font-size:2.5vw;
-	-webkit-transform: rotate(1.2deg);
-	-moz-transform: rotate(1.2deg);
-	-o-transform: rotate(1.2deg);
-	line-height:1.85vw;
-}
-
-.written-2
-{
-	top: 45px;
-    left: 840px;
-	position:absolute;
-	font-family:"Damn Arc";
-	font-size:2.5vw;
-}
-
-/*Folder Elements End*/
-
 head {
 	background:#000;
 }

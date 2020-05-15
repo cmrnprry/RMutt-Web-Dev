@@ -6,6 +6,7 @@ import { CookiesProvider } from 'react-cookie';
 //CSS Imports
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Stylesheets/dada.css';
+import './Stylesheets/clues.css';
 import './Stylesheets/demuth_letter.css';
 import './Stylesheets/tissue_paper.css';
 import './Stylesheets/cacodylate_eye.css';

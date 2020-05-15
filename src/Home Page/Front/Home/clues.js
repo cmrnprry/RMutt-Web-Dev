@@ -48,15 +48,16 @@ class Clues extends Component {
         return (
 
             <Container fluid='true'
-                className="wooden-background" style={{ minHeight: this.state.height, minWidth: this.state.width }}>
+                className="wooden-background" style={{ overflowX: 'hidden', minHeight: this.state.height, minWidth: this.state.width }}>
 
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Dada - Home</title>
                 </Helmet>
 
+
                 <div className="folder">
-                    <Image src={Folder} />
+                    <Image src={Pen} className="pen" />
 
                     {/* Links to puzzles */}
                     <div className="written" style={{ paddingTop: '55px' }}>
@@ -90,13 +91,12 @@ class Clues extends Component {
                     </div>
 
                     {/* Artifacts */}
-                    <div>
                         <div className="written-2">Secrets</div>
                         {cookies.get('RroseArtifact') && <Image className="artifact-rose" src={RrosePhoto} />}
-                    </div>
                 </div>
 
-                <Popup style={{ background: 'transparent', border: 'none' }}
+
+                {/* <Popup style={{ background: 'transparent', border: 'none' }}
                     trigger={<Image src={Pen} className="pen" />} modal >
                     {close => (
                         <div className="password">
@@ -110,7 +110,7 @@ class Clues extends Component {
                            click outside to escape window
                         </div>
                     )}
-                </Popup>
+                </Popup> */}
 
 
             </Container>
