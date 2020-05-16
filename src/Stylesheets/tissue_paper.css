@@ -10,16 +10,17 @@
     border: 3px solid #999;
 }
 
-.draggable-2.can-drop-2 {
+.draggable-3.can-drop-2 {
   background-color: rgba(173, 216, 230, 0.224);
     border: 3px solid lightblue;
 }
-/* 
-.draggable-2 
+
+.draggable-3 
 {
   touch-action: none;
   user-select: none;
-} */
+  position: absolute;
+}
 
 .dropzone-2 
 {
@@ -27,6 +28,14 @@
   margin: 10px auto 30px;
   padding: 10px;
   position: absolute;
+}
+
+.tissue-paper-container
+{
+	position: relative;
+  border: 5px solid rgb(0, 174, 255);
+  width: auto;
+  height: 1510px;
 }
 
 .box 
