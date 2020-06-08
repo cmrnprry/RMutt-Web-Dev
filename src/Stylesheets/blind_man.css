@@ -1,8 +1,11 @@
 .resize
 {
-  width:530px;
-  height: 700px;
-  position: absolute;
+  height: 150px;
+  width: 100px;
+
+  /* max-width: 300px;
+  max-height: 400px; */
+  /* position: absolute; */
 }
 
 .drop-target-blind
@@ -23,8 +26,8 @@
 .dropzone-blind
 {
   /* background-color: black; */
-  width:550px;
-  height: 720px;
+  height: 165px;
+  width: 115px;
   /* display: inline-block; */
 	position: absolute;
 
@@ -36,10 +39,4 @@
   /* border: 5px solid rgb(0, 174, 255); */
   width: auto;
   height: 6410px;
-}
-
-.space-demuth
-{
-  height: 50px;
-  width: 50px;
 }

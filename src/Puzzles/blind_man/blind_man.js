@@ -23,12 +23,15 @@ import Back from "./blind_man_images/back.jpg"
 
 //Web Imports
 import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import Helmet from "react-helmet";
 import interact from 'interactjs'
 
-//current and swap to positions 
-//var currPos = 0, swapToPos = 0;
+//width and height
+var width = 0;
+var height = 0;
 
 //Moving any of the draggables positions requires you to adjust this 
 var currList = ["1", "4", "15", "6", "8", "13", "11", "10", "3", "2", "0", "14", "9", "5", "7", "12"];
@@ -36,8 +39,8 @@ const correctList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11
 var puzzleSolved = false;
 
 //The X and Y Postions of the images
-var topPositions = setIntialX();
-var leftPositions = ["138px", "848px"];
+var topPositions = ["0px", "000px"];
+var leftPositions = setIntialX();
 
 var topPositionsDrop = setIntialXDrop();
 var leftPositionsDrop = ["128px", "838px"];
@@ -47,7 +50,7 @@ var leftPositionsDrop = ["128px", "838px"];
 interact('.draggable').draggable({
     modifiers: [
         interact.modifiers.restrict({
-            restriction: 'parent',
+            restriction: 'container-blind-man',
             elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
             endOnly: true
         })
@@ -102,16 +105,35 @@ interact('.dropzone-blind').dropzone({
 
 })
 
+window.onload = function () {
+    console.log("width: " + width)
+    console.log("height: " + height)
+    var spaceBetweenL = 0;
+    var spaceBetweenT = 0;
+
+    var paddingH = height * 0.3;
+    var paddingW = width * 0.3;
+
+    spaceBetweenL = (width - (paddingW * 2)) % 400;
+    spaceBetweenL = Math.floor(spaceBetweenL / 4);
+    console.log(spaceBetweenL);
+
+    var x = (spaceBetweenL + "px");
+    var y = ((spaceBetweenL + paddingW) + "px");
+    var z = (spaceBetweenL + "px");
+
+}
+
 //Sets the intial x of the images
 function setIntialX() {
     var array = [];
-    var val = 73;
-    for (var i = 0; i < 16; i++) {
+    var count = 0;
+    var val = 50;
+    for (var i = 0; i < 8; i++) {
         array[i] = val + "px";
-        array[i + 1] = val + "px";
+        array[i + 8] = val + "px";
 
-        val += 790;
-        i++;
+        val += 180;
     }
 
     return array;
@@ -130,51 +152,6 @@ function setIntialXDrop() {
     }
 
     return array;
-}
-
-//Function that swaps the position of two objects
-// eslint-disable-next-line
-function swapPositions(curr, other) {
-    var currPosTop = topPositions[curr], otherPosTop = topPositions[other];
-    var currPosLeft = leftPositions[curr % 2], otherPosLeft = leftPositions[other % 2];
-    var otherDiv = document.getElementsByName(other)[0], currDiv = document.getElementsByName(curr)[0];
-    var currName = String(curr), otherName = String(other);
-
-    if (other !== curr) {
-        console.log("top pos curr: " + topPositions[curr]);
-        console.log("top pos other: " + topPositions[other]);
-        console.log("left pos curr: " + leftPositions[curr]);
-        console.log("left pos other: " + leftPositions[other]);
-
-        console.log("swapping");
-
-        //Swap the top Positions
-        topPositions[other] = currPosTop;
-        topPositions[curr] = otherPosTop;
-        //Swap the left Positions
-        leftPositions[other] = currPosLeft;
-        leftPositions[curr] = otherPosLeft;
-
-
-        //Set the top positions
-        otherDiv.style.top = topPositions[other];
-        currDiv.style.top = topPositions[curr];
-        //Swap the left positions
-        otherDiv.style.left = leftPositions[other];
-        currDiv.style.left = leftPositions[curr];
-
-        console.log("top pos curr: " + topPositions[curr]);
-        console.log("top pos other: " + topPositions[other]);
-        console.log("left pos curr: " + leftPositions[curr]);
-        console.log("left pos other: " + leftPositions[other]);
-
-
-        //reset names and transform
-        otherDiv.style.transform = "none";
-        currDiv.style.transform = "none";
-        currDiv.setAttribute("name", otherName);
-        otherDiv.setAttribute("name", currName);
-    }
 }
 
 //Function that swaps the position of two objects and checks to see if the current list is correct
@@ -257,8 +234,9 @@ class Blind_Man extends Component {
             height: window.innerHeight
         };
 
-        this.resizeWindow = this.resizeWindow.bind(this);
 
+        this.resizeWindow = this.resizeWindow.bind(this);
+        this.setWH();
     }
 
     //Sets the listener
@@ -268,7 +246,6 @@ class Blind_Man extends Component {
 
     //So the program always has the correct width and height of window
     resizeWindow() {
-        console.log("here")
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
@@ -282,113 +259,176 @@ class Blind_Man extends Component {
             this.props.history.push('/clues');
         }
     }
+
+    setWH() {
+        width = this.state.width;
+        height = this.state.height;
+    }
+
     render() {
         return (
-            <Container fluid='true' className="wooden-background" style={{ overflowX: 'hidden', minHeight: this.state.height, minWidth: this.state.width }}>
+            <Container fluid='true' className="wooden-background" style={{ overflow: 'hidden', maxHeight: this.state.height, maxWidth: this.state.width }}>
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Such vision!</title>
                 </Helmet>
 
-                <div className="blind-man" >
+                <div id="container-blind-man" className="blind-man" style={{
+                    padding: '10px'
+                }}>
                     {/* Draggables */}
-                    <Image onMouseUp={() => this.setChildren()} src={Page2} name="0" className="1 resize draggable"
-                        style={{
-                            top: topPositions[0],
-                            left: leftPositions[0]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Page5} name="1" className="4 resize draggable"
-                        style={{
-                            top: topPositions[1],
-                            left: leftPositions[1]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Back} name="2" className="15 resize draggable"
-                        style={{
-                            top: topPositions[2],
-                            left: leftPositions[0]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Page7} name="3" className="6 resize draggable"
-                        style={{
-                            top: topPositions[3],
-                            left: leftPositions[1]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Page9} name="4" className="8 resize draggable"
-                        style={{
-                            top: topPositions[4],
-                            left: leftPositions[0]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Page14} name="5" className="13 resize draggable"
-                        style={{
-                            top: topPositions[5],
-                            left: leftPositions[1]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Page12} name="6" className="11 resize draggable"
-                        style={{
-                            top: topPositions[6],
-                            left: leftPositions[0]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Page11} name="7" className="10 resize draggable"
-                        style={{
-                            top: topPositions[7],
-                            left: leftPositions[1]
-                        }}
-                    />
-                    <Image src={Page4} name="8" className="3 resize draggable"
-                        style={{
-                            top: topPositions[8],
-                            left: leftPositions[0]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Page3} name="9" className="2 resize draggable"
-                        style={{
-                            top: topPositions[9],
-                            left: leftPositions[1]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Cover} name="10" className="0 resize draggable"
-                        style={{
-                            top: topPositions[10],
-                            left: leftPositions[0]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Page15} name="11" className="14 resize draggable"
-                        style={{
-                            top: topPositions[11],
-                            left: leftPositions[1]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Page10} name="12" className="9 resize draggable"
-                        style={{
-                            top: topPositions[12],
-                            left: leftPositions[0]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Page6} name="13" className="5 resize draggable"
-                        style={{
-                            top: topPositions[13],
-                            left: leftPositions[1]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Page8} name="14" className="7 resize draggable"
-                        style={{
-                            top: topPositions[14],
-                            left: leftPositions[0]
-                        }}
-                    />
-                    <Image onMouseUp={() => this.setChildren()} src={Page13} name="15" className="12 resize draggable"
-                        style={{
-                            top: topPositions[15],
-                            left: leftPositions[1]
-                        }}
-                    />
 
+                    <Row className="py-2">
+                        <Col className="d-flex justify-content-center">
+                            <Image onMouseUp={() => this.setChildren()} id="img" src={Page2} name="0" className="1 resize draggable"
+                            // style={{
+                            //     left: leftPositions[0],
+                            //     top: topPositions[1]
+                            // }}
+                            />
+                        {/* </Col>
+
+                        <Col className="d-flex justify-content-center"> */}
+                            <Image onMouseUp={() => this.setChildren()} src={Page5} name="1" className="4 resize draggable"
+                            // style={{
+                            //     left: leftPositions[1],
+                            //     top: topPositions[1]
+                            // }}
+                            />
+                        {/* </Col>
+
+                        <Col className="d-flex justify-content-center"> */}
+                            <Image onMouseUp={() => this.setChildren()} src={Back} name="2" className="15 resize draggable"
+                            // style={{
+                            //     left: leftPositions[2],
+                            //     top: topPositions[1]
+                            // }}
+                            />
+                        {/* </Col>
+
+                        <Col className="d-flex justify-content-center"> */}
+                            <Image onMouseUp={() => this.setChildren()} src={Page7} name="3" className="6 resize draggable"
+                            // style={{
+                            //     left: leftPositions[3],
+                            //     top: topPositions[1]
+                            // }}
+                            />
+                        </Col>
+                    </Row>
+
+                    <Row className="py-2">
+                        <Col className="d-flex justify-content-left">
+                            <Image onMouseUp={() => this.setChildren()} src={Page9} name="4" className="8 resize draggable"
+                            // style={{
+                            //     left: leftPositions[4],
+                            //     top: topPositions[1]
+                            // }}
+                            />
+                        {/* </Col>
+
+                        <Col className="d-flex justify-content-center"> */}
+                            <Image onMouseUp={() => this.setChildren()} src={Page14} name="5" className="13 resize draggable"
+                            // style={{
+                            //     left: leftPositions[5],
+                            //     top: topPositions[1]
+                            // }}
+                            />
+                        {/* </Col>
+
+                        <Col className="d-flex justify-content-center"> */}
+                            <Image onMouseUp={() => this.setChildren()} src={Page12} name="6" className="11 resize draggable"
+                            // style={{
+                            //     left: leftPositions[6],
+                            //     top: topPositions[1]
+                            // }}
+                            />
+                        {/* </Col>
+
+                        <Col className="d-flex justify-content-center"> */}
+                            <Image onMouseUp={() => this.setChildren()} src={Page11} name="7" className="10 resize draggable"
+                            // style={{
+                            //     left: leftPositions[7],
+                            //     top: topPositions[1]
+                            // }}
+                            />
+                        </Col>
+                    </Row>
+
+                    <Row className="py-2">
+                        <Col className="d-flex justify-content-center">
+                            <Image src={Page4} name="8" className="3 resize draggable"
+                            // style={{
+                            //     left: leftPositions[8],
+                            //     top: topPositions[0]
+                            // }}
+                            />
+                        {/* </Col>
+
+                        <Col className="d-flex justify-content-center"> */}
+                            <Image onMouseUp={() => this.setChildren()} src={Page3} name="9" className="2 resize draggable"
+                            // style={{
+                            //     left: leftPositions[9],
+                            //     top: topPositions[0]
+                            // }}
+                            />
+                        {/* </Col>
+
+                        <Col className="d-flex justify-content-center"> */}
+                            <Image onMouseUp={() => this.setChildren()} src={Cover} name="10" className="0 resize draggable"
+                            // style={{
+                            //     left: leftPositions[10],
+                            //     top: topPositions[0]
+                            // }}
+                            />
+                        {/* </Col>
+
+                        <Col className="d-flex justify-content-center"> */}
+                            <Image onMouseUp={() => this.setChildren()} src={Page15} name="11" className="14 resize draggable"
+                            // style={{
+                            //     left: leftPositions[11],
+                            //     top: topPositions[0]
+                            // }}
+                            />
+                        </Col>
+                    </Row>
+
+                    <Row className="py-2">
+                        <Col className="d-flex justify-content-center">
+                            <Image onMouseUp={() => this.setChildren()} src={Page10} name="12" className="9 resize draggable"
+                            // style={{
+                            //     left: leftPositions[12],
+                            //     top: topPositions[0]
+                            // }}
+                            />
+                        {/* </Col>
+
+                        <Col className="d-flex justify-content-center"> */}
+                            <Image onMouseUp={() => this.setChildren()} src={Page6} name="13" className="5 resize draggable"
+                            // style={{
+                            //     left: leftPositions[13],
+                            //     top: topPositions[0]
+                            // }}
+                            />
+                        {/* </Col>
+
+                        <Col className="d-flex justify-content-center"> */}
+                            <Image onMouseUp={() => this.setChildren()} src={Page8} name="14" className="7 resize draggable"
+                            // style={{
+                            //     left: leftPositions[14],
+                            //     top: topPositions[0]
+                            // }}
+                            />
+                        {/* </Col>
+
+                        <Col className="d-flex justify-content-center"> */}
+                            <Image onMouseUp={() => this.setChildren()} src={Page13} name="15" className="12 resize draggable"
+                            // style={{
+                            //     left: leftPositions[15],
+                            //     top: topPositions[0]
+                            // }}
+                            />
+                        </Col>
+                    </Row >
                     {/* Drop Zones */}
                     <div>
                         <div className="0 drop-notactive-blind dropzone-blind" style={{
@@ -455,9 +495,9 @@ class Blind_Man extends Component {
                             top: topPositionsDrop[15],
                             left: leftPositionsDrop[1]
                         }} />
-                    </div>
-                </div>
-            </Container>
+                    </div> 
+                </div >
+            </Container >
 
         );
     }
