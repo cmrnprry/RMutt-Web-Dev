@@ -278,155 +278,75 @@ class Blind_Man extends Component {
                 }}>
                     {/* Draggables */}
 
-                    <Row className="py-2">
-                        <Col className="d-flex justify-content-center">
-                            <Image onMouseUp={() => this.setChildren()} id="img" src={Page2} name="0" className="1 resize draggable"
-                            // style={{
-                            //     left: leftPositions[0],
-                            //     top: topPositions[1]
-                            // }}
-                            />
+                    <Row className="align-items-center py-2">
+                        <Col className="d-flex justify-content-cent align-items-centerer">
+                            <Image onMouseUp={() => this.setChildren()} id="img" src={Page2} name="0" className="1 resize draggable"/>
                         {/* </Col>
 
                         <Col className="d-flex justify-content-center"> */}
-                            <Image onMouseUp={() => this.setChildren()} src={Page5} name="1" className="4 resize draggable"
-                            // style={{
-                            //     left: leftPositions[1],
-                            //     top: topPositions[1]
-                            // }}
-                            />
+                            <Image onMouseUp={() => this.setChildren()} src={Page5} name="1" className="4 resize draggable"/>
                         {/* </Col>
 
                         <Col className="d-flex justify-content-center"> */}
-                            <Image onMouseUp={() => this.setChildren()} src={Back} name="2" className="15 resize draggable"
-                            // style={{
-                            //     left: leftPositions[2],
-                            //     top: topPositions[1]
-                            // }}
-                            />
+                            <Image onMouseUp={() => this.setChildren()} src={Back} name="2" className="15 resize draggable"/>
                         {/* </Col>
 
                         <Col className="d-flex justify-content-center"> */}
-                            <Image onMouseUp={() => this.setChildren()} src={Page7} name="3" className="6 resize draggable"
-                            // style={{
-                            //     left: leftPositions[3],
-                            //     top: topPositions[1]
-                            // }}
-                            />
+                            <Image onMouseUp={() => this.setChildren()} src={Page7} name="3" className="6 resize draggable"/>
                         </Col>
                     </Row>
 
-                    <Row className="py-2">
-                        <Col className="d-flex justify-content-left">
-                            <Image onMouseUp={() => this.setChildren()} src={Page9} name="4" className="8 resize draggable"
-                            // style={{
-                            //     left: leftPositions[4],
-                            //     top: topPositions[1]
-                            // }}
-                            />
+                    <Row className="align-items-center py-2">
+                        <Col className="d-flex justify-content-left align-items-center">
+                            <Image onMouseUp={() => this.setChildren()} src={Page9} name="4" className="8 resize draggable"/>
                         {/* </Col>
 
                         <Col className="d-flex justify-content-center"> */}
-                            <Image onMouseUp={() => this.setChildren()} src={Page14} name="5" className="13 resize draggable"
-                            // style={{
-                            //     left: leftPositions[5],
-                            //     top: topPositions[1]
-                            // }}
-                            />
+                            <Image onMouseUp={() => this.setChildren()} src={Page14} name="5" className="13 resize draggable"/>
                         {/* </Col>
 
                         <Col className="d-flex justify-content-center"> */}
-                            <Image onMouseUp={() => this.setChildren()} src={Page12} name="6" className="11 resize draggable"
-                            // style={{
-                            //     left: leftPositions[6],
-                            //     top: topPositions[1]
-                            // }}
-                            />
+                            <Image onMouseUp={() => this.setChildren()} src={Page12} name="6" className="11 resize draggable"/>
                         {/* </Col>
 
                         <Col className="d-flex justify-content-center"> */}
-                            <Image onMouseUp={() => this.setChildren()} src={Page11} name="7" className="10 resize draggable"
-                            // style={{
-                            //     left: leftPositions[7],
-                            //     top: topPositions[1]
-                            // }}
-                            />
+                            <Image onMouseUp={() => this.setChildren()} src={Page11} name="7" className="10 resize draggable"/>
                         </Col>
                     </Row>
 
-                    <Row className="py-2">
-                        <Col className="d-flex justify-content-center">
-                            <Image src={Page4} name="8" className="3 resize draggable"
-                            // style={{
-                            //     left: leftPositions[8],
-                            //     top: topPositions[0]
-                            // }}
-                            />
+                    <Row className="align-items-center py-2">
+                        <Col className="d-flex justify-content-cent align-items-centerer">
+                            <Image src={Page4} name="8" className="3 resize draggable"/>
                         {/* </Col>
 
                         <Col className="d-flex justify-content-center"> */}
-                            <Image onMouseUp={() => this.setChildren()} src={Page3} name="9" className="2 resize draggable"
-                            // style={{
-                            //     left: leftPositions[9],
-                            //     top: topPositions[0]
-                            // }}
-                            />
+                            <Image onMouseUp={() => this.setChildren()} src={Page3} name="9" className="2 resize draggable"/>
                         {/* </Col>
 
                         <Col className="d-flex justify-content-center"> */}
-                            <Image onMouseUp={() => this.setChildren()} src={Cover} name="10" className="0 resize draggable"
-                            // style={{
-                            //     left: leftPositions[10],
-                            //     top: topPositions[0]
-                            // }}
-                            />
+                            <Image onMouseUp={() => this.setChildren()} src={Cover} name="10" className="0 resize draggable"/>
                         {/* </Col>
 
                         <Col className="d-flex justify-content-center"> */}
-                            <Image onMouseUp={() => this.setChildren()} src={Page15} name="11" className="14 resize draggable"
-                            // style={{
-                            //     left: leftPositions[11],
-                            //     top: topPositions[0]
-                            // }}
-                            />
+                            <Image onMouseUp={() => this.setChildren()} src={Page15} name="11" className="14 resize draggable"/>
                         </Col>
                     </Row>
 
-                    <Row className="py-2">
-                        <Col className="d-flex justify-content-center">
-                            <Image onMouseUp={() => this.setChildren()} src={Page10} name="12" className="9 resize draggable"
-                            // style={{
-                            //     left: leftPositions[12],
-                            //     top: topPositions[0]
-                            // }}
-                            />
+                    <Row className="align-items-center py-2">
+                        <Col className="d-flex justify-content-cent align-items-centerer">
+                            <Image onMouseUp={() => this.setChildren()} src={Page10} name="12" className="9 resize draggable"/>
                         {/* </Col>
 
                         <Col className="d-flex justify-content-center"> */}
-                            <Image onMouseUp={() => this.setChildren()} src={Page6} name="13" className="5 resize draggable"
-                            // style={{
-                            //     left: leftPositions[13],
-                            //     top: topPositions[0]
-                            // }}
-                            />
+                            <Image onMouseUp={() => this.setChildren()} src={Page6} name="13" className="5 resize draggable"/>
                         {/* </Col>
 
                         <Col className="d-flex justify-content-center"> */}
-                            <Image onMouseUp={() => this.setChildren()} src={Page8} name="14" className="7 resize draggable"
-                            // style={{
-                            //     left: leftPositions[14],
-                            //     top: topPositions[0]
-                            // }}
-                            />
+                            <Image onMouseUp={() => this.setChildren()} src={Page8} name="14" className="7 resize draggable"/>
                         {/* </Col>
 
                         <Col className="d-flex justify-content-center"> */}
-                            <Image onMouseUp={() => this.setChildren()} src={Page13} name="15" className="12 resize draggable"
-                            // style={{
-                            //     left: leftPositions[15],
-                            //     top: topPositions[0]
-                            // }}
-                            />
+                            <Image onMouseUp={() => this.setChildren()} src={Page13} name="15" className="12 resize draggable"/>
                         </Col>
                     </Row >
                     {/* Drop Zones */}
