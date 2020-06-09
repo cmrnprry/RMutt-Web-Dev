@@ -29,9 +29,6 @@ import Image from 'react-bootstrap/Image'
 import Helmet from "react-helmet";
 import interact from 'interactjs'
 
-//width and height
-var width = 0;
-var height = 0;
 
 //Moving any of the draggables positions requires you to adjust this 
 var currList = ["1", "4", "15", "6", "8", "13", "11", "10", "3", "2", "0", "14", "9", "5", "7", "12"];
@@ -97,7 +94,7 @@ interact('.dropzone-blind').dropzone({
 
 })
 
-window.onload = function () {
+function setDrops() {
     var count = 0;
     for (var i = 0; i < 16; i++) {
         var x = "drag-" + i;
@@ -204,11 +201,12 @@ class Blind_Man extends Component {
     //Sets the listener
     componentDidMount() {
         window.addEventListener("resize", this.resizeWindow);
+        setDrops();
     }
 
     //So the program always has the correct width and height of window
     resizeWindow() {
-        this.setState({ width: window.outerWidth(true), height: window.outerHeight(true) });
+        this.setState({ width: window.innerHeight, height: window.innerHeight });
     }
 
     //Tells the cookies to be set
