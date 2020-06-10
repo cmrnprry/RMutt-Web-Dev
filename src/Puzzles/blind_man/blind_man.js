@@ -95,7 +95,6 @@ interact('.dropzone-blind').dropzone({
 })
 
 function setDrops() {
-    var count = 0;
     for (var i = 0; i < 16; i++) {
         var x = "drag-" + i;
         var drag = document.getElementsByName(i)[0].getBoundingClientRect();
@@ -103,16 +102,6 @@ function setDrops() {
 
         drop.style.top = ((drag.y - 5) + 'px');
         drop.style.left = ((drag.x - 6) + 'px');
-        console.log(drag.x)
-        // if (i % 4 == 0 && i != 0)
-        // {
-        //     count += 167;
-        //     drop.style.top = count + 'px';    
-        // }
-        // else
-        // {
-        //     drop.style.top = count + 'px';
-        // }
     }
 }
 
