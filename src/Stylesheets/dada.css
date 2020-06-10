@@ -33,14 +33,6 @@ code {
     monospace;
 }
 
-/*Helps images be more responisive*/
-img{
-	
-	margin: auto;
-	max-width: 100%;
-	height: auto;
-}
-
 .wooden-background
 {
 	background: url('../folder_elements/wooden.png') no-repeat center fixed;     
@@ -207,13 +199,16 @@ li img {
 	display:block;
 	z-index:0;
 	height:100vh;
-	position:relative;
+    margin-left: auto;
+    margin-right: auto
 }
 
 .red-letter {
 	display:block;
 	position:relative;
 	height:90vh;
+	margin-left: auto;
+    margin-right: auto
 }
 
 p.text

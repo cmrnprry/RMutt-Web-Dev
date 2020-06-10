@@ -24,8 +24,23 @@ class AR_Letter extends Component {
     // eslint-disable-next-line
     constructor(props) {
         super(props);
+        this.state = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
 
+        this.resizeWindow = this.resizeWindow.bind(this);
         this.setChildren = this.setChildren.bind(this);
+    }
+
+    //Sets the listener
+    componentDidMount() {
+        window.addEventListener("resize", this.resizeWindow);
+    }
+
+    //So the program always has the correct width and height of window
+    resizeWindow() {
+        this.setState({ width: window.innerHeight, height: window.innerHeight });
     }
 
     setChildren() {
@@ -40,14 +55,14 @@ class AR_Letter extends Component {
 
         return (
 
-            <Container fluid='true' style={{ backgroundImage: `url(${Background}`, height: 'auto' }}>
+            <Container fluid='true' className="wooden-background" style={{ overflowX: 'hidden', minHeight: this.state.height, maxWidth: this.state.width }}>
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>The spark that started the fire</title>
                 </Helmet>
 
                 <Popup style={{ background: 'transparent', border: 'none' }}
-                    trigger={<Image src={letter} className='ar-letter' />}
+                    trigger={<Image src={letter} className='ar-letter' style={{ marginLeft: 'auto',  marginRight: 'auto' }} />}
                     modal
                     closeOnDocumentClick
                     onClose={this.setChildren}

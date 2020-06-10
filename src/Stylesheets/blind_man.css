@@ -2,7 +2,6 @@
 {
   height: 150px;
   width: 100px;
-
   /* max-width: 300px;
   max-height: 400px; */
   /* position: absolute; */
@@ -26,8 +25,8 @@
 .dropzone-blind
 {
   /* background-color: black; */
-  height: 162px;
-  width: 115px;
+  height: 148px;
+  width: 112px;
   /* display: inline-block; */
 	position: absolute;
 
