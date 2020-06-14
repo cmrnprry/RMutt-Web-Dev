@@ -113,23 +113,20 @@ function setDrops() {
     }
 }
 
+function hideOthers(cur) {
+    for (var i = 0; i < 16; i++) {
+        if (cur == i) {
+            var index = i.toString()
+            var x = document.getElementById(index);
+            console.log(x)
+            console.log(i)
+        }
+    }
+}
+
 //Function that swaps the position of two objects and checks to see if the current list is correct
 function pushInList(draggable, dropzone) {
-    // var currPos = currList.indexOf(draggable);
-    // var temp = "";
-
-    // console.log("curr Position: " + currPos);
-    // console.log("dropzone Position: " + dropzone);
-    // console.log("array Position: " + draggable);
-
-    //this works whil we are not swaping the objects and are just dropping them one at a time
     currList.splice(dropzone, 1, draggable);
-
-    // if (currPos !== dropzone) {
-    //     temp = currList[dropzone];
-    //     currList[dropzone] = draggable;
-    //     currList[currPos] = temp;
-    // }
 
     if (checkList()) {
         puzzleSolved = true;
@@ -147,10 +144,6 @@ function checkList() {
     var allCorrect = true;
 
     if (correctList.length === currList.length) {
-        // for (let i = 0; i < currList.length; i++) {
-        //     console.log("curr at index " + i + ": " + currList[i]);
-        //     allCorrect = false;
-        // }
         for (let i = 0; i < correctList.length; i++) {
             if (currList[i] !== correctList[i]) {
                 allCorrect = false;
@@ -232,18 +225,19 @@ class Blind_Man extends Component {
                 <Row className="align-items-center py-2">
                     <Col className="d-flex justify-content-center">
                         <Image name="0" />
+                        
                         <SideBySideMagnifier
                             imageSrc={Page2}
                             largeImageSrc={Page2}
                             className="1 resize draggable"
-                            name="0"
+                            id="0"
                             onMouseUp={() => this.setChildren()}
+                            renderOverlay={() => hideOthers("0")}
                         />
                     </Col>
 
                     <Col className="d-flex justify-content-center">
                         <Image name="1" />
-
 
                         <SideBySideMagnifier
                             imageSrc={Page5}
@@ -263,6 +257,7 @@ class Blind_Man extends Component {
                             name="2"
                             className="15 resize draggable"
                             onMouseUp={() => this.setChildren()}
+                            switchSides='true'
                         />
                     </Col>
 
@@ -275,6 +270,7 @@ class Blind_Man extends Component {
                             name="3"
                             className="6 resize draggable"
                             onMouseUp={() => this.setChildren()}
+                            switchSides='true'
                         />
                     </Col>
                 </Row>
@@ -312,6 +308,7 @@ class Blind_Man extends Component {
                             largeImageSrc={Page12}
                             name="6"
                             className="11 resize draggable"
+                            switchSides='true'
                             onMouseUp={() => this.setChildren()}
                         />
                     </Col>
@@ -324,6 +321,7 @@ class Blind_Man extends Component {
                             largeImageSrc={Page10}
                             name="7"
                             className="10 resize draggable"
+                            switchSides='true'
                             onMouseUp={() => this.setChildren()}
                         />
                     </Col>
@@ -362,6 +360,7 @@ class Blind_Man extends Component {
                             largeImageSrc={Cover}
                             name="10"
                             className="0 resize draggable"
+                            switchSides='true'
                             onMouseUp={() => this.setChildren()}
                         />
                     </Col>
@@ -374,6 +373,7 @@ class Blind_Man extends Component {
                             largeImageSrc={Page15}
                             name="11"
                             className="14 resize draggable"
+                            switchSides='true'
                             onMouseUp={() => this.setChildren()}
                         />
                     </Col>
@@ -412,6 +412,7 @@ class Blind_Man extends Component {
                             largeImageSrc={Page8}
                             name="14"
                             className="7 resize draggable"
+                            switchSides='true'
                             onMouseUp={() => this.setChildren()}
                         />
                     </Col>
@@ -424,6 +425,7 @@ class Blind_Man extends Component {
                             largeImageSrc={Page13}
                             name="15"
                             className="12 resize draggable"
+                            switchSides='true'
                             onMouseUp={() => this.setChildren()}
                         />
                     </Col>
