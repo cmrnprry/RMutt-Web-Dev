@@ -28,6 +28,7 @@ import Page13 from "./blind_man_images/13.jpg"
 import Page14 from "./blind_man_images/14.jpg"
 import Page15 from "./blind_man_images/15.jpg"
 import Back from "./blind_man_images/back.jpg"
+import Background from "../../folder_elements/wooden.png"
 
 //Web Imports
 import Container from 'react-bootstrap/Container'
@@ -113,15 +114,9 @@ function setDrops() {
     }
 }
 
-function hideOthers(cur) {
-    for (var i = 0; i < 16; i++) {
-        if (cur == i) {
-            var index = i.toString()
-            var x = document.getElementById(index);
-            console.log(x)
-            console.log(i)
-        }
-    }
+function setZoomed() {
+    var left = document.getElementsByName("3")[0].getBoundingClientRect().x + document.getElementsByName("3")[0].width;
+    document.getElementById("Zoom").style.left = (left + 225) + "px";
 }
 
 //Function that swaps the position of two objects and checks to see if the current list is correct
@@ -193,6 +188,7 @@ class Blind_Man extends Component {
     componentDidMount() {
         window.addEventListener("resize", this.resizeWindow);
         setDrops();
+        setZoomed();
     }
 
     //So the program always has the correct width and height of window
@@ -214,241 +210,83 @@ class Blind_Man extends Component {
 
     render() {
         return (
-            <Container fluid='true' className="wooden-background" style={{ overflowX: 'hidden', minHeight: this.state.height, maxWidth: this.state.width }}>
+            <Container fluid='true' >
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Such vision!</title>
                 </Helmet>
 
-                {/* Draggables */}
+                    {/* Draggables */}
 
-                <Row className="align-items-center py-2">
-                    <Col className="d-flex justify-content-center">
-                        <Image name="0" />
-                        
-                        <SideBySideMagnifier
-                            imageSrc={Page2}
-                            largeImageSrc={Page2}
-                            className="1 resize draggable"
-                            id="0"
-                            onMouseUp={() => this.setChildren()}
-                            renderOverlay={() => hideOthers("0")}
-                        />
-                    </Col>
+                    <Row className="d-flex justify-content-center py-2">
+                        <Col className="justify-content-left">
+                            <Image name="0" src={Page2} className="1 resize draggable" />
 
-                    <Col className="d-flex justify-content-center">
-                        <Image name="1" />
+                            <Image name="1" src={Page5} className="4 resize draggable" />
 
-                        <SideBySideMagnifier
-                            imageSrc={Page5}
-                            largeImageSrc={Page5}
-                            name="1"
-                            className="4 resize draggable"
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
+                            <Image name="2" src={Back} className="15 resize draggable" />
 
-                    <Col className="d-flex justify-content-center">
-                        <Image name="2" />
+                            <Image name="3" src={Page2} className="6 resize draggable" />
+                        </Col>
 
-                        <SideBySideMagnifier
-                            imageSrc={Back}
-                            largeImageSrc={Back}
-                            name="2"
-                            className="15 resize draggable"
-                            onMouseUp={() => this.setChildren()}
-                            switchSides='true'
-                        />
-                    </Col>
+                        <div className="w-100" />
 
-                    <Col className="d-flex justify-content-center">
-                        <Image name="3" />
+                        <Col className="justify-content-left">
+                            <Image name="4" src={Page9} className="18 resize draggable" />
 
-                        <SideBySideMagnifier
-                            imageSrc={Page7}
-                            largeImageSrc={Page7}
-                            name="3"
-                            className="6 resize draggable"
-                            onMouseUp={() => this.setChildren()}
-                            switchSides='true'
-                        />
-                    </Col>
-                </Row>
+                            <Image name="5" src={Page14} className="13 resize draggable" />
 
-                <Row className="align-items-center py-2">
-                    <Col className="d-flex justify-content-center">
-                        <Image name="4" />
+                            <Image name="6" src={Page12} className="11 resize draggable" />
 
-                        <SideBySideMagnifier
-                            imageSrc={Page9}
-                            largeImageSrc={Page9}
-                            name="4"
-                            className="8 resize draggable"
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
+                            <Image name="7" src={Page10} className="10 resize draggable" />
+                        </Col>
 
-                    <Col className="d-flex justify-content-center">
-                        <Image name="5" />
+                        <div className="w-100" />
 
-                        <SideBySideMagnifier
-                            imageSrc={Page14}
-                            largeImageSrc={Page14}
-                            name="5"
-                            className="13 resize draggable"
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
+                        <Col className="justify-content-left">
+                            <Image name="8" src={Page4} className="3 resize draggable" />
 
-                    <Col className="d-flex justify-content-center">
-                        <Image name="6" />
+                            <Image name="9" src={Page9} className="8 resize draggable" />
 
-                        <SideBySideMagnifier
-                            imageSrc={Page12}
-                            largeImageSrc={Page12}
-                            name="6"
-                            className="11 resize draggable"
-                            switchSides='true'
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
+                            <Image name="10" src={Cover} className="10 resize draggable" />
 
-                    <Col className="d-flex justify-content-center">
-                        <Image name="7" />
+                            <Image name="11" src={Page15} className="14 resize draggable" />
+                        </Col>
 
-                        <SideBySideMagnifier
-                            imageSrc={Page10}
-                            largeImageSrc={Page10}
-                            name="7"
-                            className="10 resize draggable"
-                            switchSides='true'
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
-                </Row>
+                        <div className="w-100" />
 
-                <Row className="align-items-center py-2">
-                    <Col className="d-flex justify-content-center">
-                        <Image name="8" />
+                        <Col className="justify-content-left">
+                            <Image name="12" src={Page10} className="9 resize draggable" />
 
-                        <SideBySideMagnifier
-                            imageSrc={Page4}
-                            largeImageSrc={Page4}
-                            name="8"
-                            className="3 resize draggable"
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
+                            <Image name="13" src={Page6} className="5 resize draggable" />
 
-                    <Col className="d-flex justify-content-center">
-                        <Image name="9" />
+                            <Image name="14" src={Page8} className="7 resize draggable" />
 
-                        <SideBySideMagnifier
-                            imageSrc={Page9}
-                            largeImageSrc={Page9}
-                            name="9"
-                            className="8 resize draggable"
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
+                            <Image name="15" src={Page13} className="12 resize draggable" />
+                        </Col>
+                    </Row>
 
-                    <Col className="d-flex justify-content-center">
-                        <Image name="10" />
+                    <Image id="Zoom" src={Page2} className="zoom" />
 
-                        <SideBySideMagnifier
-                            imageSrc={Cover}
-                            largeImageSrc={Cover}
-                            name="10"
-                            className="0 resize draggable"
-                            switchSides='true'
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
-
-                    <Col className="d-flex justify-content-center">
-                        <Image name="11" />
-
-                        <SideBySideMagnifier
-                            imageSrc={Page15}
-                            largeImageSrc={Page15}
-                            name="11"
-                            className="14 resize draggable"
-                            switchSides='true'
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
-                </Row>
-
-                <Row className="align-items-center py-2">
-                    <Col className="d-flex justify-content-center">
-                        <Image name="12" />
-
-                        <SideBySideMagnifier
-                            imageSrc={Page10}
-                            largeImageSrc={Page10}
-                            name="9"
-                            className="12 resize draggable"
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
-
-                    <Col className="d-flex justify-content-center">
-                        <Image name="13" />
-
-                        <SideBySideMagnifier
-                            imageSrc={Page6}
-                            largeImageSrc={Page6}
-                            name="13"
-                            className="5 resize draggable"
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
-
-                    <Col className="d-flex justify-content-center">
-                        <Image name="14" />
-
-                        <SideBySideMagnifier
-                            imageSrc={Page8}
-                            largeImageSrc={Page8}
-                            name="14"
-                            className="7 resize draggable"
-                            switchSides='true'
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
-
-                    <Col className="d-flex justify-content-center">
-                        <Image name="15" />
-
-                        <SideBySideMagnifier
-                            imageSrc={Page13}
-                            largeImageSrc={Page13}
-                            name="15"
-                            className="12 resize draggable"
-                            switchSides='true'
-                            onMouseUp={() => this.setChildren()}
-                        />
-                    </Col>
-                </Row >
-                {/* Drop Zones */}
-                <div>
-                    <div id="drag-0" className="0 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-1" className="1 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-2" className="2 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-3" className="3 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-4" className="4 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-5" className="5 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-6" className="6 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-7" className="7 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-8" className="8 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-9" className="9 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-10" className="10 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-11" className="11 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-12" className="12 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-13" className="13 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-14" className="14 drop-notactive-blind dropzone-blind" />
-                    <div id="drag-15" className="15 drop-notactive-blind dropzone-blind" />
-                </div>
+                    {/* Drop Zones */}
+                    <div>
+                        <div id="drag-0" className="0 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-1" className="1 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-2" className="2 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-3" className="3 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-4" className="4 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-5" className="5 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-6" className="6 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-7" className="7 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-8" className="8 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-9" className="9 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-10" className="10 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-11" className="11 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-12" className="12 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-13" className="13 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-14" className="14 drop-notactive-blind dropzone-blind" />
+                        <div id="drag-15" className="15 drop-notactive-blind dropzone-blind" />
+                    </div>
             </Container >
 
         );

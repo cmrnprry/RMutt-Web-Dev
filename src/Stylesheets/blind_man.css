@@ -1,10 +1,24 @@
 .resize
 {
-  height: 150px;
-  width: 100px;
-  /* max-width: 300px;
-  max-height: 400px; */
-  /* position: absolute; */
+  height: 155px;
+  width: 105px;
+  margin: 0px 25px 25px 25px;
+}
+
+.zoom
+{
+  max-width: 100%;
+  max-height: 675px;
+  top: 16px;
+  left: 851px;
+  position: absolute;
+}
+
+.center-div
+{
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em
 }
 
 .drop-target-blind
@@ -25,8 +39,8 @@
 .dropzone-blind
 {
   /* background-color: black; */
-  height: 148px;
-  width: 112px;
+  height: 168px;
+  width: 118px;
   /* display: inline-block; */
 	position: absolute;
 

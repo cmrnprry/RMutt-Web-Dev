@@ -31,6 +31,10 @@ class Archive extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        document.body.style.background = "#b5b5b5";
+    }
+
     handleChange(event) {
         const { cookies } = this.props;
 

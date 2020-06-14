@@ -55,14 +55,14 @@ class AR_Letter extends Component {
 
         return (
 
-            <Container fluid='true' className="wooden-background" style={{ overflowX: 'hidden', minHeight: this.state.height, maxWidth: this.state.width }}>
+            <Container fluid='true'>
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>The spark that started the fire</title>
                 </Helmet>
 
                 <Popup style={{ background: 'transparent', border: 'none' }}
-                    trigger={<Image src={letter} className='ar-letter' style={{ marginLeft: 'auto',  marginRight: 'auto' }} />}
+                    trigger={<Image src={letter} className='ar-letter' style={{ marginLeft: 'auto', marginRight: 'auto' }} />}
                     modal
                     closeOnDocumentClick
                     onClose={this.setChildren}

@@ -13,7 +13,6 @@ import flyer from './D.A.D.A._Flyer.pdf'
 import Menu from '../../Navigation/menu_bar.png'
 import FrontImg from './front.jpg'
 
-
 //Web Imports
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
@@ -27,6 +26,10 @@ class Front extends Component {
     // eslint-disable-next-line
     constructor(props) {
         super(props);
+    }
+
+    componentDidMount() {
+        document.body.style.background = "#b5b5b5";
     }
 
     checkCookie() {

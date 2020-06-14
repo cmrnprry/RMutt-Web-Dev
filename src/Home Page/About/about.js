@@ -29,6 +29,10 @@ class About extends Component {
         super(props);
     }
 
+    componentDidMount() {
+        document.body.style.background = "#b5b5b5";
+    }
+
     checkCookie() {
         const { cookies } = this.props;
         var val = cookies.get('login');

@@ -19,7 +19,8 @@ src: url("../Fonts/BlackCasper.ttf");
 }
 
 body {
-	background:#b5b5b5;
+	background: url('../folder_elements/wooden.png') no-repeat;   
+
 	margin: 0;
   	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -35,8 +36,9 @@ code {
 
 .wooden-background
 {
-	background: url('../folder_elements/wooden.png') no-repeat center fixed;     
-    background-size: cover;
+	background: url('../folder_elements/wooden.png') no-repeat;   
+	height: 100%;
+	background-size: cover;
 }
 
 .popup-content {

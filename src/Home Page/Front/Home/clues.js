@@ -32,6 +32,7 @@ class Clues extends Component {
     }
 
     componentDidMount() {
+        document.body.style.removeProperty("background");
         window.addEventListener("resize", this.resizeWindow);
     }
 
@@ -45,9 +46,7 @@ class Clues extends Component {
         const { cookies } = this.props;
         return (
 
-            <Container fluid='true'
-                className="wooden-background" style={{ overflowX: 'hidden', minHeight: this.state.height, minWidth: this.state.width }}>
-
+            <Container fluid='true'>
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Dada - Home</title>
