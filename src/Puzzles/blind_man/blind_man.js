@@ -28,6 +28,7 @@ import Page13 from "./blind_man_images/13.jpg"
 import Page14 from "./blind_man_images/14.jpg"
 import Page15 from "./blind_man_images/15.jpg"
 import Back from "./blind_man_images/back.jpg"
+import Sticky from "../../folder_elements/sticky/sticky.png"
 
 //Web Imports
 import Container from 'react-bootstrap/Container'
@@ -129,7 +130,7 @@ function setDrops() {
 
 function setZoomed() {
     var left = document.getElementsByName("3")[0].getBoundingClientRect().x + document.getElementsByName("3")[0].width;
-    document.getElementById("Zoom").style.left = (left + 225) + "px";
+    document.getElementById("Zoom").style.left = (left + 250) + "px";
 }
 
 //Function that swaps the position of two objects and checks to see if the current list is correct
@@ -194,20 +195,17 @@ class Blind_Man extends Component {
             height: window.innerHeight,
             imgList: [cover, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, back]
         };
-
-        this.resizeWindow = this.resizeWindow.bind(this);
     }
 
     //Sets the listener
     componentDidMount() {
-        window.addEventListener("resize", this.resizeWindow);
+        if (this.state.width >= 1500) {
+            document.body.style.overflowX = "hidden";
+        }
         setDrops();
         setZoomed();
-    }
-
-    //So the program always has the correct width and height of window
-    resizeWindow() {
-        this.setState({ width: window.innerHeight, height: window.innerHeight });
+        console.log(document.getElementById("Zoom").style.left)
+        document.getElementById("note").style.left = (document.getElementById("Zoom").getBoundingClientRect().x + document.getElementById("Zoom").width - 50) + "px"
     }
 
     //Tells the cookies to be set
@@ -239,7 +237,7 @@ class Blind_Man extends Component {
 
     render() {
         return (
-            <Container fluid='true' >
+            <Container fluid='true'>
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Such vision!</title>
@@ -293,7 +291,13 @@ class Blind_Man extends Component {
                 </div>
 
 
-                <Image id="Zoom" src={Page2} className="zoom" />                
+                <Image id="Zoom" src={Page2} className="zoom" />
+
+                <div id="note" className="container">
+                    <Image src={Sticky} className="sticky" />
+                    <div className="text-sticky"> Double <br /> click an<br />image to <br />zoom</div>
+                </div>
+
                 {/* <Row className="d-flex justify-content-center py-2">
                     <Col className="justify-content-left">
                         <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="0" src={Page2} className="1 resize draggable" />
