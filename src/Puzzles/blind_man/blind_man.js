@@ -28,12 +28,9 @@ import Page13 from "./blind_man_images/13.jpg"
 import Page14 from "./blind_man_images/14.jpg"
 import Page15 from "./blind_man_images/15.jpg"
 import Back from "./blind_man_images/back.jpg"
-import Background from "../../folder_elements/wooden.png"
 
 //Web Imports
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import Helmet from "react-helmet";
 import interact from 'interactjs'
@@ -43,6 +40,22 @@ import interact from 'interactjs'
 var currList = ["1", "4", "15", "6", "8", "13", "11", "10", "3", "2", "0", "14", "9", "5", "7", "12"];
 const correctList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
 var puzzleSolved = false;
+const cover = require('./blind_man_images/cover.jpg');
+const img2 = require('./blind_man_images/2.jpg');
+const img3 = require('./blind_man_images/3.jpg');
+const img4 = require('./blind_man_images/4.jpg');
+const img5 = require('./blind_man_images/5.jpg');
+const img6 = require('./blind_man_images/6.jpg');
+const img7 = require('./blind_man_images/7.jpg');
+const img8 = require('./blind_man_images/8.jpg');
+const img9 = require('./blind_man_images/9.jpg');
+const img10 = require('./blind_man_images/10.jpg');
+const img11 = require('./blind_man_images/11.jpg');
+const img12 = require('./blind_man_images/12.jpg');
+const img13 = require('./blind_man_images/13.jpg');
+const img14 = require('./blind_man_images/14.jpg');
+const img15 = require('./blind_man_images/15.jpg');
+const back = require('./blind_man_images/back.jpg');
 
 //Draggable function
 interact('.draggable').draggable({
@@ -70,6 +83,7 @@ interact('.dropzone-blind').dropzone({
         // add active dropzone feedback
         event.target.classList.add('drop-active-blind')
         event.target.classList.remove('drop-notactive-blind')
+        event.relatedTarget.classList.add('drag-shadow')
     },
     ondragenter: function (event) {
         var draggableElement = event.relatedTarget
@@ -78,7 +92,6 @@ interact('.dropzone-blind').dropzone({
         // feedback the possibility of a drop
         event.target.classList.remove('drop-active-blind')
         dropzoneElement.classList.add('drop-target-blind')
-        draggableElement.classList.add('can-drop')
 
     },
     ondragleave: function (event) {
@@ -86,12 +99,12 @@ interact('.dropzone-blind').dropzone({
         // remove the drop feedback style
         event.target.classList.add('drop-active-blind')
         event.target.classList.remove('drop-target-blind')
-        event.relatedTarget.classList.remove('can-drop')
     },
     ondrop: function (event) {
         //swapToPos = event.target.classList[0];
         // swapPositions(currPos, swapToPos)
         pushInList(event.relatedTarget.classList[0], event.target.classList[0])
+        event.relatedTarget.classList.remove('drag-shadow')
     },
     ondropdeactivate: function (event) {
         // remove active dropzone feedback
@@ -178,7 +191,8 @@ class Blind_Man extends Component {
         super(props);
         this.state = {
             width: window.innerWidth,
-            height: window.innerHeight
+            height: window.innerHeight,
+            imgList: [cover, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14, img15, back]
         };
 
         this.resizeWindow = this.resizeWindow.bind(this);
@@ -208,6 +222,21 @@ class Blind_Man extends Component {
 
     }
 
+    changeZoomed(newZoom) {
+        var img = null;
+        if (newZoom === "Cover") {
+            img = cover
+        }
+        else if (newZoom === "Back") {
+            img = back
+        }
+        else {
+            img = this.state.imgList[newZoom - 1]
+        }
+
+        document.getElementById("Zoom").setAttribute('src', img);
+    }
+
     render() {
         return (
             <Container fluid='true' >
@@ -216,77 +245,122 @@ class Blind_Man extends Component {
                     <title>Such vision!</title>
                 </Helmet>
 
-                    {/* Draggables */}
+                {/* Draggables */}
+                <div>
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("2")} name="0" src={Page2} className="1 resize draggable" />
 
-                    <Row className="d-flex justify-content-center py-2">
-                        <Col className="justify-content-left">
-                            <Image name="0" src={Page2} className="1 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("5")} name="1" src={Page5} className="4 resize draggable" />
 
-                            <Image name="1" src={Page5} className="4 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("Back")} name="2" src={Back} className="15 resize draggable" />
 
-                            <Image name="2" src={Back} className="15 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("3")} name="3" src={Page3} className="2 resize draggable" />
+                </div>
 
-                            <Image name="3" src={Page2} className="6 resize draggable" />
-                        </Col>
+                <br />
 
-                        <div className="w-100" />
+                <div>
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("7")} name="4" src={Page7} className="6 resize draggable" />
 
-                        <Col className="justify-content-left">
-                            <Image name="4" src={Page9} className="18 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("5")} name="5" src={Page14} className="13 resize draggable" />
 
-                            <Image name="5" src={Page14} className="13 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("12")} name="6" src={Page12} className="11 resize draggable" />
 
-                            <Image name="6" src={Page12} className="11 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("11")} name="7" src={Page11} className="10 resize draggable" />
+                </div>
 
-                            <Image name="7" src={Page10} className="10 resize draggable" />
-                        </Col>
+                <br />
 
-                        <div className="w-100" />
+                <div>
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("4")} name="8" src={Page4} className="3 resize draggable" />
 
-                        <Col className="justify-content-left">
-                            <Image name="8" src={Page4} className="3 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("9")} name="9" src={Page9} className="8 resize draggable" />
 
-                            <Image name="9" src={Page9} className="8 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("Cover")} name="10" src={Cover} className="0 resize draggable" />
 
-                            <Image name="10" src={Cover} className="10 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("15")} name="11" src={Page15} className="14 resize draggable" />
+                </div>
 
-                            <Image name="11" src={Page15} className="14 resize draggable" />
-                        </Col>
+                <br />
 
-                        <div className="w-100" />
+                <div>
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("10")} name="12" src={Page10} className="9 resize draggable" />
 
-                        <Col className="justify-content-left">
-                            <Image name="12" src={Page10} className="9 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("6")} name="13" src={Page6} className="5 resize draggable" />
 
-                            <Image name="13" src={Page6} className="5 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("8")} name="14" src={Page8} className="7 resize draggable" />
 
-                            <Image name="14" src={Page8} className="7 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("13")} name="15" src={Page13} className="12 resize draggable" />
+                </div>
 
-                            <Image name="15" src={Page13} className="12 resize draggable" />
-                        </Col>
-                    </Row>
 
-                    <Image id="Zoom" src={Page2} className="zoom" />
+                <Image id="Zoom" src={Page2} className="zoom" />                
+                {/* <Row className="d-flex justify-content-center py-2">
+                    <Col className="justify-content-left">
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="0" src={Page2} className="1 resize draggable" />
 
-                    {/* Drop Zones */}
-                    <div>
-                        <div id="drag-0" className="0 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-1" className="1 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-2" className="2 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-3" className="3 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-4" className="4 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-5" className="5 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-6" className="6 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-7" className="7 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-8" className="8 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-9" className="9 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-10" className="10 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-11" className="11 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-12" className="12 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-13" className="13 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-14" className="14 drop-notactive-blind dropzone-blind" />
-                        <div id="drag-15" className="15 drop-notactive-blind dropzone-blind" />
-                    </div>
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="1" src={Page5} className="4 resize draggable" />
+
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="2" src={Back} className="15 resize draggable" />
+
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="3" src={Page2} className="6 resize draggable" />
+                    </Col>
+
+                    <div className="w-100" />
+
+                    <Col className="justify-content-left">
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="4" src={Page9} className="18 resize draggable" />
+
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="5" src={Page14} className="13 resize draggable" />
+
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="6" src={Page12} className="11 resize draggable" />
+
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="7" src={Page10} className="10 resize draggable" />
+                    </Col>
+
+                    <div className="w-100" />
+
+                    <Col className="justify-content-left">
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="8" src={Page4} className="3 resize draggable" />
+
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="9" src={Page9} className="8 resize draggable" />
+
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="10" src={Cover} className="10 resize draggable" />
+
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="11" src={Page15} className="14 resize draggable" />
+                    </Col>
+
+                    <div className="w-100" />
+
+                    <Col className="justify-content-left">
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="12" src={Page10} className="9 resize draggable" />
+
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="13" src={Page6} className="5 resize draggable" />
+
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="14" src={Page8} className="7 resize draggable" />
+
+                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="15" src={Page13} className="12 resize draggable" />
+                    </Col>
+                </Row> */}
+
+                {/* Drop Zones */}
+                <div>
+                    <div id="drag-0" className="0 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-1" className="1 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-2" className="2 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-3" className="3 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-4" className="4 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-5" className="5 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-6" className="6 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-7" className="7 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-8" className="8 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-9" className="9 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-10" className="10 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-11" className="11 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-12" className="12 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-13" className="13 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-14" className="14 drop-notactive-blind dropzone-blind" />
+                    <div id="drag-15" className="15 drop-notactive-blind dropzone-blind" />
+                </div>
             </Container >
 
         );

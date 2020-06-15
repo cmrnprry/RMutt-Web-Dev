@@ -8,42 +8,39 @@
 .zoom
 {
   max-width: 100%;
-  max-height: 675px;
-  top: 16px;
-  left: 851px;
+  max-height: 711px;
+  top: 5px;
   position: absolute;
-}
-
-.center-div
-{
-  margin-left: auto;
-  margin-right: auto;
-  width: 8em
+  z-index: -1;
 }
 
 .drop-target-blind
 {
-  border: 3px solid lightseagreen;
+  /* border: 3px solid lightseagreen; */
 }
 
 .drop-active-blind
 {
-  border: 3px solid #999;
+  /* border: 3px solid #999; */
 }
 
 .drop-notactive-blind
 {
-  border: 3px solid black;
+}
+
+.drag-shadow
+{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .dropzone-blind
 {
-  /* background-color: black; */
   height: 168px;
   width: 118px;
-  /* display: inline-block; */
 	position: absolute;
-
+  background: rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: -1;
 }
 
 .blind-man
