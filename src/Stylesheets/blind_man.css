@@ -5,6 +5,7 @@
   margin: 0px 25px 25px 25px;
 }
 
+
 .zoom
 {
   width: 525px;
@@ -16,23 +17,12 @@
 
 .zoomBorder
 {
-  border: 3px solid white;
-  border-style: double;
+  border: 1px solid black;
+  outline: 4px solid white;
+  outline-offset: 2px;
 }
 
-.drop-target-blind
-{
-  /* border: 3px solid lightseagreen; */
-}
 
-.drop-active-blind
-{
-  /* border: 3px solid #999; */
-}
-
-.drop-notactive-blind
-{
-}
 
 .drag-shadow
 {

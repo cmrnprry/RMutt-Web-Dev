@@ -34,13 +34,6 @@ code {
     monospace;
 }
 
-.wooden-background
-{
-	background: url('../folder_elements/wooden.png') no-repeat;   
-	height: 100%;
-	background-size: cover;
-}
-
 .popup-content {
 	position: relative; 
 	background: transparent; 
