@@ -1,14 +1,14 @@
 //React Imports
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
-import {
-    Magnifier,
-    GlassMagnifier,
-    SideBySideMagnifier,
-    PictureInPictureMagnifier,
-    MOUSE_ACTIVATION,
-    TOUCH_ACTIVATION
-} from "react-image-magnifiers";
+// import {
+//     Magnifier,
+//     GlassMagnifier,
+//     SideBySideMagnifier,
+//     PictureInPictureMagnifier,
+//     MOUSE_ACTIVATION,
+//     TOUCH_ACTIVATION
+// } from "react-image-magnifiers";
 import { instanceOf } from 'prop-types';
 
 //Image Imports
@@ -87,7 +87,7 @@ interact('.dropzone-blind').dropzone({
         event.relatedTarget.classList.add('drag-shadow')
     },
     ondragenter: function (event) {
-        var draggableElement = event.relatedTarget
+        // var draggableElement = event.relatedTarget
         var dropzoneElement = event.target
 
         // feedback the possibility of a drop

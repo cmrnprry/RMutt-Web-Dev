@@ -16,7 +16,7 @@ import toilet7 from './toilet/toilet7.png'
 import interact from 'interactjs'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+// import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import { Helmet } from "react-helmet";
 

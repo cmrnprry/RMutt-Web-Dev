@@ -6,7 +6,6 @@ import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
 //Image Imports
-import Background from '../../folder_elements/wooden.png'
 import Under from './tissue_paper_under.png'
 import Insrtuctions from './tissue_paper_instructions.png'
 import Image1 from './tissue_paper_overlays/1.PNG'
@@ -64,8 +63,8 @@ function dragMoveListener(event) {
     target.setAttribute('data-x', x)
     target.setAttribute('data-y', y)
 
-    var top = document.getElementsByName(event.target.name)[0].style.top;
-    var left = document.getElementsByName(event.target.name)[0].style.left;
+    // var top = document.getElementsByName(event.target.name)[0].style.top;
+    // var left = document.getElementsByName(event.target.name)[0].style.left;
 
     console.log(event.target.classList[1] + " at x: " + x);
     console.log(event.target.classList[1] + " at y: " + y);

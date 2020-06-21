@@ -23,7 +23,6 @@ class Rrose extends Component {
             height: window.innerHeight
         };
 
-        this.resizeWindow = this.resizeWindow.bind(this);
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -32,13 +31,6 @@ class Rrose extends Component {
 
     //Sets the listener
     componentDidMount() {
-        window.addEventListener("resize", this.resizeWindow);
-    }
-
-    //So the program always has the correct width and height of window
-    resizeWindow() {
-        console.log("here")
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
     openModal() {
