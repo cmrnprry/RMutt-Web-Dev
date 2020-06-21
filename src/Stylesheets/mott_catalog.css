@@ -12,7 +12,7 @@
 
 .page-one::after
 {
-	content: url("../Puzzles/mott_catalog/pages/mott_catalog_page1.png");
+	content: url("../Puzzles/mott_catalog/mott_catalog_images/pages/mott_catalog_page1.png");
 }
 
 .page-one
@@ -28,7 +28,7 @@
 
 .page-two::after
 {
-	content: url("../Puzzles/mott_catalog/pages/mott_catalog_page2.png");
+	content: url("../Puzzles/mott_catalog/mott_catalog_images/pages/mott_catalog_page2.png");
 }
 
 .page-two
@@ -44,7 +44,7 @@
 
 .page-three::after
 {
-	content: url("../Puzzles/mott_catalog/pages/mott_catalog_page3.png");
+	content: url("../Puzzles/mott_catalog/mott_catalog_images/pages/mott_catalog_page3.png");
 }
 
 .page-three

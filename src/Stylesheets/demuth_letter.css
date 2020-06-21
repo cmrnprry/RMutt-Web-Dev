@@ -62,7 +62,7 @@
 
 .demuth-letter::after
 {
-	content: url("../Puzzles/demuth_letter/demuth_letter_under.png");
+	content: url("../Puzzles/demuth_letter/demuth_letter_images/demuth_letter_under.png");
 }
 
 .demuth-letter

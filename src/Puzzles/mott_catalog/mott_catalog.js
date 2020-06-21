@@ -4,13 +4,13 @@ import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
 //Image Imports
-import toilet1 from './toilet/toilet1.png'
-import toilet2 from './toilet/toilet2.png'
-import toilet3 from './toilet/toilet3.png'
-import toilet4 from './toilet/toilet4.png'
-import toilet5 from './toilet/toilet5.png'
-import toilet6 from './toilet/toilet6.png'
-import toilet7 from './toilet/toilet7.png'
+import toilet1 from './mott_catalog_images/toilet/toilet1.png'
+import toilet2 from './mott_catalog_images/toilet/toilet2.png'
+import toilet3 from './mott_catalog_images/toilet/toilet3.png'
+import toilet4 from './mott_catalog_images/toilet/toilet4.png'
+import toilet5 from './mott_catalog_images/toilet/toilet5.png'
+import toilet6 from './mott_catalog_images/toilet/toilet6.png'
+import toilet7 from './mott_catalog_images/toilet/toilet7.png'
 
 //Web Imports
 import interact from 'interactjs'
