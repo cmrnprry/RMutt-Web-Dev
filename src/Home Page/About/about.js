@@ -17,6 +17,7 @@ import flyer from '../Front/D.A.D.A._Flyer.pdf'
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import { Helmet } from "react-helmet";
 
 
@@ -63,21 +64,21 @@ class About extends Component {
                     <Image className="header" src={Logo} />
                 </Link>
 
-                <ul>
-                    <li>
-                        <Image className="page" src={Archive} onClick={() => this.checkCookie()} />
-                    </li>
-                    <li>
-                        <Link to="about">
-                            <Image className="page" src={AboutImg} />
+                <Row>
+                    <Col>
+                        <Link to="archive">
+                            <Image className="page archive" src={Archive} onClick={() => this.checkCookie()} />
                         </Link>
-                    </li>
-                    <li>
+
+                        <Link to="about">
+                            <Image className="page about" src={AboutImg} />
+                        </Link>
+
                         <a href={flyer} target="_blank" rel="noopener noreferrer">
-                            <Image className="page" src={Pamphlet} />
+                            <Image className="page pamphlet" src={Pamphlet} />
                         </a>
-                    </li>
-                </ul>
+                    </Col>
+                </Row>
 
                 <Image src={AboutUs} style={{ width: '100%', height: 'auto' }} />
             </Container>
