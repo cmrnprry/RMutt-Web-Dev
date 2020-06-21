@@ -93,9 +93,31 @@ head {
 	z-index:0;
 }
 
-.page {
+.page-holder {
 	padding-top: 15%;
 	box-sizing: content-box;
+}
+.page{
+	width: 18%;
+	padding-top: 7%;
+	padding-right: 3%;
+	padding-bottom: 7%;
+
+}
+
+.archive
+{
+	float: right;
+}
+
+.about
+{
+	float: right;
+}
+
+.pamphlet
+{
+	float: right;
 }
 
 .logo {
