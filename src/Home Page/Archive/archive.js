@@ -93,8 +93,11 @@ class Archive extends Component {
                 {/* ----------------------------------------------------------------------------- */}
 
                 <div className="password">
-                    This page contains confidential information.<br />
-                    Please enter the password.<br /><br />
+                    <p>
+                        This page contains confidential information.<br />
+                        Please enter the password.
+                    </p>
+
 
                     <form name="login" style={{ margin: '5px 0px 0px 0px' }} onSubmit={this.handleSubmit}>
                         <input type="text" size="17" value={this.state.password} onChange={this.handleChange.bind(this)} style={{ width: '40%', height: '10%' }} /><br />

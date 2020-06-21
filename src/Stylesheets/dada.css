@@ -188,18 +188,12 @@ li img {
 
 .password {
 	text-align: center; 
-	margin: 0 auto; 
 	color: #000; 
-	font: 20px Adler;
-	position:relative;
-	z-index:3;
-	vertical-align: middle;
-	top:40%;
+	font: 1.25em Adler;
 }
 
 .password p {
-	font-size:.75em;
-	color:white;
+	font: 1.25em Adler;
 }
 
 .content {
