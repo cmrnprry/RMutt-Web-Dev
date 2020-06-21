@@ -14,6 +14,11 @@
   z-index: -1;
 }
 
+.zoomBorder
+{
+  border: 3px solid lightseagreen;
+}
+
 .drop-target-blind
 {
   /* border: 3px solid lightseagreen; */

@@ -41,6 +41,7 @@ import interact from 'interactjs'
 var currList = ["1", "4", "15", "6", "8", "13", "11", "10", "3", "2", "0", "14", "9", "5", "7", "12"];
 const correctList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"];
 var puzzleSolved = false;
+var prev = "1";
 const cover = require('./blind_man_images/cover.jpg');
 const img2 = require('./blind_man_images/2.jpg');
 const img3 = require('./blind_man_images/3.jpg');
@@ -222,17 +223,34 @@ class Blind_Man extends Component {
 
     changeZoomed(newZoom) {
         var img = null;
+        var clName = "0";
         if (newZoom === "Cover") {
             img = cover
+            clName = "0";
         }
         else if (newZoom === "Back") {
             img = back
+            clName = "15";
         }
         else {
             img = this.state.imgList[newZoom - 1]
+            clName = parseInt(newZoom) - 1;
+            clName.toString();
         }
 
+        //set the new image to be large
         document.getElementById("Zoom").setAttribute('src', img);
+
+        //add border to new img
+        document.getElementsByClassName(clName)[0].classList.add("zoomBorder");
+
+        //remove the border from the prev
+        var element = document.getElementsByClassName(prev)[0];
+        if (element.classList.contains("zoomBorder")) {
+            element.classList.remove("zoomBorder");
+        }
+
+        prev = clName;
     }
 
     render() {
@@ -245,7 +263,7 @@ class Blind_Man extends Component {
 
                 {/* Draggables */}
                 <div>
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("2")} name="0" src={Page2} className="1 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("2")} name="0" src={Page2} className="1 resize draggable zoomBorder" />
 
                     <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("5")} name="1" src={Page5} className="4 resize draggable" />
 
@@ -259,7 +277,7 @@ class Blind_Man extends Component {
                 <div>
                     <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("7")} name="4" src={Page7} className="6 resize draggable" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("5")} name="5" src={Page14} className="13 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("14")} name="5" src={Page14} className="13 resize draggable" />
 
                     <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("12")} name="6" src={Page12} className="11 resize draggable" />
 
