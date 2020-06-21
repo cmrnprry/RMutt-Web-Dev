@@ -313,7 +313,7 @@ class Blind_Man extends Component {
 
                 <div id="note" className="container">
                     <Image src={Sticky} className="sticky" />
-                    <div className="text-sticky"> Double <br /> click an<br />image to <br />zoom</div>
+                    <div className="text-sticky"> Double <br /> click a<br />page to <br />zoom</div>
                 </div>
 
                 {/* <Row className="d-flex justify-content-center py-2">

@@ -16,7 +16,8 @@
 
 .zoomBorder
 {
-  border: 3px solid lightseagreen;
+  border: 3px solid white;
+  border-style: double;
 }
 
 .drop-target-blind
