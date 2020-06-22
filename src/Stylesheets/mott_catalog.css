@@ -1,60 +1,48 @@
 .toliet-pos 
 {
-  border: 1px solid #000;
-  display: inline-block;
+  position: relative;
+  z-index: 5;
+  width: 10%;
+  margin: 0px 10px 0px 10px;
+}
+
+.page-resize
+{
+  width: 25%;
   position: absolute;
+  z-index: 0;
+  margin: 0px 25px 0px 0px;
 }
 
-.addspace{
-  height: 1050px;
-  width: 2050px;
-}
-
-.page-one::after
+.mott-zoom
 {
-	content: url("../Puzzles/mott_catalog/mott_catalog_images/pages/mott_catalog_page1.png");
+  width: 17%;
+  height: 48%;
+  margin: 0px 5px 0px 0px;
 }
 
-.page-one
+.mott-container
 {
-	position: relative;
-  border: 5px solid rgb(0, 174, 255);
-  width: 617px;
-  height: 831px;
-  left: 50px;
-  top: 350px;
-  display: block;
+  position: absolute;
+  top: -10px;
+  left: 5px;
 }
 
-.page-two::after
+.mott-text-sticky
 {
-	content: url("../Puzzles/mott_catalog/mott_catalog_images/pages/mott_catalog_page2.png");
+  position: absolute;
+  top: 38px!important;
+  left: 55px!important;
+  font-family: "Damn Arc";
+  color: black;
+  font-size: 25px;
+  letter-spacing: 3px;
+  transform: rotate(-8deg);
+  text-align: center;
 }
 
-.page-two
+.mott-sticky
 {
-	position: relative;
-  border: 5px solid rgb(0, 4, 255);
-  width: 618px;
-  height: 827px;
-  left: 150px;
-  top: 350px;
-  display: block;
+  transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
 }
-
-.page-three::after
-{
-	content: url("../Puzzles/mott_catalog/mott_catalog_images/pages/mott_catalog_page3.png");
-}
-
-.page-three
-{
-	position: relative;
-  border: 5px solid rgb(174, 0, 255);
-  width: 617px;
-  height: 838px;
-  left: 50px;
-  top: 450px;
-  display: block;
-}
-

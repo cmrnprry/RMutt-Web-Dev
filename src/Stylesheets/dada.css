@@ -19,8 +19,13 @@ src: url("../Fonts/BlackCasper.ttf");
 }
 
 body {
-	background: url('../folder_elements/wooden.png') no-repeat;   
+	background: url('../folder_elements/wooden.png') no-repeat center center fixed;   
 	background-size: cover;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+
 	margin: 0;
   	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',

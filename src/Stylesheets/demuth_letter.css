@@ -22,9 +22,9 @@
   border: 3px solid #999;
 }
 
-.draggable.can-drop {
+/* .draggable.can-drop {
   border: 3px solid lightblue;
-}
+} */
 
 .draggable 
 {
@@ -35,50 +35,50 @@
 
 .dropzone 
 {
-  background-color: black;
+  /* background-color: black; */
   border: 3px solid #999;
   /* margin: 10px auto 30px; */
   /* padding: 10px; */
   position: absolute;
 }
 
-.box 
+.demuth-box 
+{
+  /* border: 1px solid #000; */
+  background: transparent;
+  /* width: 3%; */
+  z-index: 2;
+  margin: 0px 25px 25px 25px;
+}
+
+/* .demuth-box 
 {
   margin: 0.5rem;
   border: 1px solid #000;
   display: inline-block;
   font-family:"BlackCasper";
-  color:black;
-  background: white;
-  font-size: 2em;
-  letter-spacing: 3px;
   position: absolute;
-}
+  background: transparent;
+} */
 
 .demuth-container{
   position: relative;
-  border: 1px solid rgb(0, 0, 0);
+  border: solid 1px yellow;
+  z-index: -3;
 }
 
-.demuth-letter::after
+.demuth-container::after
 {
-	content: url("../Puzzles/demuth_letter/demuth_letter_images/demuth_letter_under.png");
+ content: url('../Puzzles/demuth_letter/demuth_letter_images/demuth_letter_under.png');
 }
 
-.demuth-letter
+.demuth-resize
 {
-	position: relative;
-  border: 5px solid rgb(0, 174, 255);
-	width:1306px;
-  height: 1305px;
-  left: 50px;
-  top: 200px;
-  z-index: 0;
-}
-
-.addspace{
-  height: 1050px;
-  width: 2050px;
+  position: relative;
+  left: 5px;
+  top: 10px;
+  /* width: 40%; */
+  height: auto;
 }
 
 

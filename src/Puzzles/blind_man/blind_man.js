@@ -1,14 +1,6 @@
 //React Imports
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
-// import {
-//     Magnifier,
-//     GlassMagnifier,
-//     SideBySideMagnifier,
-//     PictureInPictureMagnifier,
-//     MOUSE_ACTIVATION,
-//     TOUCH_ACTIVATION
-// } from "react-image-magnifiers";
 import { instanceOf } from 'prop-types';
 
 //Image Imports
@@ -218,7 +210,6 @@ class Blind_Man extends Component {
             cookies.set('BlindManChildren');
             this.props.history.push('/clues');
         }
-
     }
 
     changeZoomed(newZoom) {

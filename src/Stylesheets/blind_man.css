@@ -57,12 +57,12 @@
 {
   position: absolute;
   top: 38px!important;
-  left: 60px!important;
+  left: 53px!important;
   font-family: "Damn Arc";
   color: black;
   font-size: 25px;
   letter-spacing: 3px;
-  transform: rotate(8deg);
+  transform: rotate(-8deg);
   text-align: center;
 }
 
