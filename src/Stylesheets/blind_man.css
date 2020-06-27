@@ -1,16 +1,17 @@
+/* Pages */
 .resize
 {
   height: 155px;
   width: 105px;
-  margin: 0px 25px 25px 25px;
+  margin: 10px 25px 25px 25px;
 }
 
-
+/* Zoomed image */
 .zoom
 {
   width: 525px;
   max-height: 711px;
-  top: 5px;
+  top: 15px;
   position: absolute;
   z-index: -1;
 }
@@ -23,12 +24,13 @@
 }
 
 
-
+/* Draggable object */
 .drag-shadow
 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+/* Dropzones */
 .dropzone-blind
 {
   height: 168px;
@@ -39,37 +41,22 @@
   z-index: -1;
 }
 
+/* Sticky Note */
 .container
 {
   position: absolute;
-  top: -10px;
-  left: 605px;
-}
-
-.sticky
-{
-
-  /* transform: scaleX(-1);
-  -webkit-transform: scaleX(-1); */ 
+  width: 18%;
 }
 
 .text-sticky
 {
   position: absolute;
-  top: 38px!important;
-  left: 53px!important;
+  top: 38px;
+  left: 53px;
   font-family: "Damn Arc";
   color: black;
   font-size: 25px;
   letter-spacing: 3px;
-  transform: rotate(-8deg);
+  transform: rotate(8deg);
   text-align: center;
-}
-
-.blind-man
-{
-	position: relative;
-  /* border: 5px solid rgb(0, 174, 255); */
-  width: auto;
-  height: 6410px;
 }

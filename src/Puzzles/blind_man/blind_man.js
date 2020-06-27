@@ -124,6 +124,9 @@ function setDrops() {
 function setZoomed() {
     var left = document.getElementsByName("3")[0].getBoundingClientRect().x + document.getElementsByName("3")[0].width;
     document.getElementById("Zoom").style.left = (left + 250) + "px";
+
+    //set note
+    document.getElementById("note").style.left = (document.getElementById("Zoom").getBoundingClientRect().x + document.getElementById("Zoom").width - 50) + "px";
 }
 
 //Function that swaps the position of two objects and checks to see if the current list is correct
@@ -190,15 +193,30 @@ class Blind_Man extends Component {
         };
     }
 
-    //Sets the listener
+    //is called after the page is rendered
     componentDidMount() {
         if (this.state.width >= 1500) {
             document.body.style.overflowX = "hidden";
         }
+
+        //Set where the drop sites are for the pages
         setDrops();
+
+        //Set where the zoomed image is
         setZoomed();
-        console.log(document.getElementById("Zoom").style.left)
-        document.getElementById("note").style.left = (document.getElementById("Zoom").getBoundingClientRect().x + document.getElementById("Zoom").width - 50) + "px"
+
+        //listener for window resize
+        window.addEventListener('resize', this.resizeWindow);
+    }
+
+    resizeWindow() {
+        // if the screen is big enough
+        if (window.innerWidth >= 1500) {
+            document.body.style.overflowX = "hidden";
+        }
+        else {
+            document.body.style.overflowX = "scroll";
+        }
     }
 
     //Tells the cookies to be set
@@ -212,6 +230,7 @@ class Blind_Man extends Component {
         }
     }
 
+    //Change the zoomed window
     changeZoomed(newZoom) {
         var img = null;
         var clName = "0";
@@ -251,6 +270,12 @@ class Blind_Man extends Component {
                     <meta charSet="utf-8" />
                     <title>Such vision!</title>
                 </Helmet>
+
+                {/* Sticky Note */}
+                <div id="note" img={Sticky}className="container">
+                    <Image src={Sticky} />
+                    <div className="text-sticky"> Double <br /> click a<br />page to <br />zoom</div>
+                </div>
 
                 {/* Draggables */}
                 <div>
@@ -299,61 +324,8 @@ class Blind_Man extends Component {
                     <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("13")} name="15" src={Page13} className="12 resize draggable" />
                 </div>
 
-
-                <Image id="Zoom" src={Page2} className="zoom" />
-
-                <div id="note" className="container">
-                    <Image src={Sticky} className="sticky" />
-                    <div className="text-sticky"> Double <br /> click a<br />page to <br />zoom</div>
-                </div>
-
-                {/* <Row className="d-flex justify-content-center py-2">
-                    <Col className="justify-content-left">
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="0" src={Page2} className="1 resize draggable" />
-
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="1" src={Page5} className="4 resize draggable" />
-
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="2" src={Back} className="15 resize draggable" />
-
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="3" src={Page2} className="6 resize draggable" />
-                    </Col>
-
-                    <div className="w-100" />
-
-                    <Col className="justify-content-left">
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="4" src={Page9} className="18 resize draggable" />
-
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="5" src={Page14} className="13 resize draggable" />
-
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="6" src={Page12} className="11 resize draggable" />
-
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="7" src={Page10} className="10 resize draggable" />
-                    </Col>
-
-                    <div className="w-100" />
-
-                    <Col className="justify-content-left">
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="8" src={Page4} className="3 resize draggable" />
-
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="9" src={Page9} className="8 resize draggable" />
-
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="10" src={Cover} className="10 resize draggable" />
-
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="11" src={Page15} className="14 resize draggable" />
-                    </Col>
-
-                    <div className="w-100" />
-
-                    <Col className="justify-content-left">
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="12" src={Page10} className="9 resize draggable" />
-
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="13" src={Page6} className="5 resize draggable" />
-
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="14" src={Page8} className="7 resize draggable" />
-
-                        <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed()} name="15" src={Page13} className="12 resize draggable" />
-                    </Col>
-                </Row> */}
+                {/* Zoomed Image */}
+                <Image id="Zoom" src={Page2} className="zoom zoomBorder" />
 
                 {/* Drop Zones */}
                 <div>
