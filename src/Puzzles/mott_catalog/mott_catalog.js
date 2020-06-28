@@ -2,14 +2,7 @@
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
-import {
-    Magnifier,
-    GlassMagnifier,
-    SideBySideMagnifier,
-    PictureInPictureMagnifier,
-    MOUSE_ACTIVATION,
-    TOUCH_ACTIVATION
-} from "react-image-magnifiers";
+import Magnifier from "react-magnifier";
 
 //Image Imports
 import toilet1 from './mott_catalog_images/toilet/toilet1.png'
@@ -23,6 +16,8 @@ import toilet7 from './mott_catalog_images/toilet/toilet7.png'
 import Page1 from './mott_catalog_images/pages/mott_catalog_page1.png'
 import Page2 from './mott_catalog_images/pages/mott_catalog_page2.png'
 import Page3 from './mott_catalog_images/pages/mott_catalog_page3.png'
+
+import Cursor from './mott_catalog_images/magnify.png'
 import Sticky from "../../folder_elements/sticky/sticky.png"
 
 //Web Imports
@@ -125,17 +120,8 @@ interact('.dropzone').dropzone({
 
 // text is the object being placed on 2the letter, and postion is the place in the list
 function pushInList(text, position) {
-    // var currTextPos = currList.indexOf(text);
-    // var temp = "";
-
     //this works whil we are not swaping the objects and are just dropping them one at a time
     currList.splice(position, 1, text);
-
-    // if (currTextPos !== position) {
-    //     temp = currList[position];
-    //     currList[position] = text;
-    //     currList[currTextPos] = temp;
-    // }
 
     if (checkList()) {
         puzzleSolved();
@@ -177,19 +163,26 @@ function dragMoveListener(event) {
     target.setAttribute('data-y', y)
 }
 
+//Set where the pages appear on screen
 function setPages() {
-    var one = document.getElementById("1");
-    var two = document.getElementById("2");
-    var three = document.getElementById("3");
 
-    //Set left of page one
-    one.style.left = (5 + 'px');
 
-    //Set left of page two
-    two.style.left = ((one.getBoundingClientRect().x + one.width) + 10 + 'px');
+    document.getElementById("0").style.left = "56px";
+    document.getElementById("1").style.left = (document.getElementById("0").getBoundingClientRect().x + document.getElementById("0").width) + 15 + "px";
+    document.getElementById("2").style.left = (document.getElementById("1").getBoundingClientRect().x + document.getElementById("1").width) + 15 + "px";
+    document.getElementById("3").style.left = (document.getElementById("2").getBoundingClientRect().x + document.getElementById("2").width) + 15 + "px";
+    document.getElementById("4").style.left = (document.getElementById("3").getBoundingClientRect().x + document.getElementById("3").width) + 15 + "px";
+    document.getElementById("5").style.left = (document.getElementById("4").getBoundingClientRect().x + document.getElementById("4").width) + 15 + "px";
+    document.getElementById("6").style.left = (document.getElementById("5").getBoundingClientRect().x + document.getElementById("5").width) + 15 + "px";
 
-    //Set left of page three
-    three.style.left = ((two.getBoundingClientRect().x + two.width) + 10 + 'px');
+    document.getElementsByClassName("page-resize")[0].style.left =
+        (document.getElementById("Page2").getBoundingClientRect().x - (document.getElementById("Page2").getBoundingClientRect().width) - 10 + "px")
+    
+    // document.getElementsByClassName("page-resize")[1].style.left =
+    //     (document.getElementById("Page1").getBoundingClientRect().x + document.getElementById("Page1").getBoundingClientRect().width + "px");
+    
+    document.getElementsByClassName("page-resize")[2].style.left =
+        (document.getElementById("Page2").getBoundingClientRect().x + (document.getElementById("Page2").getBoundingClientRect().width) + "px");
 }
 
 class Mott extends Component {
@@ -210,12 +203,27 @@ class Mott extends Component {
 
     //Sets the listener
     componentDidMount() {
-        console.log(this.state.width)
-        if (this.state.width <= 1190) {
-            document.getElementsByClassName("mott-sticky")[0].setAttribute("width", '70%');
-            document.getElementsByClassName("mott-text-sticky")[0].setAttribute("font-size", '19px');
-            document.getElementsByClassName("mott-text-sticky")[0].setAttribute("top", '23px');
-            document.getElementsByClassName("mott-text-sticky")[0].setAttribute("left", '35px');
+        if (this.state.width > 1300) {
+            document.body.style.overflowX = "hidden";
+        }
+        else {
+            document.body.style.overflowX = "scroll";
+        }
+
+        //listener for window resize
+        window.addEventListener('resize', this.resizeWindow);
+
+        //sets the pages
+        setPages();
+    }
+
+    resizeWindow() {
+        // if the screen is big enough
+        if (window.innerWidth > 1300) {
+            document.body.style.overflowX = "hidden";
+        }
+        else {
+            document.body.style.overflowX = "scroll";
         }
     }
 
@@ -257,60 +265,95 @@ class Mott extends Component {
                     <title>One of these things is not</title>
                 </Helmet>
 
-                <div id="note" className="mott-container">
+                {/* <div id="note" className="mott-container">
                     <Image src={Sticky} className="mott-sticky" />
                     <div className="mott-text-sticky"> Double <br /> click a<br />page to <br />zoom</div>
-                </div>
+                </div> */}
+
 
                 {/* Draggables */}
-                <Row className="justify-content-end">
-                    < Image src={toilet1} onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("0")} className="0 draggable toliet-pos" />
+                <div style={{ textAlign: 'center' }}>
+                    < Image src={toilet1} id="0" onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("0")} className="0 draggable toliet-pos"
+                        style={{
+                            top: '-1px',
+                        }} />
 
-                    < Image src={toilet2} onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("1")} className="1 draggable toliet-pos" />
+                    < Image src={toilet2} id="1" onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("1")} className="1 draggable toliet-pos"
+                        style={{
+                            top: '8px',
+                        }} />
 
-                    < Image src={toilet3} onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("2")} className="2 draggable toliet-pos" />
+                    < Image src={toilet3} id="2" onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("2")} className="2 draggable toliet-pos"
+                        style={{
+                            top: '26px',
+                        }} />
 
-                    < Image src={toilet4} onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("3")} className="3 draggable toliet-pos" />
+                    < Image src={toilet4} id="3" onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("3")} className="3 draggable toliet-pos"
+                        style={{
+                            top: '25px',
+                        }} />
 
-                    < Image src={toilet5} onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("4")} className="4 draggable toliet-pos" />
+                    < Image src={toilet5} id="4" onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("4")} className="4 draggable toliet-pos"
+                        style={{
+                            top: '6px',
+                            width: '11%'
+                        }} />
 
-                    < Image src={toilet6} onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("5")} className="5 draggable toliet-pos" />
+                    < Image src={toilet6} id="5" onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("5")} className="5 draggable toliet-pos"
+                        style={{
+                            top: '6px',
+                        }} />
 
-                    < Image src={toilet7} onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("6")} className="6 draggable toliet-pos" />
-                </Row>
+                    < Image src={toilet7} id="6" onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("6")} className="6 draggable toliet-pos"
+                        style={{
+                            top: '6px',
+                        }} />
+                </div>
 
-                <Row className="justify-content-end align-items-center">
-                    <Image id="Zoom" src={toilet1} className="mott-zoom" />
+                <Row className="justify-content-center">
+                    {/* <Image id="Zoom" src={toilet1} className="mott-zoom" /> */}
 
-                    <GlassMagnifier
-                        imageSrc={Page1}
-                        imageAlt="Example"
+                    <Magnifier
+                        src={Page1}
+                        id="Page1"
                         className="page-resize"
+                        zoomFactor="2"
+                    />
+
+                    <Magnifier
+                        src={Page2}
+                        id="Page2"
+                        className="page-resize"
+                        zoomFactor="2"
+                    />
+
+                    <Magnifier
+                        src={Page3}
+                        id="Page3"
+                        className="page-resize"
+                        zoomFactor="2"
+                    />
+
+                    {/* <Magnifier
+                        src={Page1}
                         id="1"
-                        square={true}
-                        magnifierSize='45%'
-                        largeImageSrc={Page1} // Optional
+                        className="page-resize-fake"
+                        zoomFactor="2"
                     />
 
-                    <GlassMagnifier
-                        imageSrc={Page2}
-                        imageAlt="Example"
+                    <Magnifier
+                        src={Page2}
                         id="2"
-                        className="page-resize"
-                        square={true}
-                        magnifierSize='45%'
-                        largeImageSrc={Page2} // Optional
+                        className="page-resize-fake"
+                        zoomFactor="2"
                     />
 
-                    <GlassMagnifier
-                        imageSrc={Page3}
-                        imageAlt="Example"
+                    <Magnifier
+                        src={Page3}
                         id="3"
-                        square={true}
-                        className="page-resize"
-                        magnifierSize='45%'
-                        largeImageSrc={Page3} // Optional
-                    />
+                        className="page-resize-fake"
+                        zoomFactor="2"
+                    /> */}
                 </Row>
             </Container >
 

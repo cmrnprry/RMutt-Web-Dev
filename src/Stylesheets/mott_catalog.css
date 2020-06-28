@@ -1,17 +1,26 @@
 .toliet-pos 
 {
-  position: relative;
   z-index: 5;
-  width: 10%;
-  margin: 0px 10px 0px 10px;
+  width: 12%;
+  margin: 10px 15px 5px 0px;
+  position: absolute;
 }
 
 .page-resize
 {
-  width: 25%;
-  position: absolute;
+  width: 28%!important;
   z-index: 0;
-  margin: 0px 25px 0px 0px;
+  top: 215px;
+  position: absolute!important;
+}
+
+.page-resize-fake
+{
+  width: 28%!important;
+  display: inline-block!important;
+  z-index: 0;
+  position: relative!important;
+  margin: 0px 25px 0px 0px!important;
 }
 
 .mott-zoom
@@ -45,4 +54,21 @@
 {
   transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
+}
+
+.magnifier {
+  /* Styles for <div> around image and magnifying glass */
+  /* background: url('../Puzzles/mott_catalog/mott_catalog_images/magnify.png') !important; */
+  
+}
+
+.magnifier-image {
+  /* Styles for large image */
+
+}
+
+.magnifying-glass {
+  /* Styles for magnifying glass */
+  width: 160px!important;
+  height: 160px!important;
 }
