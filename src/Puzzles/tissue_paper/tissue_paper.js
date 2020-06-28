@@ -182,7 +182,7 @@ class LN_Puzzle extends Component {
 
     render() {
         return (
-            <Container fluid='true' className="wooden-background" style={{ overflowX: 'none', minHeight: this.state.height, minWidth: this.state.width }}>
+            <Container fluid='true'>
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Layers and Layers</title>

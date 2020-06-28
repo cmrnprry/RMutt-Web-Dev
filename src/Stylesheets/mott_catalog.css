@@ -1,59 +1,36 @@
 .toliet-pos 
 {
   z-index: 5;
-  width: 12%;
-  margin: 10px 15px 5px 0px;
+  width: 159px;
+  height: auto;
   position: absolute;
+}
+
+.toliet-shadow
+{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 .page-resize
 {
-  width: 28%!important;
+  width: 375px!important;
+  height: 506px!important;
   z-index: 0;
   top: 215px;
   position: absolute!important;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0px 0px 11px 6px rgba(0, 0, 0, 0.48);
+  -moz-box-shadow: 0px 0px 11px 6px rgba(0, 0, 0, 0.48);
+  box-shadow: 0px 0px 11px 6px rgba(0, 0, 0, 0.48);
 }
 
-.page-resize-fake
+/* Dropzones */
+.dropzone-mott
 {
-  width: 28%!important;
-  display: inline-block!important;
-  z-index: 0;
-  position: relative!important;
-  margin: 0px 25px 0px 0px!important;
-}
-
-.mott-zoom
-{
-  width: 17%;
-  height: 48%;
-  margin: 0px 5px 0px 0px;
-}
-
-.mott-container
-{
+  border: 3px solid #999;
   position: absolute;
-  top: -10px;
-  left: 5px;
-}
-
-.mott-text-sticky
-{
-  position: absolute;
-  top: 38px!important;
-  left: 55px!important;
-  font-family: "Damn Arc";
-  color: black;
-  font-size: 25px;
-  letter-spacing: 3px;
-  transform: rotate(-8deg);
-  text-align: center;
-}
-
-.mott-sticky
-{
-  transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
+  left: 0px;
+  top: 0px;
 }
 
 .magnifier {
