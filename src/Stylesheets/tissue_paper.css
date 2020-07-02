@@ -33,7 +33,7 @@
 .tissue-paper-container
 {
 	position: relative;
-  border: 5px solid rgb(0, 174, 255);
+  /* border: 5px solid rgb(0, 174, 255); */
   width: auto;
   height: 1510px;
 }
