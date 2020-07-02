@@ -732,7 +732,7 @@ class Demuth extends Component {
                     <Col>
                         {/* Base Letter */}
                         <div className="demuth-container">
-                            <Image src={Under} className="demuth-resize" />
+                            <Image src={Under} className="demuth-resize demuth-shadow" />
 
                             {/* line one */}
                             <div className="dropzone 0" style={{

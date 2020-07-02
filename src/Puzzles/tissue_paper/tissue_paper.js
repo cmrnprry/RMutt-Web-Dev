@@ -187,12 +187,12 @@ class LN_Puzzle extends Component {
                 </Helmet>
 
                 <div className="tissue-paper-container">
-                    <Image src={Under} style={{
+                    <Image src={Under} className="demuth-shadow" style={{
                         top: '70px',
                         left: '5px',
                         position: 'absolute'
                     }} />
-                    <Image src={Insrtuctions} style={{
+                    <Image src={Insrtuctions} className="demuth-shadow" style={{
                         position: 'absolute',
                         top: '250px',
                         left: '750px',
