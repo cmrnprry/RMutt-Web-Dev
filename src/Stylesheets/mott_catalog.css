@@ -27,7 +27,7 @@
 /* Dropzones */
 .dropzone-mott
 {
-  border: 3px solid #999;
+  /* border: 3px solid #999; */
   position: absolute;
   left: 0px;
   top: 0px;

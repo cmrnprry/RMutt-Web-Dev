@@ -26,7 +26,7 @@ import Image from 'react-bootstrap/Image'
 import { Helmet } from "react-helmet";
 
 const correctList = ["2", "3", "1", "4", "5", "0"];
-var currList = ["3", "0", "2", "5", "4", "1"];
+var currList = [];
 
 //seting zoom
 var prev = "0";
@@ -67,8 +67,11 @@ interact('.dropzone-mott').dropzone({
     },
     ondragleave: function (event) {
         // remove the drop feedback style
-        event.relatedTarget.classList.add("toliet-shadow");
+        console.log("dragable: " + event.relatedTarget.classList[0]);
+        console.log("drop: " + event.target.classList[0]);
 
+        event.relatedTarget.classList.add("toliet-shadow");
+        removeFromList(event.relatedTarget.classList[0], event.target.classList[0])
     },
     ondrop: function (event) {
         event.relatedTarget.classList.remove("toliet-shadow");
@@ -80,15 +83,26 @@ interact('.dropzone-mott').dropzone({
     },
     ondropdeactivate: function (event) {
         // remove active dropzone feedback
-
     }
 
 })
 
 // text is the object being placed on 2the letter, and postion is the place in the list
-function pushInList(text, position) {
-    //this works whil we are not swaping the objects and are just dropping them one at a time
-    currList.splice(position, 1, text);
+function pushInList(draggable, drop) {
+    currList[drop] = draggable;
+    console.log("currList at index " + drop + ": " + draggable);
+
+    if (checkList()) {
+        puzzleSolved();
+    }
+}
+
+// text is the object being placed on 2the letter, and postion is the place in the list
+function removeFromList(draggable, drop) {
+    if (currList[drop] === draggable) {
+        currList[drop] = false;
+        console.log("currList at index " + drop + ": false");
+    }
 
     if (checkList()) {
         puzzleSolved();
@@ -100,22 +114,20 @@ function puzzleSolved() {
 }
 
 function checkList() {
-    var allCorrect = true;
 
     if (correctList.length === currList.length) {
         for (let i = 0; i < correctList.length; i++) {
             console.log("list at index " + i + ": " + currList[i]);
             if (currList[i] !== correctList[i]) {
-                allCorrect = false;
-                // break;
+                return false;
             }
-
         }
+        return true;
     }
 
 
 
-    return allCorrect;
+    return false;
 }
 
 function dragMoveListener(event) {
