@@ -24,20 +24,6 @@ var img1InPlace = false, img2InPlace = false, img3InPlace = false, img4InPlace =
 var x = 0, y = 0;
 
 interact('.draggable-3').draggable({
-    modifiers: [
-        interact.modifiers.snap({
-            targets: [
-                interact.createSnapGrid({ x: 5, y: 5 })
-            ],
-            range: Infinity,
-
-        }),
-        interact.modifiers.restrict({
-            restriction: 'parent',
-            elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
-            endOnly: true
-        })
-    ],
     listeners: {
         move: dragMoveListener,
         end(event) {
@@ -96,7 +82,7 @@ function checkPosition(obj, dx, dy) {
 
 
 function checkImage1(dx, dy) {
-    if ((dx >= 153 && dx <= 214) && (dy <= -520 && dy >= -597)) {
+    if ((dx >= -1013 && dx <= -965) && (dy >= 60 && dy <= 114)) {
         img1InPlace = true;
     }
     else {
@@ -108,7 +94,7 @@ function checkImage1(dx, dy) {
 
 function checkImage2(dx, dy) {
 
-    if ((dx <= -333 && dx >= -380) && (dy <= -606 && dy >= -653)) {
+    if ((dx >= -1172 && dx <= -1125) && (dy >= -15 && dy <= 32)) {
         img2InPlace = true;
     }
     else {
@@ -119,7 +105,7 @@ function checkImage2(dx, dy) {
 }
 
 function checkImage3(dx, dy) {
-    if ((dx <= -622 && dx >= -683) && (dy <= -541 && dy >= -607)) {
+    if ((dx >= -961 && dx <= -895) && (dy >= 16 && dy <= 109)) {
         img3InPlace = true;
     }
     else {
@@ -131,7 +117,7 @@ function checkImage3(dx, dy) {
 }
 
 function checkImage4(dx, dy) {
-    if ((dx >= 233 && dx <= 306) && (dy >= -797 && dy <= -752)) {
+    if ((dx >= -910 && dx <= -874) && (dy >= 305 && dy <= 337)) {
         img4InPlace = true;
     }
     else {
@@ -142,6 +128,12 @@ function checkImage4(dx, dy) {
 
 }
 
+function setImages() {
+    document.getElementById("image1").style.left = (window.innerWidth - document.getElementById("image1").width) + "px";
+    document.getElementById("image2").style.left = (window.innerWidth - document.getElementById("image2").width) + "px";
+    document.getElementById("image3").style.left = (window.innerWidth - document.getElementById("image3").width) + "px";
+    document.getElementById("image4").style.left = (window.innerWidth - document.getElementById("image4").width) + "px";
+}
 class LN_Puzzle extends Component {
     static propTypes = {
         cookies: instanceOf(Cookies).isRequired
@@ -160,13 +152,19 @@ class LN_Puzzle extends Component {
     }
 
     componentDidMount() {
+        document.body.style.overflowX = "hidden";
         window.addEventListener("resize", this.resizeWindow);
+        setImages();
     }
 
     //So the program always has the correct width and height of window
     resizeWindow() {
-        console.log()
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
+        if (window.innerWidth >= 1500) {
+            document.body.style.overflowX = "hidden";
+        }
+        else {
+            document.body.style.overflowX = "scroll";
+        }
     }
 
     //Tells the cookies to be set
@@ -190,8 +188,8 @@ class LN_Puzzle extends Component {
 
                 <div className="tissue-paper-container">
                     <Image src={Under} style={{
-                        top: '75px',
-                        left: '45px',
+                        top: '70px',
+                        left: '5px',
                         position: 'absolute'
                     }} />
                     <Image src={Insrtuctions} style={{
@@ -201,32 +199,32 @@ class LN_Puzzle extends Component {
                     }} />
 
                     {/* Draggables */}
-                    <Image name="image1" className="draggable-3 1" src={Image1}
+                    <Image id="image1" name="image1" className="draggable-3 1" src={Image1}
                         style={{
                             width: '407px',
-                            top: '650px',
-                            left: '0px'
+                            // top: '650px',
+                            // left: '0px'
                         }} onMouseUp={() => this.setChildren()} />
 
-                    <Image name="image2" className="draggable-3 2"
+                    <Image id="image2" name="image2" className="draggable-3 2"
                         src={Image2} style={{
                             width: '355px',
-                            top: '650px',
-                            left: '425px'
+                            // top: '650px',
+                            // left: '425px'
                         }} onMouseUp={() => this.setChildren()} />
 
-                    <Image name="image3" className="draggable-3 3"
+                    <Image id="image3" name="image3" className="draggable-3 3"
                         src={Image3} style={{
                             width: '505px',
-                            top: '650px',
-                            left: '795px'
+                            // top: '650px',
+                            // left: '795px'
                         }} onMouseUp={() => this.setChildren()} />
 
-                    <Image name="image4" className="draggable-3 4"
+                    <Image id="image4" name="image4" className="draggable-3 4"
                         src={Image4} style={{
                             width: '410px',
-                            top: '1100px',
-                            left: '0px'
+                            // top: '1100px',
+                            // left: '0px'
                         }} onMouseUp={() => this.setChildren()} />
                 </div>
             </Container>
