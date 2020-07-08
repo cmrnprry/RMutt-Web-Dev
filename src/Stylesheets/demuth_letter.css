@@ -1,16 +1,15 @@
 .react-draggable, .cursor {
-      cursor: move;
-    }
-    .no-cursor {
-      cursor: auto;
-    }
-    .cursor-y {
-      cursor: ns-resize;
-    }
-    .cursor-x {
-      cursor: ew-resize;
-    }
-
+    cursor: move;
+  }
+  .no-cursor {
+    cursor: auto;
+  }
+  .cursor-y {
+    cursor: ns-resize;
+  }
+  .cursor-x {
+    cursor: ew-resize;
+  }
 
 .drop-target 
 {
@@ -79,8 +78,8 @@
 .demuth-resize
 {
   position: relative;
-  padding-left: 5px;
-  padding-top: 5px;
+  left: 5px;
+  top: 5px;
   width: 743px;
   height: auto;
 }

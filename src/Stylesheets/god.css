@@ -1,0 +1,17 @@
+
+.god-container
+{
+  position: relative;
+  width: auto;
+}
+
+.pipe-resize
+{
+  position: absolute;
+}
+
+.pipe-base
+{
+  width: 350px;
+  position: absolute;
+}

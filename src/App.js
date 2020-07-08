@@ -12,6 +12,8 @@ import './Stylesheets/tissue_paper.css';
 import './Stylesheets/cacodylate_eye.css';
 import './Stylesheets/blind_man.css';
 import './Stylesheets/mott_catalog.css';
+import './Stylesheets/sia_catalog.css';
+import './Stylesheets/god.css';
 
 //Home Page
 import Home from './Home Page/Front/Home/home';
@@ -28,6 +30,8 @@ import Rrose from './Puzzles/cacodylic_eye/rrose'
 import Tissue_Paper from './Puzzles/tissue_paper/tissue_paper'
 import Blind_Man from './Puzzles/blind_man/blind_man'
 import Mott_Catalog from './Puzzles/mott_catalog/mott_catalog'
+import Sia_Catalog from './Puzzles/sia_puzzle/sia_catalog'
+import God from './Puzzles/god_puzzle/god'
 
 
 class App extends Component {
@@ -51,6 +55,8 @@ class App extends Component {
             <Route exact path='/tissue-paper' component={Tissue_Paper} />
             <Route exact path='/blind-man' component={Blind_Man} />
             <Route exact path='/mott-catalog' component={Mott_Catalog} />
+            <Route exact path='/sia-catalog' component={Sia_Catalog} />
+            <Route exact path='/god' component={God} />
           </Switch>
         </Router>
       </CookiesProvider>
