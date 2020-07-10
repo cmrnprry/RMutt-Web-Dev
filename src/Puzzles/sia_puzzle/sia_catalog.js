@@ -123,7 +123,7 @@ function checkPagePosition(obj, dx, dy) {
     var pos = parseInt(obj);
 
     if (pos === 2) {
-        if ((dx >= -385 && dx <= -365) && (dy >= 43 && dy <= 60)) {
+        if ((dx >= -388 && dx <= -365) && (dy >= 40 && dy <= 60)) {
             list[0] = true;
         }
         else {
@@ -172,7 +172,7 @@ function checkPagePosition(obj, dx, dy) {
         console.log("list at index 4: " + list[4]);
     }
     else if (pos === 8) {
-        if ((dx >= -5 && dx <= 15) && (dy >= -260 && dy <= -242)) {
+        if ((dx >= -7 && dx <= 18) && (dy >= -260 && dy <= -242)) {
             list[5] = true;
         }
         else {
@@ -192,7 +192,7 @@ function checkPagePosition(obj, dx, dy) {
         console.log("list at index 6: " + list[6]);
     }
     else if (pos === 12) {
-        if ((dx >= -220 && dx <= -205) && (dy >= -108 && dy <= -90)) {
+        if ((dx >= -230 && dx <= -205) && (dy >= -108 && dy <= -90)) {
             list[9] = true;
         }
         else {
