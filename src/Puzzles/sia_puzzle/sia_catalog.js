@@ -30,12 +30,15 @@ import { Helmet } from "react-helmet";
 
 //track the position of an object
 var x = 0, y = 0;
+//list of puzzle pieces
+var list = [];
 
 function SetPages() {
     //middle of screen
     var middle = window.innerWidth / 2;
     //set the under
     document.getElementById("under").style.left = (middle - (document.getElementById("under").getBoundingClientRect().width) / 2) + "px";
+    document.getElementById("under").style.top = 25 + "px";
 
     //set to the left
 
@@ -116,13 +119,131 @@ function SetPages() {
     document.getElementById("4").style.left = (document.getElementById("under").getBoundingClientRect().right) - 175 + "px";
 }
 
+function checkPagePosition(obj, dx, dy) {
+    var pos = parseInt(obj);
 
+    if (pos === 2) {
+        if ((dx >= -385 && dx <= -365) && (dy >= 43 && dy <= 60)) {
+            list[0] = true;
+        }
+        else {
+            list[0] = false;
+        }
+        console.log("list at index 0: " + list[0]);
+    }
+    else if (pos === 3) {
+        if ((dx >= 455 && dx <= 480) && (dy >= -22 && dy <= -3)) {
+            list[1] = true;
+        }
+        else {
+            list[1] = false;
+        }
 
-interact('.draggable').draggable({
+        console.log("list at index 1: " + list[1]);
+    }
+    else if (pos === 4) {
+        if ((dx >= -30 && dx <= -5) && (dy >= -220 && dy <= -200)) {
+            list[2] = true;
+        }
+        else {
+            list[2] = false;
+        }
+
+        console.log("list at index 2: " + list[2]);
+    }
+    else if (pos === 5) {
+        if ((dx >= -640 && dx <= -618) && (dy >= 147 && dy <= 167)) {
+            list[3] = true;
+        }
+        else {
+            list[3] = false;
+        }
+
+        console.log("list at index 3: " + list[3]);
+    }
+    else if (pos === 6) {
+        if ((dx >= -424 && dx <= -395) && (dy >= -187 && dy <= -160)) {
+            list[4] = true;
+        }
+        else {
+            list[4] = false;
+        }
+
+        console.log("list at index 4: " + list[4]);
+    }
+    else if (pos === 8) {
+        if ((dx >= -5 && dx <= 15) && (dy >= -260 && dy <= -242)) {
+            list[5] = true;
+        }
+        else {
+            list[5] = false;
+        }
+
+        console.log("list at index 5: " + list[5]);
+    }
+    else if (pos === 10) {
+        if ((dx >= 203 && dx <= 233) && (dy >= -140 && dy <= -115)) {
+            list[6] = true;
+        }
+        else {
+            list[6] = false;
+        }
+
+        console.log("list at index 6: " + list[6]);
+    }
+    else if (pos === 12) {
+        if ((dx >= -220 && dx <= -205) && (dy >= -108 && dy <= -90)) {
+            list[9] = true;
+        }
+        else {
+            list[9] = false;
+        }
+
+        console.log("list at index 9: " + list[9]);
+    }
+    else if (pos === 13) {
+        if ((dx >= 365 && dx <= 385) && (dy >= 160 && dy <= 177)) {
+            list[7] = true;
+        }
+        else {
+            list[7] = false;
+        }
+
+        console.log("list at index 7: " + list[7]);
+    }
+    else if (pos === 15) {
+        if ((dx >= 151 && dx <= 175) && (dy >= -239 && dy <= -219)) {
+            list[8] = true;
+        }
+        else {
+            list[8] = false;
+        }
+
+        console.log("list at index 8: " + list[8]);
+    }
+}
+
+function puzzleSolved() {
+    if (list.length === 10) {
+        for (var i = 0; i < 10; i++) {
+            // console.log("list at index" + i + ": " + list[i]);
+            if (list[i] !== true) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    return false;
+}
+
+interact('.draggable-sia').draggable({
     listeners: {
         move: dragMoveListener,
         end(event) {
-            // checkPosition(event.target.classList[1], x, y);
+            checkPagePosition(event.target.id, x, y);
+                console.log(event.target.id + " at x: " + x);
+                console.log(event.target.id + " at y: " + y);
         }
     },
     inertia: false
@@ -145,9 +266,6 @@ function dragMoveListener(event) {
 
     // var top = document.getElementsByName(event.target.name)[0].style.top;
     // var left = document.getElementsByName(event.target.name)[0].style.left;
-
-    console.log(event.target.classList[1] + " at x: " + x);
-    console.log(event.target.classList[1] + " at y: " + y);
 }
 
 class Sia extends Component {
@@ -194,7 +312,8 @@ class Sia extends Component {
     setChildren() {
         const { cookies } = this.props;
 
-        if (false) {
+        if (puzzleSolved()) {
+            alert("puzzle solved");
             cookies.set('SiaCatalogChildren');
             this.props.history.push('/clues');
         }
@@ -215,21 +334,36 @@ class Sia extends Component {
                     <Image id="under" src={Under} className="sia-resize sia-shadow" />
 
                     {/* Pages */}
-                    <Image id="1" src={One} className="draggable sia-page-resize" />
-                    <Image id="2" src={Two} className="draggable sia-page-resize" />
-                    <Image id="3" src={Three} className="draggable sia-page-resize" />
-                    <Image id="4" src={Four} className="draggable sia-page-resize" />
-                    <Image id="5" src={Five} className="draggable sia-page-resize" />
-                    <Image id="6" src={Six} className="draggable sia-page-resize" />
-                    <Image id="7" src={Seven} className="draggable sia-page-resize" />
-                    <Image id="8" src={Eight} className="draggable sia-page-resize" />
-                    <Image id="9" src={Nine} className="draggable sia-page-resize" />
-                    <Image id="10" src={Ten} className="draggable sia-page-resize" />
-                    <Image id="11" src={Eleven} className="draggable sia-page-resize" />
-                    <Image id="12" src={Twelve} className="draggable sia-page-resize" />
-                    <Image id="13" src={Thirteen} className="draggable sia-page-resize" />
-                    <Image id="14" src={Fourteen} className="draggable sia-page-resize" />
-                    <Image id="15" src={Fifteen} className="draggable sia-page-resize" />
+                    <Image id="1" src={One} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="2" src={Two} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="3" src={Three} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="4" src={Four} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="5" src={Five} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="6" src={Six} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="7" src={Seven} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="8" src={Eight} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="9" src={Nine} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="10" src={Ten} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="11" src={Eleven} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="12" src={Twelve} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="13" src={Thirteen} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="14" src={Fourteen} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
+                    <Image id="15" src={Fifteen} className="draggable-sia sia-page-resize"
+                        onMouseUp={() => this.setChildren()} />
                 </div>
 
 
