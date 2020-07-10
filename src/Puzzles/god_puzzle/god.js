@@ -97,7 +97,7 @@ function checkImage1(dx, dy) {
 
 function checkImage2(dx, dy) {
 
-    if ((dx >= 530 && dx <= 564) && (dy >= 113 && dy <= 125)) {
+    if ((dx >= 516 && dx <= 528) && (dy >= -368 && dy <= -330)) {
         pipe2 = true;
     }
     else {
