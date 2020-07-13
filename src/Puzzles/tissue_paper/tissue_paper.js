@@ -4,6 +4,8 @@ import interact from 'interactjs'
 import { Helmet } from "react-helmet";
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
+import BackNav from '../../Navigation/Back.js'
+
 
 //Image Imports
 import Under from './tissue_paper_under.png'
@@ -185,6 +187,8 @@ class LN_Puzzle extends Component {
                     <meta charSet="utf-8" />
                     <title>Layers and Layers</title>
                 </Helmet>
+
+                <BackNav />
 
                 <div className="tissue-paper-container">
                     <Image src={Under} className="demuth-shadow" style={{

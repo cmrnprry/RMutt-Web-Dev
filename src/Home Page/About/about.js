@@ -33,6 +33,8 @@ class About extends Component {
 
     componentDidMount() {
         document.body.style.background = "#b5b5b5";
+        document.body.style.overflowY = "scroll";
+        document.body.style.overflowX = "hidden";
     }
 
     checkCookie() {

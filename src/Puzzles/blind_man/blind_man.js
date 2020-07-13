@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
+import BackNav from '../../Navigation/Back.js'
 
 //Image Imports
 import Cover from "./blind_man_images/cover.jpg"
@@ -270,6 +271,8 @@ class Blind_Man extends Component {
                     <meta charSet="utf-8" />
                     <title>Such vision!</title>
                 </Helmet>
+
+                <BackNav />
 
                 {/* Sticky Note */}
                 <div id="note" img={Sticky}className="container">

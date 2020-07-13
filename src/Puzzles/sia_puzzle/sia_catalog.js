@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
+import BackNav from '../../Navigation/Back.js';
+
 
 //Image Imports
 import Under from './sia_under.png'
@@ -242,8 +244,8 @@ interact('.draggable-sia').draggable({
         move: dragMoveListener,
         end(event) {
             checkPagePosition(event.target.id, x, y);
-                console.log(event.target.id + " at x: " + x);
-                console.log(event.target.id + " at y: " + y);
+            console.log(event.target.id + " at x: " + x);
+            console.log(event.target.id + " at y: " + y);
         }
     },
     inertia: false
@@ -328,6 +330,7 @@ class Sia extends Component {
                     <title>Turn and turn</title>
                 </Helmet>
 
+                {/* <BackNav /> */}
 
                 <div className="sia-container" style={{ height: this.state.height }}>
                     {/* Under */}

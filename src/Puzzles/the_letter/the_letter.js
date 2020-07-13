@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
+import Back from '../../Navigation/Back.js'
 
 //Image Imports
 import Background from '../../folder_elements/wooden.png'
@@ -60,6 +61,8 @@ class AR_Letter extends Component {
                     <meta charSet="utf-8" />
                     <title>The spark that started the fire</title>
                 </Helmet>
+
+                <Back />
 
                 <Popup style={{ background: 'transparent', border: 'none' }}
                     trigger={<Image src={letter} className='ar-letter' style={{ marginLeft: 'auto', marginRight: 'auto' }} />}

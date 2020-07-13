@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
+import BackNav from '../../Navigation/Back.js'
+
 
 //Web Imports
 import interact from 'interactjs'
@@ -728,6 +730,8 @@ class Demuth extends Component {
                     <meta charSet="utf-8" />
                     <title>The other letter</title>
                 </Helmet>
+
+                <BackNav />
                 <Row>
                     <Col>
                         {/* Base Letter */}

@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
+import BackNav from '../../Navigation/Back.js'
 
 //Web Imports
 import Container from 'react-bootstrap/Container'
@@ -58,6 +59,7 @@ class Cacodylate extends Component {
                     <title>Two Cacodylic Eyes</title>
                 </Helmet>
 
+                <BackNav />
                 {/* container for the images. */}
                 {/* <div className="cacodylate-container">
                     <Image src={Original} className="original-rose" />

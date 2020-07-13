@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
+import BackNav from '../../Navigation/Back.js';
+
 
 //Web Imports
 import Container from 'react-bootstrap/Container'
@@ -31,6 +33,8 @@ class Rrose extends Component {
 
     //Sets the listener
     componentDidMount() {
+        // document.body.style.overflowY = "scroll";
+        document.body.style.overflow = "hidden";
     }
 
     openModal() {
@@ -71,6 +75,8 @@ class Rrose extends Component {
                     <meta charSet="utf-8" />
                     <title>A Rrose by any other name</title>
                 </Helmet>
+
+                <BackNav />
 
                 <div className="reward-rose">
                     <div className="click-box-rrose" onClick={this.openModal} />

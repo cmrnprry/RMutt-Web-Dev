@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
+import BackNav from '../../Navigation/Back.js'
+
 
 //Image Imports
 import One from './pipe_elements/pipe_0.png'
@@ -46,8 +48,8 @@ function SetPages() {
     document.getElementById("4").style.left = (document.getElementById("1").getBoundingClientRect().x - document.getElementById("1").getBoundingClientRect().width + 150) + "px";
     document.getElementById("4").style.top = document.getElementById("9").getBoundingClientRect().y + 150 + "px";
 
-    document.getElementById("5").style.left = (document.getElementById("4").getBoundingClientRect().x - document.getElementById("4").getBoundingClientRect().width - 200) + "px";
-    document.getElementById("5").style.top = document.getElementById("4").getBoundingClientRect().y + 285 + "px";
+    document.getElementById("5").style.left = (document.getElementById("4").getBoundingClientRect().x - 50 - document.getElementById("4").getBoundingClientRect().width - 200) + "px";
+    document.getElementById("5").style.top = document.getElementById("4").getBoundingClientRect().y + 185 + "px";
 
     document.getElementById("8").style.left = (document.getElementById("4").getBoundingClientRect().x - document.getElementById("4").getBoundingClientRect().width - 25) + "px";
     document.getElementById("8").style.top = document.getElementById("4").getBoundingClientRect().y + "px";
@@ -85,7 +87,7 @@ function dragMoveListener(event) {
 }
 
 function checkImage1(dx, dy) {
-    if ((dx >= -573 && dx <= -531) && (dy >= 24 && dy <= 53)) {
+    if ((dx >= -464 && dx <= -444) && (dy >= 65 && dy <= 85)) {
         pipe1 = true;
     }
     else {
@@ -97,7 +99,7 @@ function checkImage1(dx, dy) {
 
 function checkImage2(dx, dy) {
 
-    if ((dx >= 516 && dx <= 528) && (dy >= -368 && dy <= -330)) {
+    if ((dx >= 560 && dx <= 580) && (dy >= -357 && dy <= -337)) {
         pipe2 = true;
     }
     else {
@@ -108,7 +110,7 @@ function checkImage2(dx, dy) {
 }
 
 function checkImage3(dx, dy) {
-    if ((dx >= 618 && dx <= 630) && (dy >= 153 && dy <= 164)) {
+    if ((dx >= 614 && dx <= 634) && (dy >= 130 && dy <= 150)) {
         pipe3 = true;
     }
     else {
@@ -120,7 +122,7 @@ function checkImage3(dx, dy) {
 }
 
 function checkImage4(dx, dy) {
-    if ((dx >= 326 && dx <= 363) && (dy >= 202 && dy <= 218)) {
+    if ((dx >= 351 && dx <= 371) && (dy >= 242 && dy <= 262)) {
         pipe4 = true;
     }
     else {
@@ -130,10 +132,6 @@ function checkImage4(dx, dy) {
     console.log("Pipe 9: " + pipe4);
 
 }
-
-
-
-
 
 function checkPosition(obj, dx, dy) {
     switch (obj) {
@@ -218,6 +216,7 @@ class God extends Component {
                     <title>Turn and turn</title>
                 </Helmet>
 
+                <BackNav />
 
                 <div className="god-container">
                     {/* Pages */}
