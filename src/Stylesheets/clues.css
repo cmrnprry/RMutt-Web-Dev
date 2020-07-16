@@ -63,6 +63,11 @@
 	line-height:1.50vw;
 }
 
+.written a
+{
+	text-decoration: underline;
+}
+
 .written-2
 {
     top: 17px;

@@ -213,11 +213,14 @@ function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
     }
 }
 
-function setUnsolved(Uwidth, Uleft, Utop)
-{
+function setUnsolved(Uwidth, Uleft, Utop) {
     document.getElementById("Unsolved").style.left = (document.getElementById("Folder").getBoundingClientRect().left - Uleft) + "px";
     document.getElementById("Unsolved").style.top = document.getElementById("Folder").getBoundingClientRect().y - Utop + "px";
     document.getElementById("Unsolved").style.width = Uwidth + "px";
+
+    document.getElementById("Solved").style.left = (document.getElementById("Folder").getBoundingClientRect().left - Uleft) + "px";
+    document.getElementById("Solved").style.top = document.getElementById("Folder").getBoundingClientRect().y - Utop + 300 + "px";
+    document.getElementById("Solved").style.width = Uwidth + "px";
 }
 
 class Clues extends Component {
@@ -456,82 +459,149 @@ class Clues extends Component {
             case 2:
                 if (cookies.get('TheLetterChildren')) {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                    document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    if (cookies.get('TissuePaperChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                    }
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                    document.getElementById("Unsolved").setAttribute('src', "none");
+                    document.getElementById("Solved").setAttribute('src', "none");
+
                 }
                 break;
             case 3:
                 if (cookies.get('TissuePaperChildren')) {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                    document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    if (cookies.get('DemuthLetterChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                    }
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                    document.getElementById("Unsolved").setAttribute('src', "none");
+                    document.getElementById("Solved").setAttribute('src', "none");
                 }
                 break;
             case 4:
                 if (cookies.get('DemuthLetterChildren')) {
+                    document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                    if (cookies.get('PhonebookChildren')) { document.getElementById("Solved").setAttribute('src', this.state.solvedList[1]); }
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                    document.getElementById("Unsolved").setAttribute('src', "none");
+                    document.getElementById("Solved").setAttribute('src', "none");
                 }
                 break;
             case 5:
                 if (cookies.get('PhonebookChildren')) {
+                    document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                    if (cookies.get('SIACatalogChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                    }
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                    document.getElementById("Unsolved").setAttribute('src', "none");
+                    document.getElementById("Solved").setAttribute('src', "none");
                 }
                 break;
             case 6:
                 if (cookies.get('SIACatalogChildren')) {
+                    document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                    if (cookies.get('ElsaChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                    }
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                    document.getElementById("Unsolved").setAttribute('src', "none");
+                    document.getElementById("Solved").setAttribute('src', "none");
                 }
                 break;
             case 7:
                 if (cookies.get('ElsaChildren')) {
+                    document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                    if (cookies.get('GodChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                    }
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                    document.getElementById("Unsolved").setAttribute('src', "none");
+                    document.getElementById("Solved").setAttribute('src', "none");
                 }
                 break;
             case 8:
                 if (cookies.get('GodChildren')) {
+                    document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                    if (cookies.get('GodIIChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                    }
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                    document.getElementById("Unsolved").setAttribute('src', "none");
+                    document.getElementById("Solved").setAttribute('src', "none");
                 }
                 break;
             case 9:
                 if (cookies.get('GodIIChildren')) {
+                    document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                    if (cookies.get('BlindManChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                    }
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                    document.getElementById("Unsolved").setAttribute('src', "none");
+                    document.getElementById("Solved").setAttribute('src', "none");
                 }
                 break;
             case 10:
                 if (cookies.get('BlindManChildren')) {
+                    document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                    document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                    if (cookies.get('MottCatalogrChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                    }
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                    document.getElementById("Unsolved").setAttribute('src', "none");
+                    document.getElementById("Solved").setAttribute('src', "none");
                 }
                 break;
             default:
                 document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                document.getElementById("Solved").setAttribute('src', "none");
+                document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                if (cookies.get('TheLetterChildren')) { document.getElementById("Solved").setAttribute('src', this.state.solvedList[0]); }
                 break;
         }
-
-        document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
-
     }
 
     //Left Tabs
@@ -594,9 +664,14 @@ class Clues extends Component {
                         <Image id="Note" src={Note} className="note" />
                         <Image id="Pen" src={Pen} className="pen" />
                         <Image id="Unsolved" src={ARLetter1} className="unsolved" />
+                        <Image id="Solved" src={ARLetter2} className="unsolved" />
 
                         {/* Right Side */}
-                        <div id="Title" className="written">The Letter</div>
+                        <Link to="the-letter">
+                            <div id="Title" className="written">
+                                The Letter
+                            </div>
+                        </Link>
                         <Image id="Envelope" src={Open} className="envelope" />
                     </div>
 
@@ -645,36 +720,6 @@ class Clues extends Component {
                         { showRightTabs[7] && <div id="TabEightRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(8)} />}
                         { showRightTabs[8] && <div id="TabNineRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(9)} />}
                         { showRightTabs[9] && <div id="TabTenRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(10)} />} */}
-                    </div>
-
-                    {/* Links to puzzles */}
-                    <div className="written" style={{ paddingTop: '55px' }}>
-                        {/* {cookies.get('TheLetterChildren') && <Link to="sia-catalogue">SIA Catlogue</Link>} <br /> */}
-                        {cookies.get('TheLetterChildren') && <Link to="cacodylate-eye">Cacodylic Eye</Link>} <br />
-
-                        {cookies.get('TheCacodylicEyeChildren') && <Link to="rrose">Rrose</Link>} <br />
-
-                        {cookies.get('RroseChildren') && <Link to="blind-man">The Blind Man</Link>} <br />
-                        {/* {cookies.get('RroseChildren') && <Link to="elsa-photo">Elsa Photo</Link>} <br /> */}
-
-                        {cookies.get('TissuePaperChildren') && <Link to="demuth-letter">Demuth Letter</Link>} <br />
-                        {/* {cookies.get('TissuePaperChildren') && <Link to="verese">Verese</Link>} <br /> */}
-
-                        {/* {cookies.get('DemuthLetterChildren') && <Link to="phone-number">Phone Number</Link>} <br /> */}
-
-                        {/* {cookies.get('SIACatalogChildren') && <Link to="mott-catalog">Mott Catalog</Link>} <br /> */}
-                        {cookies.get('TissuePaperChildren') && <Link to="mott-catalog">Mott Catalog</Link>} <br />
-
-
-                        {cookies.get('ElasPhotoChildren') && <Link to="god">God</Link>} <br />
-
-                        {cookies.get('GodChildren') && <Link to="godII">God II</Link>} <br />
-
-                        {/* {cookies.get('BlindManChildren') && <Link to="o-marcel">O Marcel</Link>} <br /> */}
-                        {cookies.get('BlindManChildren') && <Link to="tissue-paper">Tissue Paper</Link>} <br />
-                        {/* {cookies.get('BlindManChildren') && <Link to="background-image">Background Image</Link>} <br /> */}
-
-                        {/* {cookies.get('MottCatalogChildren') && <Link to="corkboard">Corkboard</Link>} <br /> */}
                     </div>
                 </div>
 
