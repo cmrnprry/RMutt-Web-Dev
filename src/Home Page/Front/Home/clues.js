@@ -20,6 +20,28 @@ import Folder8 from '../../../folder_elements/folder_pages/folder_8.png'
 import Folder9 from '../../../folder_elements/folder_pages/folder_9.png'
 import Folder10 from '../../../folder_elements/folder_pages/folder_10.png'
 
+import ARLetter1 from '../../../folder_elements/notes/arletter_1.png'
+import ARLetter2 from '../../../folder_elements/notes/arletter_2.png'
+import BlineMan1 from '../../../folder_elements/notes/blind_man_1.png'
+import BlineMan2 from '../../../folder_elements/notes/blind_man_2.png'
+import Demuth1 from '../../../folder_elements/notes/demuth_1.png'
+import Demuth2 from '../../../folder_elements/notes/demuth_2.png'
+import Elsa1 from '../../../folder_elements/notes/elsa_1.png'
+import Elsa2 from '../../../folder_elements/notes/elsa_2.png'
+import God1 from '../../../folder_elements/notes/god_1.png'
+import God2 from '../../../folder_elements/notes/god_2.png'
+import GodII1 from '../../../folder_elements/notes/god2_1.png'
+import GodII2 from '../../../folder_elements/notes/god2_2.png'
+import Mott1 from '../../../folder_elements/notes/mott_1.png'
+import Mott2 from '../../../folder_elements/notes/mott_2.png'
+import PhoneBook1 from '../../../folder_elements/notes/phonebook_1.png'
+import PhoneBook2 from '../../../folder_elements/notes/phonebook_2.png'
+import SIA1 from '../../../folder_elements/notes/sia_1.png'
+import SIA2 from '../../../folder_elements/notes/sia_2.png'
+import TissuePaper1 from '../../../folder_elements/notes/tissue_paper_1.png'
+import TissuePaper2 from '../../../folder_elements/notes/tissue_paper_2.png'
+
+
 //Web Imports
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container';
@@ -27,6 +49,10 @@ import { Helmet } from "react-helmet";
 
 //Puzzle order
 const order = ["The Letter", "Tissue Paper", "Demuth Letter", "Phonebook", "SIA Catalog", "Elsa", "God", "God II", "Blind Man", "Mott Catalog"];
+
+//Enevelope
+const open = require('../../../folder_elements/envelopes/envelode_opened.png');
+const closed = require('../../../folder_elements/envelopes/envelope_closed.png');
 
 //different folders
 const img1 = require('../../../folder_elements/folder_pages/folder_1.png');
@@ -39,7 +65,35 @@ const img7 = require('../../../folder_elements/folder_pages/folder_7.png');
 const img8 = require('../../../folder_elements/folder_pages/folder_8.png');
 const img9 = require('../../../folder_elements/folder_pages/folder_9.png');
 const img10 = require('../../../folder_elements/folder_pages/folder_10.png');
-var currImage = img1;
+var currFolder = img1;
+
+//Unsolved
+const imgUS1 = require('../../../folder_elements/notes/arletter_1.png');
+const imgUS2 = require('../../../folder_elements/notes/tissue_paper_1.png');
+const imgUS3 = require('../../../folder_elements/notes/demuth_1.png');
+const imgUS4 = require('../../../folder_elements/notes/phonebook_1.png');
+const imgUS5 = require('../../../folder_elements/notes/sia_1.png');
+const imgUS6 = require('../../../folder_elements/notes/elsa_1.png');
+const imgUS7 = require('../../../folder_elements/notes/god_1.png');
+const imgUS8 = require('../../../folder_elements/notes/god2_1.png');
+const imgUS9 = require('../../../folder_elements/notes/blind_man_1.png');
+const imgUS10 = require('../../../folder_elements/notes/mott_1.png');
+var currUS = imgUS1;
+
+//Solved
+const imgS1 = require('../../../folder_elements/notes/arletter_2.png');
+const imgS2 = require('../../../folder_elements/notes/tissue_paper_2.png');
+const imgS3 = require('../../../folder_elements/notes/demuth_2.png');
+const imgS4 = require('../../../folder_elements/notes/phonebook_2.png');
+const imgS5 = require('../../../folder_elements/notes/sia_2.png');
+const imgS6 = require('../../../folder_elements/notes/elsa_2.png');
+const imgS7 = require('../../../folder_elements/notes/god_2.png');
+const imgS8 = require('../../../folder_elements/notes/god2_2.png');
+const imgS9 = require('../../../folder_elements/notes/blind_man_2.png');
+const imgS10 = require('../../../folder_elements/notes/mott_2.png');
+var currS = imgS1;
+
+
 var tabBuffer = 0;
 
 var showRightTabs = [false, false, false, false, false, false, false, false, false, false, false];
@@ -70,14 +124,13 @@ function setEnvelope(eWidth, eleft, eTop) {
     document.getElementById("Envelope").style.width = eWidth + "px";
 }
 
+//Set Title
 function setTitle(size, left, top) {
-    //Set Title
     document.getElementById("Title").style.left = (document.getElementById("Folder").getBoundingClientRect().right
         - document.getElementById("Envelope").getBoundingClientRect().x + left) + "px";
     document.getElementById("Title").style.top = document.getElementById("Folder").getBoundingClientRect().y + top + "px";
     document.getElementById("Title").style.fontSize = size + "px";
 }
-
 
 //Set Clickable Tabs
 function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
@@ -160,6 +213,13 @@ function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
     }
 }
 
+function setUnsolved(Uwidth, Uleft, Utop)
+{
+    document.getElementById("Unsolved").style.left = (document.getElementById("Folder").getBoundingClientRect().left - Uleft) + "px";
+    document.getElementById("Unsolved").style.top = document.getElementById("Folder").getBoundingClientRect().y - Utop + "px";
+    document.getElementById("Unsolved").style.width = Uwidth + "px";
+}
+
 class Clues extends Component {
     static propTypes = {
         cookies: instanceOf(Cookies).isRequired
@@ -171,7 +231,10 @@ class Clues extends Component {
         this.state = {
             width: window.innerWidth,
             height: window.innerHeight,
-            imgList: [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10],
+            folderList: [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10],
+            unsolvedList: [imgUS1, imgUS2, imgUS3, imgUS4, imgUS5, imgUS6, imgUS7, imgUS8, imgUS9, imgUS10],
+            solvedList: [imgS1, imgS2, imgS3, imgS4, imgS5, imgS6, imgS7, imgS8, imgS9, imgS10],
+            isUnlocked: [open, closed],
         };
 
         this.resizeWindow = this.resizeWindow.bind(this);
@@ -198,6 +261,9 @@ class Clues extends Component {
 
         //title vars
         var size, tleft, tTop = 0;
+
+        //set teh unsolved image
+        var Uwidth, Uleft, Utop = 0;
 
         if (window.innerWidth >= 1400) { //larges screen size
             if (window.innerHeight >= 1080) { //larges screen size
@@ -260,6 +326,11 @@ class Clues extends Component {
                 size = 75;
                 tleft = 370;
                 tTop = 75;
+
+                //Set the Unsolved
+                Uwidth = 420;
+                Uleft = -60;
+                Utop = -50;
 
                 //Setting Tabs
                 tabBuffer = 14;
@@ -373,15 +444,103 @@ class Clues extends Component {
         setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabBuffer);
         setEnvelope(eWidth, eleft, eTop);
         setTitle(size, tleft, tTop);
+        setUnsolved(Uwidth, Uleft, Utop);
+    }
+
+    //Check if a puzzle is unlocked or not
+    CheckPuzzle(folder) {
+        const { cookies } = this.props;
+
+        //default will be the first puzzle
+        switch (folder) {
+            case 2:
+                if (cookies.get('TheLetterChildren')) {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                }
+                else {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                }
+                break;
+            case 3:
+                if (cookies.get('TissuePaperChildren')) {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                }
+                else {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                }
+                break;
+            case 4:
+                if (cookies.get('DemuthLetterChildren')) {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                }
+                else {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                }
+                break;
+            case 5:
+                if (cookies.get('PhonebookChildren')) {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                }
+                else {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                }
+                break;
+            case 6:
+                if (cookies.get('SIACatalogChildren')) {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                }
+                else {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                }
+                break;
+            case 7:
+                if (cookies.get('ElsaChildren')) {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                }
+                else {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                }
+                break;
+            case 8:
+                if (cookies.get('GodChildren')) {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                }
+                else {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                }
+                break;
+            case 9:
+                if (cookies.get('GodIIChildren')) {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                }
+                else {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                }
+                break;
+            case 10:
+                if (cookies.get('BlindManChildren')) {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                }
+                else {
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+                }
+                break;
+            default:
+                document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+                break;
+        }
+
+        document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+
     }
 
     //Left Tabs
     ChangeFolder(folder) {
-        // var img = this.state.imgList[folder - 1];
+        // var img = this.state.folderList[folder - 1];
 
-        if (showLeftTabs[folder - 1] === true && currImage !== this.state.imgList[folder - 1]) {
-            currImage = this.state.imgList[folder - 1];
-            document.getElementById("Folder").setAttribute('src', this.state.imgList[folder - 1]);
+        if (showLeftTabs[folder - 1] === true && currFolder !== this.state.folderList[folder - 1]) {
+            currFolder = this.state.folderList[folder - 1];
+            document.getElementById("Folder").setAttribute('src', this.state.folderList[folder - 1]);
 
             for (var i = 0; i < folder; i++) {
                 showLeftTabs[i - 1] = false;
@@ -389,15 +548,16 @@ class Clues extends Component {
             }
 
             document.getElementById("Title").innerHTML = order[folder - 1];
+            this.CheckPuzzle(folder);
         }
     }
 
     ChangeFolderRight(folder) {
-        // var img = this.state.imgList[folder - 1];
+        // var img = this.state.folderList[folder - 1];
 
-        if (showRightTabs[folder - 1] === true && currImage !== this.state.imgList[folder - 1]) {
-            currImage = this.state.imgList[folder - 1];
-            document.getElementById("Folder").setAttribute('src', this.state.imgList[folder - 1]);
+        if (showRightTabs[folder - 1] === true && currFolder !== this.state.folderList[folder - 1]) {
+            currFolder = this.state.folderList[folder - 1];
+            document.getElementById("Folder").setAttribute('src', this.state.folderList[folder - 1]);
 
             for (var i = (folder - 1); i < 10; i++) {
                 if (showRightTabs[i] === true) {
@@ -411,6 +571,7 @@ class Clues extends Component {
             }
 
             document.getElementById("Title").innerHTML = order[folder - 1];
+            this.CheckPuzzle(folder);
         }
     }
 
@@ -432,10 +593,11 @@ class Clues extends Component {
                         {/* Left Side */}
                         <Image id="Note" src={Note} className="note" />
                         <Image id="Pen" src={Pen} className="pen" />
+                        <Image id="Unsolved" src={ARLetter1} className="unsolved" />
 
                         {/* Right Side */}
                         <div id="Title" className="written">The Letter</div>
-                        <Image id="Envelope" src={Closed} className="envelope" />
+                        <Image id="Envelope" src={Open} className="envelope" />
                     </div>
 
                     <div id="Tabs">

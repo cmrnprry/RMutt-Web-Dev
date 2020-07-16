@@ -19,7 +19,7 @@
 
 .pen {
 	position: absolute;
-	z-index: 1;
+	z-index: 3;
 }
 
 /* Can probably make this better but at this point it's working and I will not tempt god */
@@ -47,6 +47,12 @@
 {
 	position:absolute;
     border: 1px solid rgb(217, 0, 255);
+}
+
+.unsolved
+{
+	position:absolute;
+	z-index: 2;
 }
 
 .written {
