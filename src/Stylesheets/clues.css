@@ -1,9 +1,24 @@
+.folder {
+	position: relative;
+    border: 5px solid rgb(0, 174, 255);
+}
+
+.folder-scale 
+{
+	position: relative;
+	height: auto;
+	width: 970px;
+}
+
+.note {
+	position: absolute;
+    height: auto;
+    width: 424px;
+	z-index: 1;
+}
+
 .pen {
 	position: absolute;
-	top: 0px;
-	left: 60px;
-	width: auto;
-	height: 50vh;
 	z-index: 1;
 }
 
@@ -15,36 +30,30 @@
 	-o-transform: rotate(5deg);
 }
 
-.folder {
-	position: relative;
-    border: 5px solid rgb(0, 174, 255);
-    /* width: 1009px;
-    height: 714px; */
-}
-
-.center
-{
-	text-align: center;
-}
-
-.folder-scale 
-{
-	position: relative;
+.envelope {
+	position: absolute;
 	height: auto;
-	width: 970px;
+	width: 500px;
+	z-index: 1;
 }
 
-.clue-spacing
+.folder-tab
 {
-    padding-bottom: 10px;
-    padding-left: 10px;
+	position:absolute;
+    border: 1px solid rgb(217, 0, 255);
 }
+
+.folder-tab-right
+{
+	position:absolute;
+    border: 1px solid rgb(217, 0, 255);
+}
+
 .written {
-    top: 45px;
-    left: 145px;
 	position:absolute;
 	font-family:"Damn Arc";
-	font-size:2.5vw;
+	font-size: 100px;
+	text-align: center;
 	line-height:1.50vw;
 }
 

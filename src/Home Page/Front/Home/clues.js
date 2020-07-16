@@ -6,7 +6,9 @@ import { instanceOf } from 'prop-types';
 
 //Image Imports
 import Pen from '../../../folder_elements/pen/pen_bak.png'
-import RrosePhoto from '../../../Puzzles/cacodylic_eye/rrose_images/r_rose_thumbnail.png'
+import Note from '../../../folder_elements/notes.png'
+import Open from '../../../folder_elements/envelopes/envelode_opened.png'
+import Closed from '../../../folder_elements/envelopes/envelope_closed.png'
 import Folder1 from '../../../folder_elements/folder_pages/folder_1.png'
 import Folder2 from '../../../folder_elements/folder_pages/folder_2.png'
 import Folder3 from '../../../folder_elements/folder_pages/folder_3.png'
@@ -23,7 +25,140 @@ import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container';
 import { Helmet } from "react-helmet";
 
+//Puzzle order
+const order = ["The Letter", "Tissue Paper", "Demuth Letter", "Phonebook", "SIA Catalog", "Elsa", "God", "God II", "Blind Man", "Mott Catalog"];
 
+//different folders
+const img1 = require('../../../folder_elements/folder_pages/folder_1.png');
+const img2 = require('../../../folder_elements/folder_pages/folder_2.png');
+const img3 = require('../../../folder_elements/folder_pages/folder_3.png');
+const img4 = require('../../../folder_elements/folder_pages/folder_4.png');
+const img5 = require('../../../folder_elements/folder_pages/folder_5.png');
+const img6 = require('../../../folder_elements/folder_pages/folder_6.png');
+const img7 = require('../../../folder_elements/folder_pages/folder_7.png');
+const img8 = require('../../../folder_elements/folder_pages/folder_8.png');
+const img9 = require('../../../folder_elements/folder_pages/folder_9.png');
+const img10 = require('../../../folder_elements/folder_pages/folder_10.png');
+var currImage = img1;
+var tabBuffer = 0;
+
+var showRightTabs = [false, false, false, false, false, false, false, false, false, false, false];
+var showLeftTabs = [true, true, true, true, true, true, true, true, true, true, true];
+
+function SetPages() {
+    //middle of screen
+    var middle = window.innerWidth / 2;
+    //set the folder
+
+    document.getElementById("Folder").style.left = (middle - (document.getElementById("Folder").getBoundingClientRect().width) / 2) + "px";
+
+
+    //Set the Note Page
+    document.getElementById("Note").style.left = document.getElementById("Folder").getBoundingClientRect().x + 50 + "px";
+    document.getElementById("Note").style.top = document.getElementById("Folder").getBoundingClientRect().y + 20 + "px";
+
+    //Set the Note Page
+    document.getElementById("Pen").style.left = document.getElementById("Folder").getBoundingClientRect().x + 37 + "px";
+    document.getElementById("Pen").style.top = document.getElementById("Folder").getBoundingClientRect().y + 20 + "px";
+
+}
+
+//Set Envelope
+function setEnvelope(eWidth, eleft, eTop) {
+    document.getElementById("Envelope").style.left = (document.getElementById("Folder").getBoundingClientRect().right - eleft) + "px";
+    document.getElementById("Envelope").style.top = document.getElementById("Folder").getBoundingClientRect().y - eTop + "px";
+    document.getElementById("Envelope").style.width = eWidth + "px";
+}
+
+function setTitle(size, left, top) {
+    //Set Title
+    document.getElementById("Title").style.left = (document.getElementById("Folder").getBoundingClientRect().right
+        - document.getElementById("Envelope").getBoundingClientRect().x + left) + "px";
+    document.getElementById("Title").style.top = document.getElementById("Folder").getBoundingClientRect().y + top + "px";
+    document.getElementById("Title").style.fontSize = size + "px";
+}
+
+
+//Set Clickable Tabs
+function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
+    document.getElementsByClassName("folder-tab")[0].style.height = tabHeight + "px";
+    document.getElementsByClassName("folder-tab")[0].style.top =
+        document.getElementById("Folder").getBoundingClientRect().y + "px";
+
+    var temp = document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().height;
+
+    for (var i = 0; i < document.getElementsByClassName("folder-tab").length; i++) {
+        // var tabWidth = document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().width;
+        document.getElementsByClassName("folder-tab")[i].style.width = tabWidth + "px";
+
+        document.getElementsByClassName("folder-tab")[i].style.left =
+            (document.getElementById("Folder").getBoundingClientRect().right
+                - document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().width - tabLeft) + "px";
+
+        if (i !== 0 && i < 5) {
+            document.getElementsByClassName("folder-tab")[i].style.height = tab1 + "px";
+
+            document.getElementsByClassName("folder-tab")[i].style.top =
+                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+
+            temp += document.getElementsByClassName("folder-tab")[1].getBoundingClientRect().height;
+        }
+        else if ((i >= 5 && i < 7) || (i >= 8)) {
+            document.getElementsByClassName("folder-tab")[i].style.height = tab2 + "px";
+
+            document.getElementsByClassName("folder-tab")[i].style.top =
+                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+
+            temp += document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().height;
+        }
+        else if (i == 7) {
+            document.getElementsByClassName("folder-tab")[i].style.height = tab3 + "px";
+
+            document.getElementsByClassName("folder-tab")[i].style.top =
+                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+
+            temp += document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().height;
+        }
+    }
+
+    document.getElementsByClassName("folder-tab-right")[0].style.height = tabHeight + "px";
+    document.getElementsByClassName("folder-tab-right")[0].style.top =
+        document.getElementById("Folder").getBoundingClientRect().y + "px";
+
+    temp = document.getElementsByClassName("folder-tab-right")[0].getBoundingClientRect().height;
+
+    for (var i = 0; i < document.getElementsByClassName("folder-tab-right").length; i++) {
+        document.getElementsByClassName("folder-tab-right")[i].style.width = tabWidth + "px";
+
+        document.getElementsByClassName("folder-tab-right")[i].style.left =
+            (document.getElementById("Folder").getBoundingClientRect().x) + "px";
+
+        if (i !== 0 && i < 5) {
+            document.getElementsByClassName("folder-tab-right")[i].style.height = tab1 + "px";
+
+            document.getElementsByClassName("folder-tab-right")[i].style.top =
+                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+
+            temp += document.getElementsByClassName("folder-tab-right")[1].getBoundingClientRect().height;
+        }
+        else if ((i >= 5 && i < 7) || (i >= 8)) {
+            document.getElementsByClassName("folder-tab-right")[i].style.height = tab2 + "px";
+
+            document.getElementsByClassName("folder-tab-right")[i].style.top =
+                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+
+            temp += document.getElementsByClassName("folder-tab-right")[i].getBoundingClientRect().height;
+        }
+        else if (i == 7) {
+            document.getElementsByClassName("folder-tab-right")[i].style.height = tab3 + "px";
+
+            document.getElementsByClassName("folder-tab-right")[i].style.top =
+                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+
+            temp += document.getElementsByClassName("folder-tab-right")[i].getBoundingClientRect().height;
+        }
+    }
+}
 
 class Clues extends Component {
     static propTypes = {
@@ -35,7 +170,8 @@ class Clues extends Component {
         super(props);
         this.state = {
             width: window.innerWidth,
-            height: window.innerHeight
+            height: window.innerHeight,
+            imgList: [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10],
         };
 
         this.resizeWindow = this.resizeWindow.bind(this);
@@ -54,48 +190,227 @@ class Clues extends Component {
         var folders = document.getElementsByClassName("folder-scale");
         var newWidth = 970;
 
+        //Tab variables
+        var tabHeight, tabWidth, tab1, tab2, tab3 = 0;
+
+        //envelpe variables
+        var eWidth, eleft, eTop = 0;
+
+        //title vars
+        var size, tleft, tTop = 0;
+
         if (window.innerWidth >= 1400) { //larges screen size
             if (window.innerHeight >= 1080) { //larges screen size
                 newWidth = 1440;
+                document.getElementById("Note").style.width = "645px";
+                document.getElementById("Pen").style.width = "75px";
+
+                //Set Envelope
+                eWidth = 650;
+                eleft = 700;
+                eTop = -225;
+
+                //Set the Title
+                size = 100;
+                tleft = 225;
+                tTop = 80;
+
+                //tabBuffer Tabs
+                tabBuffer = 25;
+                tabHeight = 128;
+                tabWidth = 54;
+                tab1 = 87;
+                tab2 = 100;
+                tab3 = 85;
             }
             else if (window.innerHeight >= 800) { //medium screen size
                 newWidth = 1100;
+                document.getElementById("Note").style.width = "475px";
+                document.getElementById("Pen").style.width = "55px";
 
+                //Set Envelope
+                eWidth = 500;
+                eleft = 525;
+                eTop = -130;
+
+                //Set the Title
+                size = 85;
+                tleft = 355;
+                tTop = 80;
+
+                //Setting Tabs
+                tabBuffer = 17;
+                tabHeight = 95;
+                tabWidth = 43;
+                tab1 = 67;
+                tab2 = 73;
+                tab3 = 75;
             }
             else { //smallest screen size
                 newWidth = 1000;
+                document.getElementById("Note").style.width = "430px";
+                document.getElementById("Pen").style.width = "50px";
+
+                //Set Envelope
+                eWidth = 450;
+                eleft = 480;
+                eTop = -150;
+
+                //Set the Title
+                size = 75;
+                tleft = 370;
+                tTop = 75;
+
+                //Setting Tabs
+                tabBuffer = 14;
+                tabHeight = 85;
+                tabWidth = 43;
+                tab1 = 60;
+                tab2 = 75;
+                tab3 = 45;
             }
         }
         else if (window.innerWidth >= 1024) { //medium screen size
             if (window.innerHeight >= 800) { //medium screen size
                 newWidth = 1100;
+                document.getElementById("Note").style.width = "475px";
+                document.getElementById("Pen").style.width = "55px";
 
+                //Set Envelope
+                eWidth = 500;
+                eleft = 525;
+                eTop = -130;
+
+                //Set the Title
+                size = 85;
+                tleft = 355;
+                tTop = 80;
+
+                //Setting Tabs
+                tabBuffer = 17;
+                tabHeight = 95;
+                tabWidth = 43;
+                tab1 = 67;
+                tab2 = 73;
+                tab3 = 75;
             }
             else if (window.innerHeight >= 720) { //smallest screen size
                 newWidth = 1000;
+                document.getElementById("Note").style.width = "430px";
+                document.getElementById("Pen").style.width = "50px";
+
+                //Set Envelope
+                eWidth = 450;
+                eleft = 480;
+                eTop = -150;
+
+                //Set the Title
+                size = 75;
+                tleft = 410;
+                tTop = 75;
+
+                //Setting Tabs
+                tabBuffer = 14;
+                tabHeight = 85;
+                tabWidth = 43;
+                tab1 = 60;
+                tab2 = 75;
+                tab3 = 45;
             }
             else {
                 newWidth = 855;
-            }
+                document.getElementById("Note").style.width = "365px";
+                document.getElementById("Pen").style.width = "43px";
 
+                //Set Envelope
+                eWidth = 415;
+                eleft = 425;
+                eTop = -150;
+
+                //Set the Title
+                size = 60;
+                tleft = 220;
+                tTop = 75;
+
+                //Setting Tabs
+                tabBuffer = 12;
+                tabHeight = 70;
+                tabWidth = 35;
+                tab1 = 50;
+                tab2 = 60;
+                tab3 = 50;
+            }
         }
         else { //smallest screen size
             newWidth = 745;
+            document.getElementById("Note").style.width = "310px";
+            document.getElementById("Pen").style.width = "36px";
+
+            //Set Envelope
+            eWidth = 350;
+            eleft = 370;
+            eTop = -125;
+
+            //Set the Title
+            size = 55;
+            tleft = 200;
+            tTop = 70;
+
+            //Setting Tabs
+            tabBuffer = 10;
+            tabHeight = 60;
+            tabWidth = 35;
+            tab1 = 45;
+            tab2 = 50;
+            tab3 = 50;
         }
-
-        // if (window.innerHeight >= 1400) { //larges screen size
-        //     newWidth = 1230;
-        // }
-        // else if (window.innerHeight >= 1024) { //medium screen size
-        //     newWidth = 970;
-
-        // }
-        // else if (window.innerHeight >= 722) { //smallest screen size
-        //     newWidth = 1015;
-        // }
 
         for (var i = 0; i < folders.length; i++) {
             document.getElementsByClassName("folder-scale")[i].style.width = newWidth + "px";
+        }
+
+        SetPages();
+        setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabBuffer);
+        setEnvelope(eWidth, eleft, eTop);
+        setTitle(size, tleft, tTop);
+    }
+
+    //Left Tabs
+    ChangeFolder(folder) {
+        // var img = this.state.imgList[folder - 1];
+
+        if (showLeftTabs[folder - 1] === true && currImage !== this.state.imgList[folder - 1]) {
+            currImage = this.state.imgList[folder - 1];
+            document.getElementById("Folder").setAttribute('src', this.state.imgList[folder - 1]);
+
+            for (var i = 0; i < folder; i++) {
+                showLeftTabs[i - 1] = false;
+                showRightTabs[i - 1] = true;
+            }
+
+            document.getElementById("Title").innerHTML = order[folder - 1];
+        }
+    }
+
+    ChangeFolderRight(folder) {
+        // var img = this.state.imgList[folder - 1];
+
+        if (showRightTabs[folder - 1] === true && currImage !== this.state.imgList[folder - 1]) {
+            currImage = this.state.imgList[folder - 1];
+            document.getElementById("Folder").setAttribute('src', this.state.imgList[folder - 1]);
+
+            for (var i = (folder - 1); i < 10; i++) {
+                if (showRightTabs[i] === true) {
+                    showLeftTabs[i] = true;
+                    showRightTabs[i] = false;
+                }
+                else {
+                    showRightTabs[i] = false;
+                }
+
+            }
+
+            document.getElementById("Title").innerHTML = order[folder - 1];
         }
     }
 
@@ -110,13 +425,68 @@ class Clues extends Component {
                 </Helmet>
 
 
-                <div className="folder center">
-                    <Image src={Pen} className="pen" />
+                <div className="folder">
                     <Image id="Folder" src={Folder1} className="folder-scale" />
+
+                    <div id="Folder Elements">
+                        {/* Left Side */}
+                        <Image id="Note" src={Note} className="note" />
+                        <Image id="Pen" src={Pen} className="pen" />
+
+                        {/* Right Side */}
+                        <div id="Title" className="written">The Letter</div>
+                        <Image id="Envelope" src={Closed} className="envelope" />
+                    </div>
+
+                    <div id="Tabs">
+
+                        <div id="TabOne" className="folder-tab" onClick={() => this.ChangeFolder(1)} />
+                        <div id="TabTwo" className="folder-tab" onClick={() => this.ChangeFolder(2)} />
+                        <div id="TabThree" className="folder-tab" onClick={() => this.ChangeFolder(3)} />
+                        <div id="TabFour" className="folder-tab" onClick={() => this.ChangeFolder(4)} />
+                        <div id="TabFive" className="folder-tab" onClick={() => this.ChangeFolder(5)} />
+                        <div id="TabSix" className="folder-tab" onClick={() => this.ChangeFolder(6)} />
+                        <div id="TabSeven" className="folder-tab" onClick={() => this.ChangeFolder(7)} />
+                        <div id="TabEight" className="folder-tab" onClick={() => this.ChangeFolder(8)} />
+                        <div id="TabNine" className="folder-tab" onClick={() => this.ChangeFolder(9)} />
+                        <div id="TabTen" className="folder-tab" onClick={() => this.ChangeFolder(10)} />
+
+                        <div id="TabOneRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(1)} />
+                        <div id="TabTwoRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(2)} />
+                        <div id="TabThreeRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(3)} />
+                        <div id="TabFourRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(4)} />
+                        <div id="TabFiveRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(5)} />
+                        <div id="TabSixRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(6)} />
+                        <div id="TabSevenRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(7)} />
+                        <div id="TabEightRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(8)} />
+                        <div id="TabNineRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(9)} />
+                        <div id="TabTenRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(10)} />
+
+                        {/* { showLeftTabs[0] && <div id="TabOne" className="folder-tab" onClick={() => this.ChangeFolder(1)} />}
+                        { showLeftTabs[1] && <div id="TabTwo" className="folder-tab" onClick={() => this.ChangeFolder(2)} />}
+                        { showLeftTabs[2] && <div id="TabThree" className="folder-tab" onClick={() => this.ChangeFolder(3)} />}
+                        { showLeftTabs[3] && <div id="TabFour" className="folder-tab" onClick={() => this.ChangeFolder(4)} />}
+                        { showLeftTabs[4] && <div id="TabFive" className="folder-tab" onClick={() => this.ChangeFolder(5)} />}
+                        { showLeftTabs[5] && <div id="TabSix" className="folder-tab" onClick={() => this.ChangeFolder(6)} />}
+                        { showLeftTabs[6] && <div id="TabSeven" className="folder-tab" onClick={() => this.ChangeFolder(7)} />}
+                        { showLeftTabs[7] && <div id="TabEight" className="folder-tab" onClick={() => this.ChangeFolder(8)} />}
+                        { showLeftTabs[8] && <div id="TabNine" className="folder-tab" onClick={() => this.ChangeFolder(9)} />}
+                        { showLeftTabs[9] && <div id="TabTen" className="folder-tab" onClick={() => this.ChangeFolder(10)} />}
+
+                        { showRightTabs[0] && <div id="TabOneRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(1)} />}
+                        { showRightTabs[1] && <div id="TabTwoRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(2)} />}
+                        { showRightTabs[2] && <div id="TabThreeRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(3)} />}
+                        { showRightTabs[3] && <div id="TabFourRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(4)} />}
+                        { showRightTabs[4] && <div id="TabFiveRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(5)} />}
+                        { showRightTabs[5] && <div id="TabSixRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(6)} />}
+                        { showRightTabs[6] && <div id="TabSevenRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(7)} />}
+                        { showRightTabs[7] && <div id="TabEightRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(8)} />}
+                        { showRightTabs[8] && <div id="TabNineRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(9)} />}
+                        { showRightTabs[9] && <div id="TabTenRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(10)} />} */}
+                    </div>
 
                     {/* Links to puzzles */}
                     <div className="written" style={{ paddingTop: '55px' }}>
-                        <Link to="the-letter">The Letter</Link> <br />
                         {/* {cookies.get('TheLetterChildren') && <Link to="sia-catalogue">SIA Catlogue</Link>} <br /> */}
                         {cookies.get('TheLetterChildren') && <Link to="cacodylate-eye">Cacodylic Eye</Link>} <br />
 
@@ -144,10 +514,6 @@ class Clues extends Component {
 
                         {/* {cookies.get('MottCatalogChildren') && <Link to="corkboard">Corkboard</Link>} <br /> */}
                     </div>
-
-                    {/* Artifacts */}
-                    <div className="written-2">Secrets</div>
-                    {cookies.get('RroseArtifact') && <Image className="artifact-rose" src={RrosePhoto} />}
                 </div>
 
 
