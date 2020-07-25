@@ -195,6 +195,8 @@ class God extends Component {
         else {
             document.body.style.overflowX = "scroll";
         }
+
+        SetPages();
     }
 
     //Tells the cookies to be set
