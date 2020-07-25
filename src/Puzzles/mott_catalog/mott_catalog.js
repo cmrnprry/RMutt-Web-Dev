@@ -39,7 +39,7 @@ const img6 = require('./mott_catalog_images/toilet/toilet6.png');
 const img7 = require('./mott_catalog_images/toilet/toilet7.png');
 
 //Draggable function
-interact('.draggable').draggable({
+interact('.draggable-mott').draggable({
     listeners: {
         move: dragMoveListener,
     }
@@ -47,7 +47,7 @@ interact('.draggable').draggable({
 
 //Dropzone function
 interact('.dropzone-mott').dropzone({
-    accept: '.draggable',
+    accept: '.draggable-mott',
     overlap: 0.50,
 
     // var draggableElement = event.relatedTarget
@@ -238,6 +238,8 @@ class Mott extends Component {
         else {
             document.body.style.overflowX = "scroll";
         }
+
+        setPages();
     }
 
     //Tells the cookies to be set
@@ -269,6 +271,7 @@ class Mott extends Component {
 
         prev = newZoom;
     }
+
     render() {
 
         return (
@@ -285,38 +288,38 @@ class Mott extends Component {
 
 
                 {/* Draggables */}
-                < Image src={toilet4} id="3" onMouseUp={() => this.setChildren()} className="3 draggable toliet-pos toliet-shadow"
+                < Image src={toilet4} id="3" onMouseUp={() => this.setChildren()} className="3 draggable-mott toliet-pos toliet-shadow"
                     style={{
                         top: '25px',
                     }} />
 
-                < Image src={toilet7} id="6" className="6 draggable toliet-pos toliet-shadow"
+                < Image src={toilet7} id="6" className="6 draggable-mott toliet-pos toliet-shadow"
                     style={{
                         top: '6px',
                     }} />
 
-                < Image src={toilet1} id="0" onMouseUp={() => this.setChildren()} className="0 draggable toliet-pos toliet-shadow"
+                < Image src={toilet1} id="0" onMouseUp={() => this.setChildren()} className="0 draggable-mott toliet-pos toliet-shadow"
                     style={{
                         top: '-1px',
                     }} />
 
-                < Image src={toilet3} id="2" onMouseUp={() => this.setChildren()} className="2 draggable toliet-pos toliet-shadow"
+                < Image src={toilet3} id="2" onMouseUp={() => this.setChildren()} className="2 draggable-mott toliet-pos toliet-shadow"
                     style={{
                         top: '26px',
                     }} />
 
-                < Image src={toilet6} id="5" onMouseUp={() => this.setChildren()} className="5 draggable toliet-pos toliet-shadow"
+                < Image src={toilet6} id="5" onMouseUp={() => this.setChildren()} className="5 draggable-mott toliet-pos toliet-shadow"
                     style={{
                         top: '6px',
                     }} />
 
-                < Image src={toilet5} id="4" onMouseUp={() => this.setChildren()} className="4 draggable toliet-pos toliet-shadow"
+                < Image src={toilet5} id="4" onMouseUp={() => this.setChildren()} className="4 draggable-mott toliet-pos toliet-shadow"
                     style={{
                         top: '6px',
                         width: '150px'
                     }} />
 
-                < Image src={toilet2} id="1" onMouseUp={() => this.setChildren()} className="1 draggable toliet-pos toliet-shadow"
+                < Image src={toilet2} id="1" onMouseUp={() => this.setChildren()} className="1 draggable-mott toliet-pos toliet-shadow"
                     style={{
                         top: '8px',
                     }} />

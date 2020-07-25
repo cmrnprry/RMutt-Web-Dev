@@ -4,6 +4,11 @@ import { Link } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
+//Image Import
+import BackImage from '../folder_elements/back_button.png'
+
+//Web Imports
+import Image from 'react-bootstrap/Image'
 
 class Back extends Component {
     static propTypes = {
@@ -45,7 +50,9 @@ class Back extends Component {
         return (
             <div className="sticky">
                 <Link to="clues">
-                    <h2>Back</h2>
+                    <Image src={BackImage} style={{
+                        width: '100%'
+                    }} />
                 </Link>
             </div>
         );

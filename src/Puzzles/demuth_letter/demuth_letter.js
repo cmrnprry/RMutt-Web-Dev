@@ -75,8 +75,8 @@ interact('.draggable-demuth').draggable({
     listeners: {
         move: dragMoveListener,
         end(event) {
-            // console.log(event.target.classList[0] + " at x: " + x);
-            // console.log(event.target.classList[0] + " at y: " + y);
+            console.log(event.target.classList[0] + " at x: " + x);
+            console.log(event.target.classList[0] + " at y: " + y);
             checkPosition(event.target.classList[0], x, y);
         }
     },
@@ -123,7 +123,7 @@ function checkPosition(obj, dx, dy) {
     }
     //line two
     else if (pos === 1) {
-        if ((dx >= -502 && dx <= -494) && (dy >= 60 && dy <= 68)) {
+        if ((dx >= -503 && dx <= -491) && (dy >= 55 && dy <= 68)) {
             list[1] = true;
         }
         else {
@@ -157,7 +157,7 @@ function checkPosition(obj, dx, dy) {
 
         //4
         if (pos === 4) {
-            if ((dx >= -372 && dx <= -363) && (dy >= 78 && dy <= 87)) {
+            if ((dx >= -372 && dx <= -359) && (dy >= 76 && dy <= 89)) {
                 list[4] = true;
             }
             else {
@@ -204,7 +204,7 @@ function checkPosition(obj, dx, dy) {
     }
     //line five
     else if (pos === 8) {
-        if ((dx >= -921 && dx <= -911) && (dy >= 135 && dy <= 141)) {
+        if ((dx >= -925 && dx <= -905) && (dy >= 127 && dy <= 147)) {
             list[8] = true;
         }
         else {
@@ -709,6 +709,7 @@ class Demuth extends Component {
     //So the program always has the correct width and height of window
     resizeWindow() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
+        document.body.style.overflowX = "hidden";
     }
 
     //Tells the cookies to be set

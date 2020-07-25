@@ -308,6 +308,7 @@ class Sia extends Component {
         else {
             document.body.style.overflowX = "scroll";
         }
+        SetPages();
     }
 
     //Tells the cookies to be set
@@ -330,7 +331,7 @@ class Sia extends Component {
                     <title>Turn and turn</title>
                 </Helmet>
 
-                {/* <BackNav /> */}
+                <BackNav />
 
                 <div className="sia-container" style={{ height: this.state.height }}>
                     {/* Under */}

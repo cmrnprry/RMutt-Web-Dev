@@ -29,6 +29,9 @@ interact('.draggable-3').draggable({
     listeners: {
         move: dragMoveListener,
         end(event) {
+
+            console.log(event.target.classList[1] + " at x: " + x);
+            console.log(event.target.classList[1] + " at y: " + y);
             checkPosition(event.target.classList[1], x, y);
         }
     },
@@ -54,8 +57,6 @@ function dragMoveListener(event) {
     // var top = document.getElementsByName(event.target.name)[0].style.top;
     // var left = document.getElementsByName(event.target.name)[0].style.left;
 
-    console.log(event.target.classList[1] + " at x: " + x);
-    console.log(event.target.classList[1] + " at y: " + y);
 }
 
 function checkPosition(obj, dx, dy) {
@@ -84,7 +85,7 @@ function checkPosition(obj, dx, dy) {
 
 
 function checkImage1(dx, dy) {
-    if ((dx >= -1013 && dx <= -965) && (dy >= 60 && dy <= 114)) {
+    if ((dx >= -1013 && dx <= -965) && (dy >= 55 && dy <= 114)) {
         img1InPlace = true;
     }
     else {
@@ -96,7 +97,7 @@ function checkImage1(dx, dy) {
 
 function checkImage2(dx, dy) {
 
-    if ((dx >= -1172 && dx <= -1125) && (dy >= -15 && dy <= 32)) {
+    if ((dx >= -1172 && dx <= -1125) && (dy >= -15 && dy <= 37)) {
         img2InPlace = true;
     }
     else {
@@ -119,7 +120,7 @@ function checkImage3(dx, dy) {
 }
 
 function checkImage4(dx, dy) {
-    if ((dx >= -910 && dx <= -874) && (dy >= 305 && dy <= 337)) {
+    if ((dx >= -910 && dx <= -874) && (dy >= 295 && dy <= 337)) {
         img4InPlace = true;
     }
     else {
@@ -167,6 +168,7 @@ class LN_Puzzle extends Component {
         else {
             document.body.style.overflowX = "scroll";
         }
+        setImages();
     }
 
     //Tells the cookies to be set

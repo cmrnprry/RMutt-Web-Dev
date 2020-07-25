@@ -1,6 +1,7 @@
 //React Imports
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
+import { Link } from 'react-router-dom';
 import { instanceOf } from 'prop-types';
 import Back from '../../Navigation/Back.js'
 
@@ -8,6 +9,7 @@ import Back from '../../Navigation/Back.js'
 import Background from '../../folder_elements/wooden.png'
 import letter from './ar_letter_elements/ar_letter.jpg'
 import letter_red from './ar_letter_elements/ar_letter_red.jpg'
+import BackImage from '../../folder_elements/back_button.png'
 
 //Web Imports
 import Container from 'react-bootstrap/Container'
@@ -65,7 +67,10 @@ class AR_Letter extends Component {
                 <Back />
 
                 <Popup style={{ background: 'transparent', border: 'none' }}
-                    trigger={<Image src={letter} className='ar-letter' style={{ marginLeft: 'auto', marginRight: 'auto' }} />}
+                    trigger={<Image src={letter} className='ar-letter' style={{
+                        marginLeft: 'auto',
+                        marginRight: 'auto'
+                    }} />}
                     modal
                     closeOnDocumentClick
                     onClose={this.setChildren}

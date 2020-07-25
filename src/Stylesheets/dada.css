@@ -49,13 +49,14 @@ code {
 }
 
 .sticky {
-  padding: 10px 16px;
-  background: #555;
+  /* padding: 10px 16px; */
+  /* background: #555; */
   color: #f1f1f1;
-  position: sticky!important;
+  position: fixed!important;
   top: 0;
   left: 0;
-  width: 445px;
+  width: 100px!important;
+  z-index: 3;
 }
 
 h1 {
@@ -221,6 +222,7 @@ li img {
 	overflow-y:hidden;
 	overflow-x:hidden;
 }
+
 .ar-letter {
 	display:block;
 	z-index:0;

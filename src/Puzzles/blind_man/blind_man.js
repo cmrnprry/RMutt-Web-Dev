@@ -53,7 +53,7 @@ const img15 = require('./blind_man_images/15.jpg');
 const back = require('./blind_man_images/back.jpg');
 
 //Draggable function
-interact('.draggable').draggable({
+interact('.draggable-blind').draggable({
     modifiers: [
         interact.modifiers.restrict({
             restriction: 'container-blind-man',
@@ -68,7 +68,7 @@ interact('.draggable').draggable({
 
 //Dropzone function
 interact('.dropzone-blind').dropzone({
-    accept: '.draggable',
+    accept: '.draggable-blind',
     overlap: 0.75,
 
     // var draggableElement = event.relatedTarget
@@ -211,13 +211,8 @@ class Blind_Man extends Component {
     }
 
     resizeWindow() {
-        // if the screen is big enough
-        if (window.innerWidth >= 1500) {
-            document.body.style.overflowX = "hidden";
-        }
-        else {
-            document.body.style.overflowX = "scroll";
-        }
+        document.body.style.overflowX = "scroll";
+
     }
 
     //Tells the cookies to be set
@@ -275,56 +270,56 @@ class Blind_Man extends Component {
                 <BackNav />
 
                 {/* Sticky Note */}
-                <div id="note" img={Sticky}className="container">
+                <div id="note" img={Sticky} className="container">
                     <Image src={Sticky} />
                     <div className="text-sticky"> Double <br /> click a<br />page to <br />zoom</div>
                 </div>
 
                 {/* Draggables */}
                 <div>
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("2")} name="0" src={Page2} className="1 resize draggable zoomBorder" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("2")} name="0" src={Page2} className="1 resize draggable-blind zoomBorder" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("5")} name="1" src={Page5} className="4 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("5")} name="1" src={Page5} className="4 resize draggable-blind" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("Back")} name="2" src={Back} className="15 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("Back")} name="2" src={Back} className="15 resize draggable-blind" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("3")} name="3" src={Page3} className="2 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("3")} name="3" src={Page3} className="2 resize draggable-blind" />
                 </div>
 
                 <br />
 
                 <div>
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("7")} name="4" src={Page7} className="6 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("7")} name="4" src={Page7} className="6 resize draggable-blind" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("14")} name="5" src={Page14} className="13 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("14")} name="5" src={Page14} className="13 resize draggable-blind" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("12")} name="6" src={Page12} className="11 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("12")} name="6" src={Page12} className="11 resize draggable-blind" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("11")} name="7" src={Page11} className="10 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("11")} name="7" src={Page11} className="10 resize draggable-blind" />
                 </div>
 
                 <br />
 
                 <div>
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("4")} name="8" src={Page4} className="3 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("4")} name="8" src={Page4} className="3 resize draggable-blind" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("9")} name="9" src={Page9} className="8 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("9")} name="9" src={Page9} className="8 resize draggable-blind" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("Cover")} name="10" src={Cover} className="0 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("Cover")} name="10" src={Cover} className="0 resize draggable-blind" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("15")} name="11" src={Page15} className="14 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("15")} name="11" src={Page15} className="14 resize draggable-blind" />
                 </div>
 
                 <br />
 
                 <div>
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("10")} name="12" src={Page10} className="9 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("10")} name="12" src={Page10} className="9 resize draggable-blind" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("6")} name="13" src={Page6} className="5 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("6")} name="13" src={Page6} className="5 resize draggable-blind" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("8")} name="14" src={Page8} className="7 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("8")} name="14" src={Page8} className="7 resize draggable-blind" />
 
-                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("13")} name="15" src={Page13} className="12 resize draggable" />
+                    <Image onMouseUp={() => this.setChildren()} onDoubleClick={() => this.changeZoomed("13")} name="15" src={Page13} className="12 resize draggable-blind" />
                 </div>
 
                 {/* Zoomed Image */}
