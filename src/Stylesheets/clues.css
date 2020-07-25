@@ -40,13 +40,15 @@
 .folder-tab
 {
 	position:absolute;
-    border: 1px solid rgb(217, 0, 255);
+	/* border: 1px solid rgb(217, 0, 255); */
+	z-index: 3;
 }
 
 .folder-tab-right
 {
 	position:absolute;
-    border: 1px solid rgb(217, 0, 255);
+	/* border: 1px solid rgb(217, 0, 255); */
+	z-index: 3;
 }
 
 .unsolved

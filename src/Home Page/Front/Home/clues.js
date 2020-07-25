@@ -598,7 +598,7 @@ class Clues extends Component {
                 document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
                 document.getElementById("Solved").setAttribute('src', "none");
                 document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
-                
+
                 if (cookies.get('TheLetterChildren')) { document.getElementById("Solved").setAttribute('src', this.state.solvedList[0]); }
                 break;
         }
@@ -619,6 +619,7 @@ class Clues extends Component {
 
             document.getElementById("Title").innerHTML = order[folder - 1];
             this.CheckPuzzle(folder);
+            console.log("clicked-left");
         }
     }
 
@@ -641,6 +642,7 @@ class Clues extends Component {
             }
 
             document.getElementById("Title").innerHTML = order[folder - 1];
+            console.log("clicked-right");
             this.CheckPuzzle(folder);
         }
     }
@@ -667,7 +669,7 @@ class Clues extends Component {
                         <Image id="Solved" src={ARLetter2} className="unsolved" />
 
                         {/* Right Side */}
-                    
+
                         <div id="Title" className="written">
                             The Letter
                         </div>
