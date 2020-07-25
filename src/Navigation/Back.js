@@ -6,6 +6,8 @@ import { instanceOf } from 'prop-types';
 
 //Image Import
 import BackImage from '../folder_elements/back_button.png'
+import BackImage2 from '../folder_elements/back_button_v2.png'
+import BackImage3 from '../folder_elements/back_button_v3.png'
 
 //Web Imports
 import Image from 'react-bootstrap/Image'
@@ -50,8 +52,8 @@ class Back extends Component {
         return (
             <div className="sticky">
                 <Link to="clues">
-                    <Image src={BackImage} style={{
-                        width: '100%'
+                    <Image src={BackImage2} style={{
+                       // width: '100%'
                     }} />
                 </Link>
             </div>
