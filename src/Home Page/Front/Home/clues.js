@@ -125,11 +125,13 @@ function setEnvelope(eWidth, eleft, eTop) {
 }
 
 //Set Title
-function setTitle(size, left, top) {
+function setTitle(size, left, top, width, height) {
     document.getElementById("Title").style.left = (document.getElementById("Folder").getBoundingClientRect().right
-        - document.getElementById("Envelope").getBoundingClientRect().x + left) + "px";
+        - left) + "px";
     document.getElementById("Title").style.top = document.getElementById("Folder").getBoundingClientRect().y + top + "px";
     document.getElementById("Title").style.fontSize = size + "px";
+    document.getElementById("Title").style.width = width + "px";
+    document.getElementById("Title").style.height = height + "px";
 }
 
 //Set Clickable Tabs
@@ -213,14 +215,14 @@ function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
     }
 }
 
-function setUnsolved(Uwidth, Uleft, Utop) {
-    document.getElementById("Unsolved").style.left = (document.getElementById("Folder").getBoundingClientRect().left - Uleft) + "px";
-    document.getElementById("Unsolved").style.top = document.getElementById("Folder").getBoundingClientRect().y - Utop + "px";
-    document.getElementById("Unsolved").style.width = Uwidth + "px";
+function setNoteItems(itemWidth, itemHeight, itemLeft) {
+    document.getElementById("Unsolved").style.left = (document.getElementById("Note").getBoundingClientRect().left) + itemLeft + "px";
+    document.getElementById("Unsolved").style.top = document.getElementById("Note").getBoundingClientRect().y + 40 + "px";
+    document.getElementById("Unsolved").style.width = itemWidth + "px";
 
-    document.getElementById("Solved").style.left = (document.getElementById("Folder").getBoundingClientRect().left - Uleft) + "px";
-    document.getElementById("Solved").style.top = document.getElementById("Folder").getBoundingClientRect().y - Utop + 300 + "px";
-    document.getElementById("Solved").style.width = Uwidth + "px";
+    document.getElementById("Solved").style.left = (document.getElementById("Note").getBoundingClientRect().left + itemLeft) + "px";
+    document.getElementById("Solved").style.top = document.getElementById("Note").getBoundingClientRect().y + itemHeight + "px";
+    document.getElementById("Solved").style.width = itemWidth + "px";
 }
 
 class Clues extends Component {
@@ -263,10 +265,10 @@ class Clues extends Component {
         var eWidth, eleft, eTop = 0;
 
         //title vars
-        var size, tleft, tTop = 0;
+        var size, tleft, tTop, tHeight, tWdth = 0;
 
         //set teh unsolved image
-        var Uwidth, Uleft, Utop = 0;
+        var itemWidth, itemHeight, itemLeft = 0;
 
         if (window.innerWidth >= 1400) { //larges screen size
             if (window.innerHeight >= 1080) { //larges screen size
@@ -281,8 +283,15 @@ class Clues extends Component {
 
                 //Set the Title
                 size = 100;
-                tleft = 225;
+                tleft = 645
                 tTop = 80;
+                tHeight = 100;
+                tWdth = 550;
+
+                //Set the Note Items
+                itemWidth = 545;
+                itemHeight = 430;
+                itemLeft = 70;
 
                 //tabBuffer Tabs
                 tabBuffer = 25;
@@ -300,12 +309,19 @@ class Clues extends Component {
                 //Set Envelope
                 eWidth = 500;
                 eleft = 525;
-                eTop = -130;
+                eTop = -230;
 
                 //Set the Title
-                size = 85;
-                tleft = 355;
+                size = 95;
+                tleft = 490;
                 tTop = 80;
+                tHeight = 100;
+                tWdth = 420;
+
+                //Set the Note Items
+                itemWidth = 445;
+                itemHeight = 330;
+                itemLeft = 25;
 
                 //Setting Tabs
                 tabBuffer = 17;
@@ -323,17 +339,19 @@ class Clues extends Component {
                 //Set Envelope
                 eWidth = 450;
                 eleft = 480;
-                eTop = -150;
+                eTop = -250;
 
                 //Set the Title
-                size = 75;
-                tleft = 370;
-                tTop = 75;
+                size = 90;
+                tleft = 450;
+                tTop = 80;
+                tHeight = 100;
+                tWdth = 390;
 
-                //Set the Unsolved
-                Uwidth = 420;
-                Uleft = -60;
-                Utop = -50;
+                //Set the Note Items
+                itemWidth = 400;
+                itemHeight = 330;
+                itemLeft = 15;
 
                 //Setting Tabs
                 tabBuffer = 14;
@@ -346,27 +364,36 @@ class Clues extends Component {
         }
         else if (window.innerWidth >= 1024) { //medium screen size
             if (window.innerHeight >= 800) { //medium screen size
-                newWidth = 1100;
-                document.getElementById("Note").style.width = "475px";
+                newWidth = 1000;
+                document.getElementById("Note").style.width = "435px";
                 document.getElementById("Pen").style.width = "55px";
 
                 //Set Envelope
-                eWidth = 500;
-                eleft = 525;
-                eTop = -130;
+                eWidth = 480;
+                eleft = 500;
+                eTop = -230;
 
                 //Set the Title
-                size = 85;
-                tleft = 355;
+                size = 90;
+                tleft = 450;
                 tTop = 80;
+                tHeight = 125;
+                tWdth = 390;
+                document.getElementById("Title").style.lineHeight = "4.5vw";
+
+                //Set the Note Items
+                itemWidth = 410;
+                itemHeight = 330;
+                itemLeft = 20;
+
 
                 //Setting Tabs
-                tabBuffer = 17;
-                tabHeight = 95;
+                tabBuffer = 10;
+                tabHeight = 90;
                 tabWidth = 43;
-                tab1 = 67;
+                tab1 = 58;
                 tab2 = 73;
-                tab3 = 75;
+                tab3 = 60;
             }
             else if (window.innerHeight >= 720) { //smallest screen size
                 newWidth = 1000;
@@ -376,12 +403,21 @@ class Clues extends Component {
                 //Set Envelope
                 eWidth = 450;
                 eleft = 480;
-                eTop = -150;
+                eTop = -250;
 
                 //Set the Title
-                size = 75;
-                tleft = 410;
-                tTop = 75;
+                size = 90;
+                tleft = 450;
+                tTop = 80;
+                tHeight = 100;
+                tWdth = 390;
+
+                //Set the Note Items
+                itemWidth = 400;
+                itemHeight = 330;
+                itemLeft = 15;
+                document.getElementById("Title").style.lineHeight = "4.5vw";
+
 
                 //Setting Tabs
                 tabBuffer = 14;
@@ -399,12 +435,20 @@ class Clues extends Component {
                 //Set Envelope
                 eWidth = 415;
                 eleft = 425;
-                eTop = -150;
+                eTop = -175;
 
                 //Set the Title
-                size = 60;
-                tleft = 220;
-                tTop = 75;
+                size = 70;
+                tleft = 385;
+                tTop = 65;
+                tHeight = 100;
+                tWdth = 340;
+
+                //Set the Note Items
+                itemWidth = 350;
+                itemHeight = 275;
+                itemLeft = 15;
+                document.getElementById("Title").style.lineHeight = "4.5vw";
 
                 //Setting Tabs
                 tabBuffer = 12;
@@ -423,12 +467,20 @@ class Clues extends Component {
             //Set Envelope
             eWidth = 350;
             eleft = 370;
-            eTop = -125;
+            eTop = -150;
 
             //Set the Title
-            size = 55;
-            tleft = 200;
-            tTop = 70;
+            size = 70;
+            tleft = 335;
+            tTop = 40;
+            tHeight = 100;
+            tWdth = 290;
+
+            //Set the Note Items
+            itemWidth = 300;
+            itemHeight = 225;
+            itemLeft = 10;
+            document.getElementById("Title").style.lineHeight = "4.5vw";
 
             //Setting Tabs
             tabBuffer = 10;
@@ -446,8 +498,8 @@ class Clues extends Component {
         SetPages();
         setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabBuffer);
         setEnvelope(eWidth, eleft, eTop);
-        setTitle(size, tleft, tTop);
-        setUnsolved(Uwidth, Uleft, Utop);
+        setTitle(size, tleft, tTop, tWdth, tHeight);
+        setNoteItems(itemWidth, itemHeight, itemLeft);
     }
 
     //Check if a puzzle is unlocked or not

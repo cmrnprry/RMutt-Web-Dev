@@ -62,7 +62,8 @@
 	font-family:"Damn Arc";
 	font-size: 4vw;
 	text-align: center;
-	line-height:1.50vw;
+	line-height:2.50vw;
+	/* border: 1px solid rgb(217, 0, 255); */
 }
 
 .written a
