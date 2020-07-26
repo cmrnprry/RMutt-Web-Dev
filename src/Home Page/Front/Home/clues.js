@@ -516,10 +516,14 @@ class Clues extends Component {
                     if (cookies.get('TissuePaperChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                     }
+
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/tissue-paper');
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
                     document.getElementById("Unsolved").setAttribute('src', "none");
+                    document.getElementById("Link").classList.add('inactiveLink');
                     document.getElementById("Solved").setAttribute('src', "none");
                 }
                 break;
@@ -531,11 +535,15 @@ class Clues extends Component {
                     if (cookies.get('DemuthLetterChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                     }
+
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/demuth-letter');
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
                     document.getElementById("Unsolved").setAttribute('src', "none");
                     document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Link").classList.add('inactiveLink');
                 }
                 break;
             case 4:
@@ -544,11 +552,15 @@ class Clues extends Component {
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
                     if (cookies.get('PhonebookChildren')) { document.getElementById("Solved").setAttribute('src', this.state.solvedList[1]); }
+
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/phonebook');
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
                     document.getElementById("Unsolved").setAttribute('src', "none");
                     document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Link").classList.add('inactiveLink');
                 }
                 break;
             case 5:
@@ -559,11 +571,16 @@ class Clues extends Component {
                     if (cookies.get('SIACatalogChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                     }
+
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/sia-catalog');
+
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
                     document.getElementById("Unsolved").setAttribute('src', "none");
                     document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Link").classList.add('inactiveLink');
                 }
                 break;
             case 6:
@@ -574,11 +591,14 @@ class Clues extends Component {
                     if (cookies.get('ElsaChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                     }
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/elsa');
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
                     document.getElementById("Unsolved").setAttribute('src', "none");
                     document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Link").classList.add('inactiveLink');
                 }
                 break;
             case 7:
@@ -589,11 +609,14 @@ class Clues extends Component {
                     if (cookies.get('GodChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                     }
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/god');
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
                     document.getElementById("Unsolved").setAttribute('src', "none");
                     document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Link").classList.add('inactiveLink');
                 }
                 break;
             case 8:
@@ -604,11 +627,14 @@ class Clues extends Component {
                     if (cookies.get('GodIIChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                     }
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/godII');
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
                     document.getElementById("Unsolved").setAttribute('src', "none");
                     document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Link").classList.add('inactiveLink');
                 }
                 break;
             case 9:
@@ -621,11 +647,14 @@ class Clues extends Component {
                     if (cookies.get('BlindManChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                     }
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/blind-man');
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
                     document.getElementById("Unsolved").setAttribute('src', "none");
                     document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Link").classList.add('inactiveLink');
                 }
                 break;
             case 10:
@@ -639,17 +668,21 @@ class Clues extends Component {
                     if (cookies.get('MottCatalogrChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                     }
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/mott-catalog');
                 }
                 else {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
                     document.getElementById("Unsolved").setAttribute('src', "none");
                     document.getElementById("Solved").setAttribute('src', "none");
+                    document.getElementById("Link").classList.add('inactiveLink');
                 }
                 break;
             default:
                 document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
                 document.getElementById("Solved").setAttribute('src', "none");
                 document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                document.getElementById("Link").setAttribute('href', '/the-letter');
 
                 if (cookies.get('TheLetterChildren')) { document.getElementById("Solved").setAttribute('src', this.state.solvedList[0]); }
                 break;
@@ -722,9 +755,11 @@ class Clues extends Component {
 
                         {/* Right Side */}
 
-                        <div id="Title" className="written">
-                            The Letter
-                        </div>
+                        <a id="Link" href='/the-letter'>
+                            <div id="Title" className="written">
+                                The Letter
+                            </div>
+                        </a>
                         <Image id="Envelope" src={Open} className="envelope" />
                     </div>
 

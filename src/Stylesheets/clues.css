@@ -66,6 +66,11 @@
 	/* border: 1px solid rgb(217, 0, 255); */
 }
 
+.inactiveLink {
+   pointer-events: none;
+   cursor: default;
+}
+
 .written a
 {
 	text-decoration: underline;
