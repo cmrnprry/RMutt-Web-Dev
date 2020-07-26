@@ -14,6 +14,9 @@ import './Stylesheets/blind_man.css';
 import './Stylesheets/mott_catalog.css';
 import './Stylesheets/sia_catalog.css';
 import './Stylesheets/god.css';
+import './Stylesheets/phonebook.css';
+import './Stylesheets/elsa.css';
+import './Stylesheets/godII.css';
 
 //Home Page
 import Home from './Home Page/Front/Home/home';
@@ -32,6 +35,9 @@ import Blind_Man from './Puzzles/blind_man/blind_man'
 import Mott_Catalog from './Puzzles/mott_catalog/mott_catalog'
 import Sia_Catalog from './Puzzles/sia_puzzle/sia_catalog'
 import God from './Puzzles/god_puzzle/god'
+import Phonebook from './Puzzles/phone_book_puzzle/phonebook'
+import Elsa from './Puzzles/elsa_puzzle/elsa'
+import GodII from './Puzzles/godII/godII'
 
 
 class App extends Component {
@@ -57,6 +63,9 @@ class App extends Component {
             <Route exact path='/mott-catalog' component={Mott_Catalog} />
             <Route exact path='/sia-catalog' component={Sia_Catalog} />
             <Route exact path='/god' component={God} />
+            <Route exact path='/phonebook' component={Phonebook} />
+            <Route exact path='/elsa' component={Elsa} />
+            <Route exact path='/godII' component={GodII} />
           </Switch>
         </Router>
       </CookiesProvider>
