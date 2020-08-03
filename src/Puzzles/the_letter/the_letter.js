@@ -73,7 +73,7 @@ class AR_Letter extends Component {
                     }} />}
                     modal
                     closeOnDocumentClick
-                    onClose={this.setChildren}
+                    //onClose={this.setChildren}
                 >
                     <div style={{ backgroundImage: `url(${Background}`, border: 'none' }}>
                         <p className='text'>Click outside to escape window</p>

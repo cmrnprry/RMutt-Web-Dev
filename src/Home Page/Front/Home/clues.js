@@ -43,9 +43,10 @@ import TissuePaper2 from '../../../folder_elements/notes/tissue_paper_2.png'
 
 
 //Web Imports
-import Image from 'react-bootstrap/Image'
+import Image from 'react-bootstrap/Image';
 import Container from 'react-bootstrap/Container';
 import { Helmet } from "react-helmet";
+import Popup from 'reactjs-popup';
 
 //Puzzle order
 const order = ["The Letter", "Tissue Paper", "Demuth Letter", "Phonebook", "SIA Catalog", "Elsa", "God", "God II", "Blind Man", "Mott Catalog"];
@@ -98,6 +99,8 @@ var tabBuffer = 0;
 
 var showRightTabs = [false, false, false, false, false, false, false, false, false, false, false];
 var showLeftTabs = [true, true, true, true, true, true, true, true, true, true, true];
+var tissePasswords = ["louise varese norton", "louise norton varese", "louise mccutcheon norton", "louise norton mccutcheon", "louise norton varèse", "louise varèse norton"];
+var currentTab = 1;
 
 function SetPages() {
     //middle of screen
@@ -249,6 +252,7 @@ class Clues extends Component {
         document.body.style.removeProperty("background");
         window.addEventListener("resize", this.resizeWindow);
         this.resizeWindow();
+        this.CheckPuzzle(1);
     }
 
     //So the program always has the correct width and height of window
@@ -505,186 +509,365 @@ class Clues extends Component {
     //Check if a puzzle is unlocked or not
     CheckPuzzle(folder) {
         const { cookies } = this.props;
+        currentTab = folder;
 
         //default will be the first puzzle
         switch (folder) {
             case 2:
                 if (cookies.get('TheLetterChildren')) {
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-                    document.getElementById("Solved").setAttribute('src', "none");
+
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
                     if (cookies.get('TissuePaperChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
                     }
 
+                    //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/tissue-paper');
+
+                    //Turn on the pen for password puzzles
+                    document.getElementById("Pen").style.display = "block";
                 }
                 else {
+                    //if the puzzle is not unlocked set evelope to locked
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-                    document.getElementById("Unsolved").setAttribute('src', "none");
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
-                    document.getElementById("Solved").setAttribute('src', "none");
                 }
                 break;
             case 3:
                 if (cookies.get('TissuePaperChildren')) {
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-                    document.getElementById("Solved").setAttribute('src', "none");
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
-                    if (cookies.get('DemuthLetterChildren')) {
+                    document.getElementById("Unsolved").style.display = "block";
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
+                    if (cookies.get('DemithLetterChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
                     }
 
+                    //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/demuth-letter');
                 }
                 else {
+                    //if the puzzle is not unlocked set evelope to locked
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-                    document.getElementById("Unsolved").setAttribute('src', "none");
-                    document.getElementById("Solved").setAttribute('src', "none");
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
                 }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "none";
+
                 break;
             case 4:
                 if (cookies.get('DemuthLetterChildren')) {
-                    document.getElementById("Solved").setAttribute('src', "none");
-                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-                    if (cookies.get('PhonebookChildren')) { document.getElementById("Solved").setAttribute('src', this.state.solvedList[1]); }
 
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
+                    if (cookies.get('PhonebookChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
+                    }
+
+                    //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/phonebook');
+
+                    //Turn on the pen for password puzzles
+                    document.getElementById("Pen").style.display = "block";
                 }
                 else {
+                    //if the puzzle is not unlocked set evelope to locked
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-                    document.getElementById("Unsolved").setAttribute('src', "none");
-                    document.getElementById("Solved").setAttribute('src', "none");
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
                 }
+
+
                 break;
             case 5:
                 if (cookies.get('PhonebookChildren')) {
-                    document.getElementById("Solved").setAttribute('src', "none");
+
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
                     if (cookies.get('SIACatalogChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
                     }
 
+                    //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/sia-catalog');
 
                 }
                 else {
+                    //if the puzzle is not unlocked set evelope to locked
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-                    document.getElementById("Unsolved").setAttribute('src', "none");
-                    document.getElementById("Solved").setAttribute('src', "none");
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
                 }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "none";
+
                 break;
             case 6:
                 if (cookies.get('SIACatalogChildren')) {
-                    document.getElementById("Solved").setAttribute('src', "none");
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
                     if (cookies.get('ElsaChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
                     }
+
+                    //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/elsa');
+
+                    //Turn on the pen for password puzzles
+                    document.getElementById("Pen").style.display = "block";
                 }
                 else {
+                    //if the puzzle is not unlocked set evelope to locked
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-                    document.getElementById("Unsolved").setAttribute('src', "none");
-                    document.getElementById("Solved").setAttribute('src', "none");
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
                 }
+
+                //Turn on the pen for password puzzles
+                // document.getElementById("Pen").style.display = "block";
                 break;
             case 7:
                 if (cookies.get('ElsaChildren')) {
-                    document.getElementById("Solved").setAttribute('src', "none");
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
                     if (cookies.get('GodChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
                     }
+
+                    //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/god');
                 }
                 else {
+                    //if the puzzle is not unlocked set evelope to locked
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-                    document.getElementById("Unsolved").setAttribute('src', "none");
-                    document.getElementById("Solved").setAttribute('src', "none");
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
                 }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "none";
+
                 break;
             case 8:
                 if (cookies.get('GodChildren')) {
-                    document.getElementById("Solved").setAttribute('src', "none");
+
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
                     if (cookies.get('GodIIChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
                     }
+
+                    //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/godII');
                 }
                 else {
+                    //if the puzzle is not unlocked set evelope to locked
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-                    document.getElementById("Unsolved").setAttribute('src', "none");
-                    document.getElementById("Solved").setAttribute('src', "none");
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
                 }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "none";
                 break;
             case 9:
                 if (cookies.get('GodIIChildren')) {
-                    document.getElementById("Solved").setAttribute('src', "none");
-                    document.getElementById("Solved").setAttribute('src', "none");
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
                     if (cookies.get('BlindManChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
                     }
+
+                    //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/blind-man');
                 }
                 else {
+                    //if the puzzle is not unlocked set evelope to locked
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-                    document.getElementById("Unsolved").setAttribute('src', "none");
-                    document.getElementById("Solved").setAttribute('src', "none");
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
                 }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "none";
                 break;
             case 10:
+                //if the previous puzzle has been solved
                 if (cookies.get('BlindManChildren')) {
-                    document.getElementById("Solved").setAttribute('src', "none");
+
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-                    document.getElementById("Solved").setAttribute('src', "none");
-                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-                    if (cookies.get('MottCatalogrChildren')) {
+
+                    //If this puzzle has been solved
+                    if (cookies.get('MottCatalogChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
                     }
+
+                    //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/mott-catalog');
                 }
                 else {
+                    //if the puzzle is not unlocked set evelope to locked
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-                    document.getElementById("Unsolved").setAttribute('src', "none");
-                    document.getElementById("Solved").setAttribute('src', "none");
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
                 }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "none";
                 break;
             default:
+                //Set envelope to unlocked
                 document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-                document.getElementById("Solved").setAttribute('src', "none");
+
+                //Set the unsolved image to be th ecorrect image
                 document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                document.getElementById("Unsolved").style.display = "block";
+
+
+                //Make sure the clickable link is turned on and set the correct link
+                document.getElementById("Link").classList.remove('inactiveLink');
                 document.getElementById("Link").setAttribute('href', '/the-letter');
 
-                if (cookies.get('TheLetterChildren')) { document.getElementById("Solved").setAttribute('src', this.state.solvedList[0]); }
+                //Turn on the pen for password puzzles
+                document.getElementById("Pen").style.display = "block";
+
+                //once the puzzle has been solved turn on and set the solved image
+                if (cookies.get('TheLetterChildren')) {
+                    document.getElementById("Solved").setAttribute('src', this.state.solvedList[0]);
+                    document.getElementById("Solved").style.display = "block";
+                }
+                else {
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+                }
                 break;
         }
     }
@@ -732,6 +915,43 @@ class Clues extends Component {
         }
     }
 
+    CheckPassword() {
+        const { cookies } = this.props;
+
+        var input = document.getElementById("Input").value.toLowerCase();
+
+        //if the letter is open
+        if (currentTab == 1) {
+            if (input == "amie") {
+                cookies.set('TheLetterChildren');
+                window.location.reload();
+            }
+        }
+        else if (currentTab == 2) {
+            tissePasswords.forEach(element => {
+                if (input == element) {
+                    cookies.set('TissuePaperChildren');
+                    window.location.reload();
+                    return;
+                }
+            });
+        }
+        else if (currentTab == 4) {
+            if (input == "110W88") {
+                cookies.set('PhonebookChildren');
+                window.location.reload();
+            }
+        }
+        else if (currentTab == 6) {
+            if (input == "god is in the plumbing") {
+                cookies.set('ElsaChildren');
+                window.location.reload();
+            }
+        }
+
+
+    }
+
     render() {
         const { cookies } = this.props;
         return (
@@ -749,11 +969,25 @@ class Clues extends Component {
                     <div id="Folder Elements">
                         {/* Left Side */}
                         <Image id="Note" src={Note} className="note" />
-                        <Image id="Pen" src={Pen} className="pen" />
+
+                        <Popup style={{ background: 'transparent', border: 'none' }}
+                            trigger={<Image id="Pen" src={Pen} className="pen" />} modal >
+                            {close => (
+                                <div className="password">
+                                    Report your findings
+                                    <br />
+                                    <form name="login" style={{ margin: '5px 0px 0px 0px' }}>
+                                        <input id="Input" type="text" size="17" style={{ width: '40%', height: '10%' }} /><br />
+                                        <input type="button" value="Submit" onClick={() => this.CheckPassword()} style={{ width: '40%', height: '10%', margin: '4px auto 4px auto' }} />
+                                    </form>
+
+                           click outside to escape window
+                                </div>
+                            )}
+                        </Popup>
+
                         <Image id="Unsolved" src={ARLetter1} className="unsolved" />
                         <Image id="Solved" src={ARLetter2} className="unsolved" />
-
-                        {/* Right Side */}
 
                         <a id="Link" href='/the-letter'>
                             <div id="Title" className="written">
@@ -786,47 +1020,8 @@ class Clues extends Component {
                         <div id="TabEightRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(8)} />
                         <div id="TabNineRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(9)} />
                         <div id="TabTenRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(10)} />
-
-                        {/* { showLeftTabs[0] && <div id="TabOne" className="folder-tab" onClick={() => this.ChangeFolder(1)} />}
-                        { showLeftTabs[1] && <div id="TabTwo" className="folder-tab" onClick={() => this.ChangeFolder(2)} />}
-                        { showLeftTabs[2] && <div id="TabThree" className="folder-tab" onClick={() => this.ChangeFolder(3)} />}
-                        { showLeftTabs[3] && <div id="TabFour" className="folder-tab" onClick={() => this.ChangeFolder(4)} />}
-                        { showLeftTabs[4] && <div id="TabFive" className="folder-tab" onClick={() => this.ChangeFolder(5)} />}
-                        { showLeftTabs[5] && <div id="TabSix" className="folder-tab" onClick={() => this.ChangeFolder(6)} />}
-                        { showLeftTabs[6] && <div id="TabSeven" className="folder-tab" onClick={() => this.ChangeFolder(7)} />}
-                        { showLeftTabs[7] && <div id="TabEight" className="folder-tab" onClick={() => this.ChangeFolder(8)} />}
-                        { showLeftTabs[8] && <div id="TabNine" className="folder-tab" onClick={() => this.ChangeFolder(9)} />}
-                        { showLeftTabs[9] && <div id="TabTen" className="folder-tab" onClick={() => this.ChangeFolder(10)} />}
-
-                        { showRightTabs[0] && <div id="TabOneRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(1)} />}
-                        { showRightTabs[1] && <div id="TabTwoRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(2)} />}
-                        { showRightTabs[2] && <div id="TabThreeRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(3)} />}
-                        { showRightTabs[3] && <div id="TabFourRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(4)} />}
-                        { showRightTabs[4] && <div id="TabFiveRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(5)} />}
-                        { showRightTabs[5] && <div id="TabSixRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(6)} />}
-                        { showRightTabs[6] && <div id="TabSevenRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(7)} />}
-                        { showRightTabs[7] && <div id="TabEightRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(8)} />}
-                        { showRightTabs[8] && <div id="TabNineRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(9)} />}
-                        { showRightTabs[9] && <div id="TabTenRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(10)} />} */}
                     </div>
                 </div>
-
-
-                {/* <Popup style={{ background: 'transparent', border: 'none' }}
-                    trigger={<Image src={Pen} className="pen" />} modal >
-                    {close => (
-                        <div className="password">
-                            Report your findings
-                            <br />
-                            <form name="login" style={{ margin: '5px 0px 0px 0px' }} >
-                                <input type="text" size="17" style={{ width: '40%', height: '10%' }} /><br />
-                                <input type="submit" value="Submit" style={{ width: '40%', height: '10%', margin: '4px auto 4px auto' }} />
-                            </form>
-
-                           click outside to escape window
-                        </div>
-                    )}
-                </Popup> */}
 
 
             </Container>
