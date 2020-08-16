@@ -17,6 +17,7 @@ import './Stylesheets/god.css';
 import './Stylesheets/phonebook.css';
 import './Stylesheets/elsa.css';
 import './Stylesheets/godII.css';
+import './Stylesheets/corkboard.css';
 
 //Home Page
 import Home from './Home Page/Front/Home/home';
@@ -24,6 +25,7 @@ import Front from './Home Page/Front/front';
 import About from './Home Page/About/about';
 import Archive from './Home Page/Archive/archive';
 import Clues from './Home Page/Front/Home/clues';
+import CorkBoard from './Corkboard/corkboard';
 
 // Puzzles
 import Demuth_Letter from './Puzzles/demuth_letter/demuth_letter';
@@ -52,6 +54,7 @@ class App extends Component {
             <Route exact path='/about' component={About} />
             <Route exact path='/archive' component={Archive} />
             <Route exact path='/clues' component={Clues} />
+            <Route exact path='/corkboard' component={CorkBoard} />
 
             {/* Puzzles */}
             <Route exact path='/the-letter' component={The_Letter} />
