@@ -9,11 +9,6 @@ import { instanceOf } from 'prop-types';
 import Back from '../Navigation/Back.js'
 
 //Image Imports
-import Image1 from './Corboard Images/MVIMG_20200808_115800.jpg'
-import Image2 from './Corboard Images/MVIMG_20200808_115817.jpg'
-import Image3 from './Corboard Images/MVIMG_20200808_120217_1.jpg'
-import Image4 from './Corboard Images/MVIMG_20200808_125714.jpg'
-import Image5 from './Corboard Images/MVIMG_20200808_125852.jpg'
 
 //Web Imports
 import Container from 'react-bootstrap/Container'

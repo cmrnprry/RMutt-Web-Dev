@@ -49,7 +49,7 @@ import { Helmet } from "react-helmet";
 import Popup from 'reactjs-popup';
 
 //Puzzle order
-const order = ["The Letter", "Tissue Paper", "Demuth Letter", "Phonebook", "SIA Catalog", "Elsa", "God", "God II", "Blind Man", "Mott Catalog"];
+const order = ["The Letter", "SIA Catalog", "Demuth Letter", "Phonebook", "Tissue Paper", "Blind Man", "Mina Loy", "Elsa", "RRose", "Mott Catalog", "God", "God II",];
 
 //Enevelope
 const open = require('../../../folder_elements/envelopes/envelode_opened.png');
@@ -66,39 +66,47 @@ const img7 = require('../../../folder_elements/folder_pages/folder_7.png');
 const img8 = require('../../../folder_elements/folder_pages/folder_8.png');
 const img9 = require('../../../folder_elements/folder_pages/folder_9.png');
 const img10 = require('../../../folder_elements/folder_pages/folder_10.png');
+const img11 = require('../../../folder_elements/folder_pages/folder_11.png');
+const img12 = require('../../../folder_elements/folder_pages/folder_12.png');
 var currFolder = img1;
 
 //Unsolved
 const imgUS1 = require('../../../folder_elements/notes/arletter_1.png');
-const imgUS2 = require('../../../folder_elements/notes/tissue_paper_1.png');
+const imgUS2 = require('../../../folder_elements/notes/sia_1.png');
 const imgUS3 = require('../../../folder_elements/notes/demuth_1.png');
 const imgUS4 = require('../../../folder_elements/notes/phonebook_1.png');
-const imgUS5 = require('../../../folder_elements/notes/sia_1.png');
-const imgUS6 = require('../../../folder_elements/notes/elsa_1.png');
-const imgUS7 = require('../../../folder_elements/notes/god_1.png');
-const imgUS8 = require('../../../folder_elements/notes/god2_1.png');
-const imgUS9 = require('../../../folder_elements/notes/blind_man_1.png');
+const imgUS5 = require('../../../folder_elements/notes/tissue_paper_1.png');
+const imgUS6 = require('../../../folder_elements/notes/blind_man_1.png');
+// const imgUS7 = require('../../../folder_elements/notes/mina_loy_1.png');
+const imgUS8 = require('../../../folder_elements/notes/elsa_1.png');
+// const imgUS9 = require('../../../folder_elements/notes/rrose_1.png');
 const imgUS10 = require('../../../folder_elements/notes/mott_1.png');
+const imgUS11 = require('../../../folder_elements/notes/god_1.png');
+const imgUS12 = require('../../../folder_elements/notes/god2_1.png');
+
 var currUS = imgUS1;
 
 //Solved
 const imgS1 = require('../../../folder_elements/notes/arletter_2.png');
-const imgS2 = require('../../../folder_elements/notes/tissue_paper_2.png');
+const imgS2 = require('../../../folder_elements/notes/sia_2.png');
 const imgS3 = require('../../../folder_elements/notes/demuth_2.png');
 const imgS4 = require('../../../folder_elements/notes/phonebook_2.png');
-const imgS5 = require('../../../folder_elements/notes/sia_2.png');
-const imgS6 = require('../../../folder_elements/notes/elsa_2.png');
-const imgS7 = require('../../../folder_elements/notes/god_2.png');
-const imgS8 = require('../../../folder_elements/notes/god2_2.png');
-const imgS9 = require('../../../folder_elements/notes/blind_man_2.png');
+const imgS5 = require('../../../folder_elements/notes/tissue_paper_2.png');
+const imgS6 = require('../../../folder_elements/notes/blind_man_2.png');
+// const imgS7 = require('../../../folder_elements/notes/mina_loy_2.png');
+const imgS8 = require('../../../folder_elements/notes/elsa_2.png');
+// const imgS9 = require('../../../folder_elements/notes/rrose_2.png');
 const imgS10 = require('../../../folder_elements/notes/mott_2.png');
+const imgS11 = require('../../../folder_elements/notes/god_2.png');
+const imgS12 = require('../../../folder_elements/notes/god2_2.png');
+
 var currS = imgS1;
 
 
 var tabBuffer = 0;
 
-var showRightTabs = [false, false, false, false, false, false, false, false, false, false, false];
-var showLeftTabs = [true, true, true, true, true, true, true, true, true, true, true];
+var showRightTabs = [false, false, false, false, false, false, false, false, false, false, false, false];
+var showLeftTabs = [true, true, true, true, true, true, true, true, true, true, true, true];
 var tissePasswords = ["louise varese norton", "louise norton varese", "louise mccutcheon norton", "louise norton mccutcheon", "louise norton varèse", "louise varèse norton"];
 var currentTab = 1;
 
@@ -142,80 +150,140 @@ function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
     document.getElementsByClassName("folder-tab")[0].style.height = tabHeight + "px";
     document.getElementsByClassName("folder-tab")[0].style.top =
         document.getElementById("Folder").getBoundingClientRect().y + "px";
+    document.getElementsByClassName("folder-tab")[0].style.width = tabWidth + "px";
+    document.getElementsByClassName("folder-tab")[0].style.left =
+        (document.getElementById("Folder").getBoundingClientRect().right
+            - document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().width - tabLeft) + "px";
 
     var temp = document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().height;
 
-    for (var i = 0; i < document.getElementsByClassName("folder-tab").length; i++) {
-        // var tabWidth = document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().width;
+    for (var i = 1; i < document.getElementsByClassName("folder-tab").length; i++) {
+        //width and left don't change
         document.getElementsByClassName("folder-tab")[i].style.width = tabWidth + "px";
 
         document.getElementsByClassName("folder-tab")[i].style.left =
             (document.getElementById("Folder").getBoundingClientRect().right
                 - document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().width - tabLeft) + "px";
 
-        if (i !== 0 && i < 5) {
+        //setting the height
+        document.getElementsByClassName("folder-tab")[i].style.height = tab1 + "px";
+
+        //resetting the top
+        document.getElementsByClassName("folder-tab")[i].style.top =
+            document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+
+
+        if (i < 3) {
             document.getElementsByClassName("folder-tab")[i].style.height = tab1 + "px";
 
             document.getElementsByClassName("folder-tab")[i].style.top =
                 document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-
-            temp += document.getElementsByClassName("folder-tab")[1].getBoundingClientRect().height;
         }
-        else if ((i >= 5 && i < 7) || (i >= 8)) {
+        else if (i == 3) {
+            document.getElementsByClassName("folder-tab")[i].style.height = tab1 + 17 + "px";
+
+            document.getElementsByClassName("folder-tab")[i].style.top =
+                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+        }
+        else if ((i >= 4 && i <= 9)) {
             document.getElementsByClassName("folder-tab")[i].style.height = tab2 + "px";
 
             document.getElementsByClassName("folder-tab")[i].style.top =
                 document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-
-            temp += document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().height;
         }
-        else if (i == 7) {
+        else if (i == 12) {
             document.getElementsByClassName("folder-tab")[i].style.height = tab3 + "px";
 
             document.getElementsByClassName("folder-tab")[i].style.top =
                 document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-
-            temp += document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().height;
         }
+
+        temp += document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().height;
     }
 
     document.getElementsByClassName("folder-tab-right")[0].style.height = tabHeight + "px";
     document.getElementsByClassName("folder-tab-right")[0].style.top =
         document.getElementById("Folder").getBoundingClientRect().y + "px";
+    document.getElementsByClassName("folder-tab-right")[0].style.width = tabWidth + "px";
+    document.getElementsByClassName("folder-tab-right")[0].style.left =
+        (document.getElementById("Folder").getBoundingClientRect().x) + "px";
 
     temp = document.getElementsByClassName("folder-tab-right")[0].getBoundingClientRect().height;
 
-    for (var i = 0; i < document.getElementsByClassName("folder-tab-right").length; i++) {
+    for (var i = 1; i < document.getElementsByClassName("folder-tab-right").length; i++) {
+        //width and left don't change
         document.getElementsByClassName("folder-tab-right")[i].style.width = tabWidth + "px";
 
         document.getElementsByClassName("folder-tab-right")[i].style.left =
             (document.getElementById("Folder").getBoundingClientRect().x) + "px";
 
-        if (i !== 0 && i < 5) {
+        //setting the height
+        document.getElementsByClassName("folder-tab-right")[i].style.height = tab1 + "px";
+
+        //resetting the top
+        document.getElementsByClassName("folder-tab-right")[i].style.top =
+            document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+
+
+        if (i < 3) {
             document.getElementsByClassName("folder-tab-right")[i].style.height = tab1 + "px";
 
             document.getElementsByClassName("folder-tab-right")[i].style.top =
                 document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-
-            temp += document.getElementsByClassName("folder-tab-right")[1].getBoundingClientRect().height;
         }
-        else if ((i >= 5 && i < 7) || (i >= 8)) {
+        else if (i == 3) {
+            document.getElementsByClassName("folder-tab-right")[i].style.height = tab1 + 17 + "px";
+
+            document.getElementsByClassName("folder-tab-right")[i].style.top =
+                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+        }
+        else if ((i >= 4 && i <= 9)) {
             document.getElementsByClassName("folder-tab-right")[i].style.height = tab2 + "px";
 
             document.getElementsByClassName("folder-tab-right")[i].style.top =
                 document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-
-            temp += document.getElementsByClassName("folder-tab-right")[i].getBoundingClientRect().height;
         }
-        else if (i == 7) {
+        else if (i == 12) {
             document.getElementsByClassName("folder-tab-right")[i].style.height = tab3 + "px";
 
             document.getElementsByClassName("folder-tab-right")[i].style.top =
                 document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-
-            temp += document.getElementsByClassName("folder-tab-right")[i].getBoundingClientRect().height;
         }
+
+        temp += document.getElementsByClassName("folder-tab-right")[i].getBoundingClientRect().height;
     }
+
+    // for (var i = 0; i < document.getElementsByClassName("folder-tab-right").length; i++) {
+    //     document.getElementsByClassName("folder-tab-right")[i].style.width = tabWidth + "px";
+
+    //     document.getElementsByClassName("folder-tab-right")[i].style.left =
+    //         (document.getElementById("Folder").getBoundingClientRect().x) + "px";
+
+    //     if (i !== 0 && i < 5) {
+    //         document.getElementsByClassName("folder-tab-right")[i].style.height = tab1 + "px";
+
+    //         document.getElementsByClassName("folder-tab-right")[i].style.top =
+    //             document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+
+    //         temp += document.getElementsByClassName("folder-tab-right")[1].getBoundingClientRect().height;
+    //     }
+    //     else if ((i >= 5 && i < 7) || (i >= 8)) {
+    //         document.getElementsByClassName("folder-tab-right")[i].style.height = tab2 + "px";
+
+    //         document.getElementsByClassName("folder-tab-right")[i].style.top =
+    //             document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+
+    //         temp += document.getElementsByClassName("folder-tab-right")[i].getBoundingClientRect().height;
+    //     }
+    //     else if (i == 7) {
+    //         document.getElementsByClassName("folder-tab-right")[i].style.height = tab3 + "px";
+
+    //         document.getElementsByClassName("folder-tab-right")[i].style.top =
+    //             document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+
+    //         temp += document.getElementsByClassName("folder-tab-right")[i].getBoundingClientRect().height;
+    //     }
+    // }
 }
 
 function setNoteItems(itemWidth, itemHeight, itemLeft) {
@@ -239,9 +307,9 @@ class Clues extends Component {
         this.state = {
             width: window.innerWidth,
             height: window.innerHeight,
-            folderList: [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10],
-            unsolvedList: [imgUS1, imgUS2, imgUS3, imgUS4, imgUS5, imgUS6, imgUS7, imgUS8, imgUS9, imgUS10],
-            solvedList: [imgS1, imgS2, imgS3, imgS4, imgS5, imgS6, imgS7, imgS8, imgS9, imgS10],
+            folderList: [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12],
+            unsolvedList: [imgUS1, imgUS2, imgUS3, imgUS4, imgUS5, imgUS6, {/* imgUS7*/ }, imgUS8, {/* imgUS9*/ }, imgUS10, {/* imgUS11*/ }, {/* imgUS12*/ }],
+            solvedList: [imgS1, imgS2, imgS3, imgS4, imgS5, imgS6, {/* imgS7*/ }, imgS8, {/* imgS9*/ }, imgS10, {/* imgS11*/ }, {/* imgS12*/ }],
             isUnlocked: [open, closed],
         };
 
@@ -298,11 +366,11 @@ class Clues extends Component {
                 itemLeft = 70;
 
                 //tabBuffer Tabs
-                tabBuffer = 25;
-                tabHeight = 128;
-                tabWidth = 54;
-                tab1 = 87;
-                tab2 = 100;
+                tabBuffer = 15;
+                tabHeight = 120;
+                tabWidth = 60;
+                tab1 = 70;
+                tab2 = 80;
                 tab3 = 85;
             }
             else if (window.innerHeight >= 800) { //medium screen size
@@ -328,11 +396,11 @@ class Clues extends Component {
                 itemLeft = 25;
 
                 //Setting Tabs
-                tabBuffer = 17;
-                tabHeight = 95;
+                tabBuffer = 10;
+                tabHeight = 90;
                 tabWidth = 43;
-                tab1 = 67;
-                tab2 = 73;
+                tab1 = 53;
+                tab2 = 60;
                 tab3 = 75;
             }
             else { //smallest screen size
@@ -358,12 +426,12 @@ class Clues extends Component {
                 itemLeft = 15;
 
                 //Setting Tabs
-                tabBuffer = 14;
-                tabHeight = 85;
+                tabBuffer = 10;
+                tabHeight = 80;
                 tabWidth = 43;
-                tab1 = 60;
-                tab2 = 75;
-                tab3 = 45;
+                tab1 = 47;
+                tab2 = 55;
+                tab3 = 75;
             }
         }
         else if (window.innerWidth >= 1024) { //medium screen size
@@ -393,11 +461,11 @@ class Clues extends Component {
 
                 //Setting Tabs
                 tabBuffer = 10;
-                tabHeight = 90;
+                tabHeight = 80;
                 tabWidth = 43;
-                tab1 = 58;
-                tab2 = 73;
-                tab3 = 60;
+                tab1 = 47;
+                tab2 = 55;
+                tab3 = 75;
             }
             else if (window.innerHeight >= 720) { //smallest screen size
                 newWidth = 1000;
@@ -424,12 +492,12 @@ class Clues extends Component {
 
 
                 //Setting Tabs
-                tabBuffer = 14;
-                tabHeight = 85;
+                tabBuffer = 10;
+                tabHeight = 80;
                 tabWidth = 43;
-                tab1 = 60;
-                tab2 = 75;
-                tab3 = 45;
+                tab1 = 47;
+                tab2 = 55;
+                tab3 = 75;
             }
             else {
                 newWidth = 855;
@@ -456,10 +524,10 @@ class Clues extends Component {
 
                 //Setting Tabs
                 tabBuffer = 12;
-                tabHeight = 70;
+                tabHeight = 65;
                 tabWidth = 35;
-                tab1 = 50;
-                tab2 = 60;
+                tab1 = 40;
+                tab2 = 47;
                 tab3 = 50;
             }
         }
@@ -488,11 +556,11 @@ class Clues extends Component {
 
             //Setting Tabs
             tabBuffer = 10;
-            tabHeight = 60;
-            tabWidth = 35;
-            tab1 = 45;
-            tab2 = 50;
-            tab3 = 50;
+            tabHeight = 55;
+            tabWidth = 30;
+            tab1 = 35;
+            tab2 = 40;
+            tab3 = 60;
         }
 
         for (var i = 0; i < folders.length; i++) {
@@ -516,6 +584,7 @@ class Clues extends Component {
             case 2:
                 if (cookies.get('TheLetterChildren')) {
 
+
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
 
@@ -525,17 +594,15 @@ class Clues extends Component {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
 
                     //If this puzzle has been solved
-                    if (cookies.get('TissuePaperChildren')) {
+                    if (cookies.get('SIACatalogChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/tissue-paper');
+                    document.getElementById("Link").setAttribute('href', '/sia-catalog');
 
-                    //Turn on the pen for password puzzles
-                    document.getElementById("Pen").style.display = "block";
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -548,9 +615,12 @@ class Clues extends Component {
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
                 }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "none";
                 break;
             case 3:
-                if (cookies.get('TissuePaperChildren')) {
+                if (cookies.get('SIACatalogChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
 
@@ -560,7 +630,7 @@ class Clues extends Component {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
 
                     //If this puzzle has been solved
-                    if (cookies.get('DemithLetterChildren')) {
+                    if (cookies.get('DemuthLetterChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
                     }
@@ -625,7 +695,6 @@ class Clues extends Component {
                 break;
             case 5:
                 if (cookies.get('PhonebookChildren')) {
-
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
 
@@ -635,51 +704,14 @@ class Clues extends Component {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
 
                     //If this puzzle has been solved
-                    if (cookies.get('SIACatalogChildren')) {
+                    if (cookies.get('TissuePaperChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/sia-catalog');
-
-                }
-                else {
-                    //if the puzzle is not unlocked set evelope to locked
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-
-                    //turn off reward
-                    document.getElementById("Unsolved").style.display = "none";
-                    document.getElementById("Solved").style.display = "none";
-
-                    //set link inactive
-                    document.getElementById("Link").classList.add('inactiveLink');
-                }
-
-                //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "none";
-
-                break;
-            case 6:
-                if (cookies.get('SIACatalogChildren')) {
-                    //Set the Solved image to but turned off
-                    document.getElementById("Solved").style.display = "none";
-
-                    //open the envelope and show the unsolved
-                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
-                    document.getElementById("Unsolved").style.display = "block";
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-
-                    //If this puzzle has been solved
-                    if (cookies.get('ElsaChildren')) {
-                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
-                        document.getElementById("Solved").style.display = "block";
-                    }
-
-                    //Make sure the clickable link is turned on and set the correct link
-                    document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/elsa');
+                    document.getElementById("Link").setAttribute('href', '/tissue-paper');
 
                     //Turn on the pen for password puzzles
                     document.getElementById("Pen").style.display = "block";
@@ -696,83 +728,9 @@ class Clues extends Component {
                     document.getElementById("Link").classList.add('inactiveLink');
                 }
 
-                //Turn on the pen for password puzzles
-                // document.getElementById("Pen").style.display = "block";
                 break;
-            case 7:
-                if (cookies.get('ElsaChildren')) {
-                    //Set the Solved image to but turned off
-                    document.getElementById("Solved").style.display = "none";
-
-                    //open the envelope and show the unsolved
-                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
-                    document.getElementById("Unsolved").style.display = "block";
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-
-                    //If this puzzle has been solved
-                    if (cookies.get('GodChildren')) {
-                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
-                        document.getElementById("Solved").style.display = "block";
-                    }
-
-                    //Make sure the clickable link is turned on and set the correct link
-                    document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/god');
-                }
-                else {
-                    //if the puzzle is not unlocked set evelope to locked
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-
-                    //turn off reward
-                    document.getElementById("Unsolved").style.display = "none";
-                    document.getElementById("Solved").style.display = "none";
-
-                    //set link inactive
-                    document.getElementById("Link").classList.add('inactiveLink');
-                }
-
-                //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "none";
-
-                break;
-            case 8:
-                if (cookies.get('GodChildren')) {
-
-                    //Set the Solved image to but turned off
-                    document.getElementById("Solved").style.display = "none";
-
-                    //open the envelope and show the unsolved
-                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
-                    document.getElementById("Unsolved").style.display = "block";
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-
-                    //If this puzzle has been solved
-                    if (cookies.get('GodIIChildren')) {
-                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
-                        document.getElementById("Solved").style.display = "block";
-                    }
-
-                    //Make sure the clickable link is turned on and set the correct link
-                    document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/godII');
-                }
-                else {
-                    //if the puzzle is not unlocked set evelope to locked
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-
-                    //turn off reward
-                    document.getElementById("Unsolved").style.display = "none";
-                    document.getElementById("Solved").style.display = "none";
-
-                    //set link inactive
-                    document.getElementById("Link").classList.add('inactiveLink');
-                }
-
-                //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "none";
-                break;
-            case 9:
-                if (cookies.get('GodIIChildren')) {
+            case 6:
+                if (cookies.get('TissuePaperChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
 
@@ -805,10 +763,119 @@ class Clues extends Component {
 
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "none";
+
+                break;
+            case 7:
+                if (cookies.get('TheLetterChildren')) {
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
+                    if (cookies.get('MinaLoyChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
+                    }
+
+                    //Make sure the clickable link is turned on and set the correct link
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/mina-loy');
+                }
+                else {
+                    //if the puzzle is not unlocked set evelope to locked
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
+                    document.getElementById("Link").classList.add('inactiveLink');
+                }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "none";
+
+                break;
+            case 8:
+                if (cookies.get('BlindManChildren')) {
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
+                    if (cookies.get('ElsaChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
+                    }
+
+                    //Make sure the clickable link is turned on and set the correct link
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/elsa');
+                }
+                else {
+                    //if the puzzle is not unlocked set evelope to locked
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
+                    document.getElementById("Link").classList.add('inactiveLink');
+                }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "none";
+
+                break;
+            case 9:
+                if (cookies.get('ElsaChildren')) {
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
+                    if (cookies.get('RroseChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
+                    }
+
+                    //Make sure the clickable link is turned on and set the correct link
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/rrose');
+                }
+                else {
+                    //if the puzzle is not unlocked set evelope to locked
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
+                    document.getElementById("Link").classList.add('inactiveLink');
+                }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "none";
+
                 break;
             case 10:
                 //if the previous puzzle has been solved
-                if (cookies.get('BlindManChildren')) {
+                if (cookies.get('RroseChildren')) {
 
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
@@ -827,6 +894,77 @@ class Clues extends Component {
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/mott-catalog');
+                }
+                else {
+                    //if the puzzle is not unlocked set evelope to locked
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
+                    document.getElementById("Link").classList.add('inactiveLink');
+                }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "none";
+                break;
+            case 11:
+                if (cookies.get('MottCatalogChildren')) {
+
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
+                    if (cookies.get('GodIIChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
+                    }
+
+                    //Make sure the clickable link is turned on and set the correct link
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/god');
+                }
+                else {
+                    //if the puzzle is not unlocked set evelope to locked
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
+                    document.getElementById("Link").classList.add('inactiveLink');
+                }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "none";
+                break;
+            case 12:
+                if (cookies.get('GodChildren')) {
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
+                    if (cookies.get('GodIIChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
+                    }
+
+                    //Make sure the clickable link is turned on and set the correct link
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/godII');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -927,7 +1065,7 @@ class Clues extends Component {
                 window.location.reload();
             }
         }
-        else if (currentTab == 2) {
+        else if (currentTab == 5) {
             tissePasswords.forEach(element => {
                 if (input == element) {
                     cookies.set('TissuePaperChildren');
@@ -942,9 +1080,15 @@ class Clues extends Component {
                 window.location.reload();
             }
         }
-        else if (currentTab == 6) {
+        else if (currentTab == 8) {
             if (input == "god is in the plumbing") {
                 cookies.set('ElsaChildren');
+                window.location.reload();
+            }
+        }
+        else if (currentTab == 9) {
+            if (input == "douche") {
+                cookies.set('RroseChildren');
                 window.location.reload();
             }
         }
@@ -976,9 +1120,9 @@ class Clues extends Component {
                                 <div className="password">
                                     Report your findings
                                     <br />
-                                    <form name="login" style={{ margin: '5px 0px 0px 0px' }}>
+                                    <form name="login" style={{ margin: '5px 0px 0px 0px' }} onSubmit={this.CheckPassword}>
                                         <input id="Input" type="text" size="17" style={{ width: '40%', height: '10%' }} /><br />
-                                        <input type="button" value="Submit" onClick={() => this.CheckPassword()} style={{ width: '40%', height: '10%', margin: '4px auto 4px auto' }} />
+                                        <input type="submit" value="Submit" style={{ width: '40%', height: '10%', margin: '4px auto 4px auto' }} />
                                     </form>
 
                            click outside to escape window
@@ -1009,6 +1153,8 @@ class Clues extends Component {
                         <div id="TabEight" className="folder-tab" onClick={() => this.ChangeFolder(8)} />
                         <div id="TabNine" className="folder-tab" onClick={() => this.ChangeFolder(9)} />
                         <div id="TabTen" className="folder-tab" onClick={() => this.ChangeFolder(10)} />
+                        <div id="TabEleven" className="folder-tab" onClick={() => this.ChangeFolder(11)} />
+                        <div id="TabTwelve" className="folder-tab" onClick={() => this.ChangeFolder(12)} />
 
                         <div id="TabOneRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(1)} />
                         <div id="TabTwoRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(2)} />
@@ -1020,6 +1166,8 @@ class Clues extends Component {
                         <div id="TabEightRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(8)} />
                         <div id="TabNineRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(9)} />
                         <div id="TabTenRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(10)} />
+                        <div id="TabEleven" className="folder-tab-right" onClick={() => this.ChangeFolderRight(11)} />
+                        <div id="TabTwelve" className="folder-tab-right" onClick={() => this.ChangeFolderRight(12)} />
                     </div>
                 </div>
 
