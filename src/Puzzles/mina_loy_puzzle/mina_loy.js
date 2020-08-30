@@ -14,6 +14,23 @@ import Image from 'react-bootstrap/Image'
 import { Helmet } from "react-helmet";
 
 //Image Imports
+import Unsolved from './mina_loy/o_marcel_unsolved.png'
+import Did from './mina_loy/did.png'
+import Eyes from './mina_loy/eyes.png'
+import I from './mina_loy/I.png'
+import Silent from './mina_loy/keep_silent.png'
+import Marcel from './mina_loy/marcel.png'
+import No from './mina_loy/no.png'
+import People from './mina_loy/people.png'
+import See from './mina_loy/SEE.png'
+import Show from './mina_loy/show_her_to_you.png'
+import Tongue from './mina_loy/tongue.png'
+import What from './mina_loy/what.png'
+import When from './mina_loy/WHEN.png'
+import Will1 from './mina_loy/will.png'
+import Will2 from './mina_loy/will2.png'
+import You from './mina_loy/you.png'
+import Poem from './mina_loy/o_marcel_poem.png'
 
 
 //track the position of an object
@@ -22,7 +39,7 @@ var x = 0, y = 0;
 var list = [];
 
 //Draggable function
-interact('.draggable-demuth').draggable({
+interact('.draggable-mina').draggable({
     listeners: {
         move: dragMoveListener,
         end(event) {
@@ -670,7 +687,7 @@ class Mina_Loy extends Component {
         // console.log("puzzleSolved: " + puzzleSolved());
         if (puzzleSolved()) {
             alert("puzzle solved");
-            cookies.set('DemuthLetterChildren');
+            cookies.set('MinaLoyChildren');
             this.props.history.push('/clues');
         }
     }
@@ -684,6 +701,112 @@ class Mina_Loy extends Component {
                 </Helmet>
 
                 <BackNav />
+
+                <Row>
+                    <Col className="text-center">
+                        <div className="mina-container">
+                            <Image src={Unsolved} className="mina-resize demuth-shadow" />
+                        </div>
+                    </Col>
+
+                    <Col>
+                        {/* <Image src={Poem} onMouseUp={() => this.setChildren()} className="mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                        }} /> */}
+
+                        <Image src={Did} onMouseUp={() => this.setChildren()} className="7 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '53px'
+                        }} />
+
+                        <Image src={Eyes} onMouseUp={() => this.setChildren()} className="1 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '53px'
+                        }} />
+
+                        <Image src={I} onMouseUp={() => this.setChildren()} className="13 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '53px'
+                        }} />
+
+                        <Image src={Silent} onMouseUp={() => this.setChildren()} className="11 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '95px'
+                        }} />
+
+                        <Image src={Marcel} onMouseUp={() => this.setChildren()} className="0 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '89px'
+                        }} />
+
+                        <Image src={No} onMouseUp={() => this.setChildren()} className="8 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '53px'
+                        }} />
+
+                        <Image src={People} onMouseUp={() => this.setChildren()} className="6 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '53px'
+                        }} />
+
+                        <Image src={See} onMouseUp={() => this.setChildren()} className="3 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '53px'
+                        }} />
+
+                        <Image src={Show} onMouseUp={() => this.setChildren()} className="14 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '119px'
+                        }} />
+
+                        <Image src={Tongue} onMouseUp={() => this.setChildren()} className="9 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '53px'
+                        }} />
+
+                        <Image src={What} onMouseUp={() => this.setChildren()} className="4 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '53px'
+                        }} />
+
+                        <Image src={When} onMouseUp={() => this.setChildren()} className="12 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '53px'
+                        }} />
+
+                        <Image src={Will1} onMouseUp={() => this.setChildren()} className="2 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '53px'
+                        }} />
+
+                        <Image src={Will2} onMouseUp={() => this.setChildren()} className="10 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '53px'
+                        }} />
+                        <Image src={You} onMouseUp={() => this.setChildren()} className="5 draggable-mina mina-box" style={{
+                            left: '0px',
+                            top: '0px',
+                            width: '53px'
+                        }} />
+                    </Col>
+
+                </Row>
+
 
             </Container>
 

@@ -77,9 +77,9 @@ const imgUS3 = require('../../../folder_elements/notes/demuth_1.png');
 const imgUS4 = require('../../../folder_elements/notes/phonebook_1.png');
 const imgUS5 = require('../../../folder_elements/notes/tissue_paper_1.png');
 const imgUS6 = require('../../../folder_elements/notes/blind_man_1.png');
-// const imgUS7 = require('../../../folder_elements/notes/mina_loy_1.png');
+const imgUS7 = require('../../../folder_elements/notes/mina_loy_1.png');
 const imgUS8 = require('../../../folder_elements/notes/elsa_1.png');
-// const imgUS9 = require('../../../folder_elements/notes/rrose_1.png');
+const imgUS9 = require('../../../folder_elements/notes/rrose_1.png');
 const imgUS10 = require('../../../folder_elements/notes/mott_1.png');
 const imgUS11 = require('../../../folder_elements/notes/god_1.png');
 const imgUS12 = require('../../../folder_elements/notes/god2_1.png');
@@ -93,9 +93,9 @@ const imgS3 = require('../../../folder_elements/notes/demuth_2.png');
 const imgS4 = require('../../../folder_elements/notes/phonebook_2.png');
 const imgS5 = require('../../../folder_elements/notes/tissue_paper_2.png');
 const imgS6 = require('../../../folder_elements/notes/blind_man_2.png');
-// const imgS7 = require('../../../folder_elements/notes/mina_loy_2.png');
+const imgS7 = require('../../../folder_elements/notes/mina_loy_2.png');
 const imgS8 = require('../../../folder_elements/notes/elsa_2.png');
-// const imgS9 = require('../../../folder_elements/notes/rrose_2.png');
+const imgS9 = require('../../../folder_elements/notes/rrose_2.png');
 const imgS10 = require('../../../folder_elements/notes/mott_2.png');
 const imgS11 = require('../../../folder_elements/notes/god_2.png');
 const imgS12 = require('../../../folder_elements/notes/god2_2.png');
@@ -308,11 +308,12 @@ class Clues extends Component {
             width: window.innerWidth,
             height: window.innerHeight,
             folderList: [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12],
-            unsolvedList: [imgUS1, imgUS2, imgUS3, imgUS4, imgUS5, imgUS6, {/* imgUS7*/ }, imgUS8, {/* imgUS9*/ }, imgUS10, {/* imgUS11*/ }, {/* imgUS12*/ }],
-            solvedList: [imgS1, imgS2, imgS3, imgS4, imgS5, imgS6, {/* imgS7*/ }, imgS8, {/* imgS9*/ }, imgS10, {/* imgS11*/ }, {/* imgS12*/ }],
+            unsolvedList: [imgUS1, imgUS2, imgUS3, imgUS4, imgUS5, imgUS6, imgUS7, imgUS8, imgUS9, imgUS10, imgUS11, imgUS12],
+            solvedList: [imgS1, imgS2, imgS3, imgS4, imgS5, imgS6, imgS7, imgS8, imgS9, imgS10, imgS11, imgS12],
             isUnlocked: [open, closed],
         };
 
+        this.CheckPassword = this.CheckPassword.bind(this);
         this.resizeWindow = this.resizeWindow.bind(this);
     }
 
@@ -766,7 +767,7 @@ class Clues extends Component {
 
                 break;
             case 7:
-                if (cookies.get('TheLetterChildren')) {
+                if (cookies.get('BlindManChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
 
@@ -802,7 +803,7 @@ class Clues extends Component {
 
                 break;
             case 8:
-                if (cookies.get('BlindManChildren')) {
+                if (cookies.get('MinaLoyChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
 
@@ -922,7 +923,7 @@ class Clues extends Component {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
 
                     //If this puzzle has been solved
-                    if (cookies.get('GodIIChildren')) {
+                    if (cookies.get('GodChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
                     }

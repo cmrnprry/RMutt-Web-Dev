@@ -78,7 +78,6 @@ class Rrose extends Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
     //Sets the listener
