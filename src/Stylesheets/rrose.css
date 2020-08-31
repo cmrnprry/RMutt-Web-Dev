@@ -7,7 +7,7 @@
 .mina-container
 {
   position: relative;
-  border: solid 1px yellow;
+  /* border: solid 1px yellow; */
   z-index: -3;
 }
 
@@ -15,19 +15,20 @@
 {
   position: relative;
   top: 5px;
+  left: 105px;
   width: 500px;
   height: auto;
 }
 
 .draggable-mina
 {
- touch-action: none;
+  touch-action: none;
   user-select: none;
   z-index: 2;
 }
 
 .mina-box 
 {
-  /* position: absolute; */
-  margin: 0px 25px 25px 25px;
+  position: absolute;
+  /* margin: 0px 25px 25px 25px; */
 }
