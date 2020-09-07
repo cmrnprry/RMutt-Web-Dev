@@ -84,19 +84,18 @@ function dragMoveListener(event) {
 }
 
 function checkImage1(dx, dy) {
-    if ((dx >= -464 && dx <= -444) && (dy >= 65 && dy <= 85)) {
+    if ((dx >= -467 && dx <= -435) && (dy >= 149 && dy <= 171)) {
         pipe1 = true;
     }
     else {
         pipe1 = false;
     }
     console.log("Pipe 2: " + pipe1);
-
 }
 
 function checkImage2(dx, dy) {
 
-    if ((dx >= 560 && dx <= 580) && (dy >= -219 && dy <= -199)) {
+    if ((dx >= 690 && dx <= 720) && (dy >= -150 && dy <= -121)) {
         pipe2 = true;
     }
     else {
@@ -107,7 +106,7 @@ function checkImage2(dx, dy) {
 }
 
 function checkImage3(dx, dy) {
-    if ((dx >= 614 && dx <= 634) && (dy >= 197 && dy <= 217)) {
+    if ((dx >= 620 && dx <= 662) && (dy >= 271 && dy <= 304)) {
         pipe3 = true;
     }
     else {
@@ -119,7 +118,7 @@ function checkImage3(dx, dy) {
 }
 
 function checkImage4(dx, dy) {
-    if ((dx >= 351 && dx <= 371) && (dy >= 242 && dy <= 262)) {
+    if ((dx >= 355 && dx <= 379) && (dy >= 326 && dy <= 348)) {
         pipe4 = true;
     }
     else {
@@ -127,7 +126,6 @@ function checkImage4(dx, dy) {
     }
 
     console.log("Pipe 9: " + pipe4);
-
 }
 
 function checkPosition(obj, dx, dy) {
