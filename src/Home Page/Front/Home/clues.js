@@ -604,6 +604,9 @@ class Clues extends Component {
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/sia-catalog');
 
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/sia-catalog');
+
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -615,6 +618,7 @@ class Clues extends Component {
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
                 //Turn off the pen for non-password puzzles
@@ -639,6 +643,9 @@ class Clues extends Component {
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/demuth-letter');
+
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/demuth-letter');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -650,6 +657,7 @@ class Clues extends Component {
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
                 //Turn off the pen for non-password puzzles
@@ -677,6 +685,9 @@ class Clues extends Component {
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/phonebook');
 
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/phonebook');
+
                     //Turn on the pen for password puzzles
                     document.getElementById("Pen").style.display = "block";
                 }
@@ -690,6 +701,7 @@ class Clues extends Component {
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
 
@@ -714,6 +726,9 @@ class Clues extends Component {
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/tissue-paper');
 
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/tissue-paper');
+
                     //Turn on the pen for password puzzles
                     document.getElementById("Pen").style.display = "block";
                 }
@@ -727,6 +742,7 @@ class Clues extends Component {
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
                 break;
@@ -749,6 +765,9 @@ class Clues extends Component {
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/blind-man');
+
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/blind-man');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -760,6 +779,7 @@ class Clues extends Component {
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
                 //Turn off the pen for non-password puzzles
@@ -785,6 +805,9 @@ class Clues extends Component {
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/mina-loy');
+
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/mina-loy');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -796,6 +819,7 @@ class Clues extends Component {
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
                 //Turn off the pen for non-password puzzles
@@ -821,6 +845,9 @@ class Clues extends Component {
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/elsa');
+
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/elsa');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -832,6 +859,7 @@ class Clues extends Component {
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
                 //Turn off the pen for non-password puzzles
@@ -857,6 +885,9 @@ class Clues extends Component {
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/rrose');
+
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/rrose');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -868,6 +899,7 @@ class Clues extends Component {
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
                 //Turn off the pen for non-password puzzles
@@ -895,6 +927,9 @@ class Clues extends Component {
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/mott-catalog');
+
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/mott-catalog');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -906,6 +941,7 @@ class Clues extends Component {
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
                 //Turn off the pen for non-password puzzles
@@ -931,6 +967,9 @@ class Clues extends Component {
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/god');
+
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/god');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -942,6 +981,7 @@ class Clues extends Component {
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
                 //Turn off the pen for non-password puzzles
@@ -966,6 +1006,9 @@ class Clues extends Component {
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
                     document.getElementById("Link").setAttribute('href', '/godII');
+
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/godII');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -977,6 +1020,7 @@ class Clues extends Component {
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
                 //Turn off the pen for non-password puzzles
@@ -994,6 +1038,9 @@ class Clues extends Component {
                 //Make sure the clickable link is turned on and set the correct link
                 document.getElementById("Link").classList.remove('inactiveLink');
                 document.getElementById("Link").setAttribute('href', '/the-letter');
+
+                document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                document.getElementById("Link-Envelope").setAttribute('href', '/the-letter');
 
                 //Turn on the pen for password puzzles
                 document.getElementById("Pen").style.display = "block";
@@ -1139,7 +1186,10 @@ class Clues extends Component {
                                 The Letter
                             </div>
                         </a>
-                        <Image id="Envelope" src={Open} className="envelope" />
+
+                        <a id="Link-Envelope" href='/the-letter'>
+                            <Image id="Envelope" src={Open} className="envelope" />
+                        </a>
                     </div>
 
                     <div id="Tabs">
