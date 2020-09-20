@@ -4,7 +4,6 @@ import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import BackNav from '../../Navigation/Back.js'
 
-
 //Image Imports
 import One from './pipe_elements/pipe_0.png'
 import Two from './pipe_elements/pipe_1.png'
@@ -16,7 +15,6 @@ import Seven from './pipe_elements/pipe_6.png'
 import Eight from './pipe_elements/pipe_7.png'
 import Nine from './pipe_elements/pipe_8.png'
 
-
 //Web Imports
 import interact from 'interactjs'
 import Container from 'react-bootstrap/Container'
@@ -26,7 +24,7 @@ import { Helmet } from "react-helmet";
 //track the position of an object
 var x = 0, y = 0;
 
-var pipe1, pipe2, pipe3, pipe4, other = false;
+var pipe1, pipe2, pipe3, pipe4, allInPlace = false;
 
 
 function SetPages() {
@@ -45,14 +43,14 @@ function SetPages() {
     document.getElementById("7").style.left = (document.getElementById("9").getBoundingClientRect().x - document.getElementById("9").getBoundingClientRect().width) + "px";
     document.getElementById("7").style.top = document.getElementById("9").getBoundingClientRect().y + 40 + "px";
 
-    // document.getElementById("4").style.left = (document.getElementById("1").getBoundingClientRect().x - document.getElementById("1").getBoundingClientRect().width + 150) + "px";
-    // document.getElementById("4").style.top = document.getElementById("9").getBoundingClientRect().y + 150 + "px";
+    document.getElementById("4").style.left = (document.getElementById("1").getBoundingClientRect().x - document.getElementById("1").getBoundingClientRect().width + 150) + "px";
+    document.getElementById("4").style.top = document.getElementById("9").getBoundingClientRect().y + 150 + "px";
 
     document.getElementById("5").style.left = (document.getElementById("4").getBoundingClientRect().x - 50 - document.getElementById("4").getBoundingClientRect().width - 200) + "px";
     document.getElementById("5").style.top = document.getElementById("4").getBoundingClientRect().y + 185 + "px";
 
-    // document.getElementById("8").style.left = (document.getElementById("4").getBoundingClientRect().x - document.getElementById("4").getBoundingClientRect().width - 25) + "px";
-    // document.getElementById("8").style.top = document.getElementById("4").getBoundingClientRect().y + "px";
+    document.getElementById("8").style.left = (document.getElementById("4").getBoundingClientRect().x - document.getElementById("4").getBoundingClientRect().width - 25) + "px";
+    document.getElementById("8").style.top = document.getElementById("4").getBoundingClientRect().y + "px";
 }
 
 interact('.draggable').draggable({
@@ -95,12 +93,15 @@ function checkImage1(dx, dy) {
 
 function checkImage2(dx, dy) {
 
-    if ((dx >= 690 && dx <= 720) && (dy >= -150 && dy <= -121)) {
+    if ((dx >= 563 && dx <= 585) && (dy >= -150 && dy <= -115)) {
         pipe2 = true;
     }
     else {
         pipe2 = false;
     }
+
+    // 5 at x: 574.3999938964844
+    // god.js: 64 5 at y: -120.80001831054688
 
     console.log("Pipe 5: " + pipe2);
 }
@@ -118,7 +119,7 @@ function checkImage3(dx, dy) {
 }
 
 function checkImage4(dx, dy) {
-    if ((dx >= 355 && dx <= 379) && (dy >= 326 && dy <= 348)) {
+    if ((dx >= 345 && dx <= 379) && (dy >= 326 && dy <= 348)) {
         pipe4 = true;
     }
     else {
@@ -148,7 +149,7 @@ function checkPosition(obj, dx, dy) {
 
     if (pipe1 && pipe2 && pipe3 && pipe4) {
         alert("All objects are in the correct places!");
-
+        allInPlace = true;
     }
 }
 
@@ -192,7 +193,7 @@ class God extends Component {
     setChildren() {
         const { cookies } = this.props;
 
-        if (false) {
+        if (allInPlace) {
             cookies.set('GodCatalogChildren');
             this.props.history.push('/clues');
         }
@@ -214,13 +215,13 @@ class God extends Component {
                     <Image id="1" src={One} className="pipe-base" />
 
 
-                    {/* <Image id="3" src={Three} className="draggable pipe-resize"
+                    <Image id="3" src={Three} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
                             width: '100px',
                             left: '1000px',
                             top: '25px'
-                        }} /> */}
+                        }} />
                     <Image id="4" src={Four} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
@@ -236,13 +237,13 @@ class God extends Component {
                             top: '397px',
                             zIndex: '15'
                         }} />
-                    {/* <Image id="6" src={Six} className="draggable pipe-resize"
+                    <Image id="6" src={Six} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
                             width: '100px',
                             left: '1210px',
                             top: '167px'
-                        }} /> */}
+                        }} />
                     <Image id="7" src={Seven} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
@@ -251,13 +252,13 @@ class God extends Component {
                             top: '30px',
                             zAxis: '5'
                         }} />
-                    {/* <Image id="8" src={Eight} className="draggable pipe-resize"
+                    <Image id="8" src={Eight} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
                             width: '90px',
                             left: '15px',
                             top: '251px'
-                        }} /> */}
+                        }} />
                     <Image id="9" src={Nine} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{

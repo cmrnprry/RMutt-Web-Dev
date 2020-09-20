@@ -584,8 +584,6 @@ class Clues extends Component {
         switch (folder) {
             case 2:
                 if (cookies.get('TheLetterChildren')) {
-
-
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
 
@@ -595,7 +593,8 @@ class Clues extends Component {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
 
                     //If this puzzle has been solved
-                    if (cookies.get('SIACatalogChildren')) {
+                    if (cookies.get('SiaCatalogChildren')) {
+                        console.log("here");
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
                     }
@@ -625,7 +624,7 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "none";
                 break;
             case 3:
-                if (cookies.get('SIACatalogChildren')) {
+                if (cookies.get('SiaCatalogChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
 
@@ -848,6 +847,9 @@ class Clues extends Component {
 
                     document.getElementById("Link-Envelope").classList.remove('inactiveLink');
                     document.getElementById("Link-Envelope").setAttribute('href', '/elsa');
+
+                    //Turn on the pen for password puzzles
+                    document.getElementById("Pen").style.display = "block";
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -861,9 +863,6 @@ class Clues extends Component {
                     document.getElementById("Link").classList.add('inactiveLink');
                     document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
-
-                //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "none";
 
                 break;
             case 9:
@@ -888,6 +887,9 @@ class Clues extends Component {
 
                     document.getElementById("Link-Envelope").classList.remove('inactiveLink');
                     document.getElementById("Link-Envelope").setAttribute('href', '/rrose');
+
+                    //Turn on the pen for password puzzles
+                    document.getElementById("Pen").style.display = "block";
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -901,10 +903,6 @@ class Clues extends Component {
                     document.getElementById("Link").classList.add('inactiveLink');
                     document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
-
-                //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "none";
-
                 break;
             case 10:
                 //if the previous puzzle has been solved
@@ -959,7 +957,7 @@ class Clues extends Component {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
 
                     //If this puzzle has been solved
-                    if (cookies.get('GodChildren')) {
+                    if (cookies.get('GodCatalogChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
                     }
@@ -988,7 +986,7 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "none";
                 break;
             case 12:
-                if (cookies.get('GodChildren')) {
+                if (cookies.get('GodCatalogChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
 
@@ -1073,7 +1071,7 @@ class Clues extends Component {
 
             document.getElementById("Title").innerHTML = order[folder - 1];
             this.CheckPuzzle(folder);
-            console.log("clicked-left");
+            console.log("clicked-left: " + folder);
         }
     }
 
@@ -1096,7 +1094,7 @@ class Clues extends Component {
             }
 
             document.getElementById("Title").innerHTML = order[folder - 1];
-            console.log("clicked-right");
+            console.log("clicked-right: " + folder);
             this.CheckPuzzle(folder);
         }
     }
