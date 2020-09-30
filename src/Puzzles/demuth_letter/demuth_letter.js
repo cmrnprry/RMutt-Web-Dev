@@ -113,7 +113,7 @@ function checkPosition(obj, dx, dy) {
 
     //line one
     if (pos === 0) {
-        if ((dx >= -1063 && dx <= -1049) && (dy >= -22 && dy <= -11)) {
+        if ((dx >= -939 && dx <= -917) && (dy >= -29 && dy <= -8)) {
             list[0] = true;
         }
         else {
@@ -123,7 +123,7 @@ function checkPosition(obj, dx, dy) {
     }
     //line two
     else if (pos === 1) {
-        if ((dx >= -503 && dx <= -491) && (dy >= 55 && dy <= 68)) {
+        if ((dx >= -503 && dx <= -491) && (dy >= 55 && dy <= 73)) {
             list[1] = true;
         }
         else {
@@ -137,7 +137,7 @@ function checkPosition(obj, dx, dy) {
     else if (pos >= 2 && pos <= 4) {
         //2
         if (pos === 2) {
-            if ((dx >= -1023 && dx <= -1009) && (dy >= 15 && dy <= 25)) {
+            if ((dx >= -896 && dx <= -874) && (dy >= 5 && dy <= 29)) {
                 list[2] = true;
             }
             else {
@@ -147,7 +147,7 @@ function checkPosition(obj, dx, dy) {
 
         //3
         if (pos === 3) {
-            if ((dx >= -555 && dx <= -542) && (dy >= -52 && dy <= -38)) {
+            if ((dx >= -364 && dx <= -342) && (dy >= -57 && dy <= -35)) {
                 list[3] = true;
             }
             else {
@@ -157,7 +157,7 @@ function checkPosition(obj, dx, dy) {
 
         //4
         if (pos === 4) {
-            if ((dx >= -372 && dx <= -359) && (dy >= 76 && dy <= 89)) {
+            if ((dx >= -376 && dx <= -354) && (dy >= 71 && dy <= 93)) {
                 list[4] = true;
             }
             else {
@@ -173,7 +173,7 @@ function checkPosition(obj, dx, dy) {
     else if (pos >= 5 && pos <= 7) {
         //5th pos
         if (pos === 5) {
-            if ((dx >= -785 && dx <= -773) && (dy >= -88 && dy <= -78)) {
+            if ((dx >= -1064 && dx <= -1042) && (dy >= -35 && dy <= -13)) {
                 list[5] = true;
             }
             else {
@@ -181,7 +181,7 @@ function checkPosition(obj, dx, dy) {
             }
         }
         if (pos === 6) {
-            if ((dx >= -986 && dx <= -976) && (dy >= -451 && dy <= -444)) {
+            if ((dx >= -991 && dx <= -969) && (dy >= -346 && dy <= -324)) {
                 list[6] = true;
             }
             else {
@@ -189,7 +189,7 @@ function checkPosition(obj, dx, dy) {
             }
         }
         if (pos === 7) {
-            if ((dx >= -544 && dx <= -532) && (dy >= -269 && dy <= -262)) {
+            if ((dx >= -1075 && dx <= -1052) && (dy >= -163 && dy <= -140)) {
                 list[7] = true;
             }
             else {
@@ -218,7 +218,7 @@ function checkPosition(obj, dx, dy) {
     else if (pos >= 9 && pos <= 13) {
         //9th pos
         if (pos === 9) {
-            if ((dx >= -909 && dx <= -894) && (dy >= 88 && dy <= 98)) {
+            if ((dx >= -782 && dx <= -760) && (dy >= 80 && dy <= 101)) {
                 list[9] = true;
             }
             else {
@@ -226,7 +226,7 @@ function checkPosition(obj, dx, dy) {
             }
         }
         if (pos === 10) {
-            if ((dx >= -588 && dx <= -581) && (dy >= -453 && dy <= -446)) {
+            if ((dx >= -1166 && dx <= -1144) && (dy >= -280 && dy <= -268)) {
                 list[10] = true;
             }
             else {
@@ -234,7 +234,7 @@ function checkPosition(obj, dx, dy) {
             }
         }
         if (pos === 11) {
-            if ((dx >= -740 && dx <= -728) && (dy >= -215 && dy <= -208)) {
+            if ((dx >= -566 && dx <= -544) && (dy >= -169 && dy <= -147)) {
                 list[11] = true;
             }
             else {
@@ -242,7 +242,7 @@ function checkPosition(obj, dx, dy) {
             }
         }
         if (pos === 12) {
-            if ((dx >= -727 && dx <= -720) && (dy >= 154 && dy <= 161)) {
+            if ((dx >= -737 && dx <= -710) && (dy >= 154 && dy <= 169)) {
                 list[12] = true;
             }
             else {
@@ -250,7 +250,7 @@ function checkPosition(obj, dx, dy) {
             }
         }
         if (pos === 13) {
-            if ((dx >= -390 && dx <= -382) && (dy >= 25 && dy <= 34)) {
+            if ((dx >= -823 && dx <= -801) && (dy >= 83 && dy <= 104)) {
                 list[13] = true;
             }
             else {
@@ -267,7 +267,7 @@ function checkPosition(obj, dx, dy) {
     }
     //line seven
     else if (pos === 14) {
-        if ((dx >= -709 && dx <= -695) && (dy >= -336 && dy <= -324)) {
+        if ((dx >= -911 && dx <= -889) && (dy >= -226 && dy <= -204)) {
             list[14] = true;
         }
         else {
@@ -278,7 +278,7 @@ function checkPosition(obj, dx, dy) {
     }
     //line eight
     else if (pos === 15) {
-        if ((dx >= -585 && dx <= -577) && (dy >= 172 && dy <= 181)) {
+        if ((dx >= -586 && dx <= -565) && (dy >= 166 && dy <= 187)) {
             list[15] = true;
         }
         else {
@@ -289,7 +289,7 @@ function checkPosition(obj, dx, dy) {
     }
     //line nine
     else if (pos === 16) {
-        if ((dx >= -869 && dx <= -853) && (dy >= 124 && dy <= 135)) {
+        if ((dx >= -746 && dx <= -724) && (dy >= 124 && dy <= 145)) {
             list[16] = true;
         }
         else {
@@ -303,7 +303,7 @@ function checkPosition(obj, dx, dy) {
     else if (pos >= 17 && pos <= 19) {
         //17th pos
         if (pos === 17) {
-            if ((dx >= -859 && dx <= -842) && (dy >= -102 && dy <= -89)) {
+            if ((dx >= -859 && dx <= -837) && (dy >= -50 && dy <= -30)) {
                 list[17] = true;
             }
             else {
@@ -313,7 +313,7 @@ function checkPosition(obj, dx, dy) {
 
         //18th pos
         if (pos === 18) {
-            if ((dx >= -969 && dx <= -955) && (dy >= 42 && dy <= 55)) {
+            if ((dx >= -651 && dx <= -629) && (dy >= 33 && dy <= 55)) {
                 list[18] = true;
             }
             else {
@@ -323,7 +323,7 @@ function checkPosition(obj, dx, dy) {
 
         //19th pos
         if (pos === 19) {
-            if ((dx >= -434 && dx <= -421) && (dy >= 40 && dy <= 51)) {
+            if ((dx >= -711 && dx <= -689) && (dy >= 93 && dy <= 115)) {
                 list[19] = true;
             }
             else {
@@ -338,7 +338,7 @@ function checkPosition(obj, dx, dy) {
     else if (pos >= 20 && pos <= 24) {
         //20th pos
         if (pos === 20) {
-            if ((dx >= -656 && dx <= -642) && (dy >= -81 && dy <= -72)) {
+            if ((dx >= -656 && dx <= -642) && (dy >= -33 && dy <= -11)) {
                 list[20] = true;
             }
             else {
@@ -348,7 +348,7 @@ function checkPosition(obj, dx, dy) {
 
         //21st pos
         if (pos === 21) {
-            if ((dx >= -743 && dx <= -735) && (dy >= -64 && dy <= -53)) {
+            if ((dx >= -751 && dx <= -729) && (dy >= -15 && dy <= 5)) {
                 list[21] = true;
             }
             else {
@@ -358,7 +358,7 @@ function checkPosition(obj, dx, dy) {
 
         //22nd pos
         if (pos === 22) {
-            if ((dx >= -709 && dx <= -701) && (dy >= -126 && dy <= -114)) {
+            if ((dx >= -1244 && dx <= -1221) && (dy >= -10 && dy <= 10)) {
                 list[22] = true;
             }
             else {
@@ -368,7 +368,7 @@ function checkPosition(obj, dx, dy) {
 
         //23th pos
         if (pos === 23) {
-            if ((dx >= -859 && dx <= -846) && (dy >= -243 && dy <= -23)) {
+            if ((dx >= -1061 && dx <= -1039) && (dy >= -135 && dy <= -103)) {
                 list[23] = true;
             }
             else {
@@ -378,7 +378,7 @@ function checkPosition(obj, dx, dy) {
 
         //24th pos
         if (pos === 24) {
-            if ((dx >= -477 && dx <= -466) && (dy >= -241 && dy <= -232)) {
+            if ((dx >= -682 && dx <= -660) && (dy >= -135 && dy <= -113)) {
                 list[24] = true;
             }
             else {
@@ -396,7 +396,7 @@ function checkPosition(obj, dx, dy) {
     else if (pos >= 25 && pos <= 28) {
         //25th pos
         if (pos === 25) {
-            if ((dx >= -536 && dx <= -517) && (dy >= -244 && dy <= -233)) {
+            if ((dx >= -735 && dx <= -713) && (dy >= -135 && dy <= -113)) {
                 list[25] = true;
             }
             else {
@@ -406,7 +406,7 @@ function checkPosition(obj, dx, dy) {
 
         //26th pos
         if (pos === 26) {
-            if ((dx >= -676 && dx <= -663) && (dy >= -165 && dy <= -155)) {
+            if ((dx >= -1025 && dx <= -1003) && (dy >= -55 && dy <= -33)) {
                 list[26] = true;
             }
             else {
@@ -416,7 +416,7 @@ function checkPosition(obj, dx, dy) {
 
         //27th pos
         if (pos === 27) {
-            if ((dx >= -796 && dx <= -785) && (dy >= -282 && dy <= -273)) {
+            if ((dx >= -800 && dx <= -778) && (dy >= -174 && dy <= -152)) {
                 list[27] = true;
             }
             else {
@@ -426,7 +426,7 @@ function checkPosition(obj, dx, dy) {
 
         //28th pos
         if (pos === 28) {
-            if ((dx >= -446 && dx <= -433) && (dy >= -341 && dy <= -329)) {
+            if ((dx >= -374 && dx <= -352) && (dy >= -231 && dy <= -209)) {
                 list[28] = true;
             }
             else {
@@ -443,7 +443,7 @@ function checkPosition(obj, dx, dy) {
     else if (pos >= 29 && pos <= 31) {
         //29th pos
         if (pos === 29) {
-            if ((dx >= -216 && dx <= -204) && (dy >= -287 && dy <= -277)) {
+            if ((dx >= -218 && dx <= -196) && (dy >= -176 && dy <= -154)) {
                 list[29] = true;
             }
             else {
@@ -453,7 +453,7 @@ function checkPosition(obj, dx, dy) {
 
         //30th pos
         if (pos === 30) {
-            if ((dx >= -711 && dx <= -696) && (dy >= -147 && dy <= -136)) {
+            if ((dx >= -1058 && dx <= -1036) && (dy >= -36 && dy <= -14)) {
                 list[30] = true;
             }
             else {
@@ -463,7 +463,7 @@ function checkPosition(obj, dx, dy) {
 
         //31st pos
         if (pos === 31) {
-            if ((dx >= -959 && dx <= -947) && (dy >= -147 && dy <= -135)) {
+            if ((dx >= -655 && dx <= -633) && (dy >= -95 && dy <= -73)) {
                 list[31] = true;
             }
             else {
@@ -478,7 +478,7 @@ function checkPosition(obj, dx, dy) {
     else if (pos >= 32 && pos <= 35) {
         //32nd pos
         if (pos === 32) {
-            if ((dx >= -810 && dx <= -800) && (dy >= -146 && dy <= -137)) {
+            if ((dx >= -511 && dx <= -488) && (dy >= -95 && dy <= -73)) {
                 list[32] = true;
             }
             else {
@@ -488,7 +488,7 @@ function checkPosition(obj, dx, dy) {
 
         //33th pos
         if (pos === 33) {
-            if ((dx >= -911 && dx <= -899) && (dy >= -300 && dy <= -293)) {
+            if ((dx >= -851 && dx <= -829) && (dy >= -191 && dy <= -169)) {
                 list[33] = true;
             }
             else {
@@ -498,7 +498,7 @@ function checkPosition(obj, dx, dy) {
 
         //34th pos
         if (pos === 34) {
-            if ((dx >= -844 && dx <= -832) && (dy >= 59 && dy <= 68)) {
+            if ((dx >= -1027 && dx <= -1005) && (dy >= 109 && dy <= 130)) {
                 list[34] = true;
             }
             else {
@@ -508,7 +508,7 @@ function checkPosition(obj, dx, dy) {
 
         //35th pos
         if (pos === 35) {
-            if ((dx >= -800 && dx <= -783) && (dy >= 173 && dy <= 185)) {
+            if ((dx >= -611 && dx <= -581) && (dy >= 170 && dy <= 191)) {
                 list[35] = true;
             }
             else {
@@ -525,7 +525,7 @@ function checkPosition(obj, dx, dy) {
     else if (pos >= 36 && pos <= 40) {
         //36th pos
         if (pos === 36) {
-            if ((dx >= -348 && dx <= -331) && (dy >= -131 && dy <= -118)) {
+            if ((dx >= -696 && dx <= -674) && (dy >= -18 && dy <= 10)) {
                 list[36] = true;
             }
             else {
@@ -535,7 +535,7 @@ function checkPosition(obj, dx, dy) {
 
         //37th pos
         if (pos === 37) {
-            if ((dx >= -796 && dx <= -785) && (dy >= 197 && dy <= 206)) {
+            if ((dx >= -1231 && dx <= -1208) && (dy >= 256 && dy <= 277)) {
                 list[37] = true;
             }
             else {
@@ -545,7 +545,7 @@ function checkPosition(obj, dx, dy) {
 
         //38th pos
         if (pos === 38) {
-            if ((dx >= -818 && dx <= -802) && (dy >= 75 && dy <= 89)) {
+            if ((dx >= -1000 && dx <= -977) && (dy >= 125 && dy <= 151)) {
                 list[38] = true;
             }
             else {
@@ -555,7 +555,7 @@ function checkPosition(obj, dx, dy) {
 
         //39th pos
         if (pos === 39) {
-            if ((dx >= -968 && dx <= -954) && (dy >= -48 && dy <= -38)) {
+            if ((dx >= -792 && dx <= -770) && (dy >= 2 && dy <= 24)) {
                 list[39] = true;
             }
             else {
@@ -565,7 +565,7 @@ function checkPosition(obj, dx, dy) {
 
         //40th pos
         if (pos === 40) {
-            if ((dx >= -498 && dx <= -485) && (dy >= 137 && dy <= 147)) {
+            if ((dx >= -776 && dx <= -754) && (dy >= 192 && dy <= 214)) {
                 list[40] = true;
             }
             else {
@@ -581,7 +581,7 @@ function checkPosition(obj, dx, dy) {
     }
     //line sixteen
     else if (pos === 41) {
-        if ((dx >= -473 && dx <= -465) && (dy >= 11 && dy <= 21)) {
+        if ((dx >= -473 && dx <= -455) && (dy >= 59 && dy <= 82)) {
             list[41] = true;
         }
         else {
@@ -592,7 +592,7 @@ function checkPosition(obj, dx, dy) {
     }
     //line seventeen
     else if (pos === 42) {
-        if ((dx >= -478 && dx <= -463) && (dy >= 314 && dy <= 324)) {
+        if ((dx >= -991 && dx <= -969) && (dy >= 373 && dy <= 395)) {
             list[42] = true;
         }
         else {
@@ -605,7 +605,7 @@ function checkPosition(obj, dx, dy) {
     else if (pos >= 43 && pos <= 48) {
         //43rd pos
         if (pos === 43) {
-            if ((dx >= -542 && dx <= -527) && (dy >= 41 && dy <= 53)) {
+            if ((dx >= -365 && dx <= -343) && (dy >= 92 && dy <= 112)) {
                 list[43] = true;
             }
             else {
@@ -615,7 +615,7 @@ function checkPosition(obj, dx, dy) {
 
         //44th pos
         if (pos === 44) {
-            if ((dx >= -748 && dx <= -728) && (dy >= 188 && dy <= 201)) {
+            if ((dx >= -929 && dx <= -907) && (dy >= 243 && dy <= 265)) {
                 list[44] = true;
             }
             else {
@@ -625,7 +625,7 @@ function checkPosition(obj, dx, dy) {
 
         //45th pos
         if (pos === 45) {
-            if ((dx >= -980 && dx <= -968) && (dy >= 187 && dy <= 197)) {
+            if ((dx >= -1166 && dx <= -1144) && (dy >= 237 && dy <= 259)) {
                 list[45] = true;
             }
             else {
@@ -635,7 +635,7 @@ function checkPosition(obj, dx, dy) {
 
         //46th pos
         if (pos === 46) {
-            if ((dx >= -608 && dx <= -595) && (dy >= -117 && dy <= -106)) {
+            if ((dx >= -609 && dx <= -587) && (dy >= -6 && dy <= 16)) {
                 list[46] = true;
             }
             else {
@@ -645,7 +645,7 @@ function checkPosition(obj, dx, dy) {
 
         //47th pos
         if (pos === 47) {
-            if ((dx >= -412 && dx <= -397) && (dy >= -54 && dy <= -45)) {
+            if ((dx >= -615 && dx <= -593) && (dy >= 57 && dy <= 79)) {
                 list[47] = true;
             }
             else {
@@ -655,7 +655,7 @@ function checkPosition(obj, dx, dy) {
 
         //48th pos
         if (pos === 48) {
-            if ((dx >= -538 && dx <= -527) && (dy >= -113 && dy <= -103)) {
+            if ((dx >= -538 && dx <= -517) && (dy >= -4 && dy <= 18)) {
                 list[48] = true;
             }
             else {
