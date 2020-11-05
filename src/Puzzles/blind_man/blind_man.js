@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import BackNav from '../../Navigation/Back.js'
+import Sound from 'react-sound';
+import VoiceLine from '../../Voice clips/BlindMan.wav'
 
 //Image Imports
 import Cover from "./blind_man_images/cover.jpg"
@@ -259,6 +261,11 @@ class Blind_Man extends Component {
         prev = clName;
     }
 
+    hideVoiceText() {
+        document.getElementById("Voice").style.display = "none";
+    }
+
+
     render() {
         return (
             <Container fluid='true'>
@@ -268,6 +275,15 @@ class Blind_Man extends Component {
                 </Helmet>
 
                 <BackNav />
+
+                <Sound
+                    url={VoiceLine}
+                    playStatus={Sound.status.PLAYING}
+                    onFinishedPlaying={this.hideVoiceText}
+                />
+
+                <div id="Voice" className="subtitle">"Uh, Bet's not here. I'm supposed to be helping you solve something but actually I'm just the intern. Actuallly, that's a secret. Everything's a secret. I'm the secret intern. You didn't hear this from me. Sssshhhh."
+                </div>
 
                 {/* Sticky Note */}
                 <div id="note" img={Sticky} className="container">

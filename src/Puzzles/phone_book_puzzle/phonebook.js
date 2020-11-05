@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import Back from '../../Navigation/Back.js'
+import Sound from 'react-sound';
+import VoiceLine from '../../Voice clips/PhoneBook.wav'
 
 //Image Imports
 import Book from './phone_book_letter.png'
@@ -61,6 +63,10 @@ class Phonebook extends Component {
         // }
     }
 
+    hideVoiceText() {
+        document.getElementById("Voice").style.display = "none";
+    }
+
     render() {
 
         return (
@@ -71,6 +77,15 @@ class Phonebook extends Component {
                 </Helmet>
                 
                 <Back />
+
+                <Sound
+                    url={VoiceLine}
+                    playStatus={Sound.status.PLAYING}
+                    onFinishedPlaying={this.hideVoiceText}
+                />
+
+                <div id="Voice" className="subtitle">Oh, R. Mutt's number is NOT Duchamp's! That's an inconsistency if I've ever seen one! I suppose you'll have to figure out whose number it is, then. The phone book should prove invaluable! "
+                </div>
 
                 <Image src={Book} className="book-resize" />
 

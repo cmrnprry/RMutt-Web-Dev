@@ -4,7 +4,6 @@ import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import BackNav from '../../Navigation/Back.js'
 
-
 //Web Imports
 import interact from 'interactjs'
 import Container from 'react-bootstrap/Container'
@@ -12,6 +11,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Image from 'react-bootstrap/Image'
 import { Helmet } from "react-helmet";
+import VoiceLine from '../../Voice clips/DemuthLetter.wav'
+import Sound from 'react-sound';
 
 //Image Imports
 import Under from './demuth_letter_images/demuth_letter_under.png'
@@ -723,6 +724,9 @@ class Demuth extends Component {
             this.props.history.push('/clues');
         }
     }
+    hideVoiceText() {
+        document.getElementById("Voice").style.display = "none";
+    }
 
     render() {
         return (
@@ -733,6 +737,16 @@ class Demuth extends Component {
                 </Helmet>
 
                 <BackNav />
+
+                <Sound
+                    url={VoiceLine}
+                    playStatus={Sound.status.PLAYING}
+                    onFinishedPlaying={this.hideVoiceText}
+                />
+
+                <div id="Voice" className="subtitle">"Oho! Tis I, Dunwhistle, here to help! I've hijacked the tape from Bet, but who better than I- The Duke of Inconsistencies. This letter contains an inconsistency, which is exactly my area of expertise! That inconsistency is that... well... it's missing a bunch of words, I suppose. That, in my professional opinion, is inconsistent with how letters usually are! Anyway, it should be a simple enough task to patch it together and discover where the next art exhibition is to be held."
+                </div>
+
                 <Row>
                     <Col>
                         {/* Base Letter */}

@@ -5,7 +5,8 @@ import { Helmet } from "react-helmet";
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import BackNav from '../../Navigation/Back.js'
-
+import Sound from 'react-sound';
+import VoiceLine from '../../Voice clips/TissuePaper.wav'
 
 //Image Imports
 import Under from './tissue_paper_under.png'
@@ -182,6 +183,10 @@ class LN_Puzzle extends Component {
         }
     }
 
+    hideVoiceText() {
+        document.getElementById("Voice").style.display = "none";
+    }
+
     render() {
         return (
             <Container fluid='true'>
@@ -191,6 +196,15 @@ class LN_Puzzle extends Component {
                 </Helmet>
 
                 <BackNav />
+
+                <Sound
+                    url={VoiceLine}
+                    playStatus={Sound.status.PLAYING}
+                    onFinishedPlaying={this.hideVoiceText}
+                />
+
+                <div id="Voice" className="subtitle">"Oh, this one. I think this is one of my favorite records in our archive. Overlapping layers of ephemeral meaning. It's so fitting, isn't it? Anyway. I'd suggest you solve this one by... process of elimination, so to speak. Translation and reflection. Hope that helps."
+                </div>
 
                 <div className="tissue-paper-container">
                     <Image src={Under} className="demuth-shadow" style={{

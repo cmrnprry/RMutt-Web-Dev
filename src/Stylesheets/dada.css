@@ -39,6 +39,23 @@ code {
     monospace;
 }
 
+.subtitle
+{
+/* Text attributes */
+  background-color: black;
+  text-align: center;
+  color: white;
+  font-size: large;
+  z-index: 15;
+
+/* centering vertically */
+  position:absolute;
+  left: 0; right: 0;
+  margin: auto;  
+  width: 90%;
+  bottom: 50px;
+}
+
 .popup-content {
 	position: relative; 
 	background: transparent; 

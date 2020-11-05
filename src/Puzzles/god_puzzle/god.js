@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import BackNav from '../../Navigation/Back.js'
+import Sound from 'react-sound';
+import VoiceLine from '../../Voice clips/God.wav'
 
 //Image Imports
 import One from './pipe_elements/pipe_0.png'
@@ -153,6 +155,8 @@ function checkPosition(obj, dx, dy) {
     }
 }
 
+
+
 class God extends Component {
     static propTypes = {
         cookies: instanceOf(Cookies).isRequired
@@ -199,6 +203,10 @@ class God extends Component {
         }
     }
 
+    hideVoiceText() {
+        document.getElementById("Voice").style.display = "none";
+    }
+
     render() {
 
         return (
@@ -209,6 +217,15 @@ class God extends Component {
                 </Helmet>
 
                 <BackNav />
+
+                <Sound
+                    url={VoiceLine}
+                    playStatus={Sound.status.PLAYING}
+                    onFinishedPlaying={this.hideVoiceText}
+                />
+
+                <div id="Voice" className="subtitle">"Oh, this one's easy. You just need to find god, and if you can't find him, make him yourself. Its not hard. People have been making god for millennia."
+                </div>
 
                 <div className="god-container">
                     {/* Pages */}

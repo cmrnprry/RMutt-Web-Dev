@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import Back from '../../Navigation/Back.js'
+import Sound from 'react-sound';
+import VoiceLine from '../../Voice clips/Elsa.wav'
 
 //Image Imports
 // import ElsaPhoto from './elsa_puzzle_elements/elsa.png'
@@ -62,6 +64,11 @@ class Elsa extends Component {
         // }
     }
 
+    hideVoiceText() {
+        document.getElementById("Voice").style.display = "none";
+    }
+
+
     render() {
 
         return (
@@ -72,6 +79,15 @@ class Elsa extends Component {
                 </Helmet>
 
                 <Back />
+
+                <Sound
+                    url={VoiceLine}
+                    playStatus={Sound.status.PLAYING}
+                    onFinishedPlaying={this.hideVoiceText}
+                />
+
+                <div id="Voice" className="subtitle">"Hey. It's Bet again. They let me build this part of the archive myself, so I can definitely lend you a hand. For this part, just observe. She has something to say, if you have eyes to listen."
+                </div>
 
                 <Image src={ElsaPuzzle} className="book-resize" />
 

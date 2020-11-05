@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import BackNav from '../../Navigation/Back.js';
+import Sound from 'react-sound';
+import VoiceLine from '../../Voice clips/SIACatalog.wav'
 
 
 //Image Imports
@@ -322,6 +324,11 @@ class Sia extends Component {
         }
     }
 
+    hideVoiceText() {
+        document.getElementById("Voice").style.display = "none";
+    }
+
+
     render() {
 
         return (
@@ -332,6 +339,15 @@ class Sia extends Component {
                 </Helmet>
 
                 <BackNav />
+
+                <Sound
+                    url={VoiceLine}
+                    playStatus={Sound.status.PLAYING}
+                    onFinishedPlaying={this.hideVoiceText}
+                />
+
+                <div id="Voice" className="subtitle">"Hello, this is Lila Q., I'm DADA's Vice President of Paint Drinking. Only acrylic and watercolor paint, though. Someone else is the Vice President of Oil Paint Drinking. Anyways, Bet is busy, so I'll try to help (Long pause.) Well, I suppose you'll have to arrange the exhibits in the gallery like they would have been arranged in the exhibition. Line them up on those little Xs. See what develops. At least, that's what would make sense to me. Don't be so stressed about it! You'll do fine. Now, if you'll excuse me, I have a fine Vermillion to taste."
+                </div>
 
                 <div className="sia-container" style={{ height: this.state.height }}>
                     {/* Under */}

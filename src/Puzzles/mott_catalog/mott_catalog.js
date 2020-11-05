@@ -2,7 +2,10 @@
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
+import BackNav from '../../Navigation/Back.js'
 import Magnifier from "react-magnifier";
+import Sound from 'react-sound';
+import VoiceLine from '../../Voice clips/MottCatalog.wav'
 
 //Image Imports
 import toilet1 from './mott_catalog_images/toilet/toilet1.png'
@@ -272,6 +275,11 @@ class Mott extends Component {
         prev = newZoom;
     }
 
+    hideVoiceText() {
+        document.getElementById("Voice").style.display = "none";
+    }
+
+
     render() {
 
         return (
@@ -280,6 +288,17 @@ class Mott extends Component {
                     <meta charSet="utf-8" />
                     <title>One of these things is not</title>
                 </Helmet>
+
+                <BackNav />
+
+                <Sound
+                    url={VoiceLine}
+                    playStatus={Sound.status.PLAYING}
+                    onFinishedPlaying={this.hideVoiceText}
+                />
+
+                <div id="Voice" className="subtitle">"Hello. This is Lila Q. Oh, too many toilets for your catalogue? I absolutely hate it when that happens. I suppose you'll have to leave one out, now, won't you?"
+                </div>
 
                 {/* <div id="note" className="mott-container">
                     <Image src={Sticky} className="mott-sticky" />

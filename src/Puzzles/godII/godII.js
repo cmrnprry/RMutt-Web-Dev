@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 import Back from '../../Navigation/Back.js'
+import Sound from 'react-sound';
+import VoiceLine from '../../Voice clips/GodII.wav'
 
 //Image Imports
 import Under from './godII_overlay/card_under.png'
@@ -208,6 +210,10 @@ class GodII extends Component {
         }
     }
 
+    hideVoiceText() {
+        document.getElementById("Voice").style.display = "none";
+    }
+
     render() {
 
         return (
@@ -218,6 +224,15 @@ class GodII extends Component {
                 </Helmet>
 
                 <Back />
+
+                <Sound
+                    url={VoiceLine}
+                    playStatus={Sound.status.PLAYING}
+                    onFinishedPlaying={this.hideVoiceText}
+                />
+
+                <div id="Voice" className="subtitle">"Please, artist. If you solve one puzzle, solve this one. I've forged small truths for you, little daggers made of what is. Now, wield them against the lies."
+                </div>
 
                 <div className="god2-container" style={{ height: this.state.height }}>
                     <Image id="under" src={Under} className="god2-resize" />
