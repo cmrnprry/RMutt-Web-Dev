@@ -621,7 +621,7 @@ class Clues extends Component {
                 }
 
                 //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "none";
+                document.getElementById("Pen").style.display = "block";
                 break;
             case 3:
                 if (cookies.get('SiaCatalogChildren')) {
@@ -1108,6 +1108,12 @@ class Clues extends Component {
         if (currentTab == 1) {
             if (input == "amie") {
                 cookies.set('TheLetterChildren');
+                window.location.reload();
+            }
+        }
+        else if (currentTab == 2) {
+            if (input == "test") {
+                cookies.set('SiaCatalogChildren');
                 window.location.reload();
             }
         }
