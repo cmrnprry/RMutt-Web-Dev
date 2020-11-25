@@ -753,9 +753,7 @@ class Demuth extends Component {
                         <div className="demuth-container">
                             <Image src={Under} className="demuth-resize demuth-shadow" />
                         </div>
-                    </Col>
-
-                    <Col>
+                    
                         <Image src={DL_2} onMouseUp={() => this.setChildren()} className="1 draggable-demuth demuth-box" style={{
                             left: '0px',
                             top: '0px',

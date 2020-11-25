@@ -34,8 +34,11 @@ class Archive extends Component {
     }
 
     componentDidMount() {
+        const { cookies } = this.props;
+
         document.body.style.background = "#b5b5b5";
         document.body.style.overflow = "hidden";
+        cookies.set('currentTab', 1)
     }
 
     handleChange(event) {
@@ -52,7 +55,7 @@ class Archive extends Component {
         var val1 = 'whoisrmutt';
         var val2 = 'nonsense';
 
-        if (this.state.password === val1 || this.state.password === val2) {
+        if (this.state.password.toLowerCase() === val1 || this.state.password.toLowerCase() === val2) {
             this.props.history.push('/clues')
         }
         else {
@@ -99,9 +102,15 @@ class Archive extends Component {
                     </p>
 
 
-                    <form name="login" style={{ margin: '5px 0px 0px 0px' }} onSubmit={this.handleSubmit}>
-                        <input type="text" size="17" value={this.state.password} onChange={this.handleChange.bind(this)} style={{ width: '40%', height: '10%' }} /><br />
-                        <input type="submit" value="Submit" style={{ width: '40%', height: '10%', margin: '4px auto 4px auto' }} />
+                    <form name="login"
+                        style={{ margin: '5px 0px 0px 0px' }}
+                        onSubmit={this.handleSubmit}>
+                        <input type="text" size="17"
+                            value={this.state.password}
+                            onChange={this.handleChange.bind(this)}
+                            style={{ width: '40%', height: '10%' }} /><br />
+                        <input type="submit" value="Submit"
+                            style={{ width: '40%', height: '10%', margin: '4px auto 4px auto' }} />
                     </form>
                 </div>
             </Container>

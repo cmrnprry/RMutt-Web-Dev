@@ -86,10 +86,10 @@ h1 {
 	width:50%;
 	height:50%;
 	position:absolute;
-	left:15%;
+	/* left:15%;
 	-webkit-transform: rotate(1deg);
 	-moz-transform: rotate(1deg);
-	-o-transform: rotate(1deg);
+	-o-transform: rotate(1deg); */
 }
 
 #helper h1 {

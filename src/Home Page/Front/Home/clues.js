@@ -1,8 +1,10 @@
 //React Imports
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
+
+import Sticky from "../../../folder_elements/sticky/sticky.png"
+
 
 //Image Imports
 import Pen from '../../../folder_elements/pen/pen_bak.png'
@@ -179,7 +181,7 @@ function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
             document.getElementsByClassName("folder-tab")[i].style.top =
                 document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
         }
-        else if (i == 3) {
+        else if (i === 3) {
             document.getElementsByClassName("folder-tab")[i].style.height = tab1 + 17 + "px";
 
             document.getElementsByClassName("folder-tab")[i].style.top =
@@ -191,7 +193,7 @@ function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
             document.getElementsByClassName("folder-tab")[i].style.top =
                 document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
         }
-        else if (i == 12) {
+        else if (i === 12) {
             document.getElementsByClassName("folder-tab")[i].style.height = tab3 + "px";
 
             document.getElementsByClassName("folder-tab")[i].style.top =
@@ -210,47 +212,47 @@ function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
 
     temp = document.getElementsByClassName("folder-tab-right")[0].getBoundingClientRect().height;
 
-    for (var i = 1; i < document.getElementsByClassName("folder-tab-right").length; i++) {
+    for (var ii = 1; ii < document.getElementsByClassName("folder-tab-right").length; ii++) {
         //width and left don't change
-        document.getElementsByClassName("folder-tab-right")[i].style.width = tabWidth + "px";
+        document.getElementsByClassName("folder-tab-right")[ii].style.width = tabWidth + "px";
 
-        document.getElementsByClassName("folder-tab-right")[i].style.left =
+        document.getElementsByClassName("folder-tab-right")[ii].style.left =
             (document.getElementById("Folder").getBoundingClientRect().x) + "px";
 
         //setting the height
-        document.getElementsByClassName("folder-tab-right")[i].style.height = tab1 + "px";
+        document.getElementsByClassName("folder-tab-right")[ii].style.height = tab1 + "px";
 
         //resetting the top
-        document.getElementsByClassName("folder-tab-right")[i].style.top =
+        document.getElementsByClassName("folder-tab-right")[ii].style.top =
             document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
 
 
-        if (i < 3) {
-            document.getElementsByClassName("folder-tab-right")[i].style.height = tab1 + "px";
+        if (ii < 3) {
+            document.getElementsByClassName("folder-tab-right")[ii].style.height = tab1 + "px";
 
-            document.getElementsByClassName("folder-tab-right")[i].style.top =
+            document.getElementsByClassName("folder-tab-right")[ii].style.top =
                 document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
         }
-        else if (i == 3) {
-            document.getElementsByClassName("folder-tab-right")[i].style.height = tab1 + 17 + "px";
+        else if (ii === 3) {
+            document.getElementsByClassName("folder-tab-right")[ii].style.height = tab1 + 17 + "px";
 
-            document.getElementsByClassName("folder-tab-right")[i].style.top =
+            document.getElementsByClassName("folder-tab-right")[ii].style.top =
                 document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
         }
-        else if ((i >= 4 && i <= 9)) {
-            document.getElementsByClassName("folder-tab-right")[i].style.height = tab2 + "px";
+        else if ((ii >= 4 && ii <= 9)) {
+            document.getElementsByClassName("folder-tab-right")[ii].style.height = tab2 + "px";
 
-            document.getElementsByClassName("folder-tab-right")[i].style.top =
+            document.getElementsByClassName("folder-tab-right")[ii].style.top =
                 document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
         }
-        else if (i == 12) {
-            document.getElementsByClassName("folder-tab-right")[i].style.height = tab3 + "px";
+        else if (ii === 12) {
+            document.getElementsByClassName("folder-tab-right")[ii].style.height = tab3 + "px";
 
-            document.getElementsByClassName("folder-tab-right")[i].style.top =
+            document.getElementsByClassName("folder-tab-right")[ii].style.top =
                 document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
         }
 
-        temp += document.getElementsByClassName("folder-tab-right")[i].getBoundingClientRect().height;
+        temp += document.getElementsByClassName("folder-tab-right")[ii].getBoundingClientRect().height;
     }
 
     // for (var i = 0; i < document.getElementsByClassName("folder-tab-right").length; i++) {
@@ -275,7 +277,7 @@ function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
 
     //         temp += document.getElementsByClassName("folder-tab-right")[i].getBoundingClientRect().height;
     //     }
-    //     else if (i == 7) {
+    //     else if (i===7) {
     //         document.getElementsByClassName("folder-tab-right")[i].style.height = tab3 + "px";
 
     //         document.getElementsByClassName("folder-tab-right")[i].style.top =
@@ -311,17 +313,24 @@ class Clues extends Component {
             unsolvedList: [imgUS1, imgUS2, imgUS3, imgUS4, imgUS5, imgUS6, imgUS7, imgUS8, imgUS9, imgUS10, imgUS11, imgUS12],
             solvedList: [imgS1, imgS2, imgS3, imgS4, imgS5, imgS6, imgS7, imgS8, imgS9, imgS10, imgS11, imgS12],
             isUnlocked: [open, closed],
+            passwordValue: '',
         };
 
+        this.handleChange = this.handleChange.bind(this)
         this.CheckPassword = this.CheckPassword.bind(this);
         this.resizeWindow = this.resizeWindow.bind(this);
     }
 
     componentDidMount() {
+        const { cookies } = this.props;
+        console.log("mount");
+
         document.body.style.removeProperty("background");
         window.addEventListener("resize", this.resizeWindow);
         this.resizeWindow();
-        this.CheckPuzzle(1);
+
+        this.ChangeFolder(cookies.get('currentTab', currentTab));
+        this.CheckPuzzle(cookies.get('currentTab', currentTab));
     }
 
     //So the program always has the correct width and height of window
@@ -578,7 +587,10 @@ class Clues extends Component {
     //Check if a puzzle is unlocked or not
     CheckPuzzle(folder) {
         const { cookies } = this.props;
+        console.log("checking")
+
         currentTab = folder;
+        folder = parseInt(folder)
 
         //default will be the first puzzle
         switch (folder) {
@@ -660,11 +672,12 @@ class Clues extends Component {
                 }
 
                 //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "none";
+                document.getElementById("Pen").style.display = "block";
 
                 break;
             case 4:
                 if (cookies.get('DemuthLetterChildren')) {
+
 
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
@@ -703,6 +716,7 @@ class Clues extends Component {
                     document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
+                document.getElementById("Pen").style.display = "block";
 
                 break;
             case 5:
@@ -744,6 +758,7 @@ class Clues extends Component {
                     document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
+                document.getElementById("Pen").style.display = "block";
                 break;
             case 6:
                 if (cookies.get('TissuePaperChildren')) {
@@ -782,7 +797,7 @@ class Clues extends Component {
                 }
 
                 //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "none";
+                document.getElementById("Pen").style.display = "block";
 
                 break;
             case 7:
@@ -822,7 +837,7 @@ class Clues extends Component {
                 }
 
                 //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "none";
+                document.getElementById("Pen").style.display = "block";
 
                 break;
             case 8:
@@ -864,6 +879,7 @@ class Clues extends Component {
                     document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
 
+                document.getElementById("Pen").style.display = "block";
                 break;
             case 9:
                 if (cookies.get('ElsaChildren')) {
@@ -903,6 +919,8 @@ class Clues extends Component {
                     document.getElementById("Link").classList.add('inactiveLink');
                     document.getElementById("Link-Envelope").classList.add('inactiveLink');
                 }
+
+                document.getElementById("Pen").style.display = "block";
                 break;
             case 10:
                 //if the previous puzzle has been solved
@@ -943,7 +961,7 @@ class Clues extends Component {
                 }
 
                 //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "none";
+                document.getElementById("Pen").style.display = "block";
                 break;
             case 11:
                 if (cookies.get('MottCatalogChildren')) {
@@ -957,7 +975,7 @@ class Clues extends Component {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
 
                     //If this puzzle has been solved
-                    if (cookies.get('GodCatalogChildren')) {
+                    if (cookies.get('GodChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
                     }
@@ -983,10 +1001,10 @@ class Clues extends Component {
                 }
 
                 //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "none";
+                document.getElementById("Pen").style.display = "block";
                 break;
             case 12:
-                if (cookies.get('GodCatalogChildren')) {
+                if (cookies.get('GodChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
 
@@ -1022,7 +1040,7 @@ class Clues extends Component {
                 }
 
                 //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "none";
+                document.getElementById("Pen").style.display = "block";
                 break;
             default:
                 //Set envelope to unlocked
@@ -1058,7 +1076,8 @@ class Clues extends Component {
 
     //Left Tabs
     ChangeFolder(folder) {
-        // var img = this.state.folderList[folder - 1];
+        const { cookies } = this.props;
+        console.log("changing left")
 
         if (showLeftTabs[folder - 1] === true && currFolder !== this.state.folderList[folder - 1]) {
             currFolder = this.state.folderList[folder - 1];
@@ -1070,13 +1089,14 @@ class Clues extends Component {
             }
 
             document.getElementById("Title").innerHTML = order[folder - 1];
+            cookies.set('currentTab', folder)
+
             this.CheckPuzzle(folder);
-            console.log("clicked-left: " + folder);
         }
     }
 
     ChangeFolderRight(folder) {
-        // var img = this.state.folderList[folder - 1];
+        const { cookies } = this.props;
 
         if (showRightTabs[folder - 1] === true && currFolder !== this.state.folderList[folder - 1]) {
             currFolder = this.state.folderList[folder - 1];
@@ -1095,61 +1115,109 @@ class Clues extends Component {
 
             document.getElementById("Title").innerHTML = order[folder - 1];
             console.log("clicked-right: " + folder);
+            cookies.set('currentTab', folder)
+
             this.CheckPuzzle(folder);
         }
     }
 
-    CheckPassword() {
+    handleChange(event) {
+        this.setState({ passwordValue: event.target.value });
+    }
+
+    CheckPassword(event) {
         const { cookies } = this.props;
 
-        var input = document.getElementById("Input").value.toLowerCase();
+        var input = this.state.passwordValue.toLowerCase();
+        currentTab = parseInt(currentTab);
 
         //if the letter is open
-        if (currentTab == 1) {
-            if (input == "amie") {
+        if (currentTab === 1) {
+            if (input === "amie" || input === "playtesting") {
                 cookies.set('TheLetterChildren');
-                window.location.reload();
+                return;
             }
         }
-        else if (currentTab == 2) {
-            if (input == "test") {
+        else if (currentTab === 2) {
+            if (input === "playtesting") {
                 cookies.set('SiaCatalogChildren');
-                window.location.reload();
+                return;
             }
         }
-        else if (currentTab == 5) {
+        else if (currentTab === 3) {
+            if (input === "thesuperindependents" || input === "salonderefusees" || input === "playtesting") {
+                cookies.set('DemuthLetterChildren');
+                return;
+            }
+        }
+        else if (currentTab === 4) {
+            if (input === "110W88" || input === "playtesting") {
+                cookies.set('PhonebookChildren');
+                return;
+            }
+        }
+        else if (currentTab === 5) {
+            var pass = false
             tissePasswords.forEach(element => {
-                if (input == element) {
-                    cookies.set('TissuePaperChildren');
-                    window.location.reload();
-                    return;
+                console.log(input === element)
+                if (input === element) {
+                    pass = true;
                 }
             });
-        }
-        else if (currentTab == 4) {
-            if (input == "110W88") {
-                cookies.set('PhonebookChildren');
-                window.location.reload();
+
+            if (pass === true || input === "playtesting") {
+                cookies.set('TissuePaperChildren');
+                return;
             }
         }
-        else if (currentTab == 8) {
-            if (input == "god is in the plumbing") {
+        else if (currentTab === 6) {
+            if (input === "playtesting") {
+                cookies.set('BlindManChildren');
+                return;
+            }
+        }
+        else if (currentTab === 7) {
+            if (input === "playtesting") {
+                cookies.set('MinaLoyChildren');
+                return;
+            }
+        }
+        else if (currentTab === 8) {
+            if (input === "god is in the plumbing" || input === "playtesting") {
                 cookies.set('ElsaChildren');
-                window.location.reload();
+                return;
             }
         }
-        else if (currentTab == 9) {
-            if (input == "douche") {
+        else if (currentTab === 9) {
+            if (input === "douche" || input === "playtesting") {
                 cookies.set('RroseChildren');
-                window.location.reload();
+                return;
+            }
+        }
+        else if (currentTab === 10) {
+            if (input === "playtesting") {
+                cookies.set('MottCatalogChildren');
+                return;
+            }
+        }
+        else if (currentTab === 11) {
+            if (input === "playtesting") {
+                cookies.set('GodChildren');
+                return;
+            }
+        }
+        else if (currentTab === 12) {
+            if (input === "playtesting") {
+                cookies.set('GodIIChildren');
+                return;
             }
         }
 
-
+        event.preventDefault();
+        alert("Bad password: " + input)
     }
 
     render() {
-        const { cookies } = this.props;
         return (
 
             <Container fluid='true'>
@@ -1158,6 +1226,11 @@ class Clues extends Component {
                     <title>Dada - Home</title>
                 </Helmet>
 
+                {/* Sticky Note */}
+                <div id="note" img={Sticky} className="container">
+                    <Image src={Sticky} />
+                    <div className="text-sticky-test"> Use code: <br />playtesting<br />to skip <br/>a puzzle</div>
+                </div>
 
                 <div className="folder">
                     <Image id="Folder" src={Folder1} className="folder-scale" />
@@ -1172,9 +1245,15 @@ class Clues extends Component {
                                 <div className="password">
                                     Report your findings
                                     <br />
-                                    <form name="login" style={{ margin: '5px 0px 0px 0px' }} onSubmit={this.CheckPassword}>
-                                        <input id="Input" type="text" size="17" style={{ width: '40%', height: '10%' }} /><br />
-                                        <input type="submit" value="Submit" style={{ width: '40%', height: '10%', margin: '4px auto 4px auto' }} />
+                                    <form name="login"
+                                        style={{ margin: '5px 0px 0px 0px' }}
+                                        onSubmit={this.CheckPassword}>
+                                        <input type="text" size="17"
+                                            value={this.state.passwordValue}
+                                            onChange={this.handleChange}
+                                            style={{ width: '40%', height: '10%' }} /><br />
+                                        <input type="submit" value="Submit"
+                                            style={{ width: '40%', height: '10%', margin: '4px auto 4px auto' }} />
                                     </form>
 
                            click outside to escape window
@@ -1183,7 +1262,8 @@ class Clues extends Component {
                         </Popup>
 
                         <Image id="Unsolved" src={ARLetter1} className="unsolved" />
-                        <Image id="Solved" src={ARLetter2} className="unsolved" />
+                        <Image id="Solved" src={ARLetter2} className="unsolved"
+                            style={{ display: 'none' }} />
 
                         <a id="Link" href='/the-letter'>
                             <div id="Title" className="written">

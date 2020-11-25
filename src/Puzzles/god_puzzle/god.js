@@ -198,7 +198,7 @@ class God extends Component {
         const { cookies } = this.props;
 
         if (allInPlace) {
-            cookies.set('GodCatalogChildren');
+            cookies.set('GodChildren');
             this.props.history.push('/clues');
         }
     }

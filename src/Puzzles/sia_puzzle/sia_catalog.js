@@ -134,6 +134,8 @@ function checkPagePosition(obj, dx, dy) {
             list[0] = false;
         }
         console.log("list at index 0: " + list[0]);
+        console.log(pos + " at x: " + dx);
+        console.log(pos + " at y: " + dy);
     }
     else if (pos === 3) {
         if ((dx >= 455 && dx <= 480) && (dy >= -22 && dy <= -3)) {
@@ -144,6 +146,8 @@ function checkPagePosition(obj, dx, dy) {
         }
 
         console.log("list at index 1: " + list[1]);
+        console.log(pos + " at x: " + dx);
+        console.log(pos + " at y: " + dy);
     }
     else if (pos === 4) {
         if ((dx >= -30 && dx <= -5) && (dy >= -220 && dy <= -200)) {
@@ -154,6 +158,8 @@ function checkPagePosition(obj, dx, dy) {
         }
 
         console.log("list at index 2: " + list[2]);
+        console.log(pos + " at x: " + dx);
+        console.log(pos + " at y: " + dy);
     }
     else if (pos === 5) {
         if ((dx >= -640 && dx <= -618) && (dy >= 147 && dy <= 167)) {
@@ -164,6 +170,8 @@ function checkPagePosition(obj, dx, dy) {
         }
 
         console.log("list at index 3: " + list[3]);
+        console.log(pos + " at x: " + dx);
+        console.log(pos + " at y: " + dy);
     }
     else if (pos === 6) {
         if ((dx >= -424 && dx <= -395) && (dy >= -187 && dy <= -160)) {
@@ -174,6 +182,8 @@ function checkPagePosition(obj, dx, dy) {
         }
 
         console.log("list at index 4: " + list[4]);
+        console.log(pos + " at x: " + dx);
+        console.log(pos + " at y: " + dy);
     }
     else if (pos === 8) {
         if ((dx >= -7 && dx <= 18) && (dy >= -260 && dy <= -242)) {
@@ -184,6 +194,8 @@ function checkPagePosition(obj, dx, dy) {
         }
 
         console.log("list at index 5: " + list[5]);
+        console.log(pos + " at x: " + dx);
+        console.log(pos + " at y: " + dy);
     }
     else if (pos === 10) {
         if ((dx >= 203 && dx <= 233) && (dy >= -140 && dy <= -115)) {
@@ -194,6 +206,8 @@ function checkPagePosition(obj, dx, dy) {
         }
 
         console.log("list at index 6: " + list[6]);
+        console.log(pos + " at x: " + dx);
+        console.log(pos + " at y: " + dy);
     }
     else if (pos === 12) {
         if ((dx >= -230 && dx <= -205) && (dy >= -108 && dy <= -90)) {
@@ -204,9 +218,11 @@ function checkPagePosition(obj, dx, dy) {
         }
 
         console.log("list at index 9: " + list[9]);
+        console.log(pos + " at x: " + dx);
+        console.log(pos + " at y: " + dy);
     }
     else if (pos === 13) {
-        if ((dx >= 365 && dx <= 385) && (dy >= 160 && dy <= 177)) {
+        if ((dx >= 365 && dx <= 388) && (dy >= 158 && dy <= 181)) {
             list[7] = true;
         }
         else {
@@ -214,6 +230,8 @@ function checkPagePosition(obj, dx, dy) {
         }
 
         console.log("list at index 7: " + list[7]);
+        console.log(pos + " at x: " + dx);
+        console.log(pos + " at y: " + dy);
     }
     else if (pos === 15) {
         if ((dx >= 151 && dx <= 175) && (dy >= -239 && dy <= -219)) {
@@ -224,6 +242,8 @@ function checkPagePosition(obj, dx, dy) {
         }
 
         console.log("list at index 8: " + list[8]);
+        console.log(pos + " at x: " + dx);
+        console.log(pos + " at y: " + dy);
     }
 }
 
@@ -246,8 +266,6 @@ interact('.draggable-sia').draggable({
         move: dragMoveListener,
         end(event) {
             checkPagePosition(event.target.id, x, y);
-            console.log(event.target.id + " at x: " + x);
-            console.log(event.target.id + " at y: " + y);
         }
     },
     inertia: false
