@@ -692,11 +692,10 @@ class Demuth extends Component {
 
     // eslint-disable-next-line
     constructor(props) {
-        super(props);
+        super();
 
         this.state = {
-            width: window.innerWidth,
-            height: window.innerHeight
+            width: window.innerWidth
         };
 
         this.resizeWindow = this.resizeWindow.bind(this);
@@ -704,13 +703,27 @@ class Demuth extends Component {
 
     //Sets the listener
     componentDidMount() {
+        this.updateScreen();
         window.addEventListener("resize", this.resizeWindow);
     }
 
     //So the program always has the correct width and height of window
     resizeWindow() {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
+        // this.setState({ width: window.innerWidth, height: window.innerHeight });
+        console.log("width: " + this.state.width)
         document.body.style.overflowX = "hidden";
+        this.updateScreen();
+
+        console.log("width After: " + this.state.width)
+    }
+
+    updateScreen() {
+        if (window.innerWidth < 1050 || window.innerWidth > 1525) {
+            this.setState({ width: 1200 });
+        } else {
+            let update_width = window.innerWidth - 100;
+            this.setState({ width: update_width });
+        }
     }
 
     //Tells the cookies to be set
@@ -730,7 +743,7 @@ class Demuth extends Component {
 
     render() {
         return (
-            <Container fluid='true'>
+            <Container fluid='true' style={{ maxWidth: '1525px', minWidth: '1050px' }}>
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>The other letter</title>
