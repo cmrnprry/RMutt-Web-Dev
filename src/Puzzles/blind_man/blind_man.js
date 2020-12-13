@@ -144,7 +144,7 @@ function pushInList(draggable, dropzone) {
 
 //Function that displays text if the array is correct
 function showEndText() {
-    alert("TODO: add Kieran words");
+    // alert("TODO: add Kieran words");
 }
 
 //Function that checks to see if the currect list is in the correct order

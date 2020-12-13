@@ -51,7 +51,7 @@ import { Helmet } from "react-helmet";
 import Popup from 'reactjs-popup';
 
 //Puzzle order
-const order = ["The Letter", "SIA Catalog", "Demuth Letter", "Phonebook", "Tissue Paper", "Blind Man", "Mina Loy", "Elsa", "RRose", "Mott Catalog", "God", "God II",];
+const order = ["The Letter", "Demuth Letter", "SIA Catalog", "Phonebook", "Who Remains?", "Blind Man", "A Friend of Louise?", "Elsa", "RRose By Any Other Name", "Mott Catalog", "God", "God II",];
 
 //Enevelope
 const open = require('../../../folder_elements/envelopes/envelode_opened.png');
@@ -74,8 +74,8 @@ var currFolder = img1;
 
 //Unsolved
 const imgUS1 = require('../../../folder_elements/notes/arletter_1.png');
-const imgUS2 = require('../../../folder_elements/notes/sia_1.png');
-const imgUS3 = require('../../../folder_elements/notes/demuth_1.png');
+const imgUS3 = require('../../../folder_elements/notes/sia_1.png');
+const imgUS2 = require('../../../folder_elements/notes/demuth_1.png');
 const imgUS4 = require('../../../folder_elements/notes/phonebook_1.png');
 const imgUS5 = require('../../../folder_elements/notes/tissue_paper_1.png');
 const imgUS6 = require('../../../folder_elements/notes/blind_man_1.png');
@@ -90,8 +90,8 @@ var currUS = imgUS1;
 
 //Solved
 const imgS1 = require('../../../folder_elements/notes/arletter_2.png');
-const imgS2 = require('../../../folder_elements/notes/sia_2.png');
-const imgS3 = require('../../../folder_elements/notes/demuth_2.png');
+const imgS3 = require('../../../folder_elements/notes/sia_2.png');
+const imgS2 = require('../../../folder_elements/notes/demuth_2.png');
 const imgS4 = require('../../../folder_elements/notes/phonebook_2.png');
 const imgS5 = require('../../../folder_elements/notes/tissue_paper_2.png');
 const imgS6 = require('../../../folder_elements/notes/blind_man_2.png');
@@ -361,7 +361,7 @@ class Clues extends Component {
                 //Set Envelope
                 eWidth = 650;
                 eleft = 700;
-                eTop = -225;
+                eTop = -250;
 
                 //Set the Title
                 size = 100;
@@ -391,7 +391,7 @@ class Clues extends Component {
                 //Set Envelope
                 eWidth = 500;
                 eleft = 525;
-                eTop = -230;
+                eTop = -250;
 
                 //Set the Title
                 size = 95;
@@ -485,7 +485,7 @@ class Clues extends Component {
                 //Set Envelope
                 eWidth = 450;
                 eleft = 480;
-                eTop = -250;
+                eTop = -260;
 
                 //Set the Title
                 size = 90;
@@ -515,14 +515,14 @@ class Clues extends Component {
                 document.getElementById("Pen").style.width = "43px";
 
                 //Set Envelope
-                eWidth = 415;
+                eWidth = 405;
                 eleft = 425;
-                eTop = -175;
+                eTop = -220;
 
                 //Set the Title
-                size = 70;
+                size = 65;
                 tleft = 385;
-                tTop = 65;
+                tTop = 40;
                 tHeight = 100;
                 tWdth = 340;
 
@@ -547,12 +547,12 @@ class Clues extends Component {
             document.getElementById("Pen").style.width = "36px";
 
             //Set Envelope
-            eWidth = 350;
-            eleft = 370;
-            eTop = -150;
+            eWidth = 300;
+            eleft = 350;
+            eTop = -225;
 
             //Set the Title
-            size = 70;
+            size = 65;
             tleft = 335;
             tTop = 40;
             tHeight = 100;
@@ -605,6 +605,46 @@ class Clues extends Component {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
 
                     //If this puzzle has been solved
+                    if (cookies.get('DemuthLetterChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
+                    }
+
+                    //Make sure the clickable link is turned on and set the correct link
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/demuth-letter');
+
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/demuth-letter');
+                }
+                else {
+                    //if the puzzle is not unlocked set evelope to locked
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
+                    document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
+                }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "block";
+
+                break;
+            case 3:
+                if (cookies.get('DemuthLetterChildren')) {
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
                     if (cookies.get('SiaCatalogChildren')) {
                         console.log("here");
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
@@ -635,48 +675,8 @@ class Clues extends Component {
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "block";
                 break;
-            case 3:
-                if (cookies.get('SiaCatalogChildren')) {
-                    //Set the Solved image to but turned off
-                    document.getElementById("Solved").style.display = "none";
-
-                    //open the envelope and show the unsolved
-                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
-                    document.getElementById("Unsolved").style.display = "block";
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-
-                    //If this puzzle has been solved
-                    if (cookies.get('DemuthLetterChildren')) {
-                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
-                        document.getElementById("Solved").style.display = "block";
-                    }
-
-                    //Make sure the clickable link is turned on and set the correct link
-                    document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/demuth-letter');
-
-                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
-                    document.getElementById("Link-Envelope").setAttribute('href', '/demuth-letter');
-                }
-                else {
-                    //if the puzzle is not unlocked set evelope to locked
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-
-                    //turn off reward
-                    document.getElementById("Unsolved").style.display = "none";
-                    document.getElementById("Solved").style.display = "none";
-
-                    //set link inactive
-                    document.getElementById("Link").classList.add('inactiveLink');
-                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
-                }
-
-                //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "block";
-
-                break;
             case 4:
-                if (cookies.get('DemuthLetterChildren')) {
+                if (cookies.get('SiaCatalogChildren')) {
 
 
                     //Set the Solved image to but turned off
@@ -818,10 +818,10 @@ class Clues extends Component {
 
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/mina-loy');
+                    document.getElementById("Link").setAttribute('href', '/friend-of-louise');
 
                     document.getElementById("Link-Envelope").classList.remove('inactiveLink');
-                    document.getElementById("Link-Envelope").setAttribute('href', '/mina-loy');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/friend-of-louise');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -1077,16 +1077,31 @@ class Clues extends Component {
     //Left Tabs
     ChangeFolder(folder) {
         const { cookies } = this.props;
-        console.log("changing left")
+        const Tab = document.getElementById("Tab" + (folder));
+        folder = parseInt(folder);
 
         if (showLeftTabs[folder - 1] === true && currFolder !== this.state.folderList[folder - 1]) {
             currFolder = this.state.folderList[folder - 1];
             document.getElementById("Folder").setAttribute('src', this.state.folderList[folder - 1]);
 
-            for (var i = 0; i < folder; i++) {
-                showLeftTabs[i - 1] = false;
-                showRightTabs[i - 1] = true;
+            for (var i = 0; i < folder - 1; i++) {
+                showLeftTabs[i] = false;
+                showRightTabs[i] = true;
+                console.log((i) + " " + showRightTabs[i])
+
+                var tab = document.getElementById("Tab" + (i + 1));
+                var tabRight = document.getElementById("Tab" + (i + 1) + "Right");
+
+                if (showLeftTabs[i] === false && tab.classList.contains("pointer")) {
+                    tab.classList.remove("pointer")
+                }
+
+                if (showRightTabs[i] === true && !tabRight.classList.contains("pointer")) {
+                    tabRight.classList.add("pointer")
+                }
             }
+
+            Tab.classList.remove("pointer");
 
             document.getElementById("Title").innerHTML = order[folder - 1];
             cookies.set('currentTab', folder)
@@ -1097,18 +1112,35 @@ class Clues extends Component {
 
     ChangeFolderRight(folder) {
         const { cookies } = this.props;
+        folder = parseInt(folder);
+
+        console.log(folder)
+        console.log(showRightTabs[0])
+
 
         if (showRightTabs[folder - 1] === true && currFolder !== this.state.folderList[folder - 1]) {
+
             currFolder = this.state.folderList[folder - 1];
             document.getElementById("Folder").setAttribute('src', this.state.folderList[folder - 1]);
 
-            for (var i = (folder - 1); i < 10; i++) {
+            for (var i = (folder - 1); i < 12; i++) {
                 if (showRightTabs[i] === true) {
                     showLeftTabs[i] = true;
                     showRightTabs[i] = false;
                 }
                 else {
                     showRightTabs[i] = false;
+                }
+
+                var tab = document.getElementById("Tab" + (i + 1));
+                var tabRight = document.getElementById("Tab" + (i + 1) + "Right");
+
+                if (showLeftTabs[i] === true && !tab.classList.contains("pointer")) {
+                    tab.classList.add("pointer")
+                }
+
+                if (showRightTabs[i] === false && tabRight.classList.contains("pointer")) {
+                    tabRight.classList.remove("pointer")
                 }
 
             }
@@ -1139,13 +1171,13 @@ class Clues extends Component {
             }
         }
         else if (currentTab === 2) {
-            if (input === "playtesting") {
+            if (input === "nominal dues" || input === "nominaldues" || input === "playtesting") {
                 cookies.set('SiaCatalogChildren');
                 return;
             }
         }
         else if (currentTab === 3) {
-            if (input === "thesuperindependents" || input === "salonderefusees" || input === "playtesting") {
+            if (input === "thesuperindependents" || input === "salondesrefusees" || input === "playtesting") {
                 cookies.set('DemuthLetterChildren');
                 return;
             }
@@ -1177,7 +1209,7 @@ class Clues extends Component {
             }
         }
         else if (currentTab === 7) {
-            if (input === "playtesting") {
+            if (input === "playtesting" || input === "mina loy" || input === "minaloy") {
                 cookies.set('MinaLoyChildren');
                 return;
             }
@@ -1207,7 +1239,7 @@ class Clues extends Component {
             }
         }
         else if (currentTab === 12) {
-            if (input === "playtesting") {
+            if (input === "playtesting" || input === "pipes") {
                 cookies.set('GodIIChildren');
                 return;
             }
@@ -1229,7 +1261,7 @@ class Clues extends Component {
                 {/* Sticky Note */}
                 <div id="note" img={Sticky} className="container">
                     <Image src={Sticky} />
-                    <div className="text-sticky-test"> Use code: <br />playtesting<br />to skip <br/>a puzzle</div>
+                    <div className="text-sticky-test"> Use code: <br />playtesting<br />to skip <br />a puzzle</div>
                 </div>
 
                 <div className="folder">
@@ -1240,7 +1272,7 @@ class Clues extends Component {
                         <Image id="Note" src={Note} className="note" />
 
                         <Popup style={{ background: 'transparent', border: 'none' }}
-                            trigger={<Image id="Pen" src={Pen} className="pen" />} modal >
+                            trigger={<Image id="Pen" src={Pen} className="pen pointer" />} modal >
                             {close => (
                                 <div className="password">
                                     Report your findings
@@ -1278,31 +1310,31 @@ class Clues extends Component {
 
                     <div id="Tabs">
 
-                        <div id="TabOne" className="folder-tab" onClick={() => this.ChangeFolder(1)} />
-                        <div id="TabTwo" className="folder-tab" onClick={() => this.ChangeFolder(2)} />
-                        <div id="TabThree" className="folder-tab" onClick={() => this.ChangeFolder(3)} />
-                        <div id="TabFour" className="folder-tab" onClick={() => this.ChangeFolder(4)} />
-                        <div id="TabFive" className="folder-tab" onClick={() => this.ChangeFolder(5)} />
-                        <div id="TabSix" className="folder-tab" onClick={() => this.ChangeFolder(6)} />
-                        <div id="TabSeven" className="folder-tab" onClick={() => this.ChangeFolder(7)} />
-                        <div id="TabEight" className="folder-tab" onClick={() => this.ChangeFolder(8)} />
-                        <div id="TabNine" className="folder-tab" onClick={() => this.ChangeFolder(9)} />
-                        <div id="TabTen" className="folder-tab" onClick={() => this.ChangeFolder(10)} />
-                        <div id="TabEleven" className="folder-tab" onClick={() => this.ChangeFolder(11)} />
-                        <div id="TabTwelve" className="folder-tab" onClick={() => this.ChangeFolder(12)} />
+                        <div id="Tab1" className="folder-tab" onClick={() => this.ChangeFolder(1)} />
+                        <div id="Tab2" className="folder-tab pointer" onClick={() => this.ChangeFolder(2)} />
+                        <div id="Tab3" className="folder-tab pointer" onClick={() => this.ChangeFolder(3)} />
+                        <div id="Tab4" className="folder-tab pointer" onClick={() => this.ChangeFolder(4)} />
+                        <div id="Tab5" className="folder-tab pointer" onClick={() => this.ChangeFolder(5)} />
+                        <div id="Tab6" className="folder-tab pointer" onClick={() => this.ChangeFolder(6)} />
+                        <div id="Tab7" className="folder-tab pointer" onClick={() => this.ChangeFolder(7)} />
+                        <div id="Tab8" className="folder-tab pointer" onClick={() => this.ChangeFolder(8)} />
+                        <div id="Tab9" className="folder-tab pointer" onClick={() => this.ChangeFolder(9)} />
+                        <div id="Tab10" className="folder-tab pointer" onClick={() => this.ChangeFolder(10)} />
+                        <div id="Tab11" className="folder-tab pointer" onClick={() => this.ChangeFolder(11)} />
+                        <div id="Tab12" className="folder-tab pointer" onClick={() => this.ChangeFolder(12)} />
 
-                        <div id="TabOneRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(1)} />
-                        <div id="TabTwoRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(2)} />
-                        <div id="TabThreeRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(3)} />
-                        <div id="TabFourRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(4)} />
-                        <div id="TabFiveRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(5)} />
-                        <div id="TabSixRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(6)} />
-                        <div id="TabSevenRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(7)} />
-                        <div id="TabEightRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(8)} />
-                        <div id="TabNineRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(9)} />
-                        <div id="TabTenRight" className="folder-tab-right" onClick={() => this.ChangeFolderRight(10)} />
-                        <div id="TabEleven" className="folder-tab-right" onClick={() => this.ChangeFolderRight(11)} />
-                        <div id="TabTwelve" className="folder-tab-right" onClick={() => this.ChangeFolderRight(12)} />
+                        <div id="Tab1Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(1)} />
+                        <div id="Tab2Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(2)} />
+                        <div id="Tab3Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(3)} />
+                        <div id="Tab4Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(4)} />
+                        <div id="Tab5Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(5)} />
+                        <div id="Tab6Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(6)} />
+                        <div id="Tab7Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(7)} />
+                        <div id="Tab8Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(8)} />
+                        <div id="Tab9Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(9)} />
+                        <div id="Tab10Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(10)} />
+                        <div id="Tab11Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(11)} />
+                        <div id="Tab12Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(12)} />
                     </div>
                 </div>
 

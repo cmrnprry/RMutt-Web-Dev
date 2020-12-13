@@ -8,6 +8,8 @@
 .pipe-resize
 {
   position: absolute;
+  /* width: 150px */
+
 }
 
 .pipe-base

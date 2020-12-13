@@ -204,9 +204,9 @@ class GodII extends Component {
         const { cookies } = this.props;
 
         if (puzzleSolved()) {
-            alert("puzzle solved");
-            cookies.set('GodIIChildren');
-            this.props.history.push('/clues');
+            // alert("puzzle solved");
+            // cookies.set('GodIIChildren');
+            // this.props.history.push('/clues');
         }
     }
 

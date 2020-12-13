@@ -53,11 +53,6 @@ interact('.draggable-mina').draggable({
     inertia: false
 })
 
-//Function that displays text if the array is correct
-function showEndText() {
-    alert("TODO: add Kieran words");
-}
-
 //Function that handles how draggable objects act when you drag them
 function dragMoveListener(event) {
     var target = event.target
@@ -341,7 +336,7 @@ class Mina_Loy extends Component {
 
         // console.log("puzzleSolved: " + puzzleSolved());
         if (puzzleSolved()) {
-            alert("puzzle solved");
+            // alert("puzzle solved");
             cookies.set('MinaLoyChildren');
             this.props.history.push('/clues');
         }

@@ -33,26 +33,39 @@ function SetPages() {
     //middle of screen
     var w = window.innerWidth / 2;
     var h = window.innerHeight / 2;
+    var middle = window.innerWidth / 2;
 
     //set the base 
-    document.getElementById("1").style.left = (w - (document.getElementById("1").getBoundingClientRect().width) / 2) + "px";
-    document.getElementById("1").style.top = h + (document.getElementById("1").getBoundingClientRect().width) / 2 + "px";
+
+    document.getElementById("1").style.left = (middle - (document.getElementById("1").getBoundingClientRect().width) / 2) + "px";
+    document.getElementById("1").style.top = 450 + 'px';
 
     //set to the left
-    document.getElementById("9").style.left = (document.getElementById("1").getBoundingClientRect().x - document.getElementById("1").getBoundingClientRect().width + 30) + "px";
+    document.getElementById("9").style.left = (document.getElementById("1").getBoundingClientRect().x - document.getElementById("1").getBoundingClientRect().width + 150) + "px";
     document.getElementById("9").style.top = 40 + "px";
 
-    document.getElementById("7").style.left = (document.getElementById("9").getBoundingClientRect().x - document.getElementById("9").getBoundingClientRect().width) + "px";
-    document.getElementById("7").style.top = document.getElementById("9").getBoundingClientRect().y + 40 + "px";
+    document.getElementById("7").style.left = (document.getElementById("1").getBoundingClientRect().x - document.getElementById("1").getBoundingClientRect().width + 230) + "px";
+    document.getElementById("7").style.top = 250 + "px";
 
-    document.getElementById("4").style.left = (document.getElementById("1").getBoundingClientRect().x - document.getElementById("1").getBoundingClientRect().width + 150) + "px";
-    document.getElementById("4").style.top = document.getElementById("9").getBoundingClientRect().y + 150 + "px";
+    document.getElementById("4").style.left = (document.getElementById("1").getBoundingClientRect().x - document.getElementById("1").getBoundingClientRect().width + 30) + "px";
+    document.getElementById("4").style.top = 40 + "px";
 
-    document.getElementById("5").style.left = (document.getElementById("4").getBoundingClientRect().x - 50 - document.getElementById("4").getBoundingClientRect().width - 200) + "px";
-    document.getElementById("5").style.top = document.getElementById("4").getBoundingClientRect().y + 185 + "px";
+    document.getElementById("6").style.left = (document.getElementById("1").getBoundingClientRect().x - document.getElementById("1").getBoundingClientRect().width + 75) + "px";
+    document.getElementById("6").style.top = 150 + "px";
 
-    document.getElementById("8").style.left = (document.getElementById("4").getBoundingClientRect().x - document.getElementById("4").getBoundingClientRect().width - 25) + "px";
-    document.getElementById("8").style.top = document.getElementById("4").getBoundingClientRect().y + "px";
+
+    //set to right
+    document.getElementById("5").style.top = (document.getElementById("1").getBoundingClientRect().y) - 400 + "px";
+    document.getElementById("5").style.left = (document.getElementById("1").getBoundingClientRect().right) + 15 + "px";
+
+    document.getElementById("8").style.left = (document.getElementById("1").getBoundingClientRect().right) + 135 + "px";
+    document.getElementById("8").style.top = (document.getElementById("1").getBoundingClientRect().y) - 250 + "px";
+
+    document.getElementById("2").style.left = (document.getElementById("1").getBoundingClientRect().right) + 50 + "px";
+    document.getElementById("2").style.top = (document.getElementById("1").getBoundingClientRect().y) - 250 + "px";
+
+    document.getElementById("3").style.left = (document.getElementById("1").getBoundingClientRect().right) + 250 + "px";
+    document.getElementById("3").style.top = (document.getElementById("1").getBoundingClientRect().y) - 445 + "px";
 }
 
 interact('.draggable').draggable({
@@ -84,32 +97,32 @@ function dragMoveListener(event) {
 }
 
 function checkImage1(dx, dy) {
-    if ((dx >= -467 && dx <= -435) && (dy >= 149 && dy <= 171)) {
+    if ((dx >= -300 && dx <= -260) && (dy >= -105 && dy <= -83)) {
         pipe1 = true;
     }
     else {
         pipe1 = false;
     }
+
     console.log("Pipe 2: " + pipe1);
 }
 
 function checkImage2(dx, dy) {
 
-    if ((dx >= 563 && dx <= 585) && (dy >= -150 && dy <= -115)) {
+    if ((dx >= -329 && dx <= -307) && (dy >= 105 && dy <= 127)) {
         pipe2 = true;
     }
     else {
         pipe2 = false;
     }
 
-    // 5 at x: 574.3999938964844
-    // god.js: 64 5 at y: -120.80001831054688
+
 
     console.log("Pipe 5: " + pipe2);
 }
 
 function checkImage3(dx, dy) {
-    if ((dx >= 620 && dx <= 662) && (dy >= 271 && dy <= 304)) {
+    if ((dx >= 301 && dx <= 323) && (dy >= 28 && dy <= 41)) {
         pipe3 = true;
     }
     else {
@@ -121,7 +134,7 @@ function checkImage3(dx, dy) {
 }
 
 function checkImage4(dx, dy) {
-    if ((dx >= 345 && dx <= 379) && (dy >= 326 && dy <= 348)) {
+    if ((dx >= 237 && dx <= 259) && (dy >= 245 && dy <= 267)) {
         pipe4 = true;
     }
     else {
@@ -150,7 +163,7 @@ function checkPosition(obj, dx, dy) {
     }
 
     if (pipe1 && pipe2 && pipe3 && pipe4) {
-        alert("All objects are in the correct places!");
+        alert("God has been found");
         allInPlace = true;
     }
 }
@@ -188,8 +201,13 @@ class God extends Component {
     }
 
     resizeWindow() {
-        document.body.style.overflowX = "auto";
-
+        // if the screen is big enough
+        if (window.innerWidth > 1300) {
+            document.body.style.overflowX = "hidden";
+        }
+        else {
+            document.body.style.overflowX = "scroll";
+        }
         SetPages();
     }
 
@@ -227,68 +245,52 @@ class God extends Component {
                 <div id="Voice" className="subtitle">"Oh, this one's easy. You just need to find god, and if you can't find him, make him yourself. Its not hard. People have been making god for millennia."
                 </div>
 
-                <div className="god-container">
-                    {/* Pages */}
+                <div className="god-container" style={{ height: this.state.height }}>
+                    {/* Static */}
                     <Image id="1" src={One} className="pipe-base" />
 
-
+                    {/* Pages */}
                     <Image id="3" src={Three} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
                             width: '100px',
-                            left: '1000px',
-                            top: '25px'
                         }} />
                     <Image id="4" src={Four} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
                             width: '80px',
-                            left: '260px',
-                            top: '207px'
                         }} />
                     <Image id="5" src={Five} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
                             width: '200px',
-                            left: '150px',
-                            top: '397px',
                             zIndex: '15'
                         }} />
                     <Image id="6" src={Six} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
                             width: '100px',
-                            left: '1210px',
-                            top: '167px'
                         }} />
                     <Image id="7" src={Seven} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
                             width: '55px',
-                            left: '114px',
-                            top: '30px',
                             zAxis: '5'
                         }} />
                     <Image id="8" src={Eight} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
                             width: '90px',
-                            left: '15px',
-                            top: '251px'
                         }} />
                     <Image id="9" src={Nine} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
                             width: '125px',
-                            left: '325px',
-                            top: '40px'
                         }} />
                     <Image id="2" src={Two} className="draggable pipe-resize"
                         onMouseUp={() => this.setChildren()}
                         style={{
                             width: '60px',
-                            left: '1161px',
-                            top: '25px'
                         }} />
                 </div>
 

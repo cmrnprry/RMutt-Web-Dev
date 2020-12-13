@@ -64,7 +64,7 @@ class App extends Component {
             <Route exact path='/tissue-paper' component={Tissue_Paper} />
             <Route exact path='/blind-man' component={Blind_Man} />
             <Route exact path='/rrose' component={Rrose} />
-            <Route exact path='/mina-loy' component={Mina_Loy} />
+            <Route exact path='/friend-of-louise' component={Mina_Loy} />
             <Route exact path='/elsa' component={Elsa} />
             <Route exact path='/mott-catalog' component={Mott_Catalog} />
             <Route exact path='/god' component={God} />

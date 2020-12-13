@@ -97,6 +97,10 @@ h1 {
 	font-family:"Bradley";
 	font-size:1.5em;
 }
+.pointer
+{
+	cursor: pointer;
+}
 
 head {
 	background:#000;

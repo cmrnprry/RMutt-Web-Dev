@@ -115,16 +115,6 @@ class Rrose extends Component {
         }
     }
 
-    //Tells the cookies to be set
-    setChildren() {
-        const { cookies } = this.props;
-
-        // if (checkList()) {
-        //     cookies.set('PhonebookgChildren');
-        //     this.props.history.push('/clues');
-        // }
-    }
-
     render() {
 
         return (
@@ -138,7 +128,7 @@ class Rrose extends Component {
 
 
                 <Popup style={{ background: 'transparent', border: 'none' }}
-                    trigger={<Image id="Name" src={Rrose_Name} className="resize-rrose" />} modal >
+                    trigger={<Image id="Name" src={Rrose_Name} className="resize-rrose pointer" />} modal >
                     {close => (
                         <div className="password">
                             Report your findings

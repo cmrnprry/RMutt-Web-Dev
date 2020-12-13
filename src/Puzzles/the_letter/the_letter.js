@@ -80,7 +80,7 @@ class AR_Letter extends Component {
                 </div>
 
                 <Popup style={{ background: 'transparent', border: 'none' }}
-                    trigger={<Image src={letter} className='ar-letter' style={{
+                    trigger={<Image src={letter} className='ar-letter pointer' style={{
                         marginLeft: 'auto',
                         marginRight: 'auto'
                     }} />}
