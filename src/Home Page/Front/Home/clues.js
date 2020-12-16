@@ -1170,13 +1170,13 @@ class Clues extends Component {
                 return;
             }
         }
-        else if (currentTab === 2) {
+        else if (currentTab === 3) {
             if (input === "nominal dues" || input === "nominaldues" || input === "playtesting") {
                 cookies.set('SiaCatalogChildren');
                 return;
             }
         }
-        else if (currentTab === 3) {
+        else if (currentTab === 2) {
             if (input === "thesuperindependents" || input === "salondesrefusees" || input === "playtesting") {
                 cookies.set('DemuthLetterChildren');
                 return;
