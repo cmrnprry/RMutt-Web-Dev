@@ -7,6 +7,7 @@ import Sticky from "../../../folder_elements/sticky/sticky.png"
 
 
 //Image Imports
+import Board from '../../../Corkboard/pushpin.png'
 import Pen from '../../../folder_elements/pen/pen_bak.png'
 import Note from '../../../folder_elements/notes.png'
 import Open from '../../../folder_elements/envelopes/envelode_opened.png'
@@ -51,7 +52,7 @@ import { Helmet } from "react-helmet";
 import Popup from 'reactjs-popup';
 
 //Puzzle order
-const order = ["The Letter", "Demuth Letter", "SIA Catalog", "Phonebook", "Who Remains?", "Blind Man", "A Friend of Louise?", "Elsa", "RRose By Any Other Name", "Mott Catalog", "God", "God II",];
+const order = ["The Letter", "The Other Letter", "Independent?", "Blind Man?", "A Friend of Louise?", "Who Remains?", "What Rings True?", "The Future", "RRose By Any Other Name", "Plumb the Depths", "God or Goddess?", "His or Hers?",];
 
 //Enevelope
 const open = require('../../../folder_elements/envelopes/envelode_opened.png');
@@ -74,12 +75,12 @@ var currFolder = img1;
 
 //Unsolved
 const imgUS1 = require('../../../folder_elements/notes/arletter_1.png');
-const imgUS3 = require('../../../folder_elements/notes/sia_1.png');
 const imgUS2 = require('../../../folder_elements/notes/demuth_1.png');
-const imgUS4 = require('../../../folder_elements/notes/phonebook_1.png');
-const imgUS5 = require('../../../folder_elements/notes/tissue_paper_1.png');
-const imgUS6 = require('../../../folder_elements/notes/blind_man_1.png');
-const imgUS7 = require('../../../folder_elements/notes/mina_loy_1.png');
+const imgUS3 = require('../../../folder_elements/notes/sia_1.png');
+const imgUS4 = require('../../../folder_elements/notes/blind_man_1.png');
+const imgUS5 = require('../../../folder_elements/notes/mina_loy_1.png');
+const imgUS6 = require('../../../folder_elements/notes/tissue_paper_1.png');
+const imgUS7 = require('../../../folder_elements/notes/phonebook_1.png');
 const imgUS8 = require('../../../folder_elements/notes/elsa_1.png');
 const imgUS9 = require('../../../folder_elements/notes/rrose_1.png');
 const imgUS10 = require('../../../folder_elements/notes/mott_1.png');
@@ -90,12 +91,12 @@ var currUS = imgUS1;
 
 //Solved
 const imgS1 = require('../../../folder_elements/notes/arletter_2.png');
-const imgS3 = require('../../../folder_elements/notes/sia_2.png');
 const imgS2 = require('../../../folder_elements/notes/demuth_2.png');
-const imgS4 = require('../../../folder_elements/notes/phonebook_2.png');
-const imgS5 = require('../../../folder_elements/notes/tissue_paper_2.png');
-const imgS6 = require('../../../folder_elements/notes/blind_man_2.png');
-const imgS7 = require('../../../folder_elements/notes/mina_loy_2.png');
+const imgS3 = require('../../../folder_elements/notes/sia_2.png');
+const imgS4 = require('../../../folder_elements/notes/blind_man_2.png');
+const imgS5 = require('../../../folder_elements/notes/mina_loy_2.png');
+const imgS6 = require('../../../folder_elements/notes/tissue_paper_2.png');
+const imgS7 = require('../../../folder_elements/notes/phonebook_2.png');
 const imgS8 = require('../../../folder_elements/notes/elsa_2.png');
 const imgS9 = require('../../../folder_elements/notes/rrose_2.png');
 const imgS10 = require('../../../folder_elements/notes/mott_2.png');
@@ -109,7 +110,7 @@ var tabBuffer = 0;
 
 var showRightTabs = [false, false, false, false, false, false, false, false, false, false, false, false];
 var showLeftTabs = [true, true, true, true, true, true, true, true, true, true, true, true];
-var tissePasswords = ["louise varese norton", "louise norton varese", "louise mccutcheon norton", "louise norton mccutcheon", "louise norton varèse", "louise varèse norton"];
+var tissePasswords = ["louisevaresenorton", "louisenortonvarese", "louisemccutcheonnorton", "louisenortonmccutcheon", "louisenortonvarèse", "louisevarèsenorton"];
 var currentTab = 1;
 
 function SetPages() {
@@ -394,7 +395,7 @@ class Clues extends Component {
                 eTop = -250;
 
                 //Set the Title
-                size = 95;
+                size = 75;
                 tleft = 490;
                 tTop = 80;
                 tHeight = 100;
@@ -424,7 +425,7 @@ class Clues extends Component {
                 eTop = -250;
 
                 //Set the Title
-                size = 90;
+                size = 70;
                 tleft = 450;
                 tTop = 80;
                 tHeight = 100;
@@ -456,7 +457,7 @@ class Clues extends Component {
                 eTop = -230;
 
                 //Set the Title
-                size = 90;
+                size = 70;
                 tleft = 450;
                 tTop = 80;
                 tHeight = 125;
@@ -488,7 +489,7 @@ class Clues extends Component {
                 eTop = -260;
 
                 //Set the Title
-                size = 90;
+                size = 70;
                 tleft = 450;
                 tTop = 80;
                 tHeight = 100;
@@ -520,7 +521,7 @@ class Clues extends Component {
                 eTop = -220;
 
                 //Set the Title
-                size = 65;
+                size = 60;
                 tleft = 385;
                 tTop = 40;
                 tHeight = 100;
@@ -552,7 +553,7 @@ class Clues extends Component {
             eTop = -225;
 
             //Set the Title
-            size = 65;
+            size = 55;
             tleft = 335;
             tTop = 40;
             tHeight = 100;
@@ -612,10 +613,10 @@ class Clues extends Component {
 
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/demuth-letter');
+                    document.getElementById("Link").setAttribute('href', '/the-other-letter');
 
                     document.getElementById("Link-Envelope").classList.remove('inactiveLink');
-                    document.getElementById("Link-Envelope").setAttribute('href', '/demuth-letter');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/the-other-letter');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -653,10 +654,10 @@ class Clues extends Component {
 
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/sia-catalog');
+                    document.getElementById("Link").setAttribute('href', '/independent');
 
                     document.getElementById("Link-Envelope").classList.remove('inactiveLink');
-                    document.getElementById("Link-Envelope").setAttribute('href', '/sia-catalog');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/independent');
 
                 }
                 else {
@@ -677,8 +678,6 @@ class Clues extends Component {
                 break;
             case 4:
                 if (cookies.get('SiaCatalogChildren')) {
-
-
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
 
@@ -688,17 +687,17 @@ class Clues extends Component {
                     document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
 
                     //If this puzzle has been solved
-                    if (cookies.get('PhonebookChildren')) {
+                    if (cookies.get('BlindManChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/phonebook');
+                    document.getElementById("Link").setAttribute('href', '/blind-man');
 
                     document.getElementById("Link-Envelope").classList.remove('inactiveLink');
-                    document.getElementById("Link-Envelope").setAttribute('href', '/phonebook');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/blind-man');
 
                     //Turn on the pen for password puzzles
                     document.getElementById("Pen").style.display = "block";
@@ -720,87 +719,6 @@ class Clues extends Component {
 
                 break;
             case 5:
-                if (cookies.get('PhonebookChildren')) {
-                    //Set the Solved image to but turned off
-                    document.getElementById("Solved").style.display = "none";
-
-                    //open the envelope and show the unsolved
-                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
-                    document.getElementById("Unsolved").style.display = "block";
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-
-                    //If this puzzle has been solved
-                    if (cookies.get('TissuePaperChildren')) {
-                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
-                        document.getElementById("Solved").style.display = "block";
-                    }
-
-                    //Make sure the clickable link is turned on and set the correct link
-                    document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/tissue-paper');
-
-                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
-                    document.getElementById("Link-Envelope").setAttribute('href', '/tissue-paper');
-
-                    //Turn on the pen for password puzzles
-                    document.getElementById("Pen").style.display = "block";
-                }
-                else {
-                    //if the puzzle is not unlocked set evelope to locked
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-
-                    //turn off reward
-                    document.getElementById("Unsolved").style.display = "none";
-                    document.getElementById("Solved").style.display = "none";
-
-                    //set link inactive
-                    document.getElementById("Link").classList.add('inactiveLink');
-                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
-                }
-
-                document.getElementById("Pen").style.display = "block";
-                break;
-            case 6:
-                if (cookies.get('TissuePaperChildren')) {
-                    //Set the Solved image to but turned off
-                    document.getElementById("Solved").style.display = "none";
-
-                    //open the envelope and show the unsolved
-                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
-                    document.getElementById("Unsolved").style.display = "block";
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-
-                    //If this puzzle has been solved
-                    if (cookies.get('BlindManChildren')) {
-                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
-                        document.getElementById("Solved").style.display = "block";
-                    }
-
-                    //Make sure the clickable link is turned on and set the correct link
-                    document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/blind-man');
-
-                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
-                    document.getElementById("Link-Envelope").setAttribute('href', '/blind-man');
-                }
-                else {
-                    //if the puzzle is not unlocked set evelope to locked
-                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
-
-                    //turn off reward
-                    document.getElementById("Unsolved").style.display = "none";
-                    document.getElementById("Solved").style.display = "none";
-
-                    //set link inactive
-                    document.getElementById("Link").classList.add('inactiveLink');
-                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
-                }
-
-                //Turn off the pen for non-password puzzles
-                document.getElementById("Pen").style.display = "block";
-
-                break;
-            case 7:
                 if (cookies.get('BlindManChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
@@ -822,6 +740,87 @@ class Clues extends Component {
 
                     document.getElementById("Link-Envelope").classList.remove('inactiveLink');
                     document.getElementById("Link-Envelope").setAttribute('href', '/friend-of-louise');
+
+                    //Turn on the pen for password puzzles
+                    document.getElementById("Pen").style.display = "block";
+                }
+                else {
+                    //if the puzzle is not unlocked set evelope to locked
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
+                    document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
+                }
+
+                document.getElementById("Pen").style.display = "block";
+                break;
+            case 6:
+                if (cookies.get('MinaLoyChildren')) {
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
+                    if (cookies.get('TissuePaperChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
+                    }
+
+                    //Make sure the clickable link is turned on and set the correct link
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/who-remains');
+
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/who-remains');
+                }
+                else {
+                    //if the puzzle is not unlocked set evelope to locked
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[1]);
+
+                    //turn off reward
+                    document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Solved").style.display = "none";
+
+                    //set link inactive
+                    document.getElementById("Link").classList.add('inactiveLink');
+                    document.getElementById("Link-Envelope").classList.add('inactiveLink');
+                }
+
+                //Turn off the pen for non-password puzzles
+                document.getElementById("Pen").style.display = "block";
+
+                break;
+            case 7:
+                if (cookies.get('TissuePaperChildren')) {
+                    //Set the Solved image to but turned off
+                    document.getElementById("Solved").style.display = "none";
+
+                    //open the envelope and show the unsolved
+                    document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
+                    document.getElementById("Unsolved").style.display = "block";
+                    document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
+
+                    //If this puzzle has been solved
+                    if (cookies.get('PhonebookChildren')) {
+                        document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
+                        document.getElementById("Solved").style.display = "block";
+                    }
+
+                    //Make sure the clickable link is turned on and set the correct link
+                    document.getElementById("Link").classList.remove('inactiveLink');
+                    document.getElementById("Link").setAttribute('href', '/what-rings');
+
+                    document.getElementById("Link-Envelope").classList.remove('inactiveLink');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/what-rings');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -841,7 +840,7 @@ class Clues extends Component {
 
                 break;
             case 8:
-                if (cookies.get('MinaLoyChildren')) {
+                if (cookies.get('PhonebookChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
 
@@ -858,10 +857,10 @@ class Clues extends Component {
 
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/elsa');
+                    document.getElementById("Link").setAttribute('href', '/the-future');
 
                     document.getElementById("Link-Envelope").classList.remove('inactiveLink');
-                    document.getElementById("Link-Envelope").setAttribute('href', '/elsa');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/the-future');
 
                     //Turn on the pen for password puzzles
                     document.getElementById("Pen").style.display = "block";
@@ -942,10 +941,10 @@ class Clues extends Component {
 
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/mott-catalog');
+                    document.getElementById("Link").setAttribute('href', '/plumb-the-depths');
 
                     document.getElementById("Link-Envelope").classList.remove('inactiveLink');
-                    document.getElementById("Link-Envelope").setAttribute('href', '/mott-catalog');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/plumb-the-depths');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -982,10 +981,10 @@ class Clues extends Component {
 
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/god');
+                    document.getElementById("Link").setAttribute('href', '/god-or-goddess');
 
                     document.getElementById("Link-Envelope").classList.remove('inactiveLink');
-                    document.getElementById("Link-Envelope").setAttribute('href', '/god');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/god-or-goddess');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -1021,10 +1020,10 @@ class Clues extends Component {
 
                     //Make sure the clickable link is turned on and set the correct link
                     document.getElementById("Link").classList.remove('inactiveLink');
-                    document.getElementById("Link").setAttribute('href', '/godII');
+                    document.getElementById("Link").setAttribute('href', '/his-or-hers');
 
                     document.getElementById("Link-Envelope").classList.remove('inactiveLink');
-                    document.getElementById("Link-Envelope").setAttribute('href', '/godII');
+                    document.getElementById("Link-Envelope").setAttribute('href', '/his-or-hers');
                 }
                 else {
                     //if the puzzle is not unlocked set evelope to locked
@@ -1161,6 +1160,8 @@ class Clues extends Component {
         const { cookies } = this.props;
 
         var input = this.state.passwordValue.toLowerCase();
+        input = input.split(" ").join("");
+
         currentTab = parseInt(currentTab);
 
         //if the letter is open
@@ -1171,24 +1172,24 @@ class Clues extends Component {
             }
         }
         else if (currentTab === 3) {
-            if (input === "nominal dues" || input === "nominaldues" || input === "playtesting") {
+            if (input === "nominaldues" || input === "playtesting") {
                 cookies.set('SiaCatalogChildren');
                 return;
             }
         }
         else if (currentTab === 2) {
-            if (input === "thesuperindependents" || input === "salondesrefusees" || input === "playtesting") {
+            if (input === "thesuperindependents" || input === "salondesrefuses" || input === "salondesrefusés" || input === "playtesting") {
                 cookies.set('DemuthLetterChildren');
                 return;
             }
         }
-        else if (currentTab === 4) {
+        else if (currentTab === 7) {
             if (input === "110W88" || input === "playtesting") {
                 cookies.set('PhonebookChildren');
                 return;
             }
         }
-        else if (currentTab === 5) {
+        else if (currentTab === 6) {
             var pass = false
             tissePasswords.forEach(element => {
                 console.log(input === element)
@@ -1202,26 +1203,27 @@ class Clues extends Component {
                 return;
             }
         }
-        else if (currentTab === 6) {
+        else if (currentTab === 4) {
             if (input === "playtesting") {
                 cookies.set('BlindManChildren');
                 return;
             }
         }
-        else if (currentTab === 7) {
-            if (input === "playtesting" || input === "mina loy" || input === "minaloy") {
+        else if (currentTab === 5) {
+            if (input === "playtesting" || input === "minaloy") {
                 cookies.set('MinaLoyChildren');
                 return;
             }
         }
         else if (currentTab === 8) {
-            if (input === "god is in the plumbing" || input === "playtesting") {
+            if (input === "godisintheplumbing" || input === "playtesting") {
                 cookies.set('ElsaChildren');
                 return;
             }
         }
         else if (currentTab === 9) {
-            if (input === "douche" || input === "playtesting") {
+            if (input === "douche" || input === "louisevaresenorton" || input === "aliasmarcelduchampest.1920"
+                || input === "rroseselavy" || input === "playtesting") {
                 cookies.set('RroseChildren');
                 return;
             }
@@ -1233,7 +1235,7 @@ class Clues extends Component {
             }
         }
         else if (currentTab === 11) {
-            if (input === "playtesting") {
+            if (input === 'elsa' || input === "playtesting") {
                 cookies.set('GodChildren');
                 return;
             }
@@ -1263,6 +1265,20 @@ class Clues extends Component {
                     <Image src={Sticky} />
                     <div className="text-sticky-test"> Use code: <br />playtesting<br />to skip <br />a puzzle</div>
                 </div>
+
+                {/* Evidence Board */}
+                <div img={Board} className="container"
+                    style={{
+                        left: "0px",
+                        bottom: "0px",
+                        zIndex: "9999"
+                    }}>
+                    <a href='/evidence-board'>
+                        <Image src={Board} className="pushpin" />
+                    </a>
+                </div>
+
+
 
                 <div className="folder">
                     <Image id="Folder" src={Folder1} className="folder-scale" />

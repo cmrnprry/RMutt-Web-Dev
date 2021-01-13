@@ -121,7 +121,7 @@ class Rrose extends Component {
             <Container fluid='true'>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>The Baronness of Nonsense</title>
+                    <title>A Rrose by Any Other Name</title>
                 </Helmet>
 
                 <Back />

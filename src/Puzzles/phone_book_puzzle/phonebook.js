@@ -73,7 +73,7 @@ class Phonebook extends Component {
             <Container fluid='true'>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>Throught the wires</title>
+                    <title>Through the wires</title>
                 </Helmet>
                 
                 <Back />

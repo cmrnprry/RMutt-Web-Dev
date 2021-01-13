@@ -220,7 +220,7 @@ class GodII extends Component {
             <Container fluid='true'>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>The Baronness of Nonsense</title>
+                    <title>His or Hers?</title>
                 </Helmet>
 
                 <Back />

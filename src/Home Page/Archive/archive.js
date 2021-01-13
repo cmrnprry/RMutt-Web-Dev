@@ -54,8 +54,10 @@ class Archive extends Component {
 
         var val1 = 'whoisrmutt';
         var val2 = 'nonsense';
+        var input = this.state.password.toLowerCase();
+        input = input.split(" ").join("");
 
-        if (this.state.password.toLowerCase() === val1 || this.state.password.toLowerCase() === val2) {
+        if (input === val1 || input === val2) {
             this.props.history.push('/clues')
         }
         else {

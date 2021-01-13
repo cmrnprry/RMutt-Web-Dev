@@ -353,7 +353,7 @@ class Sia extends Component {
             <Container fluid='true'>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>Turn and turn</title>
+                    <title>Independent?</title>
                 </Helmet>
 
                 <BackNav />

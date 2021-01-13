@@ -132,7 +132,6 @@ head {
 	padding-top: 7%;
 	padding-right: 3%;
 	padding-bottom: 7%;
-
 }
 
 .archive
@@ -286,6 +285,12 @@ p.text
 a {
 	color:#000;
 	text-decoration:none;
+}
+
+.pushpin
+{
+	width: 50%;
+	
 }
 
 a:hover {

@@ -347,7 +347,7 @@ class Mina_Loy extends Component {
             <Container fluid='true'>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>The other letter</title>
+                    <title>A Friend of Louise?</title>
                 </Helmet>
 
                 <BackNav />

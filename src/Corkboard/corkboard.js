@@ -4,11 +4,15 @@
 //React Imports
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
-import { Link } from 'react-router-dom';
+import CanvasDraw from "react-canvas-draw";
 import { instanceOf } from 'prop-types';
+import { LazyBrush } from "lazy-brush";
+import { Catenary } from "catenary-curve";
 import Back from '../Navigation/Back.js'
 
 //Image Imports
+import Background from './Corboard Images/board.png'
+import Image1 from './Corboard Images/board.png'
 
 //Web Imports
 import Container from 'react-bootstrap/Container'
@@ -36,7 +40,7 @@ var existingLines = [];
 
 
 function draw() {
-    console.log("lines length: " + existingLines.length);
+    console.log("on mouse move");
 
     ctx.fillStyle = 'rgba(0,0,0,0)';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
@@ -44,13 +48,11 @@ function draw() {
     ctx.strokeStyle = "red";
     ctx.lineWidth = 2;
     ctx.beginPath();
-
     DrawLines();
 
     ctx.stroke();
 
     if (isDrawing) {
-        
         DrawLines();
         ctx.strokeStyle = "darkred";
         ctx.lineWidth = 3;
@@ -71,6 +73,7 @@ function DrawLines() {
 }
 
 function Clear() {
+    console.log("on mouse move");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 }
@@ -80,7 +83,6 @@ function FullClear() {
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
     existingLines = [];
 }
-
 
 //Draggable function
 interact('.draggable-board').draggable({
@@ -113,7 +115,7 @@ function dragMoveListener(event) {
     target.setAttribute('data-y', y)
 }
 
-class Corkboard extends Component {
+export default class Corkboard extends Component {
     static propTypes = {
         cookies: instanceOf(Cookies).isRequired
     };
@@ -136,24 +138,44 @@ class Corkboard extends Component {
         canvas = document.getElementById("Canvas");
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
+        canvas.style = "position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto;";
         canvas.onmousedown = onmousedown;
         canvas.onmouseup = onmouseup;
         canvas.onmousemove = onmousemove;
 
         bounds = canvas.getBoundingClientRect();
+
         ctx = canvas.getContext("2d");
         hasLoaded = true;
 
         draw();
         saveData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    }
+
+    DrawImage() {
+        const canvas = document.getElementById("CanvasImage");
+        const context = canvas.getContext("2d");
+        const background = document.getElementById("image");
+
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        canvas.style = "position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto;";
+
+        background.addEventListener('load', e => {
+            context.drawImage(background, -35, -40, canvas.width * 1.16, canvas.height * 1.2);
+        })
+
     }
 
     //Sets the listener
     componentDidMount() {
-        canvasWidth = document.getElementById("board").getBoundingClientRect().width;
-        canvasHeight = document.getElementById("board").getBoundingClientRect().height;
+        canvasWidth = 500//document.getElementById("board").getBoundingClientRect().width;
+        canvasHeight = 500//document.getElementById("board").getBoundingClientRect().height;
 
+        this.DrawImage();
         this.SetIt();
+        // let image = new Image(canvasWidth, canvasWidth);
         window.addEventListener("resize", this.resizeWindow);
         window.addEventListener('mousedown', this.Onmousedown, false);
         window.addEventListener('mousemove', this.Onmousemove, false);
@@ -166,88 +188,104 @@ class Corkboard extends Component {
     }
 
     Onmousedown(e) {
-        console.log("on mouse down");
-        if (hasLoaded && e.button === 0) {
-            if (!isDrawing) {
-                startX = e.clientX - bounds.left;
-                startY = e.clientY - bounds.top;
+        if (e.target.id === "Canvas") {
+            console.log("on mouse down");
+            if (hasLoaded && e.button === 0) {
+                if (!isDrawing) {
+                    startX = e.clientX - bounds.left;
+                    startY = e.clientY - bounds.top;
 
-                isDrawing = true;
+                    isDrawing = true;
+                }
+
+                draw();
             }
-
-            draw();
         }
     }
 
     Onmouseup(e) {
-        console.log("on mouse up");
+        if (e.target.id === "Canvas") {
+            console.log("on mouse up");
 
-        if (hasLoaded && e.button === 0) {
-            if (isDrawing) {
-                existingLines.push({
-                    startX: startX,
-                    startY: startY,
-                    endX: mouseX,
-                    endY: mouseY
-                });
+            if (hasLoaded && e.button === 0) {
+                if (isDrawing) {
+                    existingLines.push({
+                        startX: startX,
+                        startY: startY,
+                        endX: mouseX,
+                        endY: mouseY
+                    });
 
-                isDrawing = false;
+                    isDrawing = false;
+                }
+
+                draw();
+                saveData = ctx.getImageData(0, 0, canvas.width, canvas.height);
             }
-
-            draw();
-            saveData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         }
     }
 
     Onmousemove(e) {
-        console.log("on mouse move");
+        if (e.target.id === "Canvas") {
+            console.log("on mouse move");
 
-        if (hasLoaded) {
-            mouseX = e.clientX - bounds.left;
-            mouseY = e.clientY - bounds.top;
+            if (hasLoaded) {
+                mouseX = e.clientX - bounds.left;
+                mouseY = e.clientY - bounds.top;
 
-            if (isDrawing) {
-                Clear();
-                draw();
+                if (isDrawing) {
+                    Clear();
+                    draw();
+                }
             }
         }
     }
 
     setChildren() {
         const { cookies } = this.props;
-
-
     }
 
     render() {
 
         return (
-
-            <Container fluid='true'>
+            <Container fluid='true' style={{ minWidth: this.state.width, minHeight: this.state.height }}>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>The spark that started the fire</title>
+                    <title>Evidence Board</title>
                 </Helmet>
 
                 <Back />
 
+                <img id="image"
+                    src={Background}
+                    width="100"
+                    heigh="100"
+                    style={{ display: 'none' }} />
+
                 {/* Base Letter */}
-                <div id="board" className="board-container">
+                {/* <div id="board" className="board-container"> */}
+                <canvas id="CanvasImage" className="canvas" />
 
-                    <canvas id="Canvas" className="canvas" />
 
+                <canvas id="Canvas" className="canvas" />
+                {/* <CanvasDraw id="Canvas" className="canvas"
+                        brushRadius="3"
+                        hideInterface="true"
+                        canvasWidth="600px"
+                        canvasHeight="500px"
+                        brushColor="rgba(255,0,0,1)"
+                        imgSrc={Background}
+                    /> */}
 
-                    {/* <Image src={Image1} className="draggable-board board-resize" />
-                    <Image src={Image2} className="draggable-board board-resize" />
+                <Image src={Image1} className="draggable-board board-resize" />
+                {/*   <Image src={Image2} className="draggable-board board-resize" />
                     <Image src={Image3} className="draggable-board board-resize" />
                     <Image src={Image4} className="draggable-board board-resize" />
                     <Image src={Image5} className="draggable-board board-resize" /> */}
-                </div>
+                {/* </div> */}
 
                 <button onClick={() => FullClear()} />
             </Container>
         );
     }
 }
-
-export default withCookies(Corkboard);

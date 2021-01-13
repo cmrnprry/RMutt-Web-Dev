@@ -54,21 +54,21 @@ class App extends Component {
             <Route exact path='/about' component={About} />
             <Route exact path='/archive' component={Archive} />
             <Route exact path='/clues' component={Clues} />
-            <Route exact path='/corkboard' component={CorkBoard} />
+            <Route exact path='/evidence-board' component={CorkBoard} />
 
             {/* Puzzles */}
             <Route exact path='/the-letter' component={The_Letter} />
-            <Route exact path='/sia-catalog' component={Sia_Catalog} />
-            <Route exact path='/demuth-letter' component={Demuth_Letter} />
-            <Route exact path='/phonebook' component={Phonebook} />
-            <Route exact path='/tissue-paper' component={Tissue_Paper} />
+            <Route exact path='/the-other-letter' component={Demuth_Letter} />
+            <Route exact path='/independent' component={Sia_Catalog} />
+            <Route exact path='/what-rings' component={Phonebook} />
+            <Route exact path='/who-remains' component={Tissue_Paper} />
             <Route exact path='/blind-man' component={Blind_Man} />
             <Route exact path='/rrose' component={Rrose} />
             <Route exact path='/friend-of-louise' component={Mina_Loy} />
-            <Route exact path='/elsa' component={Elsa} />
-            <Route exact path='/mott-catalog' component={Mott_Catalog} />
-            <Route exact path='/god' component={God} />
-            <Route exact path='/godII' component={GodII} />
+            <Route exact path='/the-future' component={Elsa} />
+            <Route exact path='/plumb-the-depths' component={Mott_Catalog} />
+            <Route exact path='/god-or-goddess' component={God} />
+            <Route exact path='/his-or-hers' component={GodII} />
           </Switch>
         </Router>
       </CookiesProvider>
