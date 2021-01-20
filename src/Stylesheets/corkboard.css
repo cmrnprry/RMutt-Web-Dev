@@ -28,8 +28,8 @@
   position: relative;
   top: 10px;
   left: 10px;
-  height: 500px;
-  width: 500px;
+  height: 600px;
+  width: 600px;
   border: solid 1px yellow;
   /* z-index: -3; */
 }
