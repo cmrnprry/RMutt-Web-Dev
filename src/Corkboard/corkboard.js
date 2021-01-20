@@ -61,7 +61,6 @@ function draw() {
         ctx.moveTo(startX, startY);
         ctx.lineTo(mouseX, mouseY);
         ctx.stroke();
-        saveData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     }
 }
 
@@ -105,12 +104,7 @@ function SetIt() {
     ctx = canvas.getContext("2d");
     hasLoaded = true;
 
-    if (saveData != null) {
-        // ctx.putImageData(saveData, 0, 0);
-    }
     draw();
-    saveData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
 }
 
 //Draggable function
@@ -163,7 +157,6 @@ class Corkboard extends Component {
     }
 
     DrawImage() {
-        const { cookies } = this.props;
         const canvas = document.getElementById("CanvasImage");
         const context = canvas.getContext("2d");
         const background = document.getElementById("image");
@@ -183,7 +176,8 @@ class Corkboard extends Component {
             context.drawImage(background, 0, 0, canvas.width, canvas.height);
 
             if (localStorage.getItem("SaveData") !== null) {
-                saveData = localStorage.getItem("SaveData");
+                var lines = JSON.parse(localStorage.getItem("SaveData"));
+                existingLines = lines;
             }
             SetIt();
         });
@@ -240,10 +234,7 @@ class Corkboard extends Component {
                 }
 
                 draw();
-
-                saveData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-                console.log("save data: " + saveData)
-                localStorage.setItem("SaveData", saveData);
+                localStorage.setItem("SaveData", JSON.stringify(existingLines));
             }
         }
     }
