@@ -15,7 +15,7 @@
 {
  touch-action: none;
   user-select: none;
-  z-index: 2;
+  z-index: 5;
 }
 
 .other-box
@@ -40,7 +40,7 @@
   top: 5px;
   width: 250px;
   height: auto;
-  /* position: absolute; */
+  position: absolute;
 }
 
 .canvas

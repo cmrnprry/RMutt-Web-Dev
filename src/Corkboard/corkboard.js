@@ -11,8 +11,11 @@ import { Catenary } from "catenary-curve";
 import Back from '../Navigation/Back.js'
 
 //Image Imports
-import Background from './Corboard Images/CorkBoard1.jpg'
-import Image1 from './Corboard Images/CorkBoard1.jpg'
+import Background from './Corboard Images/corkboard-web.png'
+import Rrose from './Corboard Images/RRose.png'
+import God from './Corboard Images/god.jpg'
+import Demuth from './Corboard Images/demuth_letter.png'
+import Amie from './Corboard Images/amie.jpg'
 
 //Web Imports
 import Container from 'react-bootstrap/Container'
@@ -82,12 +85,15 @@ function FullClear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
     existingLines = [];
+
+    localStorage.setItem("SaveData", JSON.stringify(existingLines));
 }
 
 function UndoLastStroke() {
     existingLines.pop();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     draw()
+    localStorage.setItem("SaveData", JSON.stringify(existingLines));
 }
 
 function SetIt() {
@@ -153,7 +159,83 @@ class Corkboard extends Component {
 
         this.resizeWindow = this.resizeWindow.bind(this);
         this.setChildren = this.setChildren.bind(this);
+        this.checkImages = this.checkImages.bind(this);
 
+    }
+
+    checkImages() {
+        var puzzle = [];
+        if (localStorage.getItem("SolvedPuzzle") !== null) {
+            puzzle = JSON.parse(localStorage.getItem("SolvedPuzzle"));
+        }
+
+        puzzle.forEach(element => {
+            console.log("Puzzle: " + element)
+            switch (element) {
+                case "TheLetter":
+                    if (document.getElementById("Amie") !== null)
+                        document.getElementById("Amie").style.display = "block";
+                    break;
+                case "DemuthLetter":
+                    if (document.getElementById("Demuth") !== null)
+                        document.getElementById("Demuth").style.display = "block";
+
+                    break;
+                case "SiaCatalog":
+                    if (document.getElementById("Sia") !== null)
+                        document.getElementById("Sia").style.display = "block";
+
+                    break;
+                case "BlindMan":
+                    if (document.getElementById("BlindMan") !== null)
+                        document.getElementById("BlindMan").style.display = "block";
+
+                    break;
+                case "MinaLoy":
+                    if (document.getElementById("MinaLoy") !== null)
+                        document.getElementById("MinaLoy").style.display = "block";
+
+                    break;
+                case "TissuePaper":
+                    if (document.getElementById("TissuePaper") !== null)
+                        document.getElementById("TissuePaper").style.display = "block";
+
+                    break;
+                case "Phonebook":
+                    if (document.getElementById("Phonebook") !== null)
+                        document.getElementById("Phonebook").style.display = "block";
+
+                    break;
+                case "Elsa":
+                    if (document.getElementById("Elsa") !== null)
+                        document.getElementById("Elsa").style.display = "block";
+
+                    break;
+                case "Rrose":
+                    if (document.getElementById("Rrose") !== null)
+                        document.getElementById("Rrose").style.display = "block";
+
+                    break;
+                case "MottCatalog":
+                    if (document.getElementById("MottCatalog") !== null)
+                        document.getElementById("MottCatalog").style.display = "block";
+
+                    break;
+                case "God":
+                    if (document.getElementById("God") !== null)
+                        document.getElementById("God").style.display = "block";
+
+                    break;
+                case "GodII":
+                    if (document.getElementById("GodII") !== null)
+                        document.getElementById("GodII").style.display = "block";
+
+                    break;
+                default:
+                    console.log("error");
+                    break;
+            }
+        });
     }
 
     DrawImage() {
@@ -194,6 +276,8 @@ class Corkboard extends Component {
         window.addEventListener('mousedown', this.Onmousedown, false);
         window.addEventListener('mousemove', this.Onmousemove, false);
         window.addEventListener('mouseup', this.Onmouseup, false);
+
+        this.checkImages();
     }
 
     //So the program always has the correct width and height of window
@@ -277,16 +361,21 @@ class Corkboard extends Component {
                     heigh="100"
                     style={{ display: 'none' }} />
 
+                <Image id="Rrose" src={Rrose} className="draggable-board board-resize"
+                    style={{ display: 'none' }} />
+                <Image id="God" src={God} className="draggable-board board-resize"
+                    style={{ display: 'none' }} />
+                <Image id="Demuth" src={Demuth} className="draggable-board board-resize"
+                    style={{ display: 'none' }} />
+                <Image id="Amie" src={Amie} className="draggable-board board-resize"
+                    style={{ display: 'none' }} />
+
+
                 {/* Canvases */}
                 <canvas id="CanvasImage" className="canvas" />
                 <canvas id="Canvas" className="canvas" />
 
-                {/* <Image src={Image1} className="draggable-board board-resize" /> */}
-                {/*   <Image src={Image2} className="draggable-board board-resize" />
-                    <Image src={Image3} className="draggable-board board-resize" />
-                    <Image src={Image4} className="draggable-board board-resize" />
-                    <Image src={Image5} className="draggable-board board-resize" /> */}
-                {/* </div> */}
+
 
                 {/* Button to full clear the board */}
                 <Button className="canvas"
@@ -301,7 +390,7 @@ class Corkboard extends Component {
                     onClick={() => UndoLastStroke()}>
                     Undo
                 </Button>
-            </Container>
+            </Container >
         );
     }
 }

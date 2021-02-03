@@ -10,6 +10,8 @@ import Sticky from "../../../folder_elements/sticky/sticky.png"
 import Board from '../../../Corkboard/pushpin.png'
 import Pen from '../../../folder_elements/pen/pen_bak.png'
 import Note from '../../../folder_elements/notes.png'
+import Camera from '../../../folder_elements/Camera Icon.png'
+import Globe from '../../../folder_elements/GlobeRubberStamp.png'
 import Open from '../../../folder_elements/envelopes/envelode_opened.png'
 import Closed from '../../../folder_elements/envelopes/envelope_closed.png'
 import Folder1 from '../../../folder_elements/folder_pages/folder_1.png'
@@ -108,10 +110,13 @@ var currS = imgS1;
 
 var tabBuffer = 0;
 
+var solvedPuzzles = [];
 var showRightTabs = [false, false, false, false, false, false, false, false, false, false, false, false];
 var showLeftTabs = [true, true, true, true, true, true, true, true, true, true, true, true];
-var tissePasswords = ["louisevaresenorton", "louisenortonvarese", "louisemccutcheonnorton", "louisenortonmccutcheon", "louisenortonvarèse", "louisevarèsenorton"];
 var currentTab = 1;
+//globe and camera elements
+var globeWidth, globeleft, globeRight, globeTop = 0;
+var cameraWidth, cameraleft, cameraTop = 0;
 
 function SetPages() {
     //middle of screen
@@ -299,6 +304,24 @@ function setNoteItems(itemWidth, itemHeight, itemLeft) {
     document.getElementById("Solved").style.width = itemWidth + "px";
 }
 
+function setCamera(width, left, top) {
+    document.getElementById("Camera").style.left = left + "px";
+    document.getElementById("Camera").style.top = top + "px";
+    document.getElementById("Camera").style.width = width + "px";
+}
+
+function setGlobe(width, left, top, right) {
+    document.getElementById("Globe").style.left = left + "px";
+    document.getElementById("Globe").style.top = top + "px";
+    document.getElementById("Globe").style.width = width + "px";
+
+    document.getElementById("GlobeRight").style.left = right + "px";
+    document.getElementById("GlobeRight").style.top = top + 45 + "px";
+    document.getElementById("GlobeRight").style.width = width + "px";
+
+}
+
+
 class Clues extends Component {
     static propTypes = {
         cookies: instanceOf(Cookies).isRequired
@@ -353,6 +376,8 @@ class Clues extends Component {
         //set teh unsolved image
         var itemWidth, itemHeight, itemLeft = 0;
 
+
+
         if (window.innerWidth >= 1400) { //larges screen size
             if (window.innerHeight >= 1080) { //larges screen size
                 newWidth = 1440;
@@ -383,6 +408,18 @@ class Clues extends Component {
                 tab1 = 70;
                 tab2 = 80;
                 tab3 = 85;
+
+                //Set Camera
+                cameraWidth = 100;
+                cameraleft = 500;
+                cameraTop = 790;
+
+                //Set Globe
+                globeWidth = 100;
+                globeleft = 500;
+                globeRight = 975;
+                globeTop = 790;
+
             }
             else if (window.innerHeight >= 800) { //medium screen size
                 newWidth = 1100;
@@ -413,6 +450,17 @@ class Clues extends Component {
                 tab1 = 53;
                 tab2 = 60;
                 tab3 = 75;
+
+                //Set Camera
+                cameraWidth = 100;
+                cameraleft = 650;
+                cameraTop = 595;
+
+                //Set Globe
+                globeWidth = 100;
+                globeleft = 650;
+                globeRight = 975;
+                globeTop = 595;
             }
             else { //smallest screen size
                 newWidth = 1000;
@@ -443,6 +491,16 @@ class Clues extends Component {
                 tab1 = 47;
                 tab2 = 55;
                 tab3 = 75;
+
+                cameraWidth = 100;
+                cameraleft = 350;
+                cameraTop = 555;
+
+                //Set Globe
+                globeWidth = 100;
+                globeleft = 350;
+                globeRight = 675;
+                globeTop = 525;
             }
         }
         else if (window.innerWidth >= 1024) { //medium screen size
@@ -477,6 +535,16 @@ class Clues extends Component {
                 tab1 = 47;
                 tab2 = 55;
                 tab3 = 75;
+
+                cameraWidth = 100;
+                cameraleft = 75;
+                cameraTop = 555;
+
+                //Set Globe
+                globeWidth = 100;
+                globeleft = 75;
+                globeRight = 400;
+                globeTop = 555;
             }
             else if (window.innerHeight >= 720) { //smallest screen size
                 newWidth = 1000;
@@ -509,6 +577,16 @@ class Clues extends Component {
                 tab1 = 47;
                 tab2 = 55;
                 tab3 = 75;
+
+                cameraWidth = 100;
+                cameraleft = 75;
+                cameraTop = 555;
+
+                //Set Globe
+                globeWidth = 100;
+                globeleft = 75;
+                globeRight = 400;
+                globeTop = 525;
             }
             else {
                 newWidth = 855;
@@ -540,6 +618,17 @@ class Clues extends Component {
                 tab1 = 40;
                 tab2 = 47;
                 tab3 = 50;
+
+                //Set Camera
+                cameraWidth = 100;
+                cameraleft = 150;
+                cameraTop = 455;
+
+                //Set Globe
+                globeWidth = 100;
+                globeleft = 125;
+                globeRight = 425;
+                globeTop = 425;
             }
         }
         else { //smallest screen size
@@ -572,6 +661,17 @@ class Clues extends Component {
             tab1 = 35;
             tab2 = 40;
             tab3 = 60;
+
+            //Set Camera
+            cameraWidth = 100;
+            cameraleft = 125;
+            cameraTop = 400;
+
+            //Set Globe
+            globeWidth = 100;
+            globeleft = 120;
+            globeRight = 350;
+            globeTop = 350;
         }
 
         for (var i = 0; i < folders.length; i++) {
@@ -583,6 +683,8 @@ class Clues extends Component {
         setEnvelope(eWidth, eleft, eTop);
         setTitle(size, tleft, tTop, tWdth, tHeight);
         setNoteItems(itemWidth, itemHeight, itemLeft);
+        setGlobe(globeWidth, globeleft, globeTop, globeRight);
+        setCamera(cameraWidth, cameraleft, cameraTop);
     }
 
     //Check if a puzzle is unlocked or not
@@ -634,6 +736,10 @@ class Clues extends Component {
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "block";
 
+                //Turn on the pen and camera
+                document.getElementById("Globe").style.display = "none";
+                document.getElementById("GlobeRight").style.display = "none";
+                document.getElementById("Camera").style.display = "block";
                 break;
             case 3:
                 if (cookies.get('DemuthLetterChildren')) {
@@ -675,6 +781,11 @@ class Clues extends Component {
 
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "block";
+
+                //Turn on the pen and camera
+                document.getElementById("Globe").style.display = "none";
+                document.getElementById("GlobeRight").style.display = "none";
+                document.getElementById("Camera").style.display = "block";
                 break;
             case 4:
                 if (cookies.get('SiaCatalogChildren')) {
@@ -717,6 +828,11 @@ class Clues extends Component {
 
                 document.getElementById("Pen").style.display = "block";
 
+                //Turn on the pen and camera
+                document.getElementById("GlobeLink").setAttribute('href', 'https://mina-loy.com/');
+                document.getElementById("Globe").style.display = "block";
+                document.getElementById("GlobeRight").style.display = "none";
+                document.getElementById("Camera").style.display = "none";
                 break;
             case 5:
                 if (cookies.get('BlindManChildren')) {
@@ -758,6 +874,13 @@ class Clues extends Component {
                 }
 
                 document.getElementById("Pen").style.display = "block";
+
+                //Turn on the pen and camera
+                document.getElementById("GlobeLink").setAttribute('href', 'https://thereaderwiki.com/en/Louise_Var%C3%A8se');
+                document.getElementById("Globe").style.display = "block";
+                document.getElementById("GlobeRight").style.display = "none";
+                document.getElementById("Camera").style.display = "none";
+
                 break;
             case 6:
                 if (cookies.get('MinaLoyChildren')) {
@@ -798,6 +921,10 @@ class Clues extends Component {
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "block";
 
+                //Turn on the pen and camera
+                document.getElementById("Globe").style.display = "none";
+                document.getElementById("GlobeRight").style.display = "none";
+                document.getElementById("Camera").style.display = "none";
                 break;
             case 7:
                 if (cookies.get('TissuePaperChildren')) {
@@ -838,6 +965,11 @@ class Clues extends Component {
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "block";
 
+                //Turn on the pen and camera
+                document.getElementById("GlobeLink").setAttribute('href', 'https://www.theartnewspaper.com/comment/did-marcel-duchamp-steal-elsa-s-urinal');
+                document.getElementById("Globe").style.display = "block";
+                document.getElementById("GlobeRight").style.display = "none";
+                document.getElementById("Camera").style.display = "none";
                 break;
             case 8:
                 if (cookies.get('PhonebookChildren')) {
@@ -879,6 +1011,11 @@ class Clues extends Component {
                 }
 
                 document.getElementById("Pen").style.display = "block";
+
+                //Turn on the pen and camera
+                document.getElementById("Globe").style.display = "none";
+                document.getElementById("GlobeRight").style.display = "none";
+                document.getElementById("Camera").style.display = "none";
                 break;
             case 9:
                 if (cookies.get('ElsaChildren')) {
@@ -920,6 +1057,12 @@ class Clues extends Component {
                 }
 
                 document.getElementById("Pen").style.display = "block";
+
+                //Turn on the pen and camera
+                document.getElementById("GlobeLink").setAttribute('href', 'https://www.academia.edu/23704928/Introduction_to_Duchamps_Urinal_The_Facts_Behind_the_Fa%C3%A7ade');
+                document.getElementById("Globe").style.display = "none";
+                document.getElementById("GlobeRight").style.display = "block";
+                document.getElementById("Camera").style.display = "block";
                 break;
             case 10:
                 //if the previous puzzle has been solved
@@ -961,6 +1104,12 @@ class Clues extends Component {
 
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "block";
+
+                //Set camera and globe
+                document.getElementById("GlobeLink").setAttribute('href', 'https://sinclairnj.blogs.rutgers.edu/2018/07/richard-mutt/');
+                document.getElementById("Globe").style.display = "none";
+                document.getElementById("GlobeRight").style.display = "block";
+                document.getElementById("Camera").style.display = "none";
                 break;
             case 11:
                 if (cookies.get('MottCatalogChildren')) {
@@ -1001,6 +1150,12 @@ class Clues extends Component {
 
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "block";
+
+
+                //Set camera and globe
+                document.getElementById("Globe").style.display = "none";
+                document.getElementById("GlobeRight").style.display = "none";
+                document.getElementById("Camera").style.display = "none";
                 break;
             case 12:
                 if (cookies.get('GodChildren')) {
@@ -1040,6 +1195,12 @@ class Clues extends Component {
 
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "block";
+
+                //Set globe and camera
+                document.getElementById("GlobeLink").setAttribute('href', 'https://mitpress.mit.edu/books/baroness-elsa');
+                document.getElementById("Globe").style.display = "block";
+                document.getElementById("GlobeRight").style.display = "none";
+                document.getElementById("Camera").style.display = "none";
                 break;
             default:
                 //Set envelope to unlocked
@@ -1059,6 +1220,11 @@ class Clues extends Component {
 
                 //Turn on the pen for password puzzles
                 document.getElementById("Pen").style.display = "block";
+
+                //Turn on the pen and camera
+                document.getElementById("Globe").style.display = "none";
+                document.getElementById("GlobeRight").style.display = "none";
+                document.getElementById("Camera").style.display = "none";
 
                 //once the puzzle has been solved turn on and set the solved image
                 if (cookies.get('TheLetterChildren')) {
@@ -1105,6 +1271,10 @@ class Clues extends Component {
             document.getElementById("Title").innerHTML = order[folder - 1];
             cookies.set('currentTab', folder)
 
+            //globe and camera elements
+            setGlobe(globeWidth, globeleft, globeTop);
+            setCamera(cameraWidth, cameraleft, cameraTop);
+
             this.CheckPuzzle(folder);
         }
     }
@@ -1113,7 +1283,7 @@ class Clues extends Component {
         const { cookies } = this.props;
         folder = parseInt(folder);
 
-        console.log(folder)
+        console.log("folder: " + folder)
         console.log(showRightTabs[0])
 
 
@@ -1148,6 +1318,9 @@ class Clues extends Component {
             console.log("clicked-right: " + folder);
             cookies.set('currentTab', folder)
 
+            setGlobe(globeWidth, globeleft, globeTop);
+            setCamera(cameraWidth, cameraleft, cameraTop);
+
             this.CheckPuzzle(folder);
         }
     }
@@ -1159,96 +1332,119 @@ class Clues extends Component {
     CheckPassword(event) {
         const { cookies } = this.props;
 
-        var input = this.state.passwordValue.toLowerCase();
-        input = input.split(" ").join("");
+        var correct = false;
+        var pass = this.state.passwordValue.toLowerCase();
+        pass = pass.split(" ").join("");
+        const input = pass.trim();
 
         currentTab = parseInt(currentTab);
 
         //if the letter is open
         if (currentTab === 1) {
+            console.log(input === "playtesting")
             if (input === "amie" || input === "playtesting") {
                 cookies.set('TheLetterChildren');
-                return;
+                solvedPuzzles.push("TheLetter");
+                correct = true
             }
         }
         else if (currentTab === 3) {
             if (input === "nominaldues" || input === "playtesting") {
                 cookies.set('SiaCatalogChildren');
-                return;
+                solvedPuzzles.push("SiaCatalog");
+                correct = true
             }
         }
         else if (currentTab === 2) {
             if (input === "thesuperindependents" || input === "salondesrefuses" || input === "salondesrefusés" || input === "playtesting") {
                 cookies.set('DemuthLetterChildren');
-                return;
+                solvedPuzzles.push("DemuthLetter");
+                correct = true
             }
         }
         else if (currentTab === 7) {
             if (input === "110W88" || input === "playtesting") {
                 cookies.set('PhonebookChildren');
-                return;
+                solvedPuzzles.push("Phonebook");
+                correct = true
             }
         }
         else if (currentTab === 6) {
-            var pass = false
-            tissePasswords.forEach(element => {
-                console.log(input === element)
-                if (input === element) {
-                    pass = true;
-                }
-            });
-
-            if (pass === true || input === "playtesting") {
+            if (input == "louisevaresenorton" || input == "louisenortonvarese" || input == "louisemccutcheonnorton" || input == "louisenortonmccutcheon" || input == "louisenortonvarèse" || input == "louisevarèsenorton" || input === "playtesting") {
                 cookies.set('TissuePaperChildren');
-                return;
+                solvedPuzzles.push("TissuePaper");
+                correct = true
             }
         }
         else if (currentTab === 4) {
             if (input === "playtesting") {
                 cookies.set('BlindManChildren');
-                return;
+                solvedPuzzles.push("BlindMan");
+                correct = true
             }
         }
         else if (currentTab === 5) {
             if (input === "playtesting" || input === "minaloy") {
+                solvedPuzzles.push("MinaLoy");
                 cookies.set('MinaLoyChildren');
-                return;
+                correct = true
             }
         }
         else if (currentTab === 8) {
             if (input === "godisintheplumbing" || input === "playtesting") {
                 cookies.set('ElsaChildren');
-                return;
+                solvedPuzzles.push("Elsa");
+                correct = true
             }
         }
         else if (currentTab === 9) {
             if (input === "douche" || input === "louisevaresenorton" || input === "aliasmarcelduchampest.1920"
                 || input === "rroseselavy" || input === "playtesting") {
                 cookies.set('RroseChildren');
-                return;
+                solvedPuzzles.push("Rrose");
+                correct = true
             }
         }
         else if (currentTab === 10) {
             if (input === "playtesting") {
                 cookies.set('MottCatalogChildren');
-                return;
+                solvedPuzzles.push("MottCatalog");
+                correct = true
             }
         }
         else if (currentTab === 11) {
             if (input === 'elsa' || input === "playtesting") {
                 cookies.set('GodChildren');
-                return;
+                solvedPuzzles.push("God");
+                correct = true
             }
         }
         else if (currentTab === 12) {
             if (input === "playtesting" || input === "pipes") {
                 cookies.set('GodIIChildren');
-                return;
+                solvedPuzzles.push("GodII");
+                correct = true
             }
         }
 
-        event.preventDefault();
-        alert("Bad password: " + input)
+        if (correct === false) {
+            event.preventDefault();
+            alert("Bad password: " + input)
+            return;
+        }
+
+        if (localStorage.getItem("SolvedPuzzle") !== null) {
+            var puzzle = JSON.parse(localStorage.getItem("SolvedPuzzle"));
+            puzzle.push(solvedPuzzles[0]);
+            solvedPuzzles = puzzle;
+            solvedPuzzles = this.removeDups();
+        }
+
+        localStorage.setItem("SolvedPuzzle", JSON.stringify(solvedPuzzles));
+    }
+
+    removeDups() {
+        return solvedPuzzles.filter((value, index) => solvedPuzzles.indexOf(value) === index);
     }
 
     render() {
@@ -1273,8 +1469,9 @@ class Clues extends Component {
                         bottom: "0px",
                         zIndex: "9999"
                     }}>
+
                     <a href='/evidence-board'>
-                        <Image src={Board} className="pushpin" />
+                        <Image src={Board} className="container pushpin" />
                     </a>
                 </div>
 
@@ -1312,6 +1509,12 @@ class Clues extends Component {
                         <Image id="Unsolved" src={ARLetter1} className="unsolved" />
                         <Image id="Solved" src={ARLetter2} className="unsolved"
                             style={{ display: 'none' }} />
+                        <Image id="Camera" src={Camera} className="unsolved" />
+
+                        <a id="GlobeLink" rel="noopener noreferrer" target="_blank" href='/'>
+                            <Image id="Globe" src={Globe} className="unsolved" />
+                            <Image id="GlobeRight" src={Globe} className="unsolved" />
+                        </a>
 
                         <a id="Link" href='/the-letter'>
                             <div id="Title" className="written">
