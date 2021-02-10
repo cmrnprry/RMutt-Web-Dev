@@ -113,7 +113,7 @@ function removeFromList(draggable, drop) {
 }
 
 function puzzleSolved() {
-    alert("Puzzle has been solved");
+    // alert("Puzzle has been solved");
 }
 
 function checkList() {

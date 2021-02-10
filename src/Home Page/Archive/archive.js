@@ -58,7 +58,7 @@ class Archive extends Component {
         input = input.split(" ").join("");
 
         if (input === val1 || input === val2) {
-            this.props.history.push('/clues')
+            this.props.history.push('/intro')
         }
         else {
             alert("Incorrect password.");

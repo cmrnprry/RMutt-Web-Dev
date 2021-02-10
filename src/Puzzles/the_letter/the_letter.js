@@ -8,8 +8,8 @@ import Back from '../../Navigation/Back.js'
 
 //Image Imports
 import Background from '../../folder_elements/wooden.png'
-import letter from './ar_letter_elements/ar_letter.jpg'
-import letter_red from './ar_letter_elements/ar_letter_red.jpg'
+import letter from './ar_letter_elements/ar_letter.png'
+import letter_red from './ar_letter_elements/ar_letter_red.png'
 import BackImage from '../../folder_elements/back_button.png'
 import VoiceLine from '../../Voice clips/TheLetter.wav'
 

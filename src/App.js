@@ -6,6 +6,7 @@ import { CookiesProvider } from 'react-cookie';
 //CSS Imports
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Stylesheets/dada.css';
+import './Stylesheets/letter.css';
 import './Stylesheets/clues.css';
 import './Stylesheets/demuth_letter.css';
 import './Stylesheets/tissue_paper.css';
@@ -21,6 +22,8 @@ import './Stylesheets/corkboard.css';
 
 //Home Page
 import Home from './Home Page/Front/Home/home';
+import Intro from './Home Page/Front/Home/introPage';
+import Outro from './Home Page/Front/Home/outroPage';
 import Front from './Home Page/Front/front';
 import About from './Home Page/About/about';
 import Archive from './Home Page/Archive/archive';
@@ -53,6 +56,8 @@ class App extends Component {
             <Route exact path='/front' component={Front} />
             <Route exact path='/about' component={About} />
             <Route exact path='/archive' component={Archive} />
+            <Route exact path='/intro' component={Intro} />
+            <Route exact path='/outro' component={Outro} />
             <Route exact path='/clues' component={Clues} />
             <Route exact path='/evidence-board' component={CorkBoard} />
 

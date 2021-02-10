@@ -13,9 +13,14 @@ import Back from '../Navigation/Back.js'
 //Image Imports
 import Background from './Corboard Images/corkboard-web.png'
 import Rrose from './Corboard Images/RRose.png'
-import God from './Corboard Images/god.jpg'
+import God from './Corboard Images/god.png'
 import Demuth from './Corboard Images/demuth_letter.png'
-import Amie from './Corboard Images/amie.jpg'
+import Elsa from './Corboard Images/elsa.png'
+import Amie from './Corboard Images/ar_letter_red.png'
+import BlindMan from './Corboard Images/blind_man.png'
+import Louise from './Corboard Images/louise.png'
+import MinaLoy from './Corboard Images/mina_loy.png'
+import BeatriceWood from './Corboard Images/beatrice_wood.png'
 
 //Web Imports
 import Container from 'react-bootstrap/Container'
@@ -369,6 +374,25 @@ class Corkboard extends Component {
                     style={{ display: 'none' }} />
                 <Image id="Amie" src={Amie} className="draggable-board board-resize"
                     style={{ display: 'none' }} />
+                <Image id="BlindMan" src={BeatriceWood} className="draggable-board board-resize"
+                    style={{ display: 'none' }} />
+                <Image id="Elsa" src={Elsa} className="draggable-board board-resize"
+                    style={{ display: 'none' }} />
+                <Image id="MinaLoy" src={MinaLoy} className="draggable-board board-resize"
+                    style={{ display: 'none' }} />
+                <Image id="TissuePaper" src={Louise} className="draggable-board board-resize"
+                    style={{ display: 'none' }} />
+                <Image id="Elsa" src={Elsa} className="draggable-board board-resize"
+                    style={{ display: 'none' }} />
+                {/* <Image id="Phonebook" src={else} className="draggable-board board-resize"
+                    style={{ display: 'none' }} /> */}
+                {/* <Image id="GodII" src={else} className="draggable-board board-resize"
+                    style={{ display: 'none' }} /> */}
+                <Image id="MottCatalog" src={BlindMan} className="draggable-board board-resize"
+                    style={{ display: 'none' }} />
+                {/* <Image id="Sia" src={else} className="draggable-board board-resize"
+                    style={{ display: 'none' }} /> */}
+                
 
 
                 {/* Canvases */}

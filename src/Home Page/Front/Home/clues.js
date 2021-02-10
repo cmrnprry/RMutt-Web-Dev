@@ -302,20 +302,26 @@ function setNoteItems(itemWidth, itemHeight, itemLeft) {
     document.getElementById("Solved").style.left = (document.getElementById("Note").getBoundingClientRect().left + itemLeft) + "px";
     document.getElementById("Solved").style.top = document.getElementById("Note").getBoundingClientRect().y + itemHeight + "px";
     document.getElementById("Solved").style.width = itemWidth + "px";
+
+    //set camera & Globe left
+    document.getElementById("Camera").style.left = (document.getElementById("Note").getBoundingClientRect().left + itemLeft) + "px";
+    document.getElementById("Globe").style.left = (document.getElementById("Note").getBoundingClientRect().left + itemLeft) + "px";
+    document.getElementById("GlobeRight").style.right = (document.getElementById("Note").getBoundingClientRect().right + itemLeft) + "px";
+
+
 }
 
-function setCamera(width, left, top) {
-    document.getElementById("Camera").style.left = left + "px";
+function setCamera(width, top) {
+    console.log(document.getElementById("Solved").getBoundingClientRect().left)
     document.getElementById("Camera").style.top = top + "px";
     document.getElementById("Camera").style.width = width + "px";
 }
 
-function setGlobe(width, left, top, right) {
-    document.getElementById("Globe").style.left = left + "px";
+function setGlobe(width, left, top) {
+    // document.getElementById("Globe").style.left = left + "px";
     document.getElementById("Globe").style.top = top + "px";
     document.getElementById("Globe").style.width = width + "px";
 
-    document.getElementById("GlobeRight").style.left = right + "px";
     document.getElementById("GlobeRight").style.top = top + 45 + "px";
     document.getElementById("GlobeRight").style.width = width + "px";
 
@@ -410,15 +416,12 @@ class Clues extends Component {
                 tab3 = 85;
 
                 //Set Camera
-                cameraWidth = 100;
-                cameraleft = 500;
-                cameraTop = 790;
+                cameraWidth = 190;
+                cameraTop = 780;
 
                 //Set Globe
-                globeWidth = 100;
-                globeleft = 500;
-                globeRight = 975;
-                globeTop = 790;
+                globeWidth = 140;
+                globeTop = 760;
 
             }
             else if (window.innerHeight >= 800) { //medium screen size
@@ -452,14 +455,11 @@ class Clues extends Component {
                 tab3 = 75;
 
                 //Set Camera
-                cameraWidth = 100;
-                cameraleft = 650;
+                cameraWidth = 130;
                 cameraTop = 595;
 
                 //Set Globe
                 globeWidth = 100;
-                globeleft = 650;
-                globeRight = 975;
                 globeTop = 595;
             }
             else { //smallest screen size
@@ -493,13 +493,10 @@ class Clues extends Component {
                 tab3 = 75;
 
                 cameraWidth = 100;
-                cameraleft = 350;
                 cameraTop = 555;
 
                 //Set Globe
                 globeWidth = 100;
-                globeleft = 350;
-                globeRight = 675;
                 globeTop = 525;
             }
         }
@@ -537,13 +534,10 @@ class Clues extends Component {
                 tab3 = 75;
 
                 cameraWidth = 100;
-                cameraleft = 75;
                 cameraTop = 555;
 
                 //Set Globe
                 globeWidth = 100;
-                globeleft = 75;
-                globeRight = 400;
                 globeTop = 555;
             }
             else if (window.innerHeight >= 720) { //smallest screen size
@@ -579,13 +573,10 @@ class Clues extends Component {
                 tab3 = 75;
 
                 cameraWidth = 100;
-                cameraleft = 75;
                 cameraTop = 555;
 
                 //Set Globe
                 globeWidth = 100;
-                globeleft = 75;
-                globeRight = 400;
                 globeTop = 525;
             }
             else {
@@ -621,13 +612,10 @@ class Clues extends Component {
 
                 //Set Camera
                 cameraWidth = 100;
-                cameraleft = 150;
                 cameraTop = 455;
 
                 //Set Globe
                 globeWidth = 100;
-                globeleft = 125;
-                globeRight = 425;
                 globeTop = 425;
             }
         }
@@ -664,13 +652,10 @@ class Clues extends Component {
 
             //Set Camera
             cameraWidth = 100;
-            cameraleft = 125;
             cameraTop = 400;
 
             //Set Globe
-            globeWidth = 100;
-            globeleft = 120;
-            globeRight = 350;
+            globeWidth = 80;
             globeTop = 350;
         }
 
@@ -683,8 +668,8 @@ class Clues extends Component {
         setEnvelope(eWidth, eleft, eTop);
         setTitle(size, tleft, tTop, tWdth, tHeight);
         setNoteItems(itemWidth, itemHeight, itemLeft);
-        setGlobe(globeWidth, globeleft, globeTop, globeRight);
-        setCamera(cameraWidth, cameraleft, cameraTop);
+        setGlobe(globeWidth, globeTop);
+        setCamera(cameraWidth, cameraTop);
     }
 
     //Check if a puzzle is unlocked or not
@@ -701,6 +686,7 @@ class Clues extends Component {
                 if (cookies.get('TheLetterChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -711,6 +697,7 @@ class Clues extends Component {
                     if (cookies.get('DemuthLetterChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
+                        document.getElementById("Camera").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -727,6 +714,7 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -739,12 +727,14 @@ class Clues extends Component {
                 //Turn on the pen and camera
                 document.getElementById("Globe").style.display = "none";
                 document.getElementById("GlobeRight").style.display = "none";
-                document.getElementById("Camera").style.display = "block";
+
                 break;
             case 3:
                 if (cookies.get('DemuthLetterChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
+
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -756,6 +746,8 @@ class Clues extends Component {
                         console.log("here");
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
+                        document.getElementById("Camera").style.display = "block";
+
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -773,6 +765,8 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
+
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -785,12 +779,13 @@ class Clues extends Component {
                 //Turn on the pen and camera
                 document.getElementById("Globe").style.display = "none";
                 document.getElementById("GlobeRight").style.display = "none";
-                document.getElementById("Camera").style.display = "block";
                 break;
             case 4:
                 if (cookies.get('SiaCatalogChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
+
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -801,6 +796,9 @@ class Clues extends Component {
                     if (cookies.get('BlindManChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
+
+                        //Turn on the pen and camera
+                        document.getElementById("Camera").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -820,6 +818,8 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
+
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -827,17 +827,14 @@ class Clues extends Component {
                 }
 
                 document.getElementById("Pen").style.display = "block";
-
-                //Turn on the pen and camera
-                document.getElementById("GlobeLink").setAttribute('href', 'https://mina-loy.com/');
-                document.getElementById("Globe").style.display = "block";
                 document.getElementById("GlobeRight").style.display = "none";
-                document.getElementById("Camera").style.display = "none";
+                document.getElementById("Globe").style.display = "none";
                 break;
             case 5:
                 if (cookies.get('BlindManChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Globe").style.display = "none";
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -848,6 +845,8 @@ class Clues extends Component {
                     if (cookies.get('MinaLoyChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
+                        document.getElementById("GlobeLink").setAttribute('href', 'https://mina-loy.com/');
+                        document.getElementById("Globe").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -867,6 +866,7 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Globe").style.display = "none";
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -876,8 +876,6 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "block";
 
                 //Turn on the pen and camera
-                document.getElementById("GlobeLink").setAttribute('href', 'https://thereaderwiki.com/en/Louise_Var%C3%A8se');
-                document.getElementById("Globe").style.display = "block";
                 document.getElementById("GlobeRight").style.display = "none";
                 document.getElementById("Camera").style.display = "none";
 
@@ -886,6 +884,8 @@ class Clues extends Component {
                 if (cookies.get('MinaLoyChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Globe").style.display = "none";
+
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -896,6 +896,8 @@ class Clues extends Component {
                     if (cookies.get('TissuePaperChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
+                        document.getElementById("GlobeLink").setAttribute('href', 'https://thereaderwiki.com/en/Louise_Var%C3%A8se');
+                        document.getElementById("Globe").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -912,6 +914,8 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Globe").style.display = "none";
+
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -922,7 +926,6 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "block";
 
                 //Turn on the pen and camera
-                document.getElementById("Globe").style.display = "none";
                 document.getElementById("GlobeRight").style.display = "none";
                 document.getElementById("Camera").style.display = "none";
                 break;
@@ -966,8 +969,7 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "block";
 
                 //Turn on the pen and camera
-                document.getElementById("GlobeLink").setAttribute('href', 'https://www.theartnewspaper.com/comment/did-marcel-duchamp-steal-elsa-s-urinal');
-                document.getElementById("Globe").style.display = "block";
+                document.getElementById("Globe").style.display = "none";
                 document.getElementById("GlobeRight").style.display = "none";
                 document.getElementById("Camera").style.display = "none";
                 break;
@@ -975,6 +977,8 @@ class Clues extends Component {
                 if (cookies.get('PhonebookChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Globe").style.display = "none";
+
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -985,6 +989,9 @@ class Clues extends Component {
                     if (cookies.get('ElsaChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
+                        document.getElementById("GlobeLink").setAttribute('href', 'https://www.theartnewspaper.com/comment/did-marcel-duchamp-steal-elsa-s-urinal');
+                        document.getElementById("Globe").style.display = "block";
+
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -1004,6 +1011,8 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Globe").style.display = "none";
+
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -1013,7 +1022,6 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "block";
 
                 //Turn on the pen and camera
-                document.getElementById("Globe").style.display = "none";
                 document.getElementById("GlobeRight").style.display = "none";
                 document.getElementById("Camera").style.display = "none";
                 break;
@@ -1057,12 +1065,10 @@ class Clues extends Component {
                 }
 
                 document.getElementById("Pen").style.display = "block";
-
                 //Turn on the pen and camera
-                document.getElementById("GlobeLink").setAttribute('href', 'https://www.academia.edu/23704928/Introduction_to_Duchamps_Urinal_The_Facts_Behind_the_Fa%C3%A7ade');
                 document.getElementById("Globe").style.display = "none";
-                document.getElementById("GlobeRight").style.display = "block";
-                document.getElementById("Camera").style.display = "block";
+                document.getElementById("GlobeRight").style.display = "none";
+                document.getElementById("Camera").style.display = "none";
                 break;
             case 10:
                 //if the previous puzzle has been solved
@@ -1070,6 +1076,8 @@ class Clues extends Component {
 
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -1080,6 +1088,11 @@ class Clues extends Component {
                     if (cookies.get('MottCatalogChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
+
+                        //Turn on the pen and camera
+                        document.getElementById("GlobeLink").setAttribute('href', 'https://www.academia.edu/23704928/Introduction_to_Duchamps_Urinal_The_Facts_Behind_the_Fa%C3%A7ade');
+                        document.getElementById("GlobeRight").style.display = "block";
+                        document.getElementById("Camera").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -1096,6 +1109,8 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -1106,16 +1121,15 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "block";
 
                 //Set camera and globe
-                document.getElementById("GlobeLink").setAttribute('href', 'https://sinclairnj.blogs.rutgers.edu/2018/07/richard-mutt/');
                 document.getElementById("Globe").style.display = "none";
-                document.getElementById("GlobeRight").style.display = "block";
-                document.getElementById("Camera").style.display = "none";
                 break;
             case 11:
                 if (cookies.get('MottCatalogChildren')) {
 
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
+
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -1126,6 +1140,10 @@ class Clues extends Component {
                     if (cookies.get('GodChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
+
+                        document.getElementById("GlobeLink").setAttribute('href', 'https://sinclairnj.blogs.rutgers.edu/2018/07/richard-mutt/');
+                        document.getElementById("GlobeRight").style.display = "block";
+
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -1142,6 +1160,8 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
+
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -1152,15 +1172,15 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "block";
 
 
-                //Set camera and globe
+                //Set camera and globe                
                 document.getElementById("Globe").style.display = "none";
-                document.getElementById("GlobeRight").style.display = "none";
                 document.getElementById("Camera").style.display = "none";
                 break;
             case 12:
                 if (cookies.get('GodChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Globe").style.display = "none";
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -1171,6 +1191,9 @@ class Clues extends Component {
                     if (cookies.get('GodIIChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
+                        document.getElementById("GlobeLink").setAttribute('href', 'https://mitpress.mit.edu/books/baroness-elsa');
+                        document.getElementById("Globe").style.display = "block";
+
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -1187,6 +1210,7 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Globe").style.display = "none";
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -1197,8 +1221,6 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "block";
 
                 //Set globe and camera
-                document.getElementById("GlobeLink").setAttribute('href', 'https://mitpress.mit.edu/books/baroness-elsa');
-                document.getElementById("Globe").style.display = "block";
                 document.getElementById("GlobeRight").style.display = "none";
                 document.getElementById("Camera").style.display = "none";
                 break;
@@ -1424,6 +1446,7 @@ class Clues extends Component {
                 cookies.set('GodIIChildren');
                 solvedPuzzles.push("GodII");
                 correct = true
+                this.props.history.push('/outro');
             }
         }
 
@@ -1464,16 +1487,21 @@ class Clues extends Component {
 
                 {/* Evidence Board */}
                 <div img={Board} className="container"
-                    style={{
-                        left: "0px",
-                        bottom: "0px",
-                        zIndex: "9999"
-                    }}>
+                >
 
-                    <a href='/evidence-board'>
-                        <Image src={Board} className="container pushpin" />
-                    </a>
+
                 </div>
+
+                <a href='/evidence-board'>
+                    <Image src={Board}
+                        style={{
+                            width: "15%",
+                            position: "absolute",
+                            right: "0px",
+                            bottom: "0px",
+                            zIndex: "9999"
+                        }} />
+                </a>
 
 
 

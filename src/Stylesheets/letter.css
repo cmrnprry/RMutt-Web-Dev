@@ -1,0 +1,26 @@
+.letter-container
+{
+    position: relative;
+}
+
+.text-block {
+  position: absolute;
+  top: 50%;
+  /* left: 50%;
+  transform: translate(-50%, -50%); */
+}
+
+.text
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h4 {
+   /* display: inline-block; */
+   font-size: 15px; /*or whatever you want*/
+   color: black;   
+   font-family: "Adler";
+}
