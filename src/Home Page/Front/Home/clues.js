@@ -1392,7 +1392,7 @@ class Clues extends Component {
             }
         }
         else if (currentTab === 6) {
-            if (input == "louisevaresenorton" || input == "louisenortonvarese" || input == "louisemccutcheonnorton" || input == "louisenortonmccutcheon" || input == "louisenortonvarèse" || input == "louisevarèsenorton" || input === "playtesting") {
+            if (input == "louisevaresenorton" || input == "louisenortonvarese" || input == "louisemccutcheonnorton" || input == "louisenortonmccutcheon" || input == "louisenortonvarèse" || input == "louisevarèsenorton" || input == "louisenorton" || input === "playtesting") {
                 cookies.set('TissuePaperChildren');
                 solvedPuzzles.push("TissuePaper");
                 correct = true

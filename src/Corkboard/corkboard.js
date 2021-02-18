@@ -21,6 +21,8 @@ import BlindMan from './Corboard Images/blind_man.png'
 import Louise from './Corboard Images/louise.png'
 import MinaLoy from './Corboard Images/mina_loy.png'
 import BeatriceWood from './Corboard Images/beatrice_wood.png'
+import ClearButton from './Corboard Images/full_clear_button.png'
+import Undo from './Corboard Images/undo_button.png'
 
 //Web Imports
 import Container from 'react-bootstrap/Container'
@@ -46,6 +48,7 @@ var mouseX = 0;
 var mouseY = 0;
 var isDrawing = false;
 var existingLines = [];
+var ImagePos = [];
 
 
 function draw() {
@@ -118,6 +121,40 @@ function SetIt() {
     draw();
 }
 
+function LogPosition(id, x, y)
+{
+    // ImagePos.push()
+    var newValue = {
+        ID: id,
+        xPos: x,
+        yPos: y
+    }
+    
+    console.log(newValue.ID)
+
+    var found = false
+    ImagePos.forEach(element => {
+        
+    });
+    for (var ii = 0; ii < ImagePos.length; ii ++) {
+        if (ImagePos[ii].ID === id) {
+            console.log("replacing old")
+            ImagePos[ii] = newValue;
+            found = true
+        }
+    }
+
+    if (!found)
+    {
+        console.log("adding new")
+        ImagePos.push(newValue)
+    }
+
+    console.log(ImagePos)
+
+    localStorage.setItem("ImageData", JSON.stringify(ImagePos));
+}
+
 //Draggable function
 interact('.draggable-board').draggable({
     listeners: {
@@ -135,9 +172,10 @@ interact('.draggable-board').draggable({
 
 function dragMoveListener(event) {
     var target = event.target
+
     // keep the dragged position in the data-x/data-y attributes
-    x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
-    y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+    x = ((parseFloat(target.getAttribute('data-x')) || 0) + event.dx)
+    y = ((parseFloat(target.getAttribute('data-y')) || 0) + event.dy)
 
     // translate the element
     target.style.webkitTransform =
@@ -147,6 +185,7 @@ function dragMoveListener(event) {
     // update the posiion attributes
     target.setAttribute('data-x', x)
     target.setAttribute('data-y', y)
+    LogPosition(event.target.id, x, y)
 }
 
 class Corkboard extends Component {
@@ -168,18 +207,40 @@ class Corkboard extends Component {
 
     }
 
+
+    //Sets the listener
+    componentDidMount() {
+        // canvasWidth = 500//document.getElementById("board").getBoundingClientRect().width;
+        // canvasHeight = 500//document.getElementById("board").getBoundingClientRect().height;
+
+        this.DrawImage();
+        // let image = new Image(canvasWidth, canvasWidth);
+        window.addEventListener("resize", this.resizeWindow);
+        window.addEventListener('mousedown', this.Onmousedown, false);
+        window.addEventListener('mousemove', this.Onmousemove, false);
+        window.addEventListener('mouseup', this.Onmouseup, false);
+
+        this.checkImages();
+    }
+
+    
     checkImages() {
         var puzzle = [];
         if (localStorage.getItem("SolvedPuzzle") !== null) {
             puzzle = JSON.parse(localStorage.getItem("SolvedPuzzle"));
         }
 
+        if (localStorage.getItem("ImageData") !== null) {
+            ImagePos = JSON.parse(localStorage.getItem("ImageData"));
+        }
+
         puzzle.forEach(element => {
             console.log("Puzzle: " + element)
             switch (element) {
                 case "TheLetter":
-                    if (document.getElementById("Amie") !== null)
+                    if (document.getElementById("Amie") !== null){
                         document.getElementById("Amie").style.display = "block";
+                    }
                     break;
                 case "DemuthLetter":
                     if (document.getElementById("Demuth") !== null)
@@ -192,8 +253,9 @@ class Corkboard extends Component {
 
                     break;
                 case "BlindMan":
-                    if (document.getElementById("BlindMan") !== null)
+                    if (document.getElementById("BlindMan") !== null && document.getElementById("BlindMan2") !== null)
                         document.getElementById("BlindMan").style.display = "block";
+                        document.getElementById("BlindMan2").style.display = "block";
 
                     break;
                 case "MinaLoy":
@@ -241,6 +303,17 @@ class Corkboard extends Component {
                     break;
             }
         });
+
+        ImagePos.forEach(element => {
+            var image = document.getElementById(element.ID);
+
+            image.addEventListener('load', function () {
+                image.style.webkitTransform =
+                image.style.transform = 'translate(' + element.xPos + 'px, ' + element.yPos + 'px)';
+                image.setAttribute('data-x', element.xPos);
+                image.setAttribute('data-y', element.yPos);
+            });
+        });
     }
 
     DrawImage() {
@@ -268,21 +341,6 @@ class Corkboard extends Component {
             }
             SetIt();
         });
-    }
-
-    //Sets the listener
-    componentDidMount() {
-        // canvasWidth = 500//document.getElementById("board").getBoundingClientRect().width;
-        // canvasHeight = 500//document.getElementById("board").getBoundingClientRect().height;
-
-        this.DrawImage();
-        // let image = new Image(canvasWidth, canvasWidth);
-        window.addEventListener("resize", this.resizeWindow);
-        window.addEventListener('mousedown', this.Onmousedown, false);
-        window.addEventListener('mousemove', this.Onmousemove, false);
-        window.addEventListener('mouseup', this.Onmouseup, false);
-
-        this.checkImages();
     }
 
     //So the program always has the correct width and height of window
@@ -376,20 +434,21 @@ class Corkboard extends Component {
                     style={{ display: 'none' }} />
                 <Image id="BlindMan" src={BeatriceWood} className="draggable-board board-resize"
                     style={{ display: 'none' }} />
+                <Image id="BlindMan2" src={BlindMan} className="draggable-board board-resize"
+                    style={{ display: 'none' }} />
                 <Image id="Elsa" src={Elsa} className="draggable-board board-resize"
                     style={{ display: 'none' }} />
                 <Image id="MinaLoy" src={MinaLoy} className="draggable-board board-resize"
                     style={{ display: 'none' }} />
                 <Image id="TissuePaper" src={Louise} className="draggable-board board-resize"
                     style={{ display: 'none' }} />
-                <Image id="Elsa" src={Elsa} className="draggable-board board-resize"
-                    style={{ display: 'none' }} />
+                {/* <Image id="Elsa" src={Elsa} className="draggable-board board-resize"
+                    style={{ display: 'none' }} /> */}
                 {/* <Image id="Phonebook" src={else} className="draggable-board board-resize"
                     style={{ display: 'none' }} /> */}
                 {/* <Image id="GodII" src={else} className="draggable-board board-resize"
                     style={{ display: 'none' }} /> */}
-                <Image id="MottCatalog" src={BlindMan} className="draggable-board board-resize"
-                    style={{ display: 'none' }} />
+                
                 {/* <Image id="Sia" src={else} className="draggable-board board-resize"
                     style={{ display: 'none' }} /> */}
                 
@@ -402,18 +461,16 @@ class Corkboard extends Component {
 
 
                 {/* Button to full clear the board */}
-                <Button className="canvas"
+                <Image src={ClearButton} className="canvas"
                     style={{ top: "100px" }}
                     onClick={() => FullClear()} >
-                    Full Clear
-                </Button>
+                </Image>
 
                 {/* Button to undo last stroke */}
-                <Button className="canvas"
+                <Image src={Undo} className="canvas"
                     style={{ top: "150px" }}
                     onClick={() => UndoLastStroke()}>
-                    Undo
-                </Button>
+                </Image>
             </Container >
         );
     }
