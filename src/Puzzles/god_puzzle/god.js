@@ -97,7 +97,7 @@ function dragMoveListener(event) {
 }
 
 function checkImage1(dx, dy) {
-    if ((dx >= -300 && dx <= -260) && (dy >= -105 && dy <= -83)) {
+    if ((dx >= -310 && dx <= -260) && (dy >= -105 && dy <= -73)) {
         pipe1 = true;
     }
     else {
@@ -109,7 +109,7 @@ function checkImage1(dx, dy) {
 
 function checkImage2(dx, dy) {
 
-    if ((dx >= -329 && dx <= -307) && (dy >= 105 && dy <= 127)) {
+    if ((dx >= -339 && dx <= -307) && (dy >= 90 && dy <= 137)) {
         pipe2 = true;
     }
     else {
@@ -122,7 +122,7 @@ function checkImage2(dx, dy) {
 }
 
 function checkImage3(dx, dy) {
-    if ((dx >= 301 && dx <= 323) && (dy >= 28 && dy <= 41)) {
+    if ((dx >= 290 && dx <= 323) && (dy >= 20 && dy <= 41)) {
         pipe3 = true;
     }
     else {

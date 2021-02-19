@@ -46,7 +46,7 @@ class Home extends Component {
                     <title>DADA</title>
                 </Helmet>
 
-                <Link to="clues">
+                <Link to="front">
                     <div className="letter-container ar-letter pointer">
                         <Image id="Image" src={Letter} className='ar-letter pointer' />
                         <div id="Text" className="text-block">

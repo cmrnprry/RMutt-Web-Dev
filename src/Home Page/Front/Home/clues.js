@@ -3,7 +3,11 @@ import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
-import Sticky from "../../../folder_elements/sticky/sticky.png"
+import Sticky from "../../../Logos/logo_sqr.png"
+import Question from "../../../folder_elements/hints/sticky_closed.png"
+import One from "../../../folder_elements/hints/sticky_I.png"
+import Eight from "../../../folder_elements/hints/sticky_VIII.png"
+import Eleven from "../../../folder_elements/hints/sticky_XI.png"
 
 
 //Image Imports
@@ -104,6 +108,13 @@ const imgS9 = require('../../../folder_elements/notes/rrose_2.png');
 const imgS10 = require('../../../folder_elements/notes/mott_2.png');
 const imgS11 = require('../../../folder_elements/notes/god_2.png');
 const imgS12 = require('../../../folder_elements/notes/god2_2.png');
+
+//sticky
+const closedQ = require('../../../folder_elements/hints/sticky_closed.png')
+const sticky1 = require('../../../folder_elements/hints/sticky_I.png')
+const sticky8 = require('../../../folder_elements/hints/sticky_VIII.png')
+const sticky11 = require('../../../folder_elements/hints/sticky_XI.png')
+var hintOpen = false;
 
 var currS = imgS1;
 
@@ -339,6 +350,7 @@ class Clues extends Component {
         this.state = {
             width: window.innerWidth,
             height: window.innerHeight,
+            hints: [closedQ, sticky1, sticky8, sticky11],
             folderList: [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12],
             unsolvedList: [imgUS1, imgUS2, imgUS3, imgUS4, imgUS5, imgUS6, imgUS7, imgUS8, imgUS9, imgUS10, imgUS11, imgUS12],
             solvedList: [imgS1, imgS2, imgS3, imgS4, imgS5, imgS6, imgS7, imgS8, imgS9, imgS10, imgS11, imgS12],
@@ -349,6 +361,7 @@ class Clues extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.CheckPassword = this.CheckPassword.bind(this);
         this.resizeWindow = this.resizeWindow.bind(this);
+        this.OpenHint = this.OpenHint.bind(this);
     }
 
     componentDidMount() {
@@ -681,6 +694,8 @@ class Clues extends Component {
         folder = parseInt(folder)
 
         //default will be the first puzzle
+        document.getElementById("Hint").style.display = 'none';
+
         switch (folder) {
             case 2:
                 if (cookies.get('TheLetterChildren')) {
@@ -978,6 +993,8 @@ class Clues extends Component {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
                     document.getElementById("Globe").style.display = "none";
+                    document.getElementById("Hint").style.display = 'block';
+
 
 
                     //open the envelope and show the unsolved
@@ -1129,6 +1146,8 @@ class Clues extends Component {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
                     document.getElementById("GlobeRight").style.display = "none";
+                    document.getElementById("Hint").style.display = 'block';
+
 
 
                     //open the envelope and show the unsolved
@@ -1227,7 +1246,8 @@ class Clues extends Component {
             default:
                 //Set envelope to unlocked
                 document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-
+                document.getElementById("Hint").style.display = 'block';
+                
                 //Set the unsolved image to be th ecorrect image
                 document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
                 document.getElementById("Unsolved").style.display = "block";
@@ -1385,7 +1405,7 @@ class Clues extends Component {
             }
         }
         else if (currentTab === 7) {
-            if (input === "110W88" || input === "playtesting") {
+            if (input === "110W88" || input === "louisenorton") {
                 cookies.set('PhonebookChildren');
                 solvedPuzzles.push("Phonebook");
                 correct = true
@@ -1470,6 +1490,35 @@ class Clues extends Component {
         return solvedPuzzles.filter((value, index) => solvedPuzzles.indexOf(value) === index);
     }
 
+    OpenHint() {
+        currentTab = parseInt(currentTab);
+        var img = document.getElementById("Hint");
+
+        if (hintOpen)
+        {
+            img.setAttribute('src', this.state.hints[0])
+        }
+        else {
+            switch (currentTab)
+            {
+                case 1:
+                    img.setAttribute('src', this.state.hints[1])
+                    break;
+                case 8:
+                    img.setAttribute('src', this.state.hints[2])
+                    break;
+                case 11:
+                    img.setAttribute('src', this.state.hints[3])
+                    break;
+                default:
+                    img.setAttribute('src', this.state.hints[0])
+                    break;
+            }
+        }
+
+        hintOpen = !hintOpen;
+    }
+
     render() {
         return (
 
@@ -1479,19 +1528,20 @@ class Clues extends Component {
                     <title>Dada - Home</title>
                 </Helmet>
 
-                {/* Sticky Note */}
-                <div id="note" img={Sticky} className="container">
-                    <Image src={Sticky} />
-                    <div className="text-sticky-test"> Use code: <br />playtesting<br />to skip <br />a puzzle</div>
-                </div>
+                {/* Return to Home */}
+                  <a href='/front'>
+                    <Image src={Sticky}
+                        style={{
+                            width: "10%",
+                            position: "absolute",
+                            left: "0px",
+                            top: "0px",
+                            zIndex: "9999",
+                            padding: "15px"
+                        }} />
+                </a>
 
                 {/* Evidence Board */}
-                <div img={Board} className="container"
-                >
-
-
-                </div>
-
                 <a href='/evidence-board'>
                     <Image src={Board}
                         style={{
@@ -1503,7 +1553,18 @@ class Clues extends Component {
                         }} />
                 </a>
 
-
+                {/* Hint */}
+                <Image id="Hint" src={Question}
+                    style={{
+                        width: "15%",
+                        position: "absolute",
+                        top: "0px",
+                        right: "0px",
+                        zIndex: "9999",
+                        padding: "15px"
+                    }}
+                    onClick={this.OpenHint}
+                />
 
                 <div className="folder">
                     <Image id="Folder" src={Folder1} className="folder-scale" />
