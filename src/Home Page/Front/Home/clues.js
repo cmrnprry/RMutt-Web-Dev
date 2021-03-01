@@ -11,6 +11,7 @@ import Eleven from "../../../folder_elements/hints/sticky_XI.png"
 
 
 //Image Imports
+import IntroLetter from '../../../folder_elements/WhoIsRMutt_Sticker.jpg'
 import Board from '../../../Corkboard/pushpin.png'
 import Pen from '../../../folder_elements/pen/pen_bak.png'
 import Note from '../../../folder_elements/notes.png'
@@ -1537,7 +1538,22 @@ class Clues extends Component {
                             left: "0px",
                             top: "0px",
                             zIndex: "9999",
-                            padding: "15px"
+                            margin: "15px",
+                            boxShadow: "rgb(0 0 0 / 42%) 5px 5px 10px 5px",
+                        }} />
+                </a>
+
+                {/* Reopen Letter */}
+                <a href='/intro'>
+                    <Image src={IntroLetter}
+                        style={{
+                            width: "10%",
+                            position: "absolute",
+                            left: "0px",
+                            bottom: "0px",
+                            zIndex: "9999",
+                            margin: "15px",
+                            boxShadow: "rgb(0 0 0 / 42%) 5px 5px 10px 5px",
                         }} />
                 </a>
 
@@ -1561,7 +1577,8 @@ class Clues extends Component {
                         top: "0px",
                         right: "0px",
                         zIndex: "9999",
-                        padding: "15px"
+                        margin: "15px",
+                        // boxShadow: "rgb(0 0 0 / 42%) 5px 5px 10px 5px",
                     }}
                     onClick={this.OpenHint}
                 />
