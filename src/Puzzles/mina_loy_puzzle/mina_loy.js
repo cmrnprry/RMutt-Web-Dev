@@ -78,7 +78,7 @@ function checkPosition(obj, dx, dy) {
 
     //line one
     if (pos === 0) {
-        if ((dx >= -499 && dx <= -484) && (dy >= 26 && dy <= 43)) {
+        if ((dx >= -435 && dx <= -420) && (dy >= 25 && dy <= 40)) {
             list[0] = true;
         }
         else {
@@ -86,7 +86,7 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 1) {
-        if ((dx >= -469 && dx <= -457) && (dy >= 79 && dy <= 88)) {
+        if ((dx >= -385 && dx <= -365) && (dy >= 75 && dy <= 90)) {
             list[1] = true;
         }
         else {
@@ -94,10 +94,10 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 2) {
-        if ((dx >= -418 && dx <= -401) && (dy >= 138 && dy <= 148)) {
+        if ((dx >= -330 && dx <= -315) && (dy >= 135 && dy <= 150)) {
             list[2] = true;
         }
-        else if ((dx >= 549 && dx <= 565) && (dy >= 102 && dy <= 113)) {
+        else if ((dx >= 600 && dx <= 625) && (dy >= 100 && dy <= 120)) {
             list[2] = true;
         }
         else {
@@ -105,7 +105,7 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 3) {
-        if ((dx >= -589 && dx <= -568) && (dy >= 349 && dy <= 362)) {
+        if ((dx >= -495 && dx <= -475) && (dy >= 340 && dy <= 360)) {
             list[3] = true;
         }
         else {
@@ -113,7 +113,7 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 4) {
-        if ((dx >= -356 && dx <= -339) && (dy >= 358 && dy <= 366)) {
+        if ((dx >= -265 && dx <= -245) && (dy >= 350 && dy <= 375)) {
             list[4] = true;
         }
         else {
@@ -121,7 +121,7 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 5) {
-        if ((dx >= -648 && dx <= -629) && (dy >= 367 && dy <= 379)) {
+        if ((dx >= -555 && dx <= -535) && (dy >= 360 && dy <= 380)) {
             list[5] = true;
         }
         else {
@@ -129,7 +129,7 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 6) {
-        if ((dx >= 404 && dx <= 421) && (dy >= 162 && dy <= 172)) {
+        if ((dx >= 455 && dx <= 475) && (dy >= 160 && dy <= 175)) {
             list[6] = true;
         }
         else {
@@ -137,7 +137,7 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 7) {
-        if ((dx >= -609 && dx <= -594) && (dy >= 58 && dy <= 72)) {
+        if ((dx >= -540 && dx <= -525) && (dy >= 50 && dy <= 75)) {
             list[7] = true;
         }
         else {
@@ -145,7 +145,7 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 8) {
-        if ((dx >= -407 && dx <= -393) && (dy >= 267 && dy <= 276)) {
+        if ((dx >= -330 && dx <= -300) && (dy >= 260 && dy <= 280)) {
             list[8] = true;
         }
         else {
@@ -153,7 +153,7 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 9) {
-        if ((dx >= 251 && dx <= 260) && (dy >= -3 && dy <= 7)) {
+        if ((dx >= 300 && dx <= 320) && (dy >= -10 && dy <= 10)) {
             list[9] = true;
         }
         else {
@@ -161,10 +161,10 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 10) {
-        if ((dx >= -406 && dx <= -393) && (dy >= -28 && dy <= -16)) {
+        if ((dx >= -310 && dx <= -290) && (dy >= -35 && dy <= -15)) {
             list[10] = true;
         }
-        else if ((dx >= 565 && dx <= 574) && (dy >= -61 && dy <= -54)) {
+        else if ((dx >= 615 && dx <= 645) && (dy >= -65 && dy <= -40)) {
             list[10] = true;
         }
         else {
@@ -175,7 +175,7 @@ function checkPosition(obj, dx, dy) {
         // x: -394.3999938964844 mina_loy.js: 49 10 at y: -17.600021362304688
     }
     else if (pos === 11) {
-        if ((dx >= -538 && dx <= -522) && (dy >= 223 && dy <= 235)) {
+        if ((dx >= -550 && dx <= -430) && (dy >= 220 && dy <= 235)) {
             list[11] = true;
         }
         else {
@@ -183,7 +183,7 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 12) {
-        if ((dx >= -492 && dx <= -482) && (dy >= -48 && dy <= -40)) {
+        if ((dx >= -405 && dx <= -380) && (dy >= -55 && dy <= -35)) {
             list[12] = true;
         }
         else {
@@ -191,7 +191,7 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 13) {
-        if ((dx >= 553 && dx <= 565) && (dy >= -140 && dy <= -129)) {
+        if ((dx >= 600 && dx <= 630) && (dy >= -145 && dy <= -120)) {
             list[13] = true;
         }
         else {
@@ -199,28 +199,28 @@ function checkPosition(obj, dx, dy) {
         }
     }
     else if (pos === 14) {
-        if ((dx >= -311 && dx <= -294) && (dy >= -133 && dy <= -122)) {
+        if ((dx >= -230 && dx <= -200) && (dy >= -140 && dy <= -120)) {
             list[14] = true;
         }
         else {
             list[14] = false;
         }
     }
-    console.log("list ar index 0: " + list[0]);
-    console.log("list ar index 1: " + list[1]);
-    console.log("list ar index 2: " + list[2]);
-    console.log("list ar index 3: " + list[3]);
-    console.log("list ar index 4: " + list[4]);
-    console.log("list ar index 5: " + list[5]);
-    console.log("list ar index 6: " + list[6]);
-    console.log("list ar index 7: " + list[7]);
-    console.log("list ar index 8: " + list[8]);
-    console.log("list ar index 9: " + list[9]);
-    console.log("list ar index 10: " + list[10]);
-    console.log("list ar index 11: " + list[11]);
-    console.log("list ar index 12: " + list[12]);
-    console.log("list ar index 13: " + list[13]);
-    console.log("list ar index 14: " + list[14]);
+    // console.log("list ar index 0: " + list[0]);
+    // console.log("list ar index 1: " + list[1]);
+    // console.log("list ar index 2: " + list[2]);
+    // console.log("list ar index 3: " + list[3]);
+    // console.log("list ar index 4: " + list[4]);
+    // console.log("list ar index 5: " + list[5]);
+    // console.log("list ar index 6: " + list[6]);
+    // console.log("list ar index 7: " + list[7]);
+    // console.log("list ar index 8: " + list[8]);
+    // console.log("list ar index 9: " + list[9]);
+    // console.log("list ar index 10: " + list[10]);
+    // console.log("list ar index 11: " + list[11]);
+    // console.log("list ar index 12: " + list[12]);
+    // console.log("list ar index 13: " + list[13]);
+    // console.log("list ar index 14: " + list[14]);
 }
 
 function puzzleSolved() {
@@ -238,66 +238,74 @@ function puzzleSolved() {
 
 function SetPages() {
     //middle of screen
-    var middle = window.innerWidth / 2;
+    var w = window.innerWidth / 2;
+    var h = window.innerHeight / 2;
+    var middle = document.getElementById("PageOne").getBoundingClientRect().right + 75;
+
+    document.getElementById("PageOne").style.left = 50 + "px";
+    document.getElementById("PageTwo").style.left =
+        document.getElementById("PageOne").getBoundingClientRect().right +
+        document.getElementById("PageOne").getBoundingClientRect().width / 2 + "px";
+
 
     document.getElementById("0").style.width = 95 + "px";
-    document.getElementById("0").style.left = (middle - document.getElementById("0").getBoundingClientRect().width / 2) + "px";
+    document.getElementById("0").style.left = (middle - document.getElementById("0").getBoundingClientRect().width / 4 + 50) + "px";
     document.getElementById("0").style.top = 20 + "px";
 
     document.getElementById("1").style.width = 64 + "px";
-    document.getElementById("1").style.left = (middle - document.getElementById("1").getBoundingClientRect().width / 2) + 10 + "px";
+    document.getElementById("1").style.left = (middle - document.getElementById("1").getBoundingClientRect().width / 2) + 60 + "px";
     document.getElementById("1").style.top = 60 + "px";
 
     document.getElementById("2").style.width = 50 + "px";
-    document.getElementById("2").style.left = (middle - document.getElementById("2").getBoundingClientRect().width / 2) + 30 + "px";
+    document.getElementById("2").style.left = (middle - document.getElementById("2").getBoundingClientRect().width / 2) + 80 + "px";
     document.getElementById("2").style.top = 80 + "px";
 
     document.getElementById("3").style.width = 50 + "px";
-    document.getElementById("3").style.left = (middle - document.getElementById("3").getBoundingClientRect().width / 2) + 5 + "px";
+    document.getElementById("3").style.left = (middle - document.getElementById("3").getBoundingClientRect().width / 2) + 55 + "px";
     document.getElementById("3").style.top = 95 + "px";
 
     document.getElementById("4").style.width = 50 + "px";
-    document.getElementById("4").style.left = (middle - document.getElementById("4").getBoundingClientRect().width / 2) + 30 + "px";
+    document.getElementById("4").style.left = (middle - document.getElementById("4").getBoundingClientRect().width / 2) + 80 + "px";
     document.getElementById("4").style.top = 120 + "px";
 
     document.getElementById("5").style.width = 50 + "px";
-    document.getElementById("5").style.left = (middle - document.getElementById("5").getBoundingClientRect().width / 2) + 5 + "px";
+    document.getElementById("5").style.left = (middle - document.getElementById("5").getBoundingClientRect().width / 2) + 55 + "px";
     document.getElementById("5").style.top = 135 + "px";
 
     document.getElementById("6").style.width = 70 + "px";
-    document.getElementById("6").style.left = (middle - document.getElementById("6").getBoundingClientRect().width / 2) + 45 + "px";
+    document.getElementById("6").style.left = (middle - document.getElementById("6").getBoundingClientRect().width / 2) + 95 + "px";
     document.getElementById("6").style.top = 165 + "px";
 
     document.getElementById("7").style.width = 45 + "px";
-    document.getElementById("7").style.left = (middle - document.getElementById("7").getBoundingClientRect().width / 2) + 75 + "px";
+    document.getElementById("7").style.left = (middle - document.getElementById("7").getBoundingClientRect().width / 2) + 145 + "px";
     document.getElementById("7").style.top = 185 + "px";
 
     document.getElementById("8").style.width = 36 + "px";
-    document.getElementById("8").style.left = (middle - document.getElementById("8").getBoundingClientRect().width / 2) + "px";
+    document.getElementById("8").style.left = (middle - document.getElementById("8").getBoundingClientRect().width / 2 +50) + "px";
     document.getElementById("8").style.top = 200 + "px";
 
     document.getElementById("9").style.width = 70 + "px";
-    document.getElementById("9").style.left = (middle - document.getElementById("9").getBoundingClientRect().width / 2) - 10 + "px";
+    document.getElementById("9").style.left = (middle - document.getElementById("9").getBoundingClientRect().width / 2) + 40 + "px";
     document.getElementById("9").style.top = 220 + "px";
 
     document.getElementById("10").style.width = 48 + "px";
-    document.getElementById("10").style.left = (middle - document.getElementById("10").getBoundingClientRect().width / 2) + 20 + "px";
+    document.getElementById("10").style.left = (middle - document.getElementById("10").getBoundingClientRect().width / 2) + 60 + "px";
     document.getElementById("10").style.top = 245 + "px";
 
     document.getElementById("11").style.width = 95 + "px";
-    document.getElementById("11").style.left = (middle - document.getElementById("11").getBoundingClientRect().width / 2) - 10 + "px";
+    document.getElementById("11").style.left = (middle - document.getElementById("11").getBoundingClientRect().width / 2) + 40 + "px";
     document.getElementById("11").style.top = 265 + "px";
 
     document.getElementById("12").style.width = 50 + "px";
-    document.getElementById("12").style.left = (middle - document.getElementById("12").getBoundingClientRect().width / 2) + 20 + "px";
+    document.getElementById("12").style.left = (middle - document.getElementById("12").getBoundingClientRect().width / 2) + 70 + "px";
     document.getElementById("12").style.top = 295 + "px";
 
     document.getElementById("13").style.width = 30 + "px";
-    document.getElementById("13").style.left = (middle - document.getElementById("13").getBoundingClientRect().width / 2) + "px";
+    document.getElementById("13").style.left = (middle - document.getElementById("13").getBoundingClientRect().width / 2) + 50 + "px";
     document.getElementById("13").style.top = 315 + "px";
 
     document.getElementById("14").style.width = 125 + "px";
-    document.getElementById("14").style.left = (middle - document.getElementById("14").getBoundingClientRect().width / 2) + "px";
+    document.getElementById("14").style.left = (middle - document.getElementById("14").getBoundingClientRect().width / 2) + 50 + "px";
     document.getElementById("14").style.top = 355 + "px";
 }
 
@@ -321,13 +329,25 @@ class Mina_Loy extends Component {
     //Sets the listener
     componentDidMount() {
         window.addEventListener("resize", this.resizeWindow);
+        
+        if (this.state.width > 1000) {
+            document.body.style.overflowY = "hidden";
+        }
+        else {
+            document.body.style.overflowY = "scroll";
+        }
 
         SetPages();
     }
 
     //So the program always has the correct width and height of window
     resizeWindow() {
-        document.body.style.overflow = "auto";
+        if (this.state.width > 1000) {
+            document.body.style.overflowY= "hidden";
+        }
+        else {
+            document.body.style.overflowY= "scroll";
+        }
     }
 
     //Tells the cookies to be set
@@ -352,7 +372,7 @@ class Mina_Loy extends Component {
 
                 <BackNav />
 
-                <div className="mina-containter">
+                <div className="god-containter" style={{ width: this.state.width }}>
                     <Image src={Marcel} id="0" onMouseUp={() => this.setChildren()} className="0 draggable-mina mina-box" />
 
                     <Image src={Eyes} id="1" onMouseUp={() => this.setChildren()} className="1 draggable-mina mina-box" />
@@ -382,21 +402,12 @@ class Mina_Loy extends Component {
                     <Image src={I} id="13" onMouseUp={() => this.setChildren()} className="13 draggable-mina mina-box" />
 
                     <Image src={Show} id="14" onMouseUp={() => this.setChildren()} className="14 draggable-mina mina-box" />
+   
+                    <Image src={One} id="PageOne" className="mina-resize demuth-shadow" />
+
+                    <Image src={Two} id="PageTwo" className="mina-resize demuth-shadow" style={{ width: "600px", left: "370px" }} />
                 </div>
-
-                <Row>
-                    <Col>
-                        <div className="mina-container">
-                            <Image src={One} className="mina-resize demuth-shadow" />\
-                        </div>
-                    </Col>
-
-                    <Col>
-                        <div className="mina-container">
-                            <Image src={Two} className="mina-resize demuth-shadow" style={{ width: "600px", left: "115px" }} />
-                        </div>
-                    </Col>
-                </Row>
+            
             </Container>
 
         );

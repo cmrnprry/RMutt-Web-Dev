@@ -138,14 +138,9 @@ function pushInList(draggable, dropzone) {
 
     if (checkList()) {
         puzzleSolved = true;
-        showEndText();
     }
 }
 
-//Function that displays text if the array is correct
-function showEndText() {
-    // alert("TODO: add Kieran words");
-}
 
 //Function that checks to see if the currect list is in the correct order
 function checkList() {

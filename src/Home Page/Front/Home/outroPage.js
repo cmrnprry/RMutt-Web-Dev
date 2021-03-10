@@ -38,8 +38,8 @@ class Home extends Component {
                 </Helmet>
 
                 <Link to="front">
-                    <div className="letter-container ar-letter pointer">
-                        <Image id="Image" src={Letter} className='ar-letter pointer' />
+                    <div className="letter-container intro-letter pointer">
+                        <Image id="Image" src={Letter} className='intro-letter pointer' />
                     </div>
                 </Link>
             </Container >

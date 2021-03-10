@@ -16,6 +16,8 @@ import Six from './pipe_elements/pipe_5.png'
 import Seven from './pipe_elements/pipe_6.png'
 import Eight from './pipe_elements/pipe_7.png'
 import Nine from './pipe_elements/pipe_8.png'
+import Question from "../../folder_elements/hints/sticky_closed.png"
+import Note from "../../folder_elements/hints/sticky_XI.png"
 
 //Web Imports
 import interact from 'interactjs'
@@ -27,6 +29,13 @@ import { Helmet } from "react-helmet";
 var x = 0, y = 0;
 
 var pipe1, pipe2, pipe3, pipe4, allInPlace = false;
+
+var hintOpen = false;
+
+//sticky
+const closedQ = require('../../folder_elements/hints/sticky_closed.png')
+const sticky1 = require('../../folder_elements/hints/sticky_XI.png')
+
 
 
 function SetPages() {
@@ -181,7 +190,10 @@ class God extends Component {
         this.state = {
             width: window.innerWidth,
             height: window.innerHeight,
+            hints: [closedQ, sticky1],
         };
+
+        this.OpenHint = this.OpenHint.bind(this);
     }
 
     //Sets the listener
@@ -198,6 +210,20 @@ class God extends Component {
 
         //Set the pages
         SetPages();
+    }
+
+    OpenHint() {
+        var img = document.getElementById("Hint");
+
+        if (hintOpen)
+        {
+            img.setAttribute('src', this.state.hints[0])
+        }
+        else {
+            img.setAttribute('src', this.state.hints[1])
+        }
+
+        hintOpen = !hintOpen;
     }
 
     resizeWindow() {
@@ -244,6 +270,20 @@ class God extends Component {
 
                 <div id="Voice" className="subtitle">"Oh, this one's easy. You just need to find god, and if you can't find him, make him yourself. Its not hard. People have been making god for millennia."
                 </div>
+
+                 {/* Hint */}
+                <Image id="Hint" src={Question}
+                    style={{
+                        width: "15%",
+                        position: "absolute",
+                        top: "0px",
+                        right: "0px",
+                        zIndex: "9999",
+                        margin: "15px",
+                        // boxShadow: "rgb(0 0 0 / 42%) 5px 5px 10px 5px",
+                    }}
+                    onClick={this.OpenHint}
+                />
 
                 <div className="god-container" style={{ height: this.state.height }}>
                     {/* Static */}

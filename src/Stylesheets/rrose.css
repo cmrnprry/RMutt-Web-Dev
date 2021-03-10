@@ -13,9 +13,8 @@
 
 .mina-resize
 {
-  position: relative;
+  position: absolute;
   top: 5px;
-  left: 105px;
   width: 500px;
   height: auto;
 }

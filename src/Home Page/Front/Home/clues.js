@@ -11,7 +11,7 @@ import Eleven from "../../../folder_elements/hints/sticky_XI.png"
 
 
 //Image Imports
-import IntroLetter from '../../../folder_elements/WhoIsRMutt_Sticker.jpg'
+import IntroLetter from '../../../folder_elements/WhoIsRMutt_Sticker.png'
 import Board from '../../../Corkboard/pushpin.png'
 import Pen from '../../../folder_elements/pen/pen_bak.png'
 import Note from '../../../folder_elements/notes.png'
@@ -109,14 +109,6 @@ const imgS9 = require('../../../folder_elements/notes/rrose_2.png');
 const imgS10 = require('../../../folder_elements/notes/mott_2.png');
 const imgS11 = require('../../../folder_elements/notes/god_2.png');
 const imgS12 = require('../../../folder_elements/notes/god2_2.png');
-
-//sticky
-const closedQ = require('../../../folder_elements/hints/sticky_closed.png')
-const sticky1 = require('../../../folder_elements/hints/sticky_I.png')
-const sticky8 = require('../../../folder_elements/hints/sticky_VIII.png')
-const sticky11 = require('../../../folder_elements/hints/sticky_XI.png')
-var hintOpen = false;
-
 var currS = imgS1;
 
 
@@ -351,7 +343,6 @@ class Clues extends Component {
         this.state = {
             width: window.innerWidth,
             height: window.innerHeight,
-            hints: [closedQ, sticky1, sticky8, sticky11],
             folderList: [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12],
             unsolvedList: [imgUS1, imgUS2, imgUS3, imgUS4, imgUS5, imgUS6, imgUS7, imgUS8, imgUS9, imgUS10, imgUS11, imgUS12],
             solvedList: [imgS1, imgS2, imgS3, imgS4, imgS5, imgS6, imgS7, imgS8, imgS9, imgS10, imgS11, imgS12],
@@ -362,7 +353,6 @@ class Clues extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.CheckPassword = this.CheckPassword.bind(this);
         this.resizeWindow = this.resizeWindow.bind(this);
-        this.OpenHint = this.OpenHint.bind(this);
     }
 
     componentDidMount() {
@@ -694,9 +684,6 @@ class Clues extends Component {
         currentTab = folder;
         folder = parseInt(folder)
 
-        //default will be the first puzzle
-        document.getElementById("Hint").style.display = 'none';
-
         switch (folder) {
             case 2:
                 if (cookies.get('TheLetterChildren')) {
@@ -994,7 +981,6 @@ class Clues extends Component {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
                     document.getElementById("Globe").style.display = "none";
-                    document.getElementById("Hint").style.display = 'block';
 
 
 
@@ -1147,7 +1133,6 @@ class Clues extends Component {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
                     document.getElementById("GlobeRight").style.display = "none";
-                    document.getElementById("Hint").style.display = 'block';
 
 
 
@@ -1247,7 +1232,6 @@ class Clues extends Component {
             default:
                 //Set envelope to unlocked
                 document.getElementById("Envelope").setAttribute('src', this.state.isUnlocked[0]);
-                document.getElementById("Hint").style.display = 'block';
                 
                 //Set the unsolved image to be th ecorrect image
                 document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -1384,8 +1368,7 @@ class Clues extends Component {
 
         //if the letter is open
         if (currentTab === 1) {
-            console.log(input === "playtesting")
-            if (input === "amie" || input === "playtesting") {
+            if (input === "amie") {
                 cookies.set('TheLetterChildren');
                 solvedPuzzles.push("TheLetter");
                 correct = true
@@ -1399,7 +1382,7 @@ class Clues extends Component {
             }
         }
         else if (currentTab === 2) {
-            if (input === "thesuperindependents" || input === "salondesrefuses" || input === "salondesrefusés" || input === "playtesting") {
+            if (input === "thesuperindependents" || input === "salondesrefusees" || input === "salondesrefusées") {
                 cookies.set('DemuthLetterChildren');
                 solvedPuzzles.push("DemuthLetter");
                 correct = true
@@ -1413,7 +1396,7 @@ class Clues extends Component {
             }
         }
         else if (currentTab === 6) {
-            if (input == "louisevaresenorton" || input == "louisenortonvarese" || input == "louisemccutcheonnorton" || input == "louisenortonmccutcheon" || input == "louisenortonvarèse" || input == "louisevarèsenorton" || input == "louisenorton" || input === "playtesting") {
+            if (input == "louisevaresenorton" || input == "louisenortonvarese" || input == "louisemccutcheonnorton" || input == "louisenortonmccutcheon" || input == "louisenortonvarèse" || input == "louisevarèsenorton" || input == "louisenorton" || input === "110W88") {
                 cookies.set('TissuePaperChildren');
                 solvedPuzzles.push("TissuePaper");
                 correct = true
@@ -1434,7 +1417,7 @@ class Clues extends Component {
             }
         }
         else if (currentTab === 8) {
-            if (input === "godisintheplumbing" || input === "playtesting") {
+            if (input === "godisintheplumbing") {
                 cookies.set('ElsaChildren');
                 solvedPuzzles.push("Elsa");
                 correct = true
@@ -1467,7 +1450,7 @@ class Clues extends Component {
                 cookies.set('GodIIChildren');
                 solvedPuzzles.push("GodII");
                 correct = true
-                this.props.history.push('/outro');
+                // this.props.history.push('/clues');
             }
         }
 
@@ -1489,35 +1472,6 @@ class Clues extends Component {
 
     removeDups() {
         return solvedPuzzles.filter((value, index) => solvedPuzzles.indexOf(value) === index);
-    }
-
-    OpenHint() {
-        currentTab = parseInt(currentTab);
-        var img = document.getElementById("Hint");
-
-        if (hintOpen)
-        {
-            img.setAttribute('src', this.state.hints[0])
-        }
-        else {
-            switch (currentTab)
-            {
-                case 1:
-                    img.setAttribute('src', this.state.hints[1])
-                    break;
-                case 8:
-                    img.setAttribute('src', this.state.hints[2])
-                    break;
-                case 11:
-                    img.setAttribute('src', this.state.hints[3])
-                    break;
-                default:
-                    img.setAttribute('src', this.state.hints[0])
-                    break;
-            }
-        }
-
-        hintOpen = !hintOpen;
     }
 
     render() {
@@ -1553,7 +1507,7 @@ class Clues extends Component {
                             bottom: "0px",
                             zIndex: "9999",
                             margin: "15px",
-                            boxShadow: "rgb(0 0 0 / 42%) 5px 5px 10px 5px",
+                            // boxShadow: "rgb(0 0 0 / 42%) 5px 5px 10px 5px",
                         }} />
                 </a>
 
@@ -1568,20 +1522,6 @@ class Clues extends Component {
                             zIndex: "9999"
                         }} />
                 </a>
-
-                {/* Hint */}
-                <Image id="Hint" src={Question}
-                    style={{
-                        width: "15%",
-                        position: "absolute",
-                        top: "0px",
-                        right: "0px",
-                        zIndex: "9999",
-                        margin: "15px",
-                        // boxShadow: "rgb(0 0 0 / 42%) 5px 5px 10px 5px",
-                    }}
-                    onClick={this.OpenHint}
-                />
 
                 <div className="folder">
                     <Image id="Folder" src={Folder1} className="folder-scale" />

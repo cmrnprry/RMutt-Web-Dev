@@ -206,7 +206,7 @@ class GodII extends Component {
         if (puzzleSolved()) {
             // alert("puzzle solved");
             cookies.set('GodIIChildren');
-            this.props.history.push('/outro');
+            this.props.history.push('/clues');
         }
     }
 
