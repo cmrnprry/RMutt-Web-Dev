@@ -4,11 +4,6 @@ import { withCookies, Cookies } from 'react-cookie';
 import { instanceOf } from 'prop-types';
 
 import Sticky from "../../../Logos/logo_sqr.png"
-import Question from "../../../folder_elements/hints/sticky_closed.png"
-import One from "../../../folder_elements/hints/sticky_I.png"
-import Eight from "../../../folder_elements/hints/sticky_VIII.png"
-import Eleven from "../../../folder_elements/hints/sticky_XI.png"
-
 
 //Image Imports
 import IntroLetter from '../../../folder_elements/WhoIsRMutt_Sticker.png'
@@ -118,6 +113,8 @@ var solvedPuzzles = [];
 var showRightTabs = [false, false, false, false, false, false, false, false, false, false, false, false];
 var showLeftTabs = [true, true, true, true, true, true, true, true, true, true, true, true];
 var currentTab = 1;
+var padding = 0;
+var padding2 = 0;
 //globe and camera elements
 var globeWidth, globeleft, globeRight, globeTop = 0;
 var cameraWidth, cameraleft, cameraTop = 0;
@@ -131,11 +128,11 @@ function SetPages() {
 
 
     //Set the Note Page
-    document.getElementById("Note").style.left = document.getElementById("Folder").getBoundingClientRect().x + 50 + "px";
+    document.getElementById("Note").style.left = document.getElementById("Folder").getBoundingClientRect().x + padding +"px";
     document.getElementById("Note").style.top = document.getElementById("Folder").getBoundingClientRect().y + 20 + "px";
 
     //Set the Note Page
-    document.getElementById("Pen").style.left = document.getElementById("Folder").getBoundingClientRect().x + 37 + "px";
+    document.getElementById("Pen").style.left = document.getElementById("Folder").getBoundingClientRect().x + padding + "px";
     document.getElementById("Pen").style.top = document.getElementById("Folder").getBoundingClientRect().y + 20 + "px";
 
 }
@@ -165,7 +162,7 @@ function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
     document.getElementsByClassName("folder-tab")[0].style.width = tabWidth + "px";
     document.getElementsByClassName("folder-tab")[0].style.left =
         (document.getElementById("Folder").getBoundingClientRect().right
-            - document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().width - tabLeft) + "px";
+            - document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().width - tabLeft - padding2) + "px";
 
     var temp = document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().height;
 
@@ -175,7 +172,7 @@ function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
 
         document.getElementsByClassName("folder-tab")[i].style.left =
             (document.getElementById("Folder").getBoundingClientRect().right
-                - document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().width - tabLeft) + "px";
+                - document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().width - tabLeft - padding2) + "px";
 
         //setting the height
         document.getElementsByClassName("folder-tab")[i].style.height = tab1 + "px";
@@ -218,7 +215,7 @@ function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
         document.getElementById("Folder").getBoundingClientRect().y + "px";
     document.getElementsByClassName("folder-tab-right")[0].style.width = tabWidth + "px";
     document.getElementsByClassName("folder-tab-right")[0].style.left =
-        (document.getElementById("Folder").getBoundingClientRect().x) + "px";
+        (document.getElementById("Folder").getBoundingClientRect().x - padding2) + "px";
 
     temp = document.getElementsByClassName("folder-tab-right")[0].getBoundingClientRect().height;
 
@@ -227,7 +224,7 @@ function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
         document.getElementsByClassName("folder-tab-right")[ii].style.width = tabWidth + "px";
 
         document.getElementsByClassName("folder-tab-right")[ii].style.left =
-            (document.getElementById("Folder").getBoundingClientRect().x) + "px";
+            (document.getElementById("Folder").getBoundingClientRect().x) - padding2 + "px";
 
         //setting the height
         document.getElementsByClassName("folder-tab-right")[ii].style.height = tab1 + "px";
@@ -310,7 +307,7 @@ function setNoteItems(itemWidth, itemHeight, itemLeft) {
     //set camera & Globe left
     document.getElementById("Camera").style.left = (document.getElementById("Note").getBoundingClientRect().left + itemLeft) + "px";
     document.getElementById("Globe").style.left = (document.getElementById("Note").getBoundingClientRect().left + itemLeft) + "px";
-    document.getElementById("GlobeRight").style.right = (document.getElementById("Note").getBoundingClientRect().right + itemLeft) + "px";
+    document.getElementById("GlobeRight").style.right = (document.getElementById("Note").getBoundingClientRect().width + itemLeft + padding) + "px";
 
 
 }
@@ -326,8 +323,9 @@ function setGlobe(width, left, top) {
     document.getElementById("Globe").style.top = top + "px";
     document.getElementById("Globe").style.width = width + "px";
 
-    document.getElementById("GlobeRight").style.top = top + 45 + "px";
+    document.getElementById("GlobeRight").style.top = top + "px";
     document.getElementById("GlobeRight").style.width = width + "px";
+    document.getElementById("GlobeRight").style.right = left + "px";
 
 }
 
@@ -357,7 +355,7 @@ class Clues extends Component {
 
     componentDidMount() {
         const { cookies } = this.props;
-        console.log("mount");
+        document.body.style.overflow = "scroll";
 
         document.body.style.removeProperty("background");
         window.addEventListener("resize", this.resizeWindow);
@@ -386,7 +384,12 @@ class Clues extends Component {
         //set teh unsolved image
         var itemWidth, itemHeight, itemLeft = 0;
 
-
+        if (window.innerWidth < 1800)
+        {
+            console.log(document.getElementById("ReturnHome").getBoundingClientRect().width)
+            document.getElementById("Main").style.marginLeft = document.getElementById("ReturnHome").getBoundingClientRect().width + 'px';
+            padding2 = document.getElementById("ReturnHome").getBoundingClientRect().width
+        }
 
         if (window.innerWidth >= 1400) { //larges screen size
             if (window.innerHeight >= 1080) { //larges screen size
@@ -396,20 +399,22 @@ class Clues extends Component {
 
                 //Set Envelope
                 eWidth = 650;
-                eleft = 700;
+                eleft = 850;
                 eTop = -250;
 
                 //Set the Title
                 size = 100;
-                tleft = 645
+                tleft = 780;
                 tTop = 80;
-                tHeight = 100;
+                tHeight = 150;
                 tWdth = 550;
+                document.getElementById("Title").style.lineHeight = "3.5vw";
 
                 //Set the Note Items
+                padding = -80;
                 itemWidth = 545;
                 itemHeight = 430;
-                itemLeft = 70;
+                itemLeft = -70;
 
                 //tabBuffer Tabs
                 tabBuffer = 15;
@@ -425,7 +430,8 @@ class Clues extends Component {
 
                 //Set Globe
                 globeWidth = 140;
-                globeTop = 760;
+                globeTop = 750;
+                globeRight = 525;
 
             }
             else if (window.innerHeight >= 800) { //medium screen size
@@ -435,20 +441,21 @@ class Clues extends Component {
 
                 //Set Envelope
                 eWidth = 500;
-                eleft = 525;
+                eleft = 665;
                 eTop = -250;
 
                 //Set the Title
                 size = 75;
-                tleft = 490;
+                tleft = 615;
                 tTop = 80;
                 tHeight = 100;
                 tWdth = 420;
 
                 //Set the Note Items
+                padding = -80;
                 itemWidth = 445;
                 itemHeight = 330;
-                itemLeft = 25;
+                itemLeft = -105;
 
                 //Setting Tabs
                 tabBuffer = 10;
@@ -464,7 +471,8 @@ class Clues extends Component {
 
                 //Set Globe
                 globeWidth = 100;
-                globeTop = 595;
+                globeTop = 560;
+                globeRight = 600;
             }
             else { //smallest screen size
                 newWidth = 1000;
@@ -473,20 +481,21 @@ class Clues extends Component {
 
                 //Set Envelope
                 eWidth = 450;
-                eleft = 480;
+                eleft = 610;
                 eTop = -250;
 
                 //Set the Title
                 size = 70;
-                tleft = 450;
+                tleft = 580;
                 tTop = 80;
                 tHeight = 100;
                 tWdth = 390;
 
                 //Set the Note Items
+                padding = -80;
                 itemWidth = 400;
                 itemHeight = 330;
-                itemLeft = 15;
+                itemLeft = -115;
 
                 //Setting Tabs
                 tabBuffer = 10;
@@ -501,7 +510,8 @@ class Clues extends Component {
 
                 //Set Globe
                 globeWidth = 100;
-                globeTop = 525;
+                globeTop = 500;
+                globeRight = 605;
             }
         }
         else if (window.innerWidth >= 1024) { //medium screen size
@@ -512,21 +522,22 @@ class Clues extends Component {
 
                 //Set Envelope
                 eWidth = 480;
-                eleft = 500;
+                eleft = 600;
                 eTop = -230;
 
                 //Set the Title
                 size = 70;
-                tleft = 450;
+                tleft = 550;
                 tTop = 80;
                 tHeight = 125;
                 tWdth = 390;
                 document.getElementById("Title").style.lineHeight = "4.5vw";
 
                 //Set the Note Items
+                padding = -60;
                 itemWidth = 410;
                 itemHeight = 330;
-                itemLeft = 20;
+                itemLeft = -70;
 
 
                 //Setting Tabs
@@ -542,7 +553,8 @@ class Clues extends Component {
 
                 //Set Globe
                 globeWidth = 100;
-                globeTop = 555;
+                globeTop = 510;
+                globeRight = 415;
             }
             else if (window.innerHeight >= 720) { //smallest screen size
                 newWidth = 1000;
@@ -551,20 +563,21 @@ class Clues extends Component {
 
                 //Set Envelope
                 eWidth = 450;
-                eleft = 480;
+                eleft = 580;
                 eTop = -260;
 
                 //Set the Title
                 size = 70;
-                tleft = 450;
+                tleft = 550;
                 tTop = 80;
                 tHeight = 100;
                 tWdth = 390;
 
                 //Set the Note Items
+                padding = -55;
                 itemWidth = 400;
                 itemHeight = 330;
-                itemLeft = 15;
+                itemLeft = -80;
                 document.getElementById("Title").style.lineHeight = "4.5vw";
 
 
@@ -581,7 +594,8 @@ class Clues extends Component {
 
                 //Set Globe
                 globeWidth = 100;
-                globeTop = 525;
+                globeTop = 500;
+                globeRight = 420;
             }
             else {
                 newWidth = 855;
@@ -601,6 +615,7 @@ class Clues extends Component {
                 tWdth = 340;
 
                 //Set the Note Items
+                padding = -40;
                 itemWidth = 350;
                 itemHeight = 275;
                 itemLeft = 15;
@@ -621,6 +636,7 @@ class Clues extends Component {
                 //Set Globe
                 globeWidth = 100;
                 globeTop = 425;
+                globeRight = 400;
             }
         }
         else { //smallest screen size
@@ -641,6 +657,7 @@ class Clues extends Component {
             tWdth = 290;
 
             //Set the Note Items
+            padding = -40
             itemWidth = 300;
             itemHeight = 225;
             itemLeft = 10;
@@ -660,7 +677,8 @@ class Clues extends Component {
 
             //Set Globe
             globeWidth = 80;
-            globeTop = 350;
+            globeTop = 330;
+            globeRight = 400;
         }
 
         for (var i = 0; i < folders.length; i++) {
@@ -672,7 +690,7 @@ class Clues extends Component {
         setEnvelope(eWidth, eleft, eTop);
         setTitle(size, tleft, tTop, tWdth, tHeight);
         setNoteItems(itemWidth, itemHeight, itemLeft);
-        setGlobe(globeWidth, globeTop);
+        setGlobe(globeWidth, globeRight, globeTop);
         setCamera(cameraWidth, cameraTop);
     }
 
@@ -1147,7 +1165,7 @@ class Clues extends Component {
                         document.getElementById("Solved").style.display = "block";
 
                         document.getElementById("GlobeLink").setAttribute('href', 'https://sinclairnj.blogs.rutgers.edu/2018/07/richard-mutt/');
-                        document.getElementById("GlobeRight").style.display = "block";
+                        document.getElementById("Globe").style.display = "block";
 
                     }
 
@@ -1165,7 +1183,7 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
-                    document.getElementById("GlobeRight").style.display = "none";
+                    document.getElementById("Globe").style.display = "none";
 
 
                     //set link inactive
@@ -1178,7 +1196,7 @@ class Clues extends Component {
 
 
                 //Set camera and globe                
-                document.getElementById("Globe").style.display = "none";
+                document.getElementById("GlobeRight").style.display = "none";
                 document.getElementById("Camera").style.display = "none";
                 break;
             case 12:
@@ -1198,6 +1216,8 @@ class Clues extends Component {
                         document.getElementById("Solved").style.display = "block";
                         document.getElementById("GlobeLink").setAttribute('href', 'https://mitpress.mit.edu/books/baroness-elsa');
                         document.getElementById("Globe").style.display = "block";
+                        document.getElementById("Outro").style.display = "block";
+                        
 
                     }
 
@@ -1389,7 +1409,7 @@ class Clues extends Component {
             }
         }
         else if (currentTab === 7) {
-            if (input === "110W88" || input === "louisenorton") {
+            if (input === "110w88" || input === "louisenorton") {
                 cookies.set('PhonebookChildren');
                 solvedPuzzles.push("Phonebook");
                 correct = true
@@ -1477,7 +1497,7 @@ class Clues extends Component {
     render() {
         return (
 
-            <Container fluid='true'>
+            <Container fluid='true' style={{height: this.state.height + 115 + 'px'}}>
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Dada - Home</title>
@@ -1485,7 +1505,7 @@ class Clues extends Component {
 
                 {/* Return to Home */}
                   <a href='/front'>
-                    <Image src={Sticky}
+                    <Image id="ReturnHome" src={Sticky}
                         style={{
                             width: "10%",
                             position: "absolute",
@@ -1511,19 +1531,22 @@ class Clues extends Component {
                         }} />
                 </a>
 
-                {/* Evidence Board */}
-                <a href='/evidence-board'>
-                    <Image src={Board}
+                {/* Reopen Letter */}
+                <a href='/outro' >
+                    <Image id="Outro" src={Closed}
                         style={{
-                            width: "15%",
+                            display: 'none',
+                            width: "20%",
                             position: "absolute",
-                            right: "0px",
-                            bottom: "0px",
-                            zIndex: "9999"
+                            left: "0px",
+                            bottom: "20%",
+                            zIndex: "9999",
+                            margin: "15px",
+                            // boxShadow: "rgb(0 0 0 / 42%) 5px 5px 10px 5px",
                         }} />
                 </a>
 
-                <div className="folder">
+                <div className="folder" id="Main" style={{marginLeft:'0px'}}>
                     <Image id="Folder" src={Folder1} className="folder-scale" />
 
                     <div id="Folder Elements">
@@ -1603,6 +1626,17 @@ class Clues extends Component {
                     </div>
                 </div>
 
+                {/* Evidence Board */}
+                <a href='/evidence-board'>
+                    <Image src={Board}
+                        style={{
+                            width: "15%",
+                            position: "fixed",
+                            right: "0px",
+                            bottom: "0px",
+                            zIndex: "9999"
+                        }} />
+                </a>
 
             </Container>
         );

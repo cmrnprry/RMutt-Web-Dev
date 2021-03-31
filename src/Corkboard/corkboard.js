@@ -4,10 +4,7 @@
 //React Imports
 import React, { Component } from 'react';
 import { withCookies, Cookies } from 'react-cookie';
-import CanvasDraw from "react-canvas-draw";
 import { instanceOf } from 'prop-types';
-import { LazyBrush } from "lazy-brush";
-import { Catenary } from "catenary-curve";
 import Back from '../Navigation/Back.js'
 
 //Image Imports
@@ -27,10 +24,8 @@ import Undo from './Corboard Images/undo_button.png'
 //Web Imports
 import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
-import Button from 'react-bootstrap/Button'
 import Helmet from 'react-helmet'
 import interact from 'interactjs'
-import Popup from "reactjs-popup";
 
 var x = 0, y = 0;
 

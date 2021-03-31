@@ -336,7 +336,6 @@ class Sia extends Component {
         const { cookies } = this.props;
 
         if (puzzleSolved()) {
-            alert("puzzle solved");
             cookies.set('SiaCatalogChildren');
             this.props.history.push('/clues');
         }

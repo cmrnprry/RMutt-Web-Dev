@@ -84,11 +84,6 @@ interact('.draggable-demuth').draggable({
     inertia: false
 })
 
-//Function that displays text if the array is correct
-function showEndText() {
-    alert("TODO: add Kieran words");
-}
-
 //Function that handles how draggable objects act when you drag them
 function dragMoveListener(event) {
     var target = event.target
