@@ -57,11 +57,11 @@ class Archive extends Component {
         var input = this.state.password.toLowerCase();
         input = input.split(" ").join("");
 
-        if (input === val1 || input === val2) {
+        if (input === val1) {
             this.props.history.push('/intro')
         }
         else {
-            alert("Incorrect password.");
+            alert("Apologies. This question is not on our agenda.");
         }
     }
 
@@ -99,8 +99,8 @@ class Archive extends Component {
 
                 <div className="password">
                     <p>
-                        This page contains confidential information.<br />
-                        Please enter the password.
+                       Welcome to the DADA knowledge center.<br />
+                        What question do you seek to answer?
                     </p>
 
 

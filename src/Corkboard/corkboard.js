@@ -20,6 +20,7 @@ import MinaLoy from './Corboard Images/mina_loy.png'
 import BeatriceWood from './Corboard Images/beatrice_wood.png'
 import ClearButton from './Corboard Images/full_clear_button.png'
 import Undo from './Corboard Images/undo_button.png'
+import Sticky from '../folder_elements/sticky/stickyLeft.png'
 
 //Web Imports
 import Container from 'react-bootstrap/Container'
@@ -44,6 +45,7 @@ var mouseY = 0;
 var isDrawing = false;
 var existingLines = [];
 var ImagePos = [];
+var key = 'n/a'
 
 
 function draw() {
@@ -168,19 +170,23 @@ interact('.draggable-board').draggable({
 function dragMoveListener(event) {
     var target = event.target
 
-    // keep the dragged position in the data-x/data-y attributes
-    x = ((parseFloat(target.getAttribute('data-x')) || 0) + event.dx)
-    y = ((parseFloat(target.getAttribute('data-y')) || 0) + event.dy)
+    if (key == false)
+    {
+        // keep the dragged position in the data-x/data-y attributes
+        x = ((parseFloat(target.getAttribute('data-x')) || 0) + event.dx)
+        y = ((parseFloat(target.getAttribute('data-y')) || 0) + event.dy)
 
-    // translate the element
-    target.style.webkitTransform =
-        target.style.transform =
-        'translate(' + x + 'px, ' + y + 'px)'
+        // translate the element
+        target.style.webkitTransform =
+            target.style.transform =
+            'translate(' + x + 'px, ' + y + 'px)'
 
-    // update the posiion attributes
-    target.setAttribute('data-x', x)
-    target.setAttribute('data-y', y)
-    LogPosition(event.target.id, x, y)
+        // update the posiion attributes
+        target.setAttribute('data-x', x)
+        target.setAttribute('data-y', y)
+        LogPosition(event.target.id, x, y)
+    }
+    
 }
 
 class Corkboard extends Component {
@@ -193,15 +199,14 @@ class Corkboard extends Component {
         super(props);
         this.state = {
             width: window.innerWidth,
-            height: window.innerHeight
+            height: window.innerHeight,
+            key: "n/a"
         };
 
         this.resizeWindow = this.resizeWindow.bind(this);
         this.setChildren = this.setChildren.bind(this);
         this.checkImages = this.checkImages.bind(this);
-
     }
-
 
     //Sets the listener
     componentDidMount() {
@@ -214,11 +219,28 @@ class Corkboard extends Component {
         window.addEventListener('mousedown', this.Onmousedown, false);
         window.addEventListener('mousemove', this.Onmousemove, false);
         window.addEventListener('mouseup', this.Onmouseup, false);
+        window.addEventListener('keydown', this.OnKeyDown, false);
+        window.addEventListener('keyup', this.OnKeyUp, false);
 
         this.checkImages();
     }
 
-    
+    OnKeyDown(evt)
+    {
+        if (evt.keyCode === 16) {
+            console.log('The "shift" key is being held down...?');
+            key = true;
+        }
+    }
+
+    OnKeyUp(evt)
+    {
+        if (evt.keyCode === 16) {
+            console.log('The "shift" key is not being held');
+            key = false;
+        }
+    }
+
     checkImages() {
         var puzzle = [];
         if (localStorage.getItem("SolvedPuzzle") !== null) {
@@ -344,7 +366,7 @@ class Corkboard extends Component {
     }
 
     Onmousedown(e) {
-        if (e.target.id === "Canvas") {
+        if (e.target.id === "Canvas" && key === true) {
             console.log("on mouse down");
             if (hasLoaded && e.button === 0) {
                 if (!isDrawing) {
@@ -453,8 +475,6 @@ class Corkboard extends Component {
                 <canvas id="CanvasImage" className="canvas" />
                 <canvas id="Canvas" className="canvas" />
 
-
-
                 {/* Button to full clear the board */}
                 <Image src={ClearButton} className="canvas"
                     style={{ top: "100px" }}
@@ -466,6 +486,12 @@ class Corkboard extends Component {
                     style={{ top: "150px" }}
                     onClick={() => UndoLastStroke()}>
                 </Image>
+
+                <div id="note" img={Sticky} className="container"  style={{
+                        top: "250px"
+                    }}>
+                    <Image src={Sticky} />
+                </div>
             </Container >
         );
     }

@@ -386,9 +386,8 @@ class Clues extends Component {
 
         if (window.innerWidth < 1800)
         {
-            console.log(document.getElementById("ReturnHome").getBoundingClientRect().width)
-            document.getElementById("Main").style.marginLeft = document.getElementById("ReturnHome").getBoundingClientRect().width + 'px';
-            padding2 = document.getElementById("ReturnHome").getBoundingClientRect().width
+            document.getElementById("Main").style.marginLeft = document.getElementById("ReturnHome").getBoundingClientRect().width / 2 + 'px';
+            padding2 = document.getElementById("ReturnHome").getBoundingClientRect().width / 2
         }
 
         if (window.innerWidth >= 1400) { //larges screen size
@@ -399,22 +398,22 @@ class Clues extends Component {
 
                 //Set Envelope
                 eWidth = 650;
-                eleft = 850;
+                eleft = 750;
                 eTop = -250;
 
                 //Set the Title
                 size = 100;
-                tleft = 780;
+                tleft = 700;
                 tTop = 80;
                 tHeight = 150;
                 tWdth = 550;
                 document.getElementById("Title").style.lineHeight = "3.5vw";
 
                 //Set the Note Items
-                padding = -80;
+                padding = 0;
                 itemWidth = 545;
                 itemHeight = 430;
-                itemLeft = -70;
+                itemLeft = 0;
 
                 //tabBuffer Tabs
                 tabBuffer = 15;
@@ -441,21 +440,21 @@ class Clues extends Component {
 
                 //Set Envelope
                 eWidth = 500;
-                eleft = 665;
+                eleft = 600;
                 eTop = -250;
 
                 //Set the Title
                 size = 75;
-                tleft = 615;
+                tleft = 555;
                 tTop = 80;
                 tHeight = 100;
                 tWdth = 420;
 
                 //Set the Note Items
-                padding = -80;
+                padding = 0;
                 itemWidth = 445;
                 itemHeight = 330;
-                itemLeft = -105;
+                itemLeft = -40;
 
                 //Setting Tabs
                 tabBuffer = 10;
@@ -481,21 +480,21 @@ class Clues extends Component {
 
                 //Set Envelope
                 eWidth = 450;
-                eleft = 610;
+                eleft = 550;
                 eTop = -250;
 
                 //Set the Title
                 size = 70;
-                tleft = 580;
+                tleft = 520;
                 tTop = 80;
                 tHeight = 100;
                 tWdth = 390;
 
                 //Set the Note Items
-                padding = -80;
+                padding = 0;
                 itemWidth = 400;
                 itemHeight = 330;
-                itemLeft = -115;
+                itemLeft = -40;
 
                 //Setting Tabs
                 tabBuffer = 10;
@@ -522,22 +521,22 @@ class Clues extends Component {
 
                 //Set Envelope
                 eWidth = 480;
-                eleft = 600;
+                eleft = 540;
                 eTop = -230;
 
                 //Set the Title
                 size = 70;
-                tleft = 550;
+                tleft = 500;
                 tTop = 80;
                 tHeight = 125;
                 tWdth = 390;
                 document.getElementById("Title").style.lineHeight = "4.5vw";
 
                 //Set the Note Items
-                padding = -60;
+                padding = 0;
                 itemWidth = 410;
                 itemHeight = 330;
-                itemLeft = -70;
+                itemLeft = -20;
 
 
                 //Setting Tabs
@@ -563,21 +562,21 @@ class Clues extends Component {
 
                 //Set Envelope
                 eWidth = 450;
-                eleft = 580;
+                eleft = 530;
                 eTop = -260;
 
                 //Set the Title
                 size = 70;
-                tleft = 550;
+                tleft = 500;
                 tTop = 80;
                 tHeight = 100;
                 tWdth = 390;
 
                 //Set the Note Items
-                padding = -55;
+                padding = 0;
                 itemWidth = 400;
                 itemHeight = 330;
-                itemLeft = -80;
+                itemLeft = -10;
                 document.getElementById("Title").style.lineHeight = "4.5vw";
 
 
@@ -604,21 +603,21 @@ class Clues extends Component {
 
                 //Set Envelope
                 eWidth = 405;
-                eleft = 425;
+                eleft = 470;
                 eTop = -220;
 
                 //Set the Title
                 size = 60;
-                tleft = 385;
+                tleft = 430;
                 tTop = 40;
                 tHeight = 100;
                 tWdth = 340;
 
                 //Set the Note Items
-                padding = -40;
+                padding = 0;
                 itemWidth = 350;
                 itemHeight = 275;
-                itemLeft = 15;
+                itemLeft = -20;
                 document.getElementById("Title").style.lineHeight = "4.5vw";
 
                 //Setting Tabs
@@ -646,21 +645,21 @@ class Clues extends Component {
 
             //Set Envelope
             eWidth = 300;
-            eleft = 350;
+            eleft = 390;
             eTop = -225;
 
             //Set the Title
             size = 55;
-            tleft = 335;
+            tleft = 380;
             tTop = 40;
             tHeight = 100;
             tWdth = 290;
 
             //Set the Note Items
-            padding = -40
+            padding = 0
             itemWidth = 300;
             itemHeight = 225;
-            itemLeft = 10;
+            itemLeft = -20;
             document.getElementById("Title").style.lineHeight = "4.5vw";
 
             //Setting Tabs
@@ -1000,8 +999,6 @@ class Clues extends Component {
                     document.getElementById("Solved").style.display = "none";
                     document.getElementById("Globe").style.display = "none";
 
-
-
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
                     document.getElementById("Unsolved").style.display = "block";
@@ -1012,7 +1009,8 @@ class Clues extends Component {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
                         document.getElementById("GlobeLink").setAttribute('href', 'https://www.theartnewspaper.com/comment/did-marcel-duchamp-steal-elsa-s-urinal');
-                        document.getElementById("Globe").style.display = "block";
+                        document.getElementById("GlobeRight").style.display = "block";
+                        document.getElementById("Camera").style.display = "block";
 
                     }
 
@@ -1033,7 +1031,8 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
-                    document.getElementById("Globe").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
 
 
                     //set link inactive
@@ -1044,8 +1043,7 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "block";
 
                 //Turn on the pen and camera
-                document.getElementById("GlobeRight").style.display = "none";
-                document.getElementById("Camera").style.display = "none";
+                document.getElementById("Globe").style.display = "none";
                 break;
             case 9:
                 if (cookies.get('ElsaChildren')) {
@@ -1061,6 +1059,7 @@ class Clues extends Component {
                     if (cookies.get('RroseChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
+                        document.getElementById("Camera").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -1080,6 +1079,7 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -1090,7 +1090,6 @@ class Clues extends Component {
                 //Turn on the pen and camera
                 document.getElementById("Globe").style.display = "none";
                 document.getElementById("GlobeRight").style.display = "none";
-                document.getElementById("Camera").style.display = "none";
                 break;
             case 10:
                 //if the previous puzzle has been solved
@@ -1388,35 +1387,35 @@ class Clues extends Component {
 
         //if the letter is open
         if (currentTab === 1) {
-            if (input === "amie") {
+            if (input === "amie" || input === "playtesting") {
                 cookies.set('TheLetterChildren');
                 solvedPuzzles.push("TheLetter");
                 correct = true
             }
         }
         else if (currentTab === 3) {
-            if (input === "nominaldues" || input === "playtesting") {
+            if (input === "nominaldues"|| input === "playtesting") {
                 cookies.set('SiaCatalogChildren');
                 solvedPuzzles.push("SiaCatalog");
                 correct = true
             }
         }
         else if (currentTab === 2) {
-            if (input === "thesuperindependents" || input === "salondesrefusees" || input === "salondesrefusées") {
+            if (input === "thesuperindependents" || input === "salondesrefusees" || input === "salondesrefusées"|| input === "playtesting") {
                 cookies.set('DemuthLetterChildren');
                 solvedPuzzles.push("DemuthLetter");
                 correct = true
             }
         }
         else if (currentTab === 7) {
-            if (input === "110w88" || input === "louisenorton") {
+            if (input === "110w88" || input === "louisenorton"|| input === "playtesting") {
                 cookies.set('PhonebookChildren');
                 solvedPuzzles.push("Phonebook");
                 correct = true
             }
         }
         else if (currentTab === 6) {
-            if (input == "louisevaresenorton" || input == "louisenortonvarese" || input == "louisemccutcheonnorton" || input == "louisenortonmccutcheon" || input == "louisenortonvarèse" || input == "louisevarèsenorton" || input == "louisenorton" || input === "110W88") {
+            if (input == "louisevaresenorton" || input == "louisenortonvarese" || input == "louisemccutcheonnorton" || input == "louisenortonmccutcheon" || input == "louisenortonvarèse" || input == "louisevarèsenorton" || input == "louisenorton" || input === "110W88"|| input === "playtesting") {
                 cookies.set('TissuePaperChildren');
                 solvedPuzzles.push("TissuePaper");
                 correct = true
@@ -1430,14 +1429,14 @@ class Clues extends Component {
             }
         }
         else if (currentTab === 5) {
-            if (input === "playtesting" || input === "minaloy") {
+            if (input === "playtesting" || input === "minaloy"|| input === "playtesting") {
                 solvedPuzzles.push("MinaLoy");
                 cookies.set('MinaLoyChildren');
                 correct = true
             }
         }
         else if (currentTab === 8) {
-            if (input === "godisintheplumbing") {
+            if (input === "godisintheplumbing"|| input === "playtesting") {
                 cookies.set('ElsaChildren');
                 solvedPuzzles.push("Elsa");
                 correct = true
@@ -1631,7 +1630,8 @@ class Clues extends Component {
                     <Image src={Board}
                         style={{
                             width: "15%",
-                            position: "fixed",
+                            // position: "fixed",
+                            float: 'right',
                             right: "0px",
                             bottom: "0px",
                             zIndex: "9999"
