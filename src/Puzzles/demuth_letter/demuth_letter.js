@@ -704,12 +704,8 @@ class Demuth extends Component {
 
     //So the program always has the correct width and height of window
     resizeWindow() {
-        // this.setState({ width: window.innerWidth, height: window.innerHeight });
-        console.log("width: " + this.state.width)
         document.body.style.overflowX = "hidden";
         this.updateScreen();
-
-        console.log("width After: " + this.state.width)
     }
 
     updateScreen() {

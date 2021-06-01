@@ -106,227 +106,63 @@ const imgS11 = require('../../../folder_elements/notes/god_2.png');
 const imgS12 = require('../../../folder_elements/notes/god2_2.png');
 var currS = imgS1;
 
-
-var tabBuffer = 0;
-
 var solvedPuzzles = [];
 var showRightTabs = [false, false, false, false, false, false, false, false, false, false, false, false];
 var showLeftTabs = [true, true, true, true, true, true, true, true, true, true, true, true];
 var currentTab = 1;
-var padding = 0;
-var padding2 = 0;
-//globe and camera elements
-var globeWidth, globeleft, globeRight, globeTop = 0;
-var cameraWidth, cameraleft, cameraTop = 0;
 
-function SetPages() {
-    //middle of screen
-    var middle = window.innerWidth / 2;
-    //set the folder
-
-    document.getElementById("Folder").style.left = (middle - (document.getElementById("Folder").getBoundingClientRect().width) / 2) + "px";
-
-
-    //Set the Note Page
-    document.getElementById("Note").style.left = document.getElementById("Folder").getBoundingClientRect().x + padding +"px";
-    document.getElementById("Note").style.top = document.getElementById("Folder").getBoundingClientRect().y + 20 + "px";
-
-    //Set the Note Page
-    document.getElementById("Pen").style.left = document.getElementById("Folder").getBoundingClientRect().x + padding + "px";
-    document.getElementById("Pen").style.top = document.getElementById("Folder").getBoundingClientRect().y + 20 + "px";
-
-}
-
-//Set Envelope
-function setEnvelope(eWidth, eleft, eTop) {
-    document.getElementById("Envelope").style.left = (document.getElementById("Folder").getBoundingClientRect().right - eleft) + "px";
-    document.getElementById("Envelope").style.top = document.getElementById("Folder").getBoundingClientRect().y - eTop + "px";
-    document.getElementById("Envelope").style.width = eWidth + "px";
-}
-
-//Set Title
-function setTitle(size, left, top, width, height) {
-    document.getElementById("Title").style.left = (document.getElementById("Folder").getBoundingClientRect().right
-        - left) + "px";
-    document.getElementById("Title").style.top = document.getElementById("Folder").getBoundingClientRect().y + top + "px";
-    document.getElementById("Title").style.fontSize = size + "px";
-    document.getElementById("Title").style.width = width + "px";
-    document.getElementById("Title").style.height = height + "px";
-}
 
 //Set Clickable Tabs
-function setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabLeft) {
-    document.getElementsByClassName("folder-tab")[0].style.height = tabHeight + "px";
-    document.getElementsByClassName("folder-tab")[0].style.top =
-        document.getElementById("Folder").getBoundingClientRect().y + "px";
-    document.getElementsByClassName("folder-tab")[0].style.width = tabWidth + "px";
-    document.getElementsByClassName("folder-tab")[0].style.left =
-        (document.getElementById("Folder").getBoundingClientRect().right
-            - document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().width - tabLeft - padding2) + "px";
-
-    var temp = document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().height;
-
+function setTabsLeft() {
+    var temp = document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().bottom;
+    
     for (var i = 1; i < document.getElementsByClassName("folder-tab").length; i++) {
-        //width and left don't change
-        document.getElementsByClassName("folder-tab")[i].style.width = tabWidth + "px";
-
-        document.getElementsByClassName("folder-tab")[i].style.left =
-            (document.getElementById("Folder").getBoundingClientRect().right
-                - document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().width - tabLeft - padding2) + "px";
-
-        //setting the height
-        document.getElementsByClassName("folder-tab")[i].style.height = tab1 + "px";
-
-        //resetting the top
-        document.getElementsByClassName("folder-tab")[i].style.top =
-            document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-
-
-        if (i < 3) {
-            document.getElementsByClassName("folder-tab")[i].style.height = tab1 + "px";
-
-            document.getElementsByClassName("folder-tab")[i].style.top =
-                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+        
+        document.getElementsByClassName("folder-tab")[i].style.top = temp + "%";
+        document.getElementsByClassName("folder-tab")[i].style.height = "8%";
+        temp += 8;
+        
+        if (i == 1) {
+            document.getElementsByClassName("folder-tab")[i].style.top = document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().bottom + "%";
+            document.getElementsByClassName("folder-tab")[i].style.height = "7%";
+            temp = 20;
         }
-        else if (i === 3) {
-            document.getElementsByClassName("folder-tab")[i].style.height = tab1 + 17 + "px";
-
-            document.getElementsByClassName("folder-tab")[i].style.top =
-                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+        else if (i == 5) {
+            document.getElementsByClassName("folder-tab")[i].style.height = "7%";
+            temp = 51;
         }
-        else if ((i >= 4 && i <= 9)) {
-            document.getElementsByClassName("folder-tab")[i].style.height = tab2 + "px";
+        else {
+            //resetting the top
+            console.log("tab height" + i + ": " + temp)
 
-            document.getElementsByClassName("folder-tab")[i].style.top =
-                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-        }
-        else if (i === 12) {
-            document.getElementsByClassName("folder-tab")[i].style.height = tab3 + "px";
-
-            document.getElementsByClassName("folder-tab")[i].style.top =
-                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-        }
-
-        temp += document.getElementsByClassName("folder-tab")[i].getBoundingClientRect().height;
+        }        
     }
+}
 
-    document.getElementsByClassName("folder-tab-right")[0].style.height = tabHeight + "px";
-    document.getElementsByClassName("folder-tab-right")[0].style.top =
-        document.getElementById("Folder").getBoundingClientRect().y + "px";
-    document.getElementsByClassName("folder-tab-right")[0].style.width = tabWidth + "px";
-    document.getElementsByClassName("folder-tab-right")[0].style.left =
-        (document.getElementById("Folder").getBoundingClientRect().x - padding2) + "px";
-
-    temp = document.getElementsByClassName("folder-tab-right")[0].getBoundingClientRect().height;
-
-    for (var ii = 1; ii < document.getElementsByClassName("folder-tab-right").length; ii++) {
-        //width and left don't change
-        document.getElementsByClassName("folder-tab-right")[ii].style.width = tabWidth + "px";
-
-        document.getElementsByClassName("folder-tab-right")[ii].style.left =
-            (document.getElementById("Folder").getBoundingClientRect().x) - padding2 + "px";
-
-        //setting the height
-        document.getElementsByClassName("folder-tab-right")[ii].style.height = tab1 + "px";
-
-        //resetting the top
-        document.getElementsByClassName("folder-tab-right")[ii].style.top =
-            document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-
-
-        if (ii < 3) {
-            document.getElementsByClassName("folder-tab-right")[ii].style.height = tab1 + "px";
-
-            document.getElementsByClassName("folder-tab-right")[ii].style.top =
-                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+function setTabsRight() {
+    var temp = document.getElementsByClassName("folder-tab-right")[0].getBoundingClientRect().bottom;
+    
+    for (var i = 1; i < document.getElementsByClassName("folder-tab").length; i++) {
+        
+        document.getElementsByClassName("folder-tab-right")[i].style.top = temp + "%";
+        document.getElementsByClassName("folder-tab-right")[i].style.height = "8%";
+        temp += 8;
+        
+        if (i == 1) {
+            document.getElementsByClassName("folder-tab-right")[i].style.top = document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().bottom + "%";
+            document.getElementsByClassName("folder-tab-right")[i].style.height = "7%";
+            temp = 20;
         }
-        else if (ii === 3) {
-            document.getElementsByClassName("folder-tab-right")[ii].style.height = tab1 + 17 + "px";
-
-            document.getElementsByClassName("folder-tab-right")[ii].style.top =
-                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
+        else if (i == 5) {
+            document.getElementsByClassName("folder-tab-right")[i].style.height = "7%";
+            temp = 51;
         }
-        else if ((ii >= 4 && ii <= 9)) {
-            document.getElementsByClassName("folder-tab-right")[ii].style.height = tab2 + "px";
+        else {
+            //resetting the top
+            console.log("tab height" + i + ": " + temp)
 
-            document.getElementsByClassName("folder-tab-right")[ii].style.top =
-                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-        }
-        else if (ii === 12) {
-            document.getElementsByClassName("folder-tab-right")[ii].style.height = tab3 + "px";
-
-            document.getElementsByClassName("folder-tab-right")[ii].style.top =
-                document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-        }
-
-        temp += document.getElementsByClassName("folder-tab-right")[ii].getBoundingClientRect().height;
+        }        
     }
-
-    // for (var i = 0; i < document.getElementsByClassName("folder-tab-right").length; i++) {
-    //     document.getElementsByClassName("folder-tab-right")[i].style.width = tabWidth + "px";
-
-    //     document.getElementsByClassName("folder-tab-right")[i].style.left =
-    //         (document.getElementById("Folder").getBoundingClientRect().x) + "px";
-
-    //     if (i !== 0 && i < 5) {
-    //         document.getElementsByClassName("folder-tab-right")[i].style.height = tab1 + "px";
-
-    //         document.getElementsByClassName("folder-tab-right")[i].style.top =
-    //             document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-
-    //         temp += document.getElementsByClassName("folder-tab-right")[1].getBoundingClientRect().height;
-    //     }
-    //     else if ((i >= 5 && i < 7) || (i >= 8)) {
-    //         document.getElementsByClassName("folder-tab-right")[i].style.height = tab2 + "px";
-
-    //         document.getElementsByClassName("folder-tab-right")[i].style.top =
-    //             document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-
-    //         temp += document.getElementsByClassName("folder-tab-right")[i].getBoundingClientRect().height;
-    //     }
-    //     else if (i===7) {
-    //         document.getElementsByClassName("folder-tab-right")[i].style.height = tab3 + "px";
-
-    //         document.getElementsByClassName("folder-tab-right")[i].style.top =
-    //             document.getElementById("Folder").getBoundingClientRect().y + temp + "px";
-
-    //         temp += document.getElementsByClassName("folder-tab-right")[i].getBoundingClientRect().height;
-    //     }
-    // }
-}
-
-function setNoteItems(itemWidth, itemHeight, itemLeft) {
-    document.getElementById("Unsolved").style.left = (document.getElementById("Note").getBoundingClientRect().left) + itemLeft + "px";
-    document.getElementById("Unsolved").style.top = document.getElementById("Note").getBoundingClientRect().y + 40 + "px";
-    document.getElementById("Unsolved").style.width = itemWidth + "px";
-
-    document.getElementById("Solved").style.left = (document.getElementById("Note").getBoundingClientRect().left + itemLeft) + "px";
-    document.getElementById("Solved").style.top = document.getElementById("Note").getBoundingClientRect().y + itemHeight + "px";
-    document.getElementById("Solved").style.width = itemWidth + "px";
-
-    //set camera & Globe left
-    document.getElementById("Camera").style.left = (document.getElementById("Note").getBoundingClientRect().left + itemLeft) + "px";
-    document.getElementById("Globe").style.left = (document.getElementById("Note").getBoundingClientRect().left + itemLeft) + "px";
-    document.getElementById("GlobeRight").style.right = (document.getElementById("Note").getBoundingClientRect().width + itemLeft + padding) + "px";
-
-
-}
-
-function setCamera(width, top) {
-    console.log(document.getElementById("Solved").getBoundingClientRect().left)
-    document.getElementById("Camera").style.top = top + "px";
-    document.getElementById("Camera").style.width = width + "px";
-}
-
-function setGlobe(width, left, top) {
-    // document.getElementById("Globe").style.left = left + "px";
-    document.getElementById("Globe").style.top = top + "px";
-    document.getElementById("Globe").style.width = width + "px";
-
-    document.getElementById("GlobeRight").style.top = top + "px";
-    document.getElementById("GlobeRight").style.width = width + "px";
-    document.getElementById("GlobeRight").style.right = left + "px";
-
 }
 
 
@@ -350,7 +186,7 @@ class Clues extends Component {
 
         this.handleChange = this.handleChange.bind(this)
         this.CheckPassword = this.CheckPassword.bind(this);
-        this.resizeWindow = this.resizeWindow.bind(this);
+        this.resizeWindow = this.setWindow.bind(this);
     }
 
     componentDidMount() {
@@ -358,339 +194,17 @@ class Clues extends Component {
         document.body.style.overflow = "scroll";
 
         document.body.style.removeProperty("background");
-        window.addEventListener("resize", this.resizeWindow);
-        this.resizeWindow();
+        window.addEventListener("resize", this.setWindow);
+        this.setWindow();
 
         this.ChangeFolder(cookies.get('currentTab', currentTab));
         this.CheckPuzzle(cookies.get('currentTab', currentTab));
     }
 
     //So the program always has the correct width and height of window
-    resizeWindow() {
-        console.log("height: " + window.innerHeight)
-        console.log("width: " + window.innerWidth)
-        var folders = document.getElementsByClassName("folder-scale");
-        var newWidth = 970;
-
-        //Tab variables
-        var tabHeight, tabWidth, tab1, tab2, tab3 = 0;
-
-        //envelpe variables
-        var eWidth, eleft, eTop = 0;
-
-        //title vars
-        var size, tleft, tTop, tHeight, tWdth = 0;
-
-        //set teh unsolved image
-        var itemWidth, itemHeight, itemLeft = 0;
-
-        if (window.innerWidth < 1800)
-        {
-            document.getElementById("Main").style.marginLeft = document.getElementById("ReturnHome").getBoundingClientRect().width / 2 + 'px';
-            padding2 = document.getElementById("ReturnHome").getBoundingClientRect().width / 2
-        }
-
-        if (window.innerWidth >= 1400) { //larges screen size
-            if (window.innerHeight >= 1080) { //larges screen size
-                newWidth = 1440;
-                document.getElementById("Note").style.width = "645px";
-                document.getElementById("Pen").style.width = "75px";
-
-                //Set Envelope
-                eWidth = 650;
-                eleft = 750;
-                eTop = -250;
-
-                //Set the Title
-                size = 100;
-                tleft = 700;
-                tTop = 80;
-                tHeight = 150;
-                tWdth = 550;
-                document.getElementById("Title").style.lineHeight = "3.5vw";
-
-                //Set the Note Items
-                padding = 0;
-                itemWidth = 545;
-                itemHeight = 430;
-                itemLeft = 0;
-
-                //tabBuffer Tabs
-                tabBuffer = 15;
-                tabHeight = 120;
-                tabWidth = 60;
-                tab1 = 70;
-                tab2 = 80;
-                tab3 = 85;
-
-                //Set Camera
-                cameraWidth = 190;
-                cameraTop = 780;
-
-                //Set Globe
-                globeWidth = 140;
-                globeTop = 750;
-                globeRight = 525;
-
-            }
-            else if (window.innerHeight >= 800) { //medium screen size
-                newWidth = 1100;
-                document.getElementById("Note").style.width = "475px";
-                document.getElementById("Pen").style.width = "55px";
-
-                //Set Envelope
-                eWidth = 500;
-                eleft = 600;
-                eTop = -250;
-
-                //Set the Title
-                size = 75;
-                tleft = 555;
-                tTop = 80;
-                tHeight = 100;
-                tWdth = 420;
-
-                //Set the Note Items
-                padding = 0;
-                itemWidth = 445;
-                itemHeight = 330;
-                itemLeft = -40;
-
-                //Setting Tabs
-                tabBuffer = 10;
-                tabHeight = 90;
-                tabWidth = 43;
-                tab1 = 53;
-                tab2 = 60;
-                tab3 = 75;
-
-                //Set Camera
-                cameraWidth = 130;
-                cameraTop = 595;
-
-                //Set Globe
-                globeWidth = 100;
-                globeTop = 560;
-                globeRight = 600;
-            }
-            else { //smallest screen size
-                newWidth = 1000;
-                document.getElementById("Note").style.width = "430px";
-                document.getElementById("Pen").style.width = "50px";
-
-                //Set Envelope
-                eWidth = 450;
-                eleft = 550;
-                eTop = -250;
-
-                //Set the Title
-                size = 70;
-                tleft = 520;
-                tTop = 80;
-                tHeight = 100;
-                tWdth = 390;
-
-                //Set the Note Items
-                padding = 0;
-                itemWidth = 400;
-                itemHeight = 330;
-                itemLeft = -40;
-
-                //Setting Tabs
-                tabBuffer = 10;
-                tabHeight = 80;
-                tabWidth = 43;
-                tab1 = 47;
-                tab2 = 55;
-                tab3 = 75;
-
-                cameraWidth = 100;
-                cameraTop = 555;
-
-                //Set Globe
-                globeWidth = 100;
-                globeTop = 500;
-                globeRight = 605;
-            }
-        }
-        else if (window.innerWidth >= 1024) { //medium screen size
-            if (window.innerHeight >= 800) { //medium screen size
-                newWidth = 1000;
-                document.getElementById("Note").style.width = "435px";
-                document.getElementById("Pen").style.width = "55px";
-
-                //Set Envelope
-                eWidth = 480;
-                eleft = 540;
-                eTop = -230;
-
-                //Set the Title
-                size = 70;
-                tleft = 500;
-                tTop = 80;
-                tHeight = 125;
-                tWdth = 390;
-                document.getElementById("Title").style.lineHeight = "4.5vw";
-
-                //Set the Note Items
-                padding = 0;
-                itemWidth = 410;
-                itemHeight = 330;
-                itemLeft = -20;
-
-
-                //Setting Tabs
-                tabBuffer = 10;
-                tabHeight = 80;
-                tabWidth = 43;
-                tab1 = 47;
-                tab2 = 55;
-                tab3 = 75;
-
-                cameraWidth = 100;
-                cameraTop = 555;
-
-                //Set Globe
-                globeWidth = 100;
-                globeTop = 510;
-                globeRight = 415;
-            }
-            else if (window.innerHeight >= 720) { //smallest screen size
-                newWidth = 1000;
-                document.getElementById("Note").style.width = "430px";
-                document.getElementById("Pen").style.width = "50px";
-
-                //Set Envelope
-                eWidth = 450;
-                eleft = 530;
-                eTop = -260;
-
-                //Set the Title
-                size = 70;
-                tleft = 500;
-                tTop = 80;
-                tHeight = 100;
-                tWdth = 390;
-
-                //Set the Note Items
-                padding = 0;
-                itemWidth = 400;
-                itemHeight = 330;
-                itemLeft = -10;
-                document.getElementById("Title").style.lineHeight = "4.5vw";
-
-
-                //Setting Tabs
-                tabBuffer = 10;
-                tabHeight = 80;
-                tabWidth = 43;
-                tab1 = 47;
-                tab2 = 55;
-                tab3 = 75;
-
-                cameraWidth = 100;
-                cameraTop = 555;
-
-                //Set Globe
-                globeWidth = 100;
-                globeTop = 500;
-                globeRight = 420;
-            }
-            else {
-                newWidth = 855;
-                document.getElementById("Note").style.width = "365px";
-                document.getElementById("Pen").style.width = "43px";
-
-                //Set Envelope
-                eWidth = 405;
-                eleft = 470;
-                eTop = -220;
-
-                //Set the Title
-                size = 60;
-                tleft = 430;
-                tTop = 40;
-                tHeight = 100;
-                tWdth = 340;
-
-                //Set the Note Items
-                padding = 0;
-                itemWidth = 350;
-                itemHeight = 275;
-                itemLeft = -20;
-                document.getElementById("Title").style.lineHeight = "4.5vw";
-
-                //Setting Tabs
-                tabBuffer = 12;
-                tabHeight = 65;
-                tabWidth = 35;
-                tab1 = 40;
-                tab2 = 47;
-                tab3 = 50;
-
-                //Set Camera
-                cameraWidth = 100;
-                cameraTop = 455;
-
-                //Set Globe
-                globeWidth = 100;
-                globeTop = 425;
-                globeRight = 400;
-            }
-        }
-        else { //smallest screen size
-            newWidth = 745;
-            document.getElementById("Note").style.width = "310px";
-            document.getElementById("Pen").style.width = "36px";
-
-            //Set Envelope
-            eWidth = 300;
-            eleft = 390;
-            eTop = -225;
-
-            //Set the Title
-            size = 55;
-            tleft = 380;
-            tTop = 40;
-            tHeight = 100;
-            tWdth = 290;
-
-            //Set the Note Items
-            padding = 0
-            itemWidth = 300;
-            itemHeight = 225;
-            itemLeft = -20;
-            document.getElementById("Title").style.lineHeight = "4.5vw";
-
-            //Setting Tabs
-            tabBuffer = 10;
-            tabHeight = 55;
-            tabWidth = 30;
-            tab1 = 35;
-            tab2 = 40;
-            tab3 = 60;
-
-            //Set Camera
-            cameraWidth = 100;
-            cameraTop = 400;
-
-            //Set Globe
-            globeWidth = 80;
-            globeTop = 330;
-            globeRight = 400;
-        }
-
-        for (var i = 0; i < folders.length; i++) {
-            document.getElementsByClassName("folder-scale")[i].style.width = newWidth + "px";
-        }
-
-        SetPages();
-        setTabs(tabHeight, tabWidth, tab1, tab2, tab3, tabBuffer);
-        setEnvelope(eWidth, eleft, eTop);
-        setTitle(size, tleft, tTop, tWdth, tHeight);
-        setNoteItems(itemWidth, itemHeight, itemLeft);
-        setGlobe(globeWidth, globeRight, globeTop);
-        setCamera(cameraWidth, cameraTop);
+    setWindow() {
+        setTabsLeft();
+        setTabsRight();
     }
 
     //Check if a puzzle is unlocked or not
@@ -745,7 +259,6 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "block";
 
                 //Turn on the pen and camera
-                document.getElementById("Globe").style.display = "none";
                 document.getElementById("GlobeRight").style.display = "none";
 
                 break;
@@ -797,7 +310,6 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "block";
 
                 //Turn on the pen and camera
-                document.getElementById("Globe").style.display = "none";
                 document.getElementById("GlobeRight").style.display = "none";
                 break;
             case 4:
@@ -805,6 +317,7 @@ class Clues extends Component {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
                     document.getElementById("Camera").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
 
 
                     //open the envelope and show the unsolved
@@ -819,6 +332,8 @@ class Clues extends Component {
 
                         //Turn on the pen and camera
                         document.getElementById("Camera").style.display = "block";
+                        document.getElementById("GlobeLink").setAttribute('href', 'https://www.latimes.com/archives/la-xpm-1986-10-05-tm-4275-story.html');
+                        document.getElementById("GlobeRight").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -838,7 +353,8 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
-                    document.getElementById("Camera").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";                    
+                    document.getElementById("GlobeRight").style.display = "none";
 
 
                     //set link inactive
@@ -847,14 +363,13 @@ class Clues extends Component {
                 }
 
                 document.getElementById("Pen").style.display = "block";
-                document.getElementById("GlobeRight").style.display = "none";
-                document.getElementById("Globe").style.display = "none";
                 break;
             case 5:
                 if (cookies.get('BlindManChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
-                    document.getElementById("Globe").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -865,8 +380,9 @@ class Clues extends Component {
                     if (cookies.get('MinaLoyChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
+                        document.getElementById("Camera").style.display = "block";
                         document.getElementById("GlobeLink").setAttribute('href', 'https://mina-loy.com/');
-                        document.getElementById("Globe").style.display = "block";
+                        document.getElementById("GlobeRight").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -886,7 +402,8 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
-                    document.getElementById("Globe").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -894,17 +411,13 @@ class Clues extends Component {
                 }
 
                 document.getElementById("Pen").style.display = "block";
-
-                //Turn on the pen and camera
-                document.getElementById("GlobeRight").style.display = "none";
-                document.getElementById("Camera").style.display = "none";
-
                 break;
             case 6:
                 if (cookies.get('MinaLoyChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
-                    document.getElementById("Globe").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
 
 
                     //open the envelope and show the unsolved
@@ -917,7 +430,8 @@ class Clues extends Component {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
                         document.getElementById("GlobeLink").setAttribute('href', 'https://thereaderwiki.com/en/Louise_Var%C3%A8se');
-                        document.getElementById("Globe").style.display = "block";
+                        document.getElementById("GlobeRight").style.display = "block";
+                        document.getElementById("Camera").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -933,8 +447,8 @@ class Clues extends Component {
 
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
-                    document.getElementById("Globe").style.display = "none";
 
 
                     //set link inactive
@@ -945,14 +459,13 @@ class Clues extends Component {
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "block";
 
-                //Turn on the pen and camera
-                document.getElementById("GlobeRight").style.display = "none";
-                document.getElementById("Camera").style.display = "none";
                 break;
             case 7:
                 if (cookies.get('TissuePaperChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
+
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -963,6 +476,8 @@ class Clues extends Component {
                     if (cookies.get('PhonebookChildren')) {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
+                        document.getElementById("Camera").style.display = "block";
+
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -979,6 +494,8 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
+
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -989,15 +506,12 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "block";
 
                 //Turn on the pen and camera
-                document.getElementById("Globe").style.display = "none";
                 document.getElementById("GlobeRight").style.display = "none";
-                document.getElementById("Camera").style.display = "none";
                 break;
             case 8:
                 if (cookies.get('PhonebookChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
-                    document.getElementById("Globe").style.display = "none";
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -1041,14 +555,13 @@ class Clues extends Component {
                 }
 
                 document.getElementById("Pen").style.display = "block";
-
-                //Turn on the pen and camera
-                document.getElementById("Globe").style.display = "none";
                 break;
             case 9:
                 if (cookies.get('ElsaChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -1060,6 +573,8 @@ class Clues extends Component {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
                         document.getElementById("Camera").style.display = "block";
+                        document.getElementById("GlobeLink").setAttribute('href', 'https://www.theartstory.org/blog/exclusive-modernism-baroness-elsa-von-freytag-loringhoven-and-marcel-duchamp/');
+                        document.getElementById("GlobeRight").style.display = "block";
                     }
 
                     //Make sure the clickable link is turned on and set the correct link
@@ -1080,6 +595,7 @@ class Clues extends Component {
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
                     document.getElementById("Camera").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -1087,9 +603,7 @@ class Clues extends Component {
                 }
 
                 document.getElementById("Pen").style.display = "block";
-                //Turn on the pen and camera
-                document.getElementById("Globe").style.display = "none";
-                document.getElementById("GlobeRight").style.display = "none";
+               
                 break;
             case 10:
                 //if the previous puzzle has been solved
@@ -1140,9 +654,6 @@ class Clues extends Component {
 
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "block";
-
-                //Set camera and globe
-                document.getElementById("Globe").style.display = "none";
                 break;
             case 11:
                 if (cookies.get('MottCatalogChildren')) {
@@ -1150,8 +661,7 @@ class Clues extends Component {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
                     document.getElementById("GlobeRight").style.display = "none";
-
-
+                    document.getElementById("Camera").style.display = "none";
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -1164,7 +674,8 @@ class Clues extends Component {
                         document.getElementById("Solved").style.display = "block";
 
                         document.getElementById("GlobeLink").setAttribute('href', 'https://sinclairnj.blogs.rutgers.edu/2018/07/richard-mutt/');
-                        document.getElementById("Globe").style.display = "block";
+                        document.getElementById("GlobeRight").style.display = "block";
+                        document.getElementById("Camera").style.display = "block";
 
                     }
 
@@ -1182,8 +693,8 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
-                    document.getElementById("Globe").style.display = "none";
-
+                    document.getElementById("GlobeRight").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -1192,17 +703,13 @@ class Clues extends Component {
 
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "block";
-
-
-                //Set camera and globe                
-                document.getElementById("GlobeRight").style.display = "none";
-                document.getElementById("Camera").style.display = "none";
                 break;
             case 12:
                 if (cookies.get('GodChildren')) {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
-                    document.getElementById("Globe").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
 
                     //open the envelope and show the unsolved
                     document.getElementById("Unsolved").setAttribute('src', this.state.unsolvedList[folder - 1]);
@@ -1214,7 +721,8 @@ class Clues extends Component {
                         document.getElementById("Solved").setAttribute('src', this.state.solvedList[folder - 1]);
                         document.getElementById("Solved").style.display = "block";
                         document.getElementById("GlobeLink").setAttribute('href', 'https://mitpress.mit.edu/books/baroness-elsa');
-                        document.getElementById("Globe").style.display = "block";
+                        document.getElementById("GlobeRight").style.display = "block";
+                        document.getElementById("Camera").style.display = "block";
                         document.getElementById("Outro").style.display = "block";
                         
 
@@ -1234,7 +742,8 @@ class Clues extends Component {
                     //turn off reward
                     document.getElementById("Unsolved").style.display = "none";
                     document.getElementById("Solved").style.display = "none";
-                    document.getElementById("Globe").style.display = "none";
+                    document.getElementById("GlobeRight").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
 
                     //set link inactive
                     document.getElementById("Link").classList.add('inactiveLink');
@@ -1243,10 +752,6 @@ class Clues extends Component {
 
                 //Turn off the pen for non-password puzzles
                 document.getElementById("Pen").style.display = "block";
-
-                //Set globe and camera
-                document.getElementById("GlobeRight").style.display = "none";
-                document.getElementById("Camera").style.display = "none";
                 break;
             default:
                 //Set envelope to unlocked
@@ -1268,18 +773,19 @@ class Clues extends Component {
                 document.getElementById("Pen").style.display = "block";
 
                 //Turn on the pen and camera
-                document.getElementById("Globe").style.display = "none";
                 document.getElementById("GlobeRight").style.display = "none";
-                document.getElementById("Camera").style.display = "none";
+                
 
                 //once the puzzle has been solved turn on and set the solved image
                 if (cookies.get('TheLetterChildren')) {
                     document.getElementById("Solved").setAttribute('src', this.state.solvedList[0]);
                     document.getElementById("Solved").style.display = "block";
+                    document.getElementById("Camera").style.display = "block";
                 }
                 else {
                     //Set the Solved image to but turned off
                     document.getElementById("Solved").style.display = "none";
+                    document.getElementById("Camera").style.display = "none";
                 }
                 break;
         }
@@ -1316,10 +822,6 @@ class Clues extends Component {
 
             document.getElementById("Title").innerHTML = order[folder - 1];
             cookies.set('currentTab', folder)
-
-            //globe and camera elements
-            setGlobe(globeWidth, globeleft, globeTop);
-            setCamera(cameraWidth, cameraleft, cameraTop);
 
             this.CheckPuzzle(folder);
         }
@@ -1363,9 +865,6 @@ class Clues extends Component {
             document.getElementById("Title").innerHTML = order[folder - 1];
             console.log("clicked-right: " + folder);
             cookies.set('currentTab', folder)
-
-            setGlobe(globeWidth, globeleft, globeTop);
-            setCamera(cameraWidth, cameraleft, cameraTop);
 
             this.CheckPuzzle(folder);
         }
@@ -1496,7 +995,7 @@ class Clues extends Component {
     render() {
         return (
 
-            <Container fluid='true' style={{height: this.state.height + 115 + 'px'}}>
+            <Container fluid='true'>
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Dada - Home</title>
@@ -1535,93 +1034,92 @@ class Clues extends Component {
                     <Image id="Outro" src={Closed}
                         style={{
                             display: 'none',
-                            width: "20%",
+                            width: "15%",
                             position: "absolute",
                             left: "0px",
-                            bottom: "20%",
+                            bottom: "35%",
                             zIndex: "9999",
                             margin: "15px",
                             // boxShadow: "rgb(0 0 0 / 42%) 5px 5px 10px 5px",
                         }} />
                 </a>
 
-                <div className="folder" id="Main" style={{marginLeft:'0px'}}>
-                    <Image id="Folder" src={Folder1} className="folder-scale" />
-
-                    <div id="Folder Elements">
+                <div className="folder-outer" id="Main">
+                    <div className="folder-container" id="Main Container">
+                        <Image id="Folder" src={Folder1} className='folder-scale '/>
+                        
                         {/* Left Side */}
                         <Image id="Note" src={Note} className="note" />
 
-                        <Popup style={{ background: 'transparent', border: 'none' }}
-                            trigger={<Image id="Pen" src={Pen} className="pen pointer" />} modal >
-                            {close => (
-                                <div className="password">
-                                    Report your findings
-                                    <br />
-                                    <form name="login"
-                                        style={{ margin: '5px 0px 0px 0px' }}
-                                        onSubmit={this.CheckPassword}>
-                                        <input type="text" size="17"
-                                            value={this.state.passwordValue}
-                                            onChange={this.handleChange}
-                                            style={{ width: '40%', height: '10%' }} /><br />
-                                        <input type="submit" value="Submit"
-                                            style={{ width: '40%', height: '10%', margin: '4px auto 4px auto' }} />
-                                    </form>
+                            <Popup style={{ background: 'transparent', border: 'none' }}
+                                trigger={<Image id="Pen" src={Pen} className="pen pointer" />} modal >
+                                {close => (
+                                    <div className="password">
+                                        Report your findings
+                                        <br />
+                                        <form name="login"
+                                            style={{ margin: '5px 0px 0px 0px' }}
+                                            onSubmit={this.CheckPassword}>
+                                            <input type="text" size="17"
+                                                value={this.state.passwordValue}
+                                                onChange={this.handleChange}
+                                                style={{ width: '40%', height: '10%' }} /><br />
+                                            <input type="submit" value="Submit"
+                                                style={{ width: '40%', height: '10%', margin: '4px auto 4px auto' }} />
+                                        </form>
 
-                           click outside to escape window
+                            click outside to escape window
+                                    </div>
+                                )}
+                            </Popup>
+
+                            <Image id="Unsolved" src={ARLetter1} className="unsolved" />
+                            <Image id="Solved" src={ARLetter2} className="solved"
+                                style={{ display: 'none' }} />
+                            <Image id="Camera" src={Camera} className="camera" />
+
+                            <a id="GlobeLink" rel="noopener noreferrer" target="_blank" href='/'>
+                                <Image id="GlobeRight" src={Globe} className="globe" />
+                            </a>
+
+                            <a id="Link" href='/the-letter'>
+                                <div id="Title" className="written">
+                                    The Letter
                                 </div>
-                            )}
-                        </Popup>
+                            </a>
 
-                        <Image id="Unsolved" src={ARLetter1} className="unsolved" />
-                        <Image id="Solved" src={ARLetter2} className="unsolved"
-                            style={{ display: 'none' }} />
-                        <Image id="Camera" src={Camera} className="unsolved" />
+                            <a id="Link-Envelope" href='/the-letter'>
+                                <Image id="Envelope" src={Open} className="envelope" />
+                            </a>
+                    
+                        <div id="Tabs">
 
-                        <a id="GlobeLink" rel="noopener noreferrer" target="_blank" href='/'>
-                            <Image id="Globe" src={Globe} className="unsolved" />
-                            <Image id="GlobeRight" src={Globe} className="unsolved" />
-                        </a>
+                            <div id="Tab1" className="folder-tab" onClick={() => this.ChangeFolder(1)} />
+                            <div id="Tab2" className="folder-tab pointer" onClick={() => this.ChangeFolder(2)} />
+                            <div id="Tab3" className="folder-tab pointer" onClick={() => this.ChangeFolder(3)} />
+                            <div id="Tab4" className="folder-tab pointer" onClick={() => this.ChangeFolder(4)} />
+                            <div id="Tab5" className="folder-tab pointer" onClick={() => this.ChangeFolder(5)} />
+                            <div id="Tab6" className="folder-tab pointer" onClick={() => this.ChangeFolder(6)} />
+                            <div id="Tab7" className="folder-tab pointer" onClick={() => this.ChangeFolder(7)} />
+                            <div id="Tab8" className="folder-tab pointer" onClick={() => this.ChangeFolder(8)} />
+                            <div id="Tab9" className="folder-tab pointer" onClick={() => this.ChangeFolder(9)} />
+                            <div id="Tab10" className="folder-tab pointer" onClick={() => this.ChangeFolder(10)} />
+                            <div id="Tab11" className="folder-tab pointer" onClick={() => this.ChangeFolder(11)} />
+                            <div id="Tab12" className="folder-tab pointer" onClick={() => this.ChangeFolder(12)} />
 
-                        <a id="Link" href='/the-letter'>
-                            <div id="Title" className="written">
-                                The Letter
-                            </div>
-                        </a>
-
-                        <a id="Link-Envelope" href='/the-letter'>
-                            <Image id="Envelope" src={Open} className="envelope" />
-                        </a>
-                    </div>
-
-                    <div id="Tabs">
-
-                        <div id="Tab1" className="folder-tab" onClick={() => this.ChangeFolder(1)} />
-                        <div id="Tab2" className="folder-tab pointer" onClick={() => this.ChangeFolder(2)} />
-                        <div id="Tab3" className="folder-tab pointer" onClick={() => this.ChangeFolder(3)} />
-                        <div id="Tab4" className="folder-tab pointer" onClick={() => this.ChangeFolder(4)} />
-                        <div id="Tab5" className="folder-tab pointer" onClick={() => this.ChangeFolder(5)} />
-                        <div id="Tab6" className="folder-tab pointer" onClick={() => this.ChangeFolder(6)} />
-                        <div id="Tab7" className="folder-tab pointer" onClick={() => this.ChangeFolder(7)} />
-                        <div id="Tab8" className="folder-tab pointer" onClick={() => this.ChangeFolder(8)} />
-                        <div id="Tab9" className="folder-tab pointer" onClick={() => this.ChangeFolder(9)} />
-                        <div id="Tab10" className="folder-tab pointer" onClick={() => this.ChangeFolder(10)} />
-                        <div id="Tab11" className="folder-tab pointer" onClick={() => this.ChangeFolder(11)} />
-                        <div id="Tab12" className="folder-tab pointer" onClick={() => this.ChangeFolder(12)} />
-
-                        <div id="Tab1Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(1)} />
-                        <div id="Tab2Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(2)} />
-                        <div id="Tab3Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(3)} />
-                        <div id="Tab4Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(4)} />
-                        <div id="Tab5Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(5)} />
-                        <div id="Tab6Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(6)} />
-                        <div id="Tab7Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(7)} />
-                        <div id="Tab8Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(8)} />
-                        <div id="Tab9Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(9)} />
-                        <div id="Tab10Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(10)} />
-                        <div id="Tab11Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(11)} />
-                        <div id="Tab12Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(12)} />
+                            <div id="Tab1Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(1)} />
+                            <div id="Tab2Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(2)} />
+                            <div id="Tab3Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(3)} />
+                            <div id="Tab4Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(4)} />
+                            <div id="Tab5Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(5)} />
+                            <div id="Tab6Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(6)} />
+                            <div id="Tab7Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(7)} />
+                            <div id="Tab8Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(8)} />
+                            <div id="Tab9Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(9)} />
+                            <div id="Tab10Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(10)} />
+                            <div id="Tab11Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(11)} />
+                            <div id="Tab12Right" className="folder-tab-right" onClick={() => this.ChangeFolderRight(12)} />
+                        </div>
                     </div>
                 </div>
 
@@ -1629,8 +1127,8 @@ class Clues extends Component {
                 <a href='/evidence-board'>
                     <Image src={Board}
                         style={{
-                            width: "15%",
-                            // position: "fixed",
+                            width: "13%",
+                            position: "relative",
                             float: 'right',
                             right: "0px",
                             bottom: "0px",

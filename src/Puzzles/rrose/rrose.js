@@ -96,10 +96,15 @@ class Rrose extends Component {
     }
 
     resizeWindow() {
-        // if the screen is big enough
+        if (this.state.width > 1300) {
+            document.body.style.overflowX = "hidden";
+        }
+        else {
+            document.body.style.overflowX = "scroll";
+        }
 
-        document.body.style.overflow = "auto";
         SetPages();
+
     }
 
 

@@ -194,7 +194,12 @@ class GodII extends Component {
     }
 
     resizeWindow() {
-        document.body.style.overflowX = "scroll";
+        if (this.state.width > 1300) {
+            document.body.style.overflowX = "hidden";
+        }
+        else {
+            document.body.style.overflowX = "scroll";
+        }
 
         SetPages();
     }

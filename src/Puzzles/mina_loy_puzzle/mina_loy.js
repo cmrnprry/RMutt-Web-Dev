@@ -342,12 +342,14 @@ class Mina_Loy extends Component {
 
     //So the program always has the correct width and height of window
     resizeWindow() {
-        if (this.state.width > 1000) {
-            document.body.style.overflowY= "hidden";
+      if (this.state.width > 1000) {
+            document.body.style.overflowY = "hidden";
         }
         else {
-            document.body.style.overflowY= "scroll";
+            document.body.style.overflowY = "scroll";
         }
+
+        SetPages();
     }
 
     //Tells the cookies to be set

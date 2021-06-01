@@ -141,7 +141,6 @@ function pushInList(draggable, dropzone) {
     }
 }
 
-
 //Function that checks to see if the currect list is in the correct order
 function checkList() {
     var allCorrect = true;
@@ -208,7 +207,19 @@ class Blind_Man extends Component {
     }
 
     resizeWindow() {
-        document.body.style.overflowX = "scroll";
+        if (this.state.width >= 1500) {
+            document.body.style.overflowX = "hidden";
+        }
+        else
+        {
+            document.body.style.overflowX = "scroll";
+        }
+        
+        //Set where the drop sites are for the pages
+        setDrops();
+
+        //Set where the zoomed image is
+        setZoomed();
 
     }
 
