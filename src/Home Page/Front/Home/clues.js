@@ -115,15 +115,14 @@ var currentTab = 1;
 //Set Clickable Tabs
 function setTabsLeft() {
     var temp = document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().bottom;
-    
+    console.log("temp: " + temp)
     for (var i = 1; i < document.getElementsByClassName("folder-tab").length; i++) {
-        
         document.getElementsByClassName("folder-tab")[i].style.top = temp + "%";
         document.getElementsByClassName("folder-tab")[i].style.height = "8%";
         temp += 8;
         
         if (i == 1) {
-            document.getElementsByClassName("folder-tab")[i].style.top = document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().bottom + "%";
+            document.getElementsByClassName("folder-tab")[i].style.top = "13%";
             document.getElementsByClassName("folder-tab")[i].style.height = "7%";
             temp = 20;
         }
@@ -149,7 +148,7 @@ function setTabsRight() {
         temp += 8;
         
         if (i == 1) {
-            document.getElementsByClassName("folder-tab-right")[i].style.top = document.getElementsByClassName("folder-tab")[0].getBoundingClientRect().bottom + "%";
+            document.getElementsByClassName("folder-tab-right")[i].style.top = "13%";
             document.getElementsByClassName("folder-tab-right")[i].style.height = "7%";
             temp = 20;
         }
@@ -886,56 +885,56 @@ class Clues extends Component {
 
         //if the letter is open
         if (currentTab === 1) {
-            if (input === "amie" || input === "playtesting") {
+            if (input === "amie") {
                 cookies.set('TheLetterChildren');
                 solvedPuzzles.push("TheLetter");
                 correct = true
             }
         }
         else if (currentTab === 3) {
-            if (input === "nominaldues"|| input === "playtesting") {
+            if (input === "nominaldues") {
                 cookies.set('SiaCatalogChildren');
                 solvedPuzzles.push("SiaCatalog");
                 correct = true
             }
         }
         else if (currentTab === 2) {
-            if (input === "thesuperindependents" || input === "salondesrefusees" || input === "salondesrefusées"|| input === "playtesting") {
+            if (input === "thesuperindependents" || input === "salondesrefusees" || input === "salondesrefusées") {
                 cookies.set('DemuthLetterChildren');
                 solvedPuzzles.push("DemuthLetter");
                 correct = true
             }
         }
         else if (currentTab === 7) {
-            if (input === "110w88" || input === "louisenorton"|| input === "playtesting") {
+            if (input === "110w88" || input === "louisenorton") {
                 cookies.set('PhonebookChildren');
                 solvedPuzzles.push("Phonebook");
                 correct = true
             }
         }
         else if (currentTab === 6) {
-            if (input == "louisevaresenorton" || input == "louisenortonvarese" || input == "louisemccutcheonnorton" || input == "louisenortonmccutcheon" || input == "louisenortonvarèse" || input == "louisevarèsenorton" || input == "louisenorton" || input === "110W88"|| input === "playtesting") {
+            if (input == "louisevaresenorton" || input == "louisenortonvarese" || input == "louisemccutcheonnorton" || input == "louisenortonmccutcheon" || input == "louisenortonvarèse" || input == "louisevarèsenorton" || input == "louisenorton" || input === "110W88") {
                 cookies.set('TissuePaperChildren');
                 solvedPuzzles.push("TissuePaper");
                 correct = true
             }
         }
-        else if (currentTab === 4) {
-            if (input === "playtesting") {
-                cookies.set('BlindManChildren');
-                solvedPuzzles.push("BlindMan");
-                correct = true
-            }
-        }
+        // else if (currentTab === 4) {
+        //     if (input === "playtesting") {
+        //         cookies.set('BlindManChildren');
+        //         solvedPuzzles.push("BlindMan");
+        //         correct = true
+        //     }
+        // }
         else if (currentTab === 5) {
-            if (input === "playtesting" || input === "minaloy"|| input === "playtesting") {
+            if (input === "minaloy") {
                 solvedPuzzles.push("MinaLoy");
                 cookies.set('MinaLoyChildren');
                 correct = true
             }
         }
         else if (currentTab === 8) {
-            if (input === "godisintheplumbing"|| input === "playtesting") {
+            if (input === "godisintheplumbing") {
                 cookies.set('ElsaChildren');
                 solvedPuzzles.push("Elsa");
                 correct = true
@@ -943,28 +942,28 @@ class Clues extends Component {
         }
         else if (currentTab === 9) {
             if (input === "douche" || input === "louisevaresenorton" || input === "aliasmarcelduchampest.1920"
-                || input === "rroseselavy" || input === "playtesting") {
+                || input === "rroseselavy") {
                 cookies.set('RroseChildren');
                 solvedPuzzles.push("Rrose");
                 correct = true
             }
         }
-        else if (currentTab === 10) {
-            if (input === "playtesting") {
-                cookies.set('MottCatalogChildren');
-                solvedPuzzles.push("MottCatalog");
-                correct = true
-            }
-        }
+        // else if (currentTab === 10) {
+        //     if (input === "playtesting") {
+        //         cookies.set('MottCatalogChildren');
+        //         solvedPuzzles.push("MottCatalog");
+        //         correct = true
+        //     }
+        // }
         else if (currentTab === 11) {
-            if (input === 'elsa' || input === "playtesting") {
+            if (input === 'elsa') {
                 cookies.set('GodChildren');
                 solvedPuzzles.push("God");
                 correct = true
             }
         }
         else if (currentTab === 12) {
-            if (input === "playtesting" || input === "pipes") {
+            if (input === "pipes") {
                 cookies.set('GodIIChildren');
                 solvedPuzzles.push("GodII");
                 correct = true

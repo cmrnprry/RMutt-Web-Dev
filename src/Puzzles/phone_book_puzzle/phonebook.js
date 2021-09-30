@@ -8,12 +8,19 @@ import VoiceLine from '../../Voice clips/PhoneBook.wav'
 
 //Image Imports
 import Book from './phone_book_letter.png'
+import Question from "../../folder_elements/hints/sticky_closed.png"
 
 //Web Imports
 import interact from 'interactjs'
 import Container from 'react-bootstrap/Container'
 import Image from 'react-bootstrap/Image'
 import { Helmet } from "react-helmet";
+
+var hintOpen = false;
+
+//sticky
+const closedQ = require('../../folder_elements/hints/sticky_closed.png')
+const sticky1 = require('../../folder_elements/hints/sticky_WhatRingsTrue.png')
 
 class Phonebook extends Component {
     static propTypes = {
@@ -25,9 +32,12 @@ class Phonebook extends Component {
 
         this.state = {
             width: window.innerWidth,
-            height: window.innerHeight
+            height: window.innerHeight,
+            hints: [closedQ, sticky1],
 
         };
+
+        this.OpenHint = this.OpenHint.bind(this);
     }
 
     //Sets the listener
@@ -67,6 +77,19 @@ class Phonebook extends Component {
         document.getElementById("Voice").style.display = "none";
     }
 
+    OpenHint() {
+        var img = document.getElementById("Hint");
+
+        if (hintOpen) {
+            img.setAttribute('src', this.state.hints[0])
+        }
+        else {
+            img.setAttribute('src', this.state.hints[1])
+        }
+
+        hintOpen = !hintOpen;
+    }
+
     render() {
 
         return (
@@ -86,6 +109,20 @@ class Phonebook extends Component {
 
                 <div id="Voice" className="subtitle">Oh, R. Mutt's number is NOT Duchamp's! That's an inconsistency if I've ever seen one! I suppose you'll have to figure out whose number it is, then. The phone book should prove invaluable! "
                 </div>
+
+                {/* Hint */}
+                <Image id="Hint" src={Question}
+                    style={{
+                        width: "15%",
+                        position: "absolute",
+                        top: "0px",
+                        right: "0px",
+                        zIndex: "9999",
+                        margin: "15px",
+                        // boxShadow: "rgb(0 0 0 / 42%) 5px 5px 10px 5px",
+                    }}
+                    onClick={this.OpenHint}
+                />
 
                 <Image src={Book} className="book-resize" />
 
